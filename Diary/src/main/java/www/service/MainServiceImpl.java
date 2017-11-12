@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
 import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 @Service
@@ -93,6 +94,12 @@ public class MainServiceImpl implements MainService{
 		
 		
 		return dao.community();
+	}
+
+	@Override
+	public List<DiaryVo> Top() {
+		// TODO Auto-generated method stub
+		return dao.Top();
 	}
 
 	

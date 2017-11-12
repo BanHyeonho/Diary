@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.service.MainService;
 
@@ -33,6 +34,9 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView mainn(ModelAndView mav) {
 
+		List<DiaryVo> list = sv.Top();
+		
+		mav.addObject("list", list);
 		mav.setViewName("user/main");
 		return mav;
 	} // 메인으로 이동(로고 눌렀을때)

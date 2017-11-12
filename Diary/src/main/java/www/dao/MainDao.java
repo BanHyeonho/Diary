@@ -3,11 +3,12 @@ package www.dao;
 import java.util.List;
 
 import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 public interface MainDao {
 	
-//	public List<DiaryVo> Top();		//top10리스트출력
+	public List<DiaryVo> Top();		//top10리스트출력
 	public void memberjoin(MemberVo vo);	//회원가입
 	public String idchk(String id);      //아이디중복확인
 	public String nickchk(String nick);      //닉네임중복확인

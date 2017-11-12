@@ -4,28 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.dao.MainDao">
 	<select id="login" resultType="www.dto.MemberVo">
-		select * from Member where id = #{id}
+		select * from Member where id =
+		#{id}
 	</select>
 
 	<select id="pwchk" resultType="String" parameterType="www.dto.MemberVo">
-		select PASSWORD from Member where id = #{id} and pwq=#{pwq} and answer=#{answer}
+		select
+		PASSWORD from Member where id = #{id} and pwq=#{pwq} and
+		answer=#{answer}
 	</select>
 	<select id="idchk" resultType="String" parameterType="String">
-		select id from Member where id = #{id}
+		select id
+		from Member where id = #{id}
 	</select>
 
 	<select id="nickchk" resultType="String" parameterType="String">
-		select nick from Member where nick = #{nick}
-	</select>
-	
- 	<insert id="memberjoin" parameterType="www.dto.MemberVo">
-    insert into member(ID,PASSWORD,NAME,NICK,GENDER,BIRTH,EMAIL,PHONE,ADDR,PWQ,ANSWER,PICTURE,REPORTCOUNT,JOINDATE )
-    values(#{id},#{password},#{name},#{nick},#{gender},#{birth},#{email},#{phone},#{addr},#{pwq},#{answer},#{picture},0,SYSDATE)
-</insert>
-
-<select id="community" resultType="www.dto.CommunityVo">
-		select * from COMMUNITY order by idx desc
+		select
+		nick from Member where nick = #{nick}
 	</select>
 
-	
+	<insert id="memberjoin" parameterType="www.dto.MemberVo">
+		insert into
+		member(ID,PASSWORD,NAME,NICK,GENDER,BIRTH,EMAIL,PHONE,ADDR,PWQ,ANSWER,PICTURE,REPORTCOUNT,JOINDATE
+		)
+		values(#{id},#{password},#{name},#{nick},#{gender},#{birth},#{email},#{phone},#{addr},#{pwq},#{answer},#{picture},0,SYSDATE)
+	</insert>
+
+	<select id="community" resultType="www.dto.CommunityVo">
+		select * from COMMUNITY order
+		by idx desc
+	</select>
+
+	<select id="Top" resultType="www.dto.DiaryVo">
+		<![CDATA[select * from (select * from DIARY
+		order by dhitcount desc) where rownum <= 10
+		 ]]>
+	</select>
+
 </mapper>
