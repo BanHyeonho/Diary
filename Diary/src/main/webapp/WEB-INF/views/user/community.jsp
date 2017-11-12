@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,48 +77,24 @@
       		<th>제목</th>
       		<th>지역</th>
       		<th>인원</th>
-      		<th>모인인원</th>
       		<th>여행날짜</th>
       		<th>차량유무</th>
     	</tr>
   		</thead>
   		<tbody>
+  		<c:forEach items="${list }" var="data">
     		<tr>
-      			<td>1</td>
-      			<td>반드래곤</td>
-      			<td>속초로 가자</td>
-      			<td>제주도</td>
-      			<td>4명</td>
-      			<td>남자2</td>
-      			<td>2017-10-01 ~ 2017-10-01</td>
+      			<td>${data.idx}</td>
+      			<td>${data.nick}</td>
+      			<td>${data.ctitle}</td>
+      			<td>${data.cplace}</td>
+      			<td>${data.attendee}</td>
+      			<td>${data.sdate} ~ ${data.edate}</td>
       			<td>
-      			<input type="checkbox" name="chk_info" value="car">
+      			<input type="checkbox" name="chk_info" disabled=true value="car">
       			</td>
     		</tr>
-    		<tr>
-      			<td>2</td>
-      			<td>반드래곤</td>
-      			<td>속초로 가자</td>
-      			<td>제주도</td>
-      			<td>4명</td>
-      			<td>남자2</td>
-      			<td>2017-10-01 ~ 2017-10-01</td>
-      			<td>
-      			<input type="checkbox" name="chk_info" value="car">
-      			</td>
-    		</tr>
-    		<tr>
-      			<td>3</td>
-      			<td>반드래곤</td>
-      			<td>속초로 가자</td>
-      			<td>제주도</td>
-      			<td>4명</td>
-      			<td>남자2</td>
-      			<td>2017-10-01 ~ 2017-10-01</td>
-      			<td>
-      			<input type="checkbox" name="chk_info" value="car">
-      			</td>
-    		</tr>
+    	</c:forEach>
  		</tbody>
  	</table>
 		

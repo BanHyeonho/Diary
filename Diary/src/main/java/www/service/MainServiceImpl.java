@@ -1,5 +1,7 @@
 package www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
+import www.dto.CommunityVo;
 import www.dto.MemberVo;
 
 @Service
@@ -71,6 +74,15 @@ public class MainServiceImpl implements MainService{
 	       dao.memberjoin(vo);
 	      
 	   }
+
+	@Override
+	public List<CommunityVo> community() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return dao.community();
+	}
 
 	
 }

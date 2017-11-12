@@ -10,20 +10,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.service.CommunityService;
 
-@Controller
+//@Controller
 public class CommunityController {
 
-	//@Autowired
-	//CommunityService sv;
+//	@Autowired
+//	CommunityService sv;
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
-	@RequestMapping(value = "/community.do", method = RequestMethod.GET)
-	public ModelAndView community(ModelAndView mav) {
 
-		mav.setViewName("user/community");
-		return mav;
-	}
 	
 	
 //	public ModelAndView writeCommunity(CommunityVo vo) {

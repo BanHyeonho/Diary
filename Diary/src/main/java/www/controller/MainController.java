@@ -1,6 +1,7 @@
 package www.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommunityVo;
 import www.dto.MemberVo;
 import www.service.MainService;
 
@@ -80,10 +82,16 @@ public class MainController {
 		return sv.login(vo, session);
 	} // 로그인처리(관리자면 관리자로 이동)
 
-	// public ModelAndView community() {
-	// return null;
-	// } // 만남의장으로 이동
-	//
+	@RequestMapping(value = "/community.do", method = RequestMethod.GET)
+	 public ModelAndView community(ModelAndView mav) {
+		 
+		 List<CommunityVo> list=sv.community();
+		logger.info("개수"+list.size());
+		mav.addObject("list", list);
+		mav.setViewName("user/community");
+		return mav;
+	 } // 만남의장으로 이동
+	
 	// public ModelAndView diary() {
 	// return null;
 	// } // 여행일지로 이동
