@@ -24,5 +24,10 @@
    values(#{id},#{password},#{nick},#{name},#{gender},#{birth},#{email},#{phone},#{addr},#{pwq},#{answer},#{picture},0,SYSDATE)
 
 </insert>
+
+<select id="community" resultType="www.dto.CommunityVo">
+		select * from COMMUNITY order by idx desc
+	</select>
+
 	
 </mapper>
