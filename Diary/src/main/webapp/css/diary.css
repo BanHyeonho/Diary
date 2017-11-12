@@ -17,11 +17,16 @@
 	/* 메인컨텐츠  */
 	.contents {height:250px; width:680px;margin-left: 300px;}
 	/* 좌측 네비게이션 */
-	.nav {position: fixed ;top:210px;}
-	.nav .tab {width: 50px;height: 30px;}
-	.nav .up {width: 150px;height:30px;}
-	.nav .btn {width:200px;height:70px;} /*네비메인버튼  */
-	.nav .down {width:200px;}
+	.navi {position: fixed ;top:210px;}
+	 /*네비메인버튼  */
+	.navi .down {width:200px;}
+	.navi {position: fixed ;top:230px;}
+	.navi .up {width: 200px;height:30px;}
+	.navi .btn {width:200px;height:70px;} 
+
+	/*네비메인버튼  */
+	
+	.navi > div {width:200px;}
 
 
 
@@ -36,3 +41,14 @@
 	margin-left: 30px;
 	margin-right:  30px;
 }
+
+/* mapage.jsp  */
+	/*privacy  */
+	.table {
+	    text-align: center;
+	    font-size: initial;
+	}
+	.kal{margin: auto;width:140px;}
+	
+	/*my_write  */
+	
