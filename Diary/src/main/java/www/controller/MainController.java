@@ -46,6 +46,8 @@ public class MainController {
 
 	@RequestMapping(value = "/joinAction.do", method = RequestMethod.POST)
 	public ModelAndView joinAction(ModelAndView mav, MemberVo vo, HttpSession session) {
+		
+		
 		sv.memberjoin(vo);
 		session.setAttribute("user", vo);
 		mav.setViewName("redirect:/main.do");

@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="contents jumbotron" >
 
-				<h5 class="title">Sophia's trip to Busan</h5>
+				<h5 class="title">소피아</h5>
 				<br>
 				<p class="content">
 					<!-- 여행사진 -->

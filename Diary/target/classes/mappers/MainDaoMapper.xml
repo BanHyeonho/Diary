@@ -19,10 +19,9 @@
 		select nick from Member where nick = #{nick}
 	</select>
 	
-	<insert id="memberjoin" parameterType="www.dto.MemberVo">
-   insert into member(ID,PASSWORD,NAME,NICK,GENDER,BIRTH,EMAIL,PHONE,ADDR,PWQ,ANSWER,PICTURE,REPORTCOUNT,JOINDATE )
-   values(#{id},#{password},#{nick},#{name},#{gender},#{birth},#{email},#{phone},#{addr},#{pwq},#{answer},#{picture},0,SYSDATE)
-
+ 	<insert id="memberjoin" parameterType="www.dto.MemberVo">
+    insert into member(ID,PASSWORD,NAME,NICK,GENDER,BIRTH,EMAIL,PHONE,ADDR,PWQ,ANSWER,PICTURE,REPORTCOUNT,JOINDATE )
+    values(#{id},#{password},#{name},#{nick},#{gender},#{birth},#{email},#{phone},#{addr},#{pwq},#{answer},#{picture},0,SYSDATE)
 </insert>
 
 <select id="community" resultType="www.dto.CommunityVo">

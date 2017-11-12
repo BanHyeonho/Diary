@@ -71,6 +71,17 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	   public void memberjoin(MemberVo vo) {
+		
+		if(vo.getPhone()==null){
+			vo.setPhone("default");
+		}
+		if(vo.getAddr()==null){
+			vo.setAddr("default");
+		}
+		if(vo.getPicture()==null){
+			vo.setPicture("default");
+		}
+		
 	       dao.memberjoin(vo);
 	      
 	   }
