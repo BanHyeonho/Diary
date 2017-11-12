@@ -21,16 +21,14 @@
 			<td><input type="text" class="form-control" id="id"/></td>
 		</tr>
 		<tr>
-			<th class="pwsearch">이름</th>
-			<td><input type="text" class="form-control" id="name"/></td>
-		</tr>
-		<tr>
-			<th class="pwsearch">연락처</th>
-			<td><input type="text" class="form-control" id="phone"/></td>
-		</tr>
-		<tr>
 			<th class="pwsearch">비밀번호 질문</th>
-			<td><select class="form-control" id="pwq"><option>당신이 태어난곳은?</option></select></td>
+			<td><select class="form-control" id="pwq">
+			<option>당신이 태어난곳은?</option>
+            <option>당신이 기억에 남는 선생님 성함은?</option>
+            <option>당신이 가본 여행 중 가장 기억남는 곳은?</option>
+            <option>당신의 어머님 성함은?</option>
+            <option>당신의 아버지 성함은?</option>
+			</select></td>
 		</tr>
 		<tr>
 			<th class="pwsearch">비밀번호 답</th>
@@ -38,7 +36,7 @@
 		</tr>
 	</table>
 	<center>
-	<button class="btn-success btn-lg pwbtn" type="button" id="pwSearchAction">확인</button><button class="btn-warning btn-lg pwbtn" type="reset">취소</button>
+	<button class="btn-success btn-lg pwbtn" type="button" id="pwSearchAction">확인</button>
 	</center>
 
 </div>	

@@ -20,54 +20,9 @@
 						align="left" alt="여행사진">
 					<!-- 프로필 사진 -->
 					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
+						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?idx=0">1박2일여행
 						떠나보자구요요요요요요아하하하하핳하</a>
 				</p>
-			</div>
-
-			<div class="contents jumbotron">
-				<h5 class="title">반현</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
-
-			</div>
-
-			<div class="contents jumbotron">
-				<h5 class="title">Sophia's trip to Busan</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
-
-			</div>
-
-			<div class="contents jumbotron">
-				<h5 class="title">Sophia's trip to Busan</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
-
 			</div>
 
 			<%@ include file="../layout/nav.jsp"%>
