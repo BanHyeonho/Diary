@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>community</title>
+<link rel="stylesheet" href="../css/sketchy.css">
+<style type="text/css">
+.gender{
+	margin-left: 30px;
+}
+</style>
+</head>
+<body>
+	<div class="content">
+		<div>
+		 <form class="form-inline my-2 my-lg-0">
+			<table class="table table-bordered">
+				<tr>
+					<th>지역</th>
+					<td>
+					<select class="form-control">
+							<option>서울</option>
+							<option>부산</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+					<input type="radio" name="gender" checked="checked" class="gender">성별상관없음
+					<input type="radio" name="gender" class="gender">남자
+					<input type="radio" name="gender" class="gender">여자
+					</td>
+				</tr>
+				<tr>
+					<th>여행날짜</th>
+					<td><input type="date" class="form-control"/> ~ <input type="date" class="form-control"/></td>
+				</tr>
+				<tr>
+				
+					<td colspan="2"><select class="form-control">
+							<option>글 제목</option>
+							<option>닉네임</option>
+					</select>
+					<input class="form-control mr-sm-2" type="text" style="width:500px" placeholder="Search"/>
+					<button type="button" class="btn btn-primary">검 색</button>
+					<button type="button" class="btn btn-success">글 쓰기</button>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+
+		<div style="text-align: center">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>닉네임</th>
+						<th>제목</th>
+						<th>지역</th>
+						<th>인원</th>
+						<th>모집인원</th>
+						<th>여행날짜</th>
+						<th>차량유무</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>O</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div>
+			<ul class="pagination pagination-lg" style="width:300px;margin-left: auto;margin-right: auto;">
+				<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a class="page-link" href="#">&raquo;</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
