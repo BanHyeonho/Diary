@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="contents jumbotron">
-				<h5 class="title">반현호의 여행여</h5>
+				<h5 class="title">반현호밚녀호</h5>
 				<br>
 				<p class="content">
 					<!-- 여행사진 -->
