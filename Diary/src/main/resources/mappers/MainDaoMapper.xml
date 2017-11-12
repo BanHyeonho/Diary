@@ -8,8 +8,7 @@
 	</select>
 
 	<select id="pwchk" resultType="String" parameterType="www.dto.MemberVo">
-		select PASSWORD from Member where id = #{id} and name=#{name} and
-		phone=#{phone} and pwq=#{pwq} and answer=#{answer}
+		select PASSWORD from Member where id = #{id} and pwq=#{pwq} and answer=#{answer}
 	</select>
 	<select id="idchk" resultType="String" parameterType="String">
 		select id from Member where id = #{id}
