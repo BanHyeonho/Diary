@@ -1,26 +1,42 @@
 package www.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.MemberVo;
 import www.service.AdminService;
-import www.service.MyPageService;
 
-//@Controller
+@Controller
 public class AdminController {
 
 	@Autowired
 	AdminService sv;
 	
-	@Autowired
-	MyPageService ms;
+	/*@Autowired
+	MyPageService ms;*/
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
-//	public ModelAndView allMember() {
-//		return null;
-//	} // 회원리스트 보기
+	
+	@RequestMapping(value="/admin.do",method=RequestMethod.GET)
+	public ModelAndView admin(ModelAndView mav) {
+//		List<MemberVo> list = sv.allmember();
+//		
+//		for (MemberVo memberVo : list) {
+//			logger.info(memberVo.toString());
+//		}
+		mav.addObject("mlist",sv.allmember());
+		mav.setViewName("admin/admin");
+		return mav;
+	} // 회원리스트 보기
 //
 //	public ModelAndView blackMember(int report) {
 //		return null;
@@ -54,9 +70,15 @@ public class AdminController {
 //		return null;
 //	} // 여행일지 글삭제
 //
-//	public ModelAndView memberSearch(MemberVo vo,int combo) {	//combo 아이디 인지 닉네임인지 값
-//		return null;
-//	} // 회원검색(아이디,닉네임)
+	@RequestMapping(value="/memberSearch.do",method=RequestMethod.GET)
+	public ModelAndView memberSearch(ModelAndView mav,HttpServletRequest request) {	//combo 아이디 인지 닉네임인지 값
+		logger.info(request.getParameter("keyword"));
+		logger.info(request.getParameter("option"));
+		//sv.searchMember(vo);
+		//mav.addObject("mlist",sv.allmember());
+		mav.setViewName("admin/admin");
+		return mav;
+	} // 회원검색(아이디,닉네임)
 //	
 //	public ModelAndView reportClist(int report) {	//커뮤니티 테이블 creportcount
 //		return null;
