@@ -1,8 +1,10 @@
 package www.dao;
 
+import www.dto.MemberVo;
+
 public interface MyPageDao {
 	
-//	public void updateinfo(MemberVo vo);	//개인정보수정
+	public void updateinfo(MemberVo vo);	//개인정보수정
 //	public void deleteinfo(String id);	//회원탈퇴
 //	public List<DiaryVo> mydiary(String id);//내가쓴글 보기(팔로우글보기)
 //	public void addfollow(FollowVo vo);	//팔로우하기

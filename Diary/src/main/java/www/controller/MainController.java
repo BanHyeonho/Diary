@@ -108,7 +108,9 @@ public class MainController {
 
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public ModelAndView mypage(ModelAndView mav) {
+		
 		mav.setViewName("user/mypage");
+		
 		return mav;
 	} // 마이페이지로 이동 개인정보 변경탭
 
