@@ -108,5 +108,13 @@ public class MainServiceImpl implements MainService{
 		return dao.Top();
 	}
 
+	@Override
+	public MemberVo mypage(MemberVo vo) {
+		
+		
+		
+		return dao.login(vo);
+	}
+
 	
 }
