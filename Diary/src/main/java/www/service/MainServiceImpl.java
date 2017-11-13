@@ -1,5 +1,6 @@
 package www.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import www.dao.MainDao;
 import www.dto.CommunityVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -71,6 +73,17 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	   public void memberjoin(MemberVo vo) {
+		
+		if(vo.getPhone()==null){
+			vo.setPhone("default");
+		}
+		if(vo.getAddr()==null){
+			vo.setAddr("default");
+		}
+		if(vo.getPicture()==null){
+			vo.setPicture("default");
+		}
+		
 	       dao.memberjoin(vo);
 	      
 	   }
@@ -83,6 +96,23 @@ public class MainServiceImpl implements MainService{
 		
 		return dao.community();
 	}
+
+	@Override
+	public List<TopVo> Top() {
+		// TODO Auto-generated method stub
+		List<TopVo> top = dao.Top();
+		
+		List<TopVo> list = new ArrayList<TopVo>();
+		for (TopVo topVo : top) {
+			System.out.println(topVo.toString());
+			topVo.setPicture(dao.picture(topVo.getId()));
+			list.add(topVo);
+		}
+		
+		return list;
+	}
+
+	
 
 	
 }

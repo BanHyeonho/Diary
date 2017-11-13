@@ -10,65 +10,24 @@
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
+		
+		<c:forEach items="${list }" var="data" begin="1" varStatus="rank">
+		
 			<div class="contents jumbotron" >
-
-				<h5 class="title">Sophia's trip to Busan</h5>
+				<h5 class="title">${rank.count} 등!${data.dtitle}</h5>
 				<br>
 				<p class="content">
 					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
+					<img src="${data.dpicture}" ; width="200px" height="100px"
 						align="left" alt="여행사진">
 					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
+					<img src="${data.picture}" width="50px" height="50px" alt="프로필 사진"
+						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?idx=0">${data.contents}</a>
 				</p>
 			</div>
+		</c:forEach>
 
-			<div class="contents jumbotron">
-				<h5 class="title">반현호의 여행여행!!</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
 
-			</div>
-
-			<div class="contents jumbotron">
-				<h5 class="title">Sophia's trip to Busan</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
-
-			</div>
-
-			<div class="contents jumbotron">
-				<h5 class="title">Sophia's trip to Busan</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="../image/s.png" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="../image/ayo.png" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="">1박2일여행
-						떠나보자구요요요요요요아하하하하핳하</a>
-				</p>
-
-			</div>
 
 			<%@ include file="../layout/nav.jsp"%>
 			<%@ include file="../layout/footer.jsp"%>

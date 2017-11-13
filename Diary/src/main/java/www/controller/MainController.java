@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 import www.service.MainService;
 
 @Controller
@@ -33,6 +35,9 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView mainn(ModelAndView mav) {
 
+		List<TopVo> list = sv.Top();
+		
+		mav.addObject("list", list);
 		mav.setViewName("user/main");
 		return mav;
 	} // 메인으로 이동(로고 눌렀을때)
@@ -46,6 +51,8 @@ public class MainController {
 
 	@RequestMapping(value = "/joinAction.do", method = RequestMethod.POST)
 	public ModelAndView joinAction(ModelAndView mav, MemberVo vo, HttpSession session) {
+		
+		
 		sv.memberjoin(vo);
 		session.setAttribute("user", vo);
 		mav.setViewName("redirect:/main.do");
