@@ -17,12 +17,12 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub//	
 		dao.updateinfo(vo);
 	}
-//
-//	@Override
-//	public void deleteinfo(String id) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
+	@Override
+	public void deleteinfo(String id) {
+		// TODO Auto-generated method stub
+		dao.deleteinfo(id);
+	}
 //
 //	@Override
 //	public List<DiaryVo> mydiary(String id) {

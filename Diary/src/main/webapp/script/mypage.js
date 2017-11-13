@@ -26,13 +26,22 @@ function confirm(){
 			document.sform.email1.focus();
 			return false;	
 		}else if(document.sform.answer.value==""){
-			alert("질문에 답을 써주세요");
+			alert("질문에 답을 써주세요!");
 			document.sform.answer.focus();
 			return false;
-		}else{
+		}else {
 			document.sform.email.value = document.sform.email1.value+"@" + document.sform.email2.value;
 			document.sform.phone.value = "010-"+document.sform.phone2.value+"-"+document.sform.phone3.value;
+			
+			alert('변경되었습니다');
 			return true;
 		}
+	 
+}
+function deletee(id){
+	
+	if(confirm("정말 탈퇴하시겠습니까?")==true){
+		location.replace('/deleteInfoAction.do?id='+id);
+	}
 	
 }

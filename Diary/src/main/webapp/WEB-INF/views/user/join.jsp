@@ -98,8 +98,8 @@
          </tr>
       </table>
       <center>
-         <button type="submit" class="btn-success btn-lg joinbtn" onclick="return confirm();">확인</button>
-         <button type="reset" class="btn-warning btn-lg joinbtn">취소</button>
+         <button type="submit" class="btn-success btn-lg" onclick="return confirm();">확인</button>
+         <button type="reset" class="btn-warning btn-lg">취소</button>
       </center>
    </form>
    

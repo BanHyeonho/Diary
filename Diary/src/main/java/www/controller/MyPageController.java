@@ -21,7 +21,7 @@ public class MyPageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
-	@RequestMapping(value="//updateInfoAction.do",method = RequestMethod.POST)
+	@RequestMapping(value="/updateInfoAction.do",method = RequestMethod.POST)
 	public ModelAndView updateInfoAction(ModelAndView mav,MemberVo vo,HttpSession session) {
 		logger.info("하하하하하하핫");
 		logger.info(vo.toString());
@@ -30,10 +30,17 @@ public class MyPageController {
 		mav.setViewName("redirect:/main.do");
 		return mav;
 	} // 개인정보 수정 처리
-//
-//	public ModelAndView deleteInfoAction(String id) {
-//		return null;
-//	} // 회원탈퇴
+
+	@RequestMapping(value="/deleteInfoAction.do",method = RequestMethod.GET)
+	public ModelAndView deleteInfoAction(ModelAndView mav,String id,HttpSession session) {
+		logger.info(id);
+		
+		session.invalidate();
+		sv.deleteinfo(id);
+		
+		mav.setViewName("redirect:/main.do");
+		return mav;
+	} // 회원탈퇴
 //
 //	public @ResponseBody Map<String,List<DiaryVo>> myDiary(String id) {
 //		return null;

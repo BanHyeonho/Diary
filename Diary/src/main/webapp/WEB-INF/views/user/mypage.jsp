@@ -37,11 +37,16 @@ window.onload=function(){
 						href="#followers">팔로워</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#follwoing">팔로윙</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+						href="#msg">쪽지함</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+						href="#delete">회원탈퇴</a></li>
+						
 				</ul>
 			</div>
 			<!-- privacy -->
 			<div id="myTabContent" class="tab-content">
-				<div id="privacy" class="tab-pane fade active show in">
+				<div id="privacy" class="privacy tab-pane fade active show in">
 
 					
 					<form action="/updateInfoAction.do" method="post" name="sform">
@@ -138,12 +143,10 @@ window.onload=function(){
 							</tr>
 						</table>
 						<center>
-							<button type="submit" class="btn-success btn-lg joinbtn"
-								onclick="return confirm();">확인</button>
+							<button type="submit" class="btn-success btn-lg" onclick="return confirm();">회원정보 수정</button>
 							
 						</center>
 					</form>
-
 				</div>
 				<!-- my_write -->
 				<div id="my_write" class="tab-pane fade show">
@@ -225,7 +228,32 @@ window.onload=function(){
 					</table>
 
 				</div>
+				<!-- 쪾지함  -->
+				<div id="msg" class="tab-pane fade show">
+					<table class="table table-striped table-hover table-bordered">
+						<thead class="thead-dark">
+							<tr>
+								<th>보낸사람</th>
+								<th>내용</th>
+								<th>답장하기</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span>보낸이</span>&nbsp;&nbsp;<button class="btn btn-outline-danger">차단</button></td>
+								<td></td>
+								<td><button class="btn btn-outline-danger">답장</button></td>
+								<td><button type="button" class="btn btn-outline-danger" >삭제</button></td>
+								<!--  {} 넣어서 for each 로 돌려 -->
+							</tr>
+						</tbody>
+					</table>
 
+				</div>
+				<div id="delete" class="tab-pane fade show">
+					<button type="button" class="btn-danger btn-lg" onclick="deletee('${user.id}');">회원탈퇴</button>
+				</div>
 			</div>
 
 		</div>
