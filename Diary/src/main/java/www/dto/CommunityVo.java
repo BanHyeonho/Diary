@@ -11,7 +11,7 @@ public class CommunityVo {
 	private String sdate; // 여행시작일
 	private String edate; // 여행종료일
 	private Date cdate; // 작성일
-	private String place; // 지역
+	private String cplace; // 지역
 	private int attendee; // 인원수
 	private String car; // 차량유무
 	private String content; // 글내용
@@ -75,12 +75,12 @@ public class CommunityVo {
 		this.cdate = cdate;
 	}
 
-	public String getPlace() {
-		return place;
+	public String getCplace() {
+		return cplace;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
+	public void setCplace(String cplace) {
+		this.cplace = cplace;
 	}
 
 	public int getAttendee() {
@@ -126,7 +126,7 @@ public class CommunityVo {
 	@Override
 	public String toString() {
 		return "CommunityVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", ctitle=" + ctitle + ", sdate=" + sdate
-				+ ", edate=" + edate + ", cdate=" + cdate + ", place=" + place + ", attendee=" + attendee + ", car="
+				+ ", edate=" + edate + ", cdate=" + cdate + ", cplace=" + cplace + ", attendee=" + attendee + ", car="
 				+ car + ", content=" + content + ", creportconunt=" + creportconunt + ", chitcount=" + chitcount + "]";
 	}
 
