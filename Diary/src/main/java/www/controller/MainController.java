@@ -101,10 +101,12 @@ public class MainController {
 	// public ModelAndView diary() {
 	// return null;
 	// } // 여행일지로 이동
-	//
-	// public ModelAndView diarywrite() {
-	// return null;
-	// } // 여행일지쓰기로 이동
+	
+	@RequestMapping(value = "/diarywrite.do", method = RequestMethod.GET)
+	 public ModelAndView diarywrite(ModelAndView mav) {
+		mav.setViewName("user/diarywrite");
+	 return mav;
+	 } // 여행일지쓰기로 이동
 
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public ModelAndView mypage(ModelAndView mav) {

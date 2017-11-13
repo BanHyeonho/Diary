@@ -37,7 +37,7 @@
 
 	<select id="Top" resultType="www.dto.DiaryVo">
 		<![CDATA[select * from (select * from DIARY
-		order by dhitcount desc) where rownum <= 10
+		order by good desc) where rownum <= 10
 		 ]]>
 	</select>
 
