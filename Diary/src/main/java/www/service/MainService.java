@@ -7,12 +7,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommunityVo;
-import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 
 public interface MainService {
 
-	public List<DiaryVo> Top(); //top10리스트출력
+	public List<TopVo> Top(); //top10리스트출력
 	public void memberjoin(MemberVo vo); //회원가입
 	public String idchk(String id); // 아이디중복확인
 	public MemberVo mypage(MemberVo vo);  // 개인정보 변경 값 가져오기
