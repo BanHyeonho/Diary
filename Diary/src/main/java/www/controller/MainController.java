@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 import www.service.MainService;
 
 @Controller
@@ -34,7 +35,7 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView mainn(ModelAndView mav) {
 
-		List<DiaryVo> list = sv.Top();
+		List<TopVo> list = sv.Top();
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/main");
