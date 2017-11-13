@@ -1,6 +1,7 @@
 package www.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.service.MainService;
 
@@ -31,6 +34,9 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView mainn(ModelAndView mav) {
 
+		List<DiaryVo> list = sv.Top();
+		
+		mav.addObject("list", list);
 		mav.setViewName("user/main");
 		return mav;
 	} // 메인으로 이동(로고 눌렀을때)
@@ -82,10 +88,16 @@ public class MainController {
 		return sv.login(vo, session);
 	} // 로그인처리(관리자면 관리자로 이동)
 
-	// public ModelAndView community() {
-	// return null;
-	// } // 만남의장으로 이동
-	//
+	@RequestMapping(value = "/community.do", method = RequestMethod.GET)
+	 public ModelAndView community(ModelAndView mav) {
+		 
+		 List<CommunityVo> list=sv.community();
+		logger.info("개수"+list.size());
+		mav.addObject("list", list);
+		mav.setViewName("user/community");
+		return mav;
+	 } // 만남의장으로 이동
+	
 	// public ModelAndView diary() {
 	// return null;
 	// } // 여행일지로 이동

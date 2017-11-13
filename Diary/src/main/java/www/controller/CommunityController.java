@@ -3,17 +3,24 @@ package www.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import www.service.CommunityService;
 
 //@Controller
 public class CommunityController {
 
-	@Autowired
-	CommunityService sv;
+//	@Autowired
+//	CommunityService sv;
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
+
+	
+	
 //	public ModelAndView writeCommunity(CommunityVo vo) {
 //		return null;
 //	} // 글쓰기

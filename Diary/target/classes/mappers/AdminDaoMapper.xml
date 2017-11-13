@@ -9,4 +9,11 @@
   <select id="searchByNick" resultType="www.dto.MemberVo">
     select * from MEMBER where NICK = #{nick}
   </select>  --> 
+  
+  <select id="allmember" resultType="www.dto.MemberVo">
+  <![CDATA[select * from (select * from member
+		order by joindate desc) where rownum <= 30
+		 ]]>
+  </select>
+  
 </mapper>

@@ -16,11 +16,16 @@
 	/* 메인컨텐츠  */
 	.contents {height:250px; width:680px;margin-left: 300px;}
 	/* 좌측 네비게이션 */
-	.nav {position: fixed ;top:210px;}
-	.nav .tab {width: 50px;height: 30px;}
-	.nav .up {width: 150px;height:30px;}
-	.nav .btn {width:200px;height:70px;} /*네비메인버튼  */
-	.nav .down {width:200px;}
+	.navi {position: fixed ;top:210px;}
+	 /*네비메인버튼  */
+	.navi .down {width:200px;}
+	.navi {position: fixed ;top:230px;}
+	.navi .up {width: 200px;height:30px;}
+	.navi .btn {width:200px;height:70px;} 
+
+	/*네비메인버튼  */
+	
+	.navi > div {width:200px;}
 
 
 
@@ -37,10 +42,25 @@
 }
 
 /* join.jsp  */
-.email input {width:200px; float:left;}
-.email span{display: block; float:left; padding:8px}
-.email select {width:200px; float:left;}
 .phone select {width:100px; float:left;}
 .phone span{float:left; padding:4px}
 .phone input {width:100px; float:left;}
 
+/* mapage.jsp  */
+	/*privacy  */
+	
+	.kal{margin: auto;width:140px;}
+	
+	/*my_write  */
+	
+/*  admin.jps*/
+.searchtool select{width:100px; float:left; margin:8px 4px;}
+.searchtool input{width:100px; float:left; margin:8px 4px;}
+.searchtool button{float:left;}
+.searchtool .ss .s{width:300px;}
+.searchtool .ss .bt{margin:8px 8px;height:30px;}
+.searchtool .ss .btn{margin:8px 8px;height:30px;}
+.page{margin-left: 200px; margin-right:  200px;}
+
+
+	

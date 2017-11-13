@@ -1,5 +1,9 @@
 package www.dao;
 
+import java.util.List;
+
+import www.dto.CommunityVo;
+
 public interface CommunityDao {
 //	public void cdatewriting(CommunityVo vo);//만남의 장 글쓰기
 //	public List<CommunityVo> csearch(CommunityVo vo);	//만남의장 검색
@@ -9,4 +13,5 @@ public interface CommunityDao {
 //	public void deleteccomment(int idx);	//만남의장 댓글삭제
 //	public void updateccomment(CommentVo vo);//만남의장 댓글수정
 //	public HitCountVo hitCountChk(HitCountVo vo);	//조회했는지 아닌지 확인
+
 }
