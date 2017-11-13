@@ -1,5 +1,7 @@
 package www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
+import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 @Service
@@ -68,9 +72,35 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	   public void memberjoin(MemberVo vo) {
+		
+		if(vo.getPhone()==null){
+			vo.setPhone("default");
+		}
+		if(vo.getAddr()==null){
+			vo.setAddr("default");
+		}
+		if(vo.getPicture()==null){
+			vo.setPicture("default");
+		}
+		
 	       dao.memberjoin(vo);
 	      
 	   }
+
+	@Override
+	public List<CommunityVo> community() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return dao.community();
+	}
+
+	@Override
+	public List<DiaryVo> Top() {
+		// TODO Auto-generated method stub
+		return dao.Top();
+	}
 
 	
 }

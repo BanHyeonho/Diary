@@ -1,49 +1,18 @@
 package www.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import www.dao.CommunityDao;
+import www.dto.CommunityVo;
+
 //@Service
 public class CommunityServiceImpl implements CommunityService{
-
-//	@Autowired
-//	CommunityDao dao;
-
-//	@Override
-//	public void cdatewriting(CommunityVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//
-//	@Override
-//	public void writeccomment(CommentVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void deleteccomment(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void updateccomment(CommentVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//
-//	@Override
-//	public List<CommunityVo> csearch(CommunityVo vo) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//
-//	@Override
-//	public CommunityVo oneCommunity(int idx) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+/*@Autowired
+CommunityDao dao;*/
+	
 	
 	
 }
