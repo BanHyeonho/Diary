@@ -33,7 +33,7 @@
     	<tr>
        		<td>성별</td>
          	<td>
-            	<input type="radio" name="gender" value="male" checked> 상관없음
+            	<input type="radio" name="gender" value="anything" checked> 상관없음
              	<input type="radio" name="gender" value="male"> 남
            		<input type="radio" name="gender" value="female"> 여
       		</td>
@@ -61,7 +61,7 @@
           
            			<input type="text" placeholder="검색어 입력">
            			<button>검색</button>
-           			<button onclick="location.href='/communitywrite.do'">글쓰기</button>
+           			<button type='button' onclick="location.href='/communitywrite.do'">글쓰기</button>
            		</div>
      		 </form>
            	</td>
@@ -97,7 +97,34 @@
     	</c:forEach>
  		</tbody>
  	</table>
+ 	
+ 	<div>
+  		<ul class="pagination justify-content-center">
+    	<li class="page-item disabled">
+      		<a class="page-link" href="#">&laquo;</a>
+    	</li>
+    	<li class="page-item active">
+      		<a class="page-link" href="#">1</a>
+    	</li>
+    	<li class="page-item">
+      		<a class="page-link" href="#">2</a>
+    	</li>
+    	<li class="page-item">
+      		<a class="page-link" href="#">3</a>
+    	</li>
+    	<li class="page-item">
+      		<a class="page-link" href="#">4</a>
+    	</li>
+    	<li class="page-item">
+      		<a class="page-link" href="#">5</a>
+    	</li>
+    		<li class="page-item">
+      		<a class="page-link" href="#">&raquo;</a>
+    	</li>
+ 	 	</ul>
+		</div>
 		
+	
 	</div>
 		<%@ include file="../layout/nav.jsp"%>
 		<%@ include file="../layout/footer.jsp"%>

@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommunityVo;
 import www.service.CommunityService;
 
-//@Controller
+@Controller
 public class CommunityController {
 
 //	@Autowired
@@ -18,12 +19,13 @@ public class CommunityController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
-
-	
-	
-//	public ModelAndView writeCommunity(CommunityVo vo) {
-//		return null;
-//	} // 글쓰기
+	@RequestMapping(value="/communitywrite.do",method = RequestMethod.GET)
+	public ModelAndView writeCommunity(ModelAndView mav) {
+		
+		mav.setViewName("user/communitywrite");
+	return mav;
+		
+	} // 글쓰기
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {
 //		return null;
