@@ -14,8 +14,8 @@ import www.service.CommunityService;
 @Controller
 public class CommunityController {
 
-//	@Autowired
-//	CommunityService sv;
+	@Autowired
+	CommunityService sv;
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
@@ -26,6 +26,19 @@ public class CommunityController {
 	return mav;
 		
 	} // 글쓰기
+	
+	@RequestMapping(value="/communityinsert.do",method = RequestMethod.POST)
+	public ModelAndView insert(ModelAndView mav, CommunityVo vo){
+		
+		
+		logger.info(vo.toString());
+		sv.communityinsert(vo);
+		
+		mav.setViewName("redirect:/community.do");
+	return mav;
+	}
+	
+	
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {
 //		return null;

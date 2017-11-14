@@ -17,48 +17,55 @@
 	<div class="contents" >
 	<h1>만남의 장 글쓰기</h1>
 
+	<form action="/communityinsert.do"  method="post">
+	<input type="hidden" name="id" value="${user.id}" />
+	<input type="hidden" name="nick" value="${user.nick}" />
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
-    	<tr>
- 
+		<tr>
+			<td>제목</td>
+			
+			
+			<td colspan="3">
+			<input type="text" name="ctitle" size="70">
+			</td>
+		</tr>
+    	<tr> 
        		<td>지역</td>
          	<td>
-        		<form action="#">
-           			<select name="지역">
+           			<select name="cplace">
            				<option value="서울">서울</option>
            				<option value="부산">부산</option>
            				<option value="대전">대전</option>
            				<option value="광주">광주</option>
            			</select>
-         		</form>
+         		
       		</td>
       		<td>인원</td>
       		<td>
-      		<input type="number" placeholder="1" name="attendee">
+      		<input type="number" name="attendee">
       		</td>
     	</tr>
     	<tr>
        		<td>성별</td>
          	<td>
-            	<input type="radio" name="gender" value="anything" checked> 상관없음
-             	<input type="radio" name="gender" value="male"> 남
-           		<input type="radio" name="gender" value="female"> 여
+            	<input type="radio" name="gender" value="A" checked> 상관없음
+             	<input type="radio" name="gender" value="M"> 남
+           		<input type="radio" name="gender" value="W"> 여
       		</td>
       		<td>차량유무</td>
       		<td style="text-align:center;">
-      	   		<input type="radio" name="car" value="y"> 있음
-           		<input type="radio" name="car" value="n"> 없음
+      	   		<input type="radio" name="car" value="Y" > 있음
+           		<input type="radio" name="car" value="N" checked> 없음
       		</td>
     	</tr>
     	<tr>
        		<td>여행날짜</td>
-         	<td colspan="3">
-            	<form action="/action_page.php">
-            	여행날짜:
-          		<input type="text" name="bday">
+         	<td colspan="3">	
+          		<input type="date" name="sdate">
           		~
-           		<input type="text" name="bday">
-         		</form>
+           		<input type="date" name="edate">
+         		
       		</td>
       	</tr>
       	<tr>
@@ -69,12 +76,13 @@
 		</table>
 
 		<div class="form-group">
-      		<label for="exampleTextarea"></label>
-      		<textarea class="form-control" id="exampleTextarea" rows="20"></textarea>
+      		
+      		<textarea class="form-control" name="contents" rows="20"></textarea>
+      		
     	</div>
     	
-    	<button type="button" class="btn btn-primary btn-lg btn-block">글쓰기</button>
-		
+    	<button type="submit" class="btn btn-primary btn-lg btn-block">글쓰기</button>
+	</form>
 	
 	</div>
 		<%@ include file="../layout/nav.jsp"%>

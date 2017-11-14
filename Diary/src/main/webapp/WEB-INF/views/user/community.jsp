@@ -14,20 +14,21 @@
 		<%@ include file="../layout/header.jsp"%>
 	<div class="container">
 	<div class="contents" >
+	<form action="#">
 	<h1>만남의 장</h1>
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
     	<tr>
        		<td>지역</td>
          	<td>
-        		<form action="#">
+        		
            			<select name="지역">
            				<option value="서울">서울</option>
            				<option value="부산">부산</option>
            				<option value="대전">대전</option>
            				<option value="광주">광주</option>
            			</select>
-         		</form>
+         		
       		</td>
     	</tr>
     	<tr>
@@ -41,17 +42,16 @@
     	<tr>
        		<td>여행날짜</td>
          	<td>
-            	<form action="/action_page.php">
-            	여행날짜:
-          		<input type="text" name="bday">
+            	
+          		<input type="date" name="sdate">
           		~
-           		<input type="text" name="bday">
-         		</form>
+           		<input type="date" name="edate">
+         		
       		</td>
     	</tr>
     	<tr>
          	<td colspan="2"> 
-         	<form action="#">
+         	
            		<div>
           			<select name="제목">
            			<option value="제목">제목</option>
@@ -59,15 +59,16 @@
            			<option value="닉네임">닉네임</option>
            			</select>
           
-           			<input type="text" placeholder="검색어 입력">
+           			<input type="text" placeholder="검색어 입력" size="60">
            			<button>검색</button>
            			<button type='button' onclick="location.href='/communitywrite.do'">글쓰기</button>
            		</div>
-     		 </form>
+     	
            	</td>
     	</tr>
 		</tbody>
 		</table>
+		</form>
 		
 		<table class="table table-striped table-hover table-bordered">
   		<thead class="thead-dark">
@@ -82,9 +83,9 @@
     	</tr>
   		</thead>
   		<tbody>
-  		<c:forEach items="${list }" var="data">
+  		<c:forEach items="${list }" var="data" varStatus="d" begin="1" >
     		<tr>
-      			<td>${data.idx}</td>
+      			<td>${d.count}</td>
       			<td>${data.nick}</td>
       			<td>${data.ctitle}</td>
       			<td>${data.cplace}</td>
