@@ -14,7 +14,7 @@
 
 .container{max-width:980px; margin:50px auto 0; padding: 0px;}
 	/* 메인컨텐츠  */
-	.contents {height:250px; width:680px;margin-left: 300px;}
+	.contents {height:250px; width:730px;margin-left: 250px;}
 	/* 좌측 네비게이션 */
 	.navi {position: fixed ;top:210px;}
 	 /*네비메인버튼  */
@@ -26,8 +26,9 @@
 	/*네비메인버튼  */
 	
 	.navi > div {width:200px;}
-
-
+	/* 탭   */
+	.tab{position: fixed;top:230px;z-index: 10;}
+	
 
 
 
@@ -47,12 +48,16 @@
 .phone input {width:100px; float:left;}
 
 /* mapage.jsp  */
+
 	/*privacy  */
-	
 	.kal{margin: auto;width:140px;}
+	.privacy {margin-bottom: 50px;}
+	
+
 	
 	/*my_write  */
 	
+
 /*  admin.jps*/
 .searchtool select{width:100px; float:left; margin:8px 4px;}
 .searchtool input{width:100px; float:left; margin:8px 4px;}
@@ -61,6 +66,5 @@
 .searchtool .ss .bt{margin:8px 8px;height:30px;}
 .searchtool .ss .btn{margin:8px 8px;height:30px;}
 .page{margin-left: 200px; margin-right:  200px;}
-
 
 	

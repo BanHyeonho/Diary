@@ -35,10 +35,12 @@
 		by idx desc
 	</select>
 
-	<select id="Top" resultType="www.dto.DiaryVo">
+	<select id="Top" resultType="www.dto.TopVo">
 		<![CDATA[select * from (select * from DIARY
-		order by dhitcount desc) where rownum <= 10
+		order by good desc) where rownum <= 10
 		 ]]>
 	</select>
-
+	<select id="picture" parameterType="String" resultType="String">
+		select picture from MEMBER where id=#{id}
+	</select>
 </mapper>

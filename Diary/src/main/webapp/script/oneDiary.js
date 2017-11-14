@@ -10,7 +10,7 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
 // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 var positions = [
     {
-        content: '<div>카카오</div>', 
+        content: '<div>카카오100퍼 쓴맛</div>', 
         latlng: new daum.maps.LatLng(33.450705, 126.570677)
     },
     {
@@ -61,7 +61,7 @@ function makeOutListener(infowindow) {
 }
 
 }
-$(document).ready(function(){
+$(document).ready(function(){	//탭 이동
 	$('.click').click(function(){
 		$('.oneDiary').css('display','none');
 		var id = $(this).attr('id');

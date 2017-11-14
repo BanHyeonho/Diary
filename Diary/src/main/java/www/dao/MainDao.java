@@ -2,13 +2,16 @@ package www.dao;
 
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import www.dto.CommunityVo;
-import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 
 public interface MainDao {
 	
-	public List<DiaryVo> Top();		//top10리스트출력
+	public List<TopVo> Top();		//top10리스트출력
+	public String picture(String id);		//top10리스트출력프로필사진
 	public void memberjoin(MemberVo vo);	//회원가입
 	public String idchk(String id);      //아이디중복확인
 	public String nickchk(String nick);      //닉네임중복확인
