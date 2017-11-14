@@ -43,37 +43,28 @@
 }
 
 /* join.jsp  */
-.email input {width:200px; float:left;}
-.email span{display: block; float:left; padding:8px}
-.email select {width:200px; float:left;}
 .phone select {width:100px; float:left;}
 .phone span{float:left; padding:4px}
 .phone input {width:100px; float:left;}
 
 /* mapage.jsp  */
-	/*privacy  */
-	.table {
 
+	/*privacy  */
 	.kal{margin: auto;width:140px;}
+	.privacy {margin-bottom: 50px;}
+	
+
 	
 	/*my_write  */
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/* diarywrite.jsp */
-	
-	
-	
+
+/*  admin.jps*/
+.searchtool select{width:100px; float:left; margin:8px 4px;}
+.searchtool input{width:100px; float:left; margin:8px 4px;}
+.searchtool button{float:left;}
+.searchtool .ss .s{width:300px;}
+.searchtool .ss .bt{margin:8px 8px;height:30px;}
+.searchtool .ss .btn{margin:8px 8px;height:30px;}
+.page{margin-left: 200px; margin-right:  200px;}
+
 	

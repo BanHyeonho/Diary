@@ -1,16 +1,24 @@
 package www.service;
 
-//@Service
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import www.dao.AdminDao;
+import www.dto.MemberVo;
+
+@Service
 public class AdminServiceimpl implements AdminService{
 
-//	@Autowired
-//	AdminDao dao;
+	@Autowired
+	AdminDao dao;
 
-//	@Override
-//	public List<MemberVo> allmember() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<MemberVo> allmember() {
+		// TODO Auto-generated method stub
+		return dao.allmember();
+	}
 //
 //	@Override
 //	public List<MemberVo> blacklist(int report) {
@@ -47,17 +55,17 @@ public class AdminServiceimpl implements AdminService{
 //		// TODO Auto-generated method stub
 //		
 //	}
-//
-//	@Override
-//	public List<MemberVo> searchMember(MemberVo vo) {
-//		// TODO Auto-generated method stub
-//		if(vo.getId()!=null){
-//			return dao.searchById(vo.getId());
-//		}
-//			
-//		return dao.searchByNick(vo.getNick());
-//	}
-//
+
+	@Override
+	public List<MemberVo> searchMember(MemberVo vo) {
+		// TODO Auto-generated method stub
+		if(vo.getId()!=null){
+			return dao.searchById(vo.getId());
+		}
+			
+		return dao.searchByNick(vo.getNick());
+	}
+
 //	@Override
 //	public List<CommunityVo> reportClist(int report) {
 //		// TODO Auto-generated method stub

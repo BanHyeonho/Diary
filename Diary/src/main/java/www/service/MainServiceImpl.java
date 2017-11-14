@@ -1,5 +1,6 @@
 package www.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
 import www.dto.CommunityVo;
-import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -29,8 +30,14 @@ public class MainServiceImpl implements MainService{
 		ModelAndView mav = new ModelAndView();
 		
 		MemberVo user = dao.login(vo);
-		
-		if (user == null) { // 아이디가 없음
+		if(vo.getId().equals("admin")&&vo.getPassword().equals("1")){
+			
+			
+			
+			mav.setViewName("redirect:/admin.do");
+			return mav;
+			
+		}else if (user == null) { // 아이디가 없음
 
 			mav.addObject("result", "아이디가 없습니다.");
 
@@ -97,10 +104,29 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<DiaryVo> Top() {
+	public List<TopVo> Top() {
 		// TODO Auto-generated method stub
-		return dao.Top();
+		List<TopVo> top = dao.Top();
+		
+		List<TopVo> list = new ArrayList<TopVo>();
+		for (TopVo topVo : top) {
+			System.out.println(topVo.toString());
+			topVo.setPicture(dao.picture(topVo.getId()));
+			list.add(topVo);
+		}
+		
+		return list;
 	}
+
+	@Override
+	public MemberVo mypage(MemberVo vo) {
+		
+		
+		
+		return dao.login(vo);
+	}
+
+	
 
 	
 }

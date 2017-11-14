@@ -1,22 +1,28 @@
 package www.service;
 
-//@Service
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import www.dao.MyPageDao;
+import www.dto.MemberVo;
+
+@Service
 public class MyPageServiceImpl implements MyPageService{
 
-//	@Autowired
-//	MyPageDao dao;
+	@Autowired
+	MyPageDao dao;
 
-//	@Override
-//	public void updateinfo(MemberVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void deleteinfo(String id) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void updateinfo(MemberVo vo) {
+		// TODO Auto-generated method stub//	
+		dao.updateinfo(vo);
+	}
+
+	@Override
+	public void deleteinfo(String id) {
+		// TODO Auto-generated method stub
+		dao.deleteinfo(id);
+	}
 //
 //	@Override
 //	public List<DiaryVo> mydiary(String id) {
