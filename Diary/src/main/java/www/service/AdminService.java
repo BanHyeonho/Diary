@@ -2,6 +2,9 @@ package www.service;
 
 import java.util.List;
 
+import www.dto.CommentVo;
+import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 public interface AdminService {
@@ -20,7 +23,15 @@ public interface AdminService {
 //
 //	public void deletereport(int idx); // 신고된 글삭제
 //	
-	public List<MemberVo> searchMember(MemberVo vo); // 회원검색(아이디,닉네임)
+	public List<MemberVo> searchMember(String option,String keyword); // 회원검색(아이디,닉네임)
+	
+	public List<DiaryVo> alldiary(); //모든일지글보기
+	
+	public List<CommunityVo> allcommunity(); //모든일지글보기
+
+	public List<DiaryVo> diarySearch(String option,String keyword); // 글검색(글제목,닉네임)
+
+//	public List<CommentVo> reportcomment(); //신고된댓글보기
 
 //	public List<CommunityVo> reportClist(int report); // 신고된커뮤니티글보기	30개
 //	
