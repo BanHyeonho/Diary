@@ -5,21 +5,18 @@ import java.util.Date;
 public class CommunityVo {
 
 	private int idx; // 인덱스
-	private String id; // 아이디
-	private String nick; // 작성자
-	private String ctitle; // 글제목
-	private String sdate; // 여행시작일
-	private String edate; // 여행종료일
-	private Date cdate; // 작성일
-	private String cplace; // 지역
-	private String attendee; //인원
-	
-	public String getAttendee() {
-		return attendee;
-	}
-	public void setAttendee(String attendee) {
-		this.attendee = attendee;
-	}
+	   private String id; // 아이디
+	   private String nick; // 작성자
+	   private String ctitle; // 글제목
+	   private String sdate; // 여행시작일
+	   private String edate; // 여행종료일
+	   private String contents;//컨텐츠
+	   private String cdate; // 작성일
+	   private String cplace; // 지역
+	   private int chitcount; //히트 카운터
+	   private int creportcount; //리포트 카운터
+	   private String car; //자동차 유무
+	   private int attendee; //인원
 	public int getIdx() {
 		return idx;
 	}
@@ -56,10 +53,16 @@ public class CommunityVo {
 	public void setEdate(String edate) {
 		this.edate = edate;
 	}
-	public Date getCdate() {
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	public String getCdate() {
 		return cdate;
 	}
-	public void setCdate(Date cdate) {
+	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
 	public String getCplace() {
@@ -68,12 +71,38 @@ public class CommunityVo {
 	public void setCplace(String cplace) {
 		this.cplace = cplace;
 	}
-	
+	public int getChitcount() {
+		return chitcount;
+	}
+	public void setChitcount(int chitcount) {
+		this.chitcount = chitcount;
+	}
+	public int getCreportcount() {
+		return creportcount;
+	}
+	public void setCreportcount(int creportcount) {
+		this.creportcount = creportcount;
+	}
+	public String getCar() {
+		return car;
+	}
+	public void setCar(String car) {
+		this.car = car;
+	}
+	public int getAttendee() {
+		return attendee;
+	}
+	public void setAttendee(int attendee) {
+		this.attendee = attendee;
+	}
 	@Override
 	public String toString() {
 		return "CommunityVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", ctitle=" + ctitle + ", sdate=" + sdate
-				+ ", edate=" + edate + ", cdate=" + cdate + ", cplace=" + cplace + ", attendee=" + attendee + "]";
+				+ ", edate=" + edate + ", contents=" + contents + ", cdate=" + cdate + ", cplace=" + cplace
+				+ ", chitcount=" + chitcount + ", creportcount=" + creportcount + ", car=" + car + ", attendee="
+				+ attendee + "]";
 	}
+	
 	
 
 

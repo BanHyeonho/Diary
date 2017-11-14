@@ -38,7 +38,7 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#follwoing">팔로윙</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#msg">쪽지함</a></li>
+						href="#msg" onclick="msg_1('${user.id}')">쪽지함</a></li>
 				</ul>
 			</div>
 			<!-- privacy -->
@@ -155,7 +155,7 @@
 				<!-- my_write 여행 리스트-->
 				<div id="my_write" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>여행일지</h1> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity">만남의장 내가쓴글</button>
+					<h1>여행일지</h1> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
 						<thead class="table-primary">
 							
 								
@@ -183,7 +183,7 @@
 								<th>글제목</th>
 								<th>날짜</th>
 								<th>조회수</th>
-								<th>추천수</th>
+								
 							</tr>
 						</thead>
 						<tbody id="my_commu">
@@ -254,23 +254,13 @@
 				<!-- 쪾지함  -->
 				<div id="msg" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="thead-dark">
+						<thead class="thead-dark" >
 							<tr>
-								<th>보낸사람</th>
-								<th>내용</th>
-								<th>답장하기</th>
-								<th>삭제</th>
+							<th>보낸사람</th><th>내용</th><th>답장하기</th><th>메세지삭제</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td><span>보낸이</span>&nbsp;&nbsp;
-									<button class="btn btn-outline-danger">차단</button></td>
-								<td></td>
-								<td><button class="btn btn-outline-danger">답장</button></td>
-								<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-								<!--  {} 넣어서 for each 로 돌려 -->
-							</tr>
+						<tbody id="msg_ham">
+							
 						</tbody>
 					</table>
 

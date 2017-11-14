@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.MsgVo;
 import www.service.MyPageService;
 
 @Controller
@@ -49,7 +51,7 @@ public class MyPageController {
 		return mav;
 	} // 회원탈퇴
 	
-	@RequestMapping(value="myDiary.do",method = RequestMethod.POST)
+	@RequestMapping(value="/myDiary.do",method = RequestMethod.POST)
 	public @ResponseBody Map<String,List<DiaryVo>> myDiary(String id) {
 		Map<String, List<DiaryVo>> map = new HashMap<String, List<DiaryVo>>();
 		
@@ -59,11 +61,14 @@ public class MyPageController {
 		
 		return map;
 	} // 내가쓴글 확인 페이지로 이동(리스트 보여줌)
-//
-//
-//	public @ResponseBody Map<String,List<CommunityVo>> myCommunity(String id) {
-//		return null;
-//	} // 만남의장에 내가쓴글 보기
+
+	@RequestMapping(value="/myCommunity.do" ,method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<CommunityVo>> myCommunity(String id) {
+		Map<String, List<CommunityVo>> map = new HashMap<String, List<CommunityVo>>();
+		
+		map.put("mycommu", sv.mycommu(id));
+		return map;
+	} // 만남의장에 내가쓴글 보기
 //
 //
 //
@@ -75,9 +80,13 @@ public class MyPageController {
 //		return null;
 //	} // 스크랩글 삭제
 //
-//	public @ResponseBody Map<String,List<MsgVo>> msg(String id) {
-//		return null;
-//	} // 쪽지함보기(리스트)
+	@RequestMapping(value="/msg.do", method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<MsgVo>> msg(String id) {
+		Map<String,List<MsgVo>> map = new HashMap<String,List<MsgVo>>();
+		
+		map.put("msg",sv.msg(id));
+		return map;
+	} // 쪽지함보기(리스트)
 //
 //	public @ResponseBody Map<String,String> deleteMsg(int idx) {
 //		return null;

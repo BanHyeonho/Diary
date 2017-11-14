@@ -91,3 +91,88 @@ function mywrite(id) {
 	};
 	$.ajax(setting);
 }
+
+function myCommunity(id){
+	var id = id;
+	var data = {
+		'id' : id
+	};
+	var setting = {
+		url : '/myCommunity.do',
+		type : 'post',
+		data : data,
+		dataType : 'json',
+		success : function(data) {
+			var mycommu = data.mycommu;
+			// console.log(mydiary[0]);
+			if ($('#my_commu')[0].children[0] == null) {
+				for (var i = 0; i < mycommu.length; i++) {
+					// console.log(mydiary[i].dtitle);
+					// console.log(mydiary[i].ddate);
+					// console.log(mydiary[i].dhitcount);
+					// console.log(mydiary[i].good);
+					
+
+					$('#my_commu').append(
+							'<tr><td><a href="/oneDiary.do?idx='
+									+ mycommu[i].idx + '">' + mycommu[i].ctitle
+									+ '</a></td><td>' + mycommu[i].cdate
+									+ '</td><td>' + mycommu[i].chitcount
+									
+									+ '</td></tr>');
+
+				}
+			}
+			
+		},
+		error : function() {
+			alert('error');
+		}
+
+	};
+	$.ajax(setting);
+}
+
+function msg_1(id){
+	var id = id;
+	var data = {
+		'id' : id
+	};
+	var setting = {
+		url : '/msg.do',
+		type : 'post',
+		data : data,
+		dataType : 'json',
+		success : function(data) {
+			var mymsg = data.msg;
+			// console.log(mydiary[0]);
+			if ($('#msg_ham')[0].children[0] == null) {
+				for (var i = 0; i < mymsg.length; i++) {
+					// console.log(mydiary[i].dtitle);
+					// console.log(mydiary[i].ddate);
+					// console.log(mydiary[i].dhitcount);
+					// console.log(mydiary[i].good);
+					
+
+					$('#msg_ham').append(
+							'<tr><td><a href="/oneDiary.do?idx='
+									+ mymsg[i].idx + '">' + mymsg[i].senderid
+									+ '</a>&nbsp;&nbsp;<button type="button" class="btn btn-outline-danger">차단 </button></td><td>' + mymsg[i].content +'</td>'
+									+'<td><button class="btn btn-outline-danger">답장</button></td>'
+									+'<td><button type="button" class="btn btn-outline-danger">삭제</button></td>'
+									
+									+ '</tr>');
+
+				}
+			}
+			
+		},
+		error : function() {
+			alert('error');
+		}
+
+	};
+	$.ajax(setting);
+	
+	
+}
