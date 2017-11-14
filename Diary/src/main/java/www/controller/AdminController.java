@@ -71,11 +71,9 @@ public class AdminController {
 //	} // 여행일지 글삭제
 //
 	@RequestMapping(value="/memberSearch.do",method=RequestMethod.GET)
-	public ModelAndView memberSearch(ModelAndView mav,HttpServletRequest request) {	//combo 아이디 인지 닉네임인지 값
-		logger.info(request.getParameter("keyword"));
-		logger.info(request.getParameter("option"));
-		//sv.searchMember(vo);
-		//mav.addObject("mlist",sv.allmember());
+	public ModelAndView memberSearch(ModelAndView mav,MemberVo vo) {	//combo 아이디 인지 닉네임인지 값
+		sv.searchMember(vo);
+		mav.addObject("mlist",sv.searchMember(vo));
 		mav.setViewName("admin/admin");
 		return mav;
 	} // 회원검색(아이디,닉네임)

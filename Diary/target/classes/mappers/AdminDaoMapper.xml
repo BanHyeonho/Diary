@@ -3,17 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.dao.AdminDao">
-<!--  <select id="searchById" resultType="www.dto.MemberVo">
-    select * from MEMBER where id = #{id}
-  </select>
-  <select id="searchByNick" resultType="www.dto.MemberVo">
-    select * from MEMBER where NICK = #{nick}
-  </select>  --> 
   
+  <select id="searchById" resultType="www.dto.MemberVo" parameterType="String">
+    select * from Member where id = #{id}
+  </select>
+  <select id="searchByNick" resultType="www.dto.MemberVo" parameterType="String">
+    select * from Member where nick = #{nick}
+  </select>  
+    
   <select id="allmember" resultType="www.dto.MemberVo">
   <![CDATA[select * from (select * from member
 		order by joindate desc) where rownum <= 30
 		 ]]>
   </select>
-  
+
 </mapper>
