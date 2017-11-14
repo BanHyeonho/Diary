@@ -1,5 +1,11 @@
 package www.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -8,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.service.MyPageService;
 
@@ -23,8 +31,7 @@ public class MyPageController {
 	
 	@RequestMapping(value="/updateInfoAction.do",method = RequestMethod.POST)
 	public ModelAndView updateInfoAction(ModelAndView mav,MemberVo vo,HttpSession session) {
-		logger.info("하하하하하하핫");
-		logger.info(vo.toString());
+		
 		sv.updateinfo(vo);
 		session.setAttribute("user", vo);
 		mav.setViewName("redirect:/main.do");
@@ -41,10 +48,17 @@ public class MyPageController {
 		mav.setViewName("redirect:/main.do");
 		return mav;
 	} // 회원탈퇴
-//
-//	public @ResponseBody Map<String,List<DiaryVo>> myDiary(String id) {
-//		return null;
-//	} // 내가쓴글 확인 페이지로 이동(리스트 보여줌)
+	
+	@RequestMapping(value="myDiary.do",method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<DiaryVo>> myDiary(String id) {
+		Map<String, List<DiaryVo>> map = new HashMap<String, List<DiaryVo>>();
+		
+		
+		map.put("mydiary", sv.mydiary(id));
+		
+		
+		return map;
+	} // 내가쓴글 확인 페이지로 이동(리스트 보여줌)
 //
 //
 //	public @ResponseBody Map<String,List<CommunityVo>> myCommunity(String id) {
