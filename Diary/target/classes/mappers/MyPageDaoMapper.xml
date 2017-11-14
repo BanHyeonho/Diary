@@ -14,7 +14,17 @@
 
 </delete>
 
-<!--   <select id="selectBlog" resultType="Blog">
-    select * from Blog where id = #{id}
-  </select> -->
+<select id="mydiary" parameterType="String" resultType="www.dto.DiaryVo">
+	select * from diary where id=#{id}
+
+</select>
+<select id="mycommu" parameterType="String" resultType="www.dto.CommunityVo">
+	select * from COMMUNITY where id=#{id}
+</select>
+
+<select id="msg" parameterType="String" resultType="www.dto.MsgVo">
+	select * from MSG where RECIEVERID =#{id}
+</select>
+
+
 </mapper>
