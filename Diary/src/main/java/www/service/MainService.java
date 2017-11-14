@@ -15,7 +15,7 @@ public interface MainService {
 	public List<TopVo> Top(); //top10리스트출력
 	public void memberjoin(MemberVo vo); //회원가입
 	public String idchk(String id); // 아이디중복확인
-
+	public MemberVo mypage(MemberVo vo);  // 개인정보 변경 값 가져오기
 	public String nickchk(String nick); // 닉네임중복확인
 
 	public ModelAndView login(MemberVo vo, HttpSession session); // 로그인

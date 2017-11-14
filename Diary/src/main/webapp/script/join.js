@@ -95,17 +95,12 @@ function confirm(){
 		document.sform.pwdchk.value="";
 		document.sform.password.focus();
 		return false;
-	}
-	/*if(document.sform.password.value.length<4||document.sform.password.value.length>8){
+	}/*if(document.sform.password.value.length<4||document.sform.password.value.length>8){
 		alert("비밀번호는 4~8자리까지 입력해주세요");
 		document.sform.password.focus();
 		return false;
 	}*/
-	else if(document.sform.name.value==""){
-		alert("이름을 입력하세요");
-		document.sform.name.focus();
-		return false;
-	}else if(document.sform.nickname.value==""){
+	else if(document.sform.nickname.value==""){
 		alert("닉네임을 확인하세요");
 		document.sform.nick.focus();
 		return false;
@@ -117,16 +112,15 @@ function confirm(){
 		alert("생일을 입력하세요");
 		document.sform.birth.focus();
 		return false;
-	}else if(document.sform.email1.value==""){
+	}else if(document.sform.email.value==""){
 		alert("이메일을 입력하세요");
-		document.sform.email1.focus();
+		document.sform.email.focus();
 		return false;	
 	}else if(document.sform.answer.value==""){
 		alert("질문에 답을 써주세요");
 		document.sform.answer.focus();
 		return false;
 	}else{
-		document.sform.email.value = document.sform.email1.value+"@" + document.sform.email2.value;
 		document.sform.phone.value = "010-"+document.sform.phone2.value+"-"+document.sform.phone3.value;
 		return true;
 	}

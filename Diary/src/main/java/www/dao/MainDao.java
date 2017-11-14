@@ -2,6 +2,8 @@ package www.dao;
 
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import www.dto.CommunityVo;
 import www.dto.MemberVo;
 import www.dto.TopVo;

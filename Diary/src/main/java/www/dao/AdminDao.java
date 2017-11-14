@@ -1,8 +1,12 @@
 package www.dao;
 
+import java.util.List;
+
+import www.dto.MemberVo;
+
 public interface AdminDao {
-//
-//	public List<MemberVo> allmember(); // 모든회원보기 30명
+
+	public List<MemberVo> allmember(); // 모든회원보기 30명
 //
 //	public List<MemberVo> blacklist(int report); // 신고횟수기준 블랙리스트 30명
 //
@@ -16,9 +20,9 @@ public interface AdminDao {
 //
 //	public void deletereport(int idx); // 신고된 여행일지글삭제
 //
-//	public List<MemberVo> searchById(String id); // 회원검색(아이디)
-//
-//	public List<MemberVo> searchByNick(String nick); // 회원검색(닉네임)
+	public List<MemberVo> searchById(String id); // 회원검색(아이디)
+
+	public List<MemberVo> searchByNick(String nick); // 회원검색(닉네임)
 //	
 //	public List<CommunityVo> reportClist(int report); // 신고된커뮤니티글보기
 //

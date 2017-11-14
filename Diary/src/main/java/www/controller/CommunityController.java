@@ -14,8 +14,8 @@ import www.service.CommunityService;
 @Controller
 public class CommunityController {
 
-//	@Autowired
-//	CommunityService sv;
+	@Autowired
+	CommunityService sv;
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
@@ -26,14 +26,29 @@ public class CommunityController {
 	return mav;
 		
 	} // 글쓰기
+	
+	@RequestMapping(value="/communityinsert.do",method = RequestMethod.POST)
+	public ModelAndView insert(ModelAndView mav, CommunityVo vo){
+		
+		sv.communityinsert(vo);
+		
+		mav.setViewName("redirect:/community.do");
+	return mav;
+	}
+	
+	@RequestMapping(value="/onecommunity.do",method = RequestMethod.POST)
+	public ModelAndView oneCommunity(int idx,CommunityVo vo) {
+		
+		sv.onecommunity(vo);
+		return null;
+	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
+	
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {
 //		return null;
 //	} // 검색하기
 //
-//	public ModelAndView oneCommunity(int idx,String id) {
-//		return null;
-//	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
+
 //
 //	public @ResponseBody Map<String, CommentVo> writeCcomment(CommentVo vo) {
 //		return null;
