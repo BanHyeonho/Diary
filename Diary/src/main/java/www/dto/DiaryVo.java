@@ -1,7 +1,5 @@
 package www.dto;
 
-import java.util.Date;
-
 public class DiaryVo {
 
 	private int idx; // 인덱스
@@ -14,8 +12,8 @@ public class DiaryVo {
 	private String dpicture; // 여행지사진경로
 	private String sdate; // 여행시작일
 	private String edate; // 여행종료일
-	private Date ddate; // 작성일
-	private int hitcount; // 조회수
+	private String ddate; // 작성일
+	private int dhitcount; // 조회수
 	private int good; // 좋아요
 	private int reportcount; // 신고횟수
 	private String dpublic; // 글 공개/비공개
@@ -101,20 +99,21 @@ public class DiaryVo {
 		this.edate = edate;
 	}
 
-	public Date getDdate() {
+	public String getDdate() {
 		return ddate;
 	}
 
-	public void setDdate(Date ddate) {
+	public void setDdate(String ddate) {
 		this.ddate = ddate;
 	}
 
-	public int getHitcount() {
-		return hitcount;
+
+	public int getDhitcount() {
+		return dhitcount;
 	}
 
-	public void setHitcount(int hitcount) {
-		this.hitcount = hitcount;
+	public void setDhitcount(int dhitcount) {
+		this.dhitcount = dhitcount;
 	}
 
 	public int getGood() {
@@ -145,7 +144,7 @@ public class DiaryVo {
 	public String toString() {
 		return "DiaryVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", dtitle=" + dtitle + ", place=" + place
 				+ ", contents=" + contents + ", mapposition=" + mapposition + ", dpicture=" + dpicture + ", sdate="
-				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", hitcount=" + hitcount + ", good=" + good
+				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", hitcount=" + dhitcount + ", good=" + good
 				+ ", reportcount=" + reportcount + ", dpublic=" + dpublic + "]";
 	}
 

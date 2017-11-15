@@ -1,10 +1,15 @@
 package www.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.MyPageDao;
+import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.MsgVo;
 
 @Service
 public class MyPageServiceImpl implements MyPageService{
@@ -23,12 +28,20 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		dao.deleteinfo(id);
 	}
-//
-//	@Override
-//	public List<DiaryVo> mydiary(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+	@Override
+	public List<DiaryVo> mydiary(String id) {
+	
+		
+		return dao.mydiary(id);
+	}
+	@Override
+	public List<CommunityVo> mycommu(String id) {
+		// TODO Auto-generated method stub
+		
+		
+		return dao.mycommu(id);
+	}
 //
 //	@Override
 //	public void addfollow(FollowVo vo) {
@@ -72,11 +85,12 @@ public class MyPageServiceImpl implements MyPageService{
 //		
 //	}
 //
-//	@Override
-//	public List<MsgVo> msg(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<MsgVo> msg(String id) {
+		// TODO Auto-generated method stub
+		
+		return dao.msg(id);
+	}
 //
 //	@Override
 //	public void deletemsg(int idx) {
@@ -101,5 +115,7 @@ public class MyPageServiceImpl implements MyPageService{
 //		// TODO Auto-generated method stub
 //		
 //	}
+
+	
 
 }
