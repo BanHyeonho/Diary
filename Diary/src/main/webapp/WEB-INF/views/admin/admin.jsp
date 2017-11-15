@@ -6,7 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="script/admin.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	change('${idx}');
+});
+</script>
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
@@ -16,11 +22,11 @@
 			<div style="height: 50px">
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#user">계정관리</a></li>
+						href="#" onclick="location.href='/admin.do'">계정관리</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#diaryboard">일지게시판</a></li>
+						href="#diaryboard" onclick="location.href='/alldiary.do'">일지게시판</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#communityboard">만남게시판</a></li>
+						href="#communityboard" onclick="location.href='/allcommunity.do'">만남게시판</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#comment">댓글</a></li>
 				</ul>
@@ -28,9 +34,9 @@
 
 			<!-- user -->
 			<div id="myTabContent" class="tab-content">
-				<div id="user" class="tab-pane fade active show in">
+				<div id="user" class="tab-pane fade show">
 					<div class="searchtool">
-					<form class="ss form-inline my-2 my-lg-0" name="userSearch" method="GET" action="/memberSearch.do">
+					<form class="ss form-inline my-2 my-lg-0" name="userSearch" method="get" action="/memberSearch.do">
 					<select class="form-control" name="option">
 						<option>아이디</option>
 						<option>닉네임</option>
@@ -63,7 +69,7 @@
 								<input type="checkbox" disabled="disabled" <c:if test="${mdata.reportcount>=3}">checked</c:if> />						
 								</td>
 								<td><button type="button"
-										class="btn-success btn-md" onclick="">정보보기</button></td>
+										class="btt btn-success btn-md" onclick="">정보보기</button></td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -88,15 +94,15 @@
 				<!--diaryboard-->
 				<div id="diaryboard" class="tab-pane fade show">
 					<div class="searchtool">
+					<form class="ss form-inline my-2 my-lg-0" method="get" action="/diarySearch.do" >
 					<select class="form-control" name="option">
+						<option>글제목</option>
 						<option>닉네임</option>
-						<option>제목</option>
 					</select>
-					<form class="ss form-inline my-2 my-lg-0">
 						<input class="s form-control mr-sm-2" type="text"
-							placeholder="Search">
+							placeholder="Search" name="keyword">
 						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
-						<button type="button" class="bt btn-danger btn-md"
+						<button type="button" class="btt btn-danger btn-md"
 							onclick="">신고된 게시물 보기</button>
 					
 					</form>
@@ -113,10 +119,10 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="ddata" items="${dlist}">
 							<tr>
-								<!--  {} 넣어서 for each 로 돌려 -->
-								<td></td>
-								<td></td>
+								<td>${ddata.dtitle}</td>
+								<td>${ddata.nick}</td>
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
@@ -124,6 +130,7 @@
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">신고사유</button></td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					<div class="page">
@@ -144,15 +151,15 @@
 				<!-- communityboard -->
 				<div id="communityboard" class="tab-pane fade show">
 					<div class="searchtool">
+					<form class="ss form-inline my-2 my-lg-0" method="get" action="/commnunitySearch.do">
 					<select class="form-control" name="option">
+						<option>글제목</option>
 						<option>닉네임</option>
-						<option>제목</option>
 					</select>
-					<form class="ss form-inline my-2 my-lg-0">
 						<input class="s form-control mr-sm-2" type="text"
-							placeholder="Search">
+							placeholder="Search" name="keyword">
 						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
-						<button type="button" class="bt btn-info btn-md"
+						<button type="button" class="btt btn-info btn-md"
 							onclick="">신고된 게시물 보기</button>
 					</form>
 						
@@ -168,10 +175,10 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="cdata" items="${clist}" >
 							<tr>
-								<!--  {} 넣어서 for each 로 돌려 -->
-								<td></td>
-								<td></td>
+								<td>${cdata.ctitle}</td>
+								<td>${cdata.nick}</td>
 								<td><button type="button"
 										class="btn-info btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
@@ -179,6 +186,7 @@
 								<td><button type="button"
 										class="btn-info btn-md" onclick="">신고사유</button></td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					<div class="page">
@@ -198,18 +206,16 @@
 				</div>
 
 				<!--comment -->
-				<div id="comment" class="tab-pane fade show">
+				<div id="comment" class="tab-pane fade show" method="get" action="/commentSearch.do">
 				<div class="searchtool">
-					<select class="form-control" name="option">
-						<option>닉네임</option>
-						<option>제목</option>
-					</select>
 					<form class="ss form-inline my-2 my-lg-0">
+					<select class="form-control" name="option">
+						<option>댓글내용</option>
+						<option>닉네임</option>
+					</select>
 						<input class="s form-control mr-sm-2" type="text"
-							placeholder="Search">
+							placeholder="Search" name="keyword">
 						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
-						<button type="button" class="bt btn-warning btn-md"
-							onclick="">신고된 게시물 보기</button>
 					
 					</form>
 						
@@ -217,7 +223,7 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-warning">
 							<tr>
-								<th>글제목</th>
+								<th>댓글내용</th>
 								<th>닉네임</th>
 								<th>글보기</th>
 								<th>삭제</th>
@@ -225,10 +231,19 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="codata" items="${rclist}">
 							<tr>
-								<!--  {} 넣어서 for each 로 돌려 -->
-								<td></td>
-								<td></td>
+								<td>
+								<c:choose>
+								<c:when test="${codata.content.length>=15}">${codata.content.substring(0,15)}</c:when>
+								<c:otherwise>
+								${codata.content}
+								</c:otherwise>
+								
+								</c:choose>
+								
+								</td>
+								<td>${codata.nick}</td>
 								<td><button type="button"
 										class="btn-warning btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
@@ -236,7 +251,9 @@
 								<td><button type="button"
 										class="btn-warning btn-md" onclick="">신고사유</button></td>
 							</tr>
+							</c:forEach>
 						</tbody>
+						
 					</table>
 					<div class="page">
 						<ul class="pagination">

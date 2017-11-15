@@ -19,6 +19,14 @@ public class CommunityServiceImpl implements CommunityService{
 		dao.communityinsert(vo);
 	}
 
+
+	@Override
+	public CommunityVo oneCommunity(int idx) {
+		// TODO Auto-generated method stub
+		
+		return dao.oneCommunity(idx);
+	}
+
 	
 	
 	

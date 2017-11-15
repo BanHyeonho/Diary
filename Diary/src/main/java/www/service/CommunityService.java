@@ -1,7 +1,5 @@
 package www.service;
 
-import java.util.List;
-
 import www.dto.CommunityVo;
 
 public interface CommunityService {

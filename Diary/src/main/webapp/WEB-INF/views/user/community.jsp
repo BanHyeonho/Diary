@@ -88,7 +88,7 @@
       			<td>${d.count}</td>
       			<td>${data.nick}</td>
       			<td>
-      			<a href="oneCommunity.do">${data.ctitle}</a>
+      			<a href="/onecommunity.do?idx=${data.idx }">${data.ctitle}</a>
       			</td>
       			<td>${data.cplace}</td>
       			<td>${data.attendee}</td>

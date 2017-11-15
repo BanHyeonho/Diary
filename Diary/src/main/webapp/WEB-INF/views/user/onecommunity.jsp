@@ -9,24 +9,21 @@
 <title>Diary&Community</title>
 </head>
 	
-<body items="${list }" var="data" varStatus="d">
+<body items="${list }" var="data">
 	<div class="wrap">
 	<%@ include file="../layout/header.jsp"%>
 	<div class="container">
 	<div class="contents" >
-	<h1>만남의 장 글쓰기</h1>
+	<h1>만남의 장</h1>
 
-	<form action="/communityinsert.do"  method="post">
 	<input type="hidden" name="id" value="${user.id}" />
 	<input type="hidden" name="nick" value="${user.nick}" />
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
 		<tr>
 			<td>제목</td>
-			
-			
 			<td colspan="3">
-			<input type="text" name="ctitle" size="70">
+			${data.ctitle }
 			</td>
 		</tr>
     	<tr> 
@@ -46,7 +43,7 @@
          	<td colspan="3">	
           		${data.sdate }
           		~
-           		${data.edata }
+           		${data.edate }
          		
       		</td>
       	</tr>
@@ -57,14 +54,17 @@
 		</tbody>
 		</table>
 
-		<div class="form-group">
+			<div class="form-group">
       		
-      		<textarea class="form-control" name="contents" rows="20"></textarea>
+      		<textarea class="form-control" name="contents" rows="20" readonly="readonly" style="background-color: #fff;">${data.contents }</textarea>
       		
-    	</div>
+    		</div>
     	
-    	
-	</form>
+
+
+	
+	
+	
 	
 	</div>
 		<%@ include file="../layout/nav.jsp"%>

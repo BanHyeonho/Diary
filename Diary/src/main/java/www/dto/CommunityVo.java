@@ -1,7 +1,5 @@
 package www.dto;
 
-import java.util.Date;
-
 public class CommunityVo {
 
 	private int idx; // 인덱스
@@ -10,13 +8,14 @@ public class CommunityVo {
 	private String ctitle; // 글제목
 	private String sdate; // 여행시작일
 	private String edate; // 여행종료일
-	private String contents;//컨텐츠
+	private String contents;// 컨텐츠
 	private String cdate; // 작성일
 	private String cplace; // 지역
-	private int chitcount; //히트 카운터
-	private int creportcount; //리포트 카운터
-	private String car; //자동차 유무
-	private int attendee; //인원
+	private String gender; //성별
+	private int chitcount; // 히트 카운터
+	private int creportcount; // 리포트 카운터
+	private String car; // 자동차 유무
+	private int attendee; // 인원
 	
 	public int getIdx() {
 		return idx;
@@ -96,17 +95,20 @@ public class CommunityVo {
 	public void setAttendee(int attendee) {
 		this.attendee = attendee;
 	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
 		return "CommunityVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", ctitle=" + ctitle + ", sdate=" + sdate
 				+ ", edate=" + edate + ", contents=" + contents + ", cdate=" + cdate + ", cplace=" + cplace
-				+ ", chitcount=" + chitcount + ", creportcount=" + creportcount + ", car=" + car + ", attendee="
-				+ attendee + "]";
+				+ ", gender=" + gender + ", chitcount=" + chitcount + ", creportcount=" + creportcount + ", car=" + car
+				+ ", attendee=" + attendee + "]";
 	}
 	
-	
-	
-	
-	
 
+	
 }
