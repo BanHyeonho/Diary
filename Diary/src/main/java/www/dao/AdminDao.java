@@ -2,6 +2,9 @@ package www.dao;
 
 import java.util.List;
 
+import www.dto.CommentVo;
+import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 public interface AdminDao {
@@ -11,7 +14,9 @@ public interface AdminDao {
 //	public List<MemberVo> blacklist(int report); // 신고횟수기준 블랙리스트 30명
 //
 //	public void deletemember(int idx); // 블랙멤버삭제
-//
+	
+	public List<DiaryVo> alldiary(); //모든 여행일지 30개 보기
+
 //	public List<DiaryVo> reportlist(int report); // 신고된여행일지글보기
 //	
 //	public void reportOk(MemberVo vo); // 신고확정으로 인한 글쓴이의 경고 누적
@@ -42,4 +47,13 @@ public interface AdminDao {
 //	
 //	public List<CommunityVo> serchByTitleCommunity(String keyword); 	//글제목 필터 키워드로 커뮤니티 검색
 //	
+
+	public List<CommunityVo> allcommunity(); //커뮤니티 리스트 30개보기
+
+	public List<DiaryVo> searchByDNick(String id); //
+
+	public List<DiaryVo> searchByDTitle(String dtitle);
+	
+//	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
+	
 }

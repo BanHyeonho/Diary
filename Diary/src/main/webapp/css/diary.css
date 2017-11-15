@@ -64,7 +64,12 @@
 .searchtool button{float:left;}
 .searchtool .ss .s{width:300px;}
 .searchtool .ss .bt{margin:8px 8px;height:30px;}
-.searchtool .ss .btn{margin:8px 8px;height:30px;}
+.searchtool .ss .bt{margin:8px 100px; height:30px;}
+.searchtool .ss .btt{margin:8px 40px; height:30px;}
 .page{margin-left: 200px; margin-right:  200px;}
 
+/*  community contents */
+
+
+.form-control { background-color: #ffffff;}
 	
