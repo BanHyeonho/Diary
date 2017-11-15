@@ -15,7 +15,7 @@ public class DiaryVo {
 	private String ddate; // 작성일
 	private int dhitcount; // 조회수
 	private int good; // 좋아요
-	private int reportcount; // 신고횟수
+	private int dreportcount; // 신고횟수
 	private String dpublic; // 글 공개/비공개
 
 	public int getIdx() {
@@ -124,12 +124,12 @@ public class DiaryVo {
 		this.good = good;
 	}
 
-	public int getReportcount() {
-		return reportcount;
+	public int getDreportcount() {
+		return dreportcount;
 	}
 
-	public void setReportcount(int reportcount) {
-		this.reportcount = reportcount;
+	public void setDreportcount(int dreportcount) {
+		this.dreportcount = dreportcount;
 	}
 
 	public String getDpublic() {
@@ -144,8 +144,9 @@ public class DiaryVo {
 	public String toString() {
 		return "DiaryVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", dtitle=" + dtitle + ", place=" + place
 				+ ", contents=" + contents + ", mapposition=" + mapposition + ", dpicture=" + dpicture + ", sdate="
-				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", hitcount=" + dhitcount + ", good=" + good
-				+ ", reportcount=" + reportcount + ", dpublic=" + dpublic + "]";
+				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", dhitcount=" + dhitcount + ", good=" + good
+				+ ", dreportcount=" + dreportcount + ", dpublic=" + dpublic + "]";
 	}
+
 
 }

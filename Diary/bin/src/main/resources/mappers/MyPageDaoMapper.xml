@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.dao.MyPageDao">
+
+<!-- 회원정보수정  -->
+<update id="updateinfo" parameterType="www.dto.MemberVo">
+	update member set PASSWORD=#{password},NAME=#{name},GENDER=#{gender},BIRTH=#{birth},EMAIL=#{email},PHONE=#{phone},ADDR=#{addr},PWQ=#{pwq},ANSWER=#{answer},PICTURE=#{picture} Where ID=#{id}
+</update>
+<!-- 회원탈퇴 -->
+<delete id="deleteinfo" parameterType="String">
+	delete FROM member WHERE ID=#{id}
+
+</delete>
+
+<select id="mydiary" parameterType="String" resultType="www.dto.DiaryVo">
+	select * from diary where id=#{id}
+
+</select>
+<select id="mycommu" parameterType="String" resultType="www.dto.CommunityVo">
+	select * from COMMUNITY where id=#{id}
+</select>
+
+<select id="msg" parameterType="String" resultType="www.dto.MsgVo">
+	select * from MSG where RECIEVERID =#{id}
+</select>
+
+
+</mapper>
