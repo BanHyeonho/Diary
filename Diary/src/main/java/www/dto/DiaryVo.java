@@ -4,7 +4,7 @@ public class DiaryVo {
 
 	private int idx; // 인덱스
 	private String id; // 아이디
-	private String nick; // 작성자
+	private String nick; // 작성자 닉네임
 	private String dtitle; // 글제목
 	private String place; // 여행지
 	private String contents; // 글내용

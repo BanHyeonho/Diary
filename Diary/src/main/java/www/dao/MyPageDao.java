@@ -24,7 +24,7 @@ public interface MyPageDao {
 //	public void deletemyscrap(int idx);	//스크랩글 삭제
 	public List<MsgVo> msg(String id);	//쪽지함 보기
 //	public void msgReset();				//쪽지함의 글 chk 값을 0으로 리셋
-//	public void deletemsg(int idx);		//쪽지삭제
+	public void deletemsg(int idx);		//쪽지삭제
 //	public void sendmsg(MsgVo vo);		//쪽지 보내기
 //	public void blockMember(BlockVo vo);//차단하기
 //	public List<BlockVo> blockMemberList(String id);	//차단한 사람 리스트 보기

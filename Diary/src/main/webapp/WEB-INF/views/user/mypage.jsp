@@ -13,16 +13,12 @@
 	window.onload = function() {
 		var s = document.getElementsByTagName('select')[0];
 		s.value = '${user.pwq}';
-
 	}
 </script>
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
-	<%
-		MemberVo vo = (MemberVo) session.getAttribute("user");
-		String[] phone = vo.getPhone().split("-");
-	%>
+	
 	<div class="container">
 		<div class="contents ">
 			<div style="height: 50px">
@@ -113,9 +109,9 @@
 								<th class="join">연락처</th>
 								<td><input type="text" class="form-control" name="phone1"
 									value="010" readonly /> <span>-</span> <input type="text"
-									class="form-control" name="phone2" value="<%=phone[1]%>" /> <span>-</span>
+									class="form-control" name="phone2" value="${user.phone.split('-')[1] }" /> <span>-</span>
 									<input type="text" class="form-control" name="phone3"
-									value="<%=phone[2]%>" /></td>
+									value="${user.phone.split('-')[2] }" /></td>
 								<input type="hidden" name="phone">
 							</tr>
 							<tr>
