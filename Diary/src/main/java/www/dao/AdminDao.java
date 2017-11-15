@@ -50,9 +50,9 @@ public interface AdminDao {
 
 	public List<CommunityVo> allcommunity(); //커뮤니티 리스트 30개보기
 
-	public List<DiaryVo> searchByDNick(String id); //
+	public List<DiaryVo> searchByDNick(String id); //일지검색(닉네임)
 
-	public List<DiaryVo> searchByDTitle(String dtitle);
+	public List<DiaryVo> searchByDTitle(String dtitle);//일지검색(글제목)
 	
 //	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
 	
