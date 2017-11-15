@@ -13,18 +13,27 @@
 	delete FROM member WHERE ID=#{id}
 
 </delete>
-
+<!-- 내가 쓴 여행일지 글 -->
 <select id="mydiary" parameterType="String" resultType="www.dto.DiaryVo">
 	select * from diary where id=#{id}
-
+<!-- 내가 쓴 만남의장 글 -->
 </select>
 <select id="mycommu" parameterType="String" resultType="www.dto.CommunityVo">
 	select * from COMMUNITY where id=#{id}
 </select>
-
+<!-- 쪽지함 보기 -->
 <select id="msg" parameterType="String" resultType="www.dto.MsgVo">
-	select * from MSG where RECIEVERID =#{id}
+	select * from MSG where RECEIVERID =#{id} order by idx desc
 </select>
-
+<!-- 쪽지삭제 -->
+<delete id="deletemsg" parameterType="int">
+	delete FROM msg where idx=#{idx}
+</delete>
+<!-- 메세지 답장하기, 본 -->
+<insert id="sendmsg" parameterType="www.dto.MsgVo">
+	 Insert into msg (IDX,SENDER,SENDERID,RECEIVER,RECEIVERID,CONTENT,CHK)
+	values (MSG_SEQ.nextval,#{sender},#{senderid},#{receiver},#{receiverid},#{content},#{chk}) 
+	
+</insert>
 
 </mapper>

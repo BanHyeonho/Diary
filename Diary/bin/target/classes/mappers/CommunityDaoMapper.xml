@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.dao.CommunityDao">
+<!--   <select id="selectBlog" resultType="Blog">
+    select * from Blog where id = #{id}
+  </select> -->
+  
+  <insert id="communityinsert" parameterType="www.dto.CommunityVo">
+  insert into COMMUNITY(IDX,ID,NICK,CTITLE,CONTENTS,SDATE,EDATE,CDATE,CHITCOUNT,CREPORTCOUNT,CPLACE,CAR,ATTENDEE)
+  values(COMMUNITY_SEQ.NEXTVAL,#{id},#{nick},#{ctitle},#{contents},#{sdate},#{edate},sysdate,#{chitcount},#{creportcount},#{cplace},#{car},#{attendee})
+  
+  </insert>
+  
+  <select id="oneCommunity" parameterType="Integer" resultType="www.dto.CommunityVo">
+  
+  select * from COMMUNITY where idx=#{idx}
+  
+  </select>
+  
+</mapper>

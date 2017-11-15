@@ -92,6 +92,7 @@ function mywrite(id) {
 	$.ajax(setting);
 }
 
+//내가쓴 만남의장 글보기
 function myCommunity(id){
 	var id = id;
 	var data = {
@@ -151,16 +152,15 @@ function msg_1(id){
 					// console.log(mydiary[i].dtitle);
 					// console.log(mydiary[i].ddate);
 					// console.log(mydiary[i].dhitcount);
-					// console.log(mydiary[i].good);
+					// console.log(mydiary[i].go od);
 					
-
+					
 					$('#msg_ham').append(
-							'<tr><td><a href="/oneDiary.do?idx='
-									+ mymsg[i].idx + '">' + mymsg[i].senderid
+							'<tr id='+mymsg[i].idx+'><td><a href="/oneDiary.do?idx='
+									+ mymsg[i].idx + '">' + mymsg[i].sender
 									+ '</a>&nbsp;&nbsp;<button type="button" class="btn btn-outline-danger">차단 </button></td><td>' + mymsg[i].content +'</td>'
-									+'<td><button class="btn btn-outline-danger">답장</button></td>'
-									+'<td><button type="button" class="btn btn-outline-danger">삭제</button></td>'
-									
+									+'<td><button type="button" class="btn btn-outline-danger"  onclick="mag_form(\''+mymsg[i].sender+'\',\''+mymsg[i].senderid+'\',\''+mymsg[i].receiver+'\',\''+mymsg[i].receiverid+'\');">답장</button></td>'
+									+'<td><button type="button" class="btn btn-outline-danger" onclick="msg_delete('+mymsg[i].idx+');">삭제</button></td>'
 									+ '</tr>');
 
 				}
@@ -173,6 +173,70 @@ function msg_1(id){
 
 	};
 	$.ajax(setting);
+	
+	
+}
+
+// 메세지 삭제
+function msg_delete(d){
+	
+	if (confirm("정말 삭제하시겠습니까?") == true) {
+	var idx = {'idx':d};
+	
+	var setting = {
+			url : '/deleteMsg.do',
+			type : 'get',
+			data : idx,
+			dataType : 'json',
+			success : function(data){
+				alert(data.result);
+				$('#'+d).remove();
+			},
+			error : function() {
+				alert('해당 메세지 삭제에 실패하였습니다');
+			}
+	};
+	$.ajax(setting);
+	}
+	
+}
+function mag_form(sender,senderid,receiver,receiverid){
+	
+	var form = document.createElement("form");      // form 엘리멘트 생성
+	 form.setAttribute("method","post");             // method 속성 설정
+	 form.setAttribute("action","/sendMsgForm.do");       // action 속성 설정
+	 form.setAttribute("target","popup_window");
+	 document.body.appendChild(form);       
+	 
+	var senderNick = document.createElement("input");
+	senderNick.setAttribute("type","hidden");
+	senderNick.setAttribute("name","sender");
+	senderNick.setAttribute("value",sender);
+	form.appendChild(senderNick);
+	var senderId = document.createElement("input");
+	senderId.setAttribute("type","hidden");
+	senderId.setAttribute("name","senderid");
+	senderId.setAttribute("value",senderid);
+	form.appendChild(senderId);
+	var receiverNick = document.createElement("input");
+	receiverNick.setAttribute("type","hidden");
+	receiverNick.setAttribute("name","receiver");
+	receiverNick.setAttribute("value",receiver);
+	form.appendChild(receiverNick);
+	var receiverId = document.createElement("input");
+	receiverId.setAttribute("type","hidden");
+	receiverId.setAttribute("name","receiverid");
+	receiverId.setAttribute("value",receiverid);
+	form.appendChild(receiverId);
+	console.log(form);
+	
+	
+	var Settings = 'width=500,height=600,top=100,left=100';
+	
+	window.open("","popup_window",Settings);
+	form.submit();
+
+
 	
 	
 }

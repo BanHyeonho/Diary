@@ -7,7 +7,7 @@ public class MsgVo {
 	private String receiver; // 받는사람
 	private String receiverid; // 받는사람 id
 	private String content; // 내용
-	private String chk;		//쪽지 오면 1 아니면 0
+	private String chk;		//쪽지 오면 1아니면 0
 	
 	public String getSenderid() {
 		return senderid;

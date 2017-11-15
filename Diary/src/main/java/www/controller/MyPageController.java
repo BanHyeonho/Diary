@@ -1,7 +1,5 @@
 package www.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,18 +81,32 @@ public class MyPageController {
 	@RequestMapping(value="/msg.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String,List<MsgVo>> msg(String id) {
 		Map<String,List<MsgVo>> map = new HashMap<String,List<MsgVo>>();
-		
+		logger.info("hghghgh"+sv.msg(id).toString());
 		map.put("msg",sv.msg(id));
 		return map;
 	} // 쪽지함보기(리스트)
-//
-//	public @ResponseBody Map<String,String> deleteMsg(int idx) {
-//		return null;
-//	} // 쪽지 삭제
-//
-//	public ModelAndView sendMsgForm() {
-//		return null;
-//	} // 쪽지 보내기폼으로 이동
+
+	
+	@RequestMapping(value="/deleteMsg.do",method = RequestMethod.GET)
+	public @ResponseBody Map<String,String> deleteMsg(int idx) {
+		
+		logger.info(""+idx);
+		sv.deletemsg(idx);
+		
+		
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "메세지 삭제 성공");
+		return map;
+	} // 쪽지 삭제
+
+	@RequestMapping(value="/sendMsgForm.do",method = RequestMethod.POST)
+	public ModelAndView sendMsgForm(ModelAndView mav,MsgVo vo) {
+		
+		mav.addObject("data", vo);
+		mav.setViewName("user/msgSend");
+		return mav;
+	} // 쪽지 보내기폼으로 이동 답장하기
 //	
 //	public @ResponseBody Map<String,List<FollowVo>> following(String id) {
 //		return null;
