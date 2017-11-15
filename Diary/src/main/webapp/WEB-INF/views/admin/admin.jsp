@@ -46,7 +46,7 @@ $(document).ready(function(){
 							
 						<button class="btn btn-secondary my-2 my-sm-0" type="submit" >검색</button>
 						<button type="button"
-										class="bt btn-success btn-md" onclick="">블랙리스트</button>
+										class="bt btn-success btn-md" onclick="blacklist();">블랙리스트</button>
 					</form>
 					</div>
 					<table class="table table-striped table-hover table-bordered">
@@ -59,7 +59,7 @@ $(document).ready(function(){
 								<th>회원정보보기</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="blacklist">
 						<c:forEach var="mdata" items="${mlist}">
 							<tr>
 								<td>${mdata.id}</td>
@@ -103,7 +103,7 @@ $(document).ready(function(){
 							placeholder="Search" name="keyword">
 						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
 						<button type="button" class="btt btn-danger btn-md"
-							onclick="">신고된 게시물 보기</button>
+							onclick="reportdlist();">신고된 게시물 보기</button>
 					
 					</form>
 						
@@ -118,7 +118,7 @@ $(document).ready(function(){
 								<th>신고사유보기</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="dlist">
 							<c:forEach var="ddata" items="${dlist}">
 							<tr>
 								<td>${ddata.dtitle}</td>
@@ -126,7 +126,7 @@ $(document).ready(function(){
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
-										class="btn-danger btn-md" onclick="">삭제</button></td>
+										class="btn-danger btn-md" onclick="<%-- deletedreport(${dlist.idx}); --%>">삭제</button></td>
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">신고사유</button></td>
 							</tr>

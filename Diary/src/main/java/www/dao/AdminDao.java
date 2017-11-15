@@ -10,15 +10,15 @@ import www.dto.MemberVo;
 public interface AdminDao {
 
 	public List<MemberVo> allmember(); // 모든회원보기 30명
-//
-//	public List<MemberVo> blacklist(int report); // 신고횟수기준 블랙리스트 30명
-//
+
+	public List<MemberVo> blacklist(); // 신고횟수기준 블랙리스트 30명
+
 //	public void deletemember(int idx); // 블랙멤버삭제
 	
 	public List<DiaryVo> alldiary(); //모든 여행일지 30개 보기
 
-//	public List<DiaryVo> reportlist(int report); // 신고된여행일지글보기
-//	
+	public List<DiaryVo> reportdlist(); // 신고된여행일지글보기
+	
 //	public void reportOk(MemberVo vo); // 신고확정으로 인한 글쓴이의 경고 누적
 //
 //	public void reportcancel(int idx); // 신고된여행일지글 신고취소

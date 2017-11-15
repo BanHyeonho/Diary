@@ -47,4 +47,20 @@
      <where> dtitle like '%' || #{dtitle} || '%' </where>
   </select>  
   
+ <select id="blacklist" resultType="www.dto.MemberVo">
+ 	
+ 	 <![CDATA[select * from (select * from member
+		where reportcount>=3 order by reportcount desc) where rownum <= 30
+		 ]]>
+ 
+ </select>
+ 
+  <select id="reportdlist" resultType="www.dto.DiaryVo">
+ 	
+ 	 <![CDATA[select * from (select * from diary
+		where dreportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+ 
+ </select>
+  
 </mapper>

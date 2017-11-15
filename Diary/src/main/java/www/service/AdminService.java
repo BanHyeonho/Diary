@@ -11,18 +11,18 @@ public interface AdminService {
 
 	public List<MemberVo> allmember(); // 모든회원보기
 
-//	public List<MemberVo> blacklist(int report); // 신고횟수기준 블랙리스트
-//
+	public List<MemberVo> blacklist(); // 신고횟수기준 블랙리스트
+
 //	public void deletemember(int idx); // 블랙멤버삭제
 //
-//	public List<DiaryVo> reportlist(int report); // 신고된여행일지글보기	30개
-//	
+	public List<DiaryVo> reportdlist(); // 신고된여행일지글보기 30개
+	
 //	public void reportOk(MemberVo vo,int idx); // 신고확정으로 인한 글쓴이의 경고 누적과 함께 다이어리글도 삭제됨	글쓴이의 정보와 해당글의 인덱스를 매개변수로
 //
 //	public void reportcancel(int idx); // 신고된글 신고취소
 //
-//	public void deletereport(int idx); // 신고된 글삭제
-//	
+//	public void deletedreport(int idx); // 신고된 글삭제
+	
 	public List<MemberVo> searchMember(String option,String keyword); // 회원검색(아이디,닉네임)
 	
 	public List<DiaryVo> alldiary(); //모든일지글보기
