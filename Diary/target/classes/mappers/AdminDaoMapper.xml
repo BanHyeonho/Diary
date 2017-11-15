@@ -62,5 +62,20 @@
 		 ]]>
  
  </select>
+ 
+ 	<delete id="deletediary" parameterType="Integer">
+ 		delete from diary where idx = #{idx}
+ 	</delete>
+ 	
+  <select id="reportclist" resultType="www.dto.CommunityVo">
+ 	
+ 	 <![CDATA[select * from (select * from community
+		where creportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+ </select>
+  
+  	<delete id="deletecommunity" parameterType="Integer">
+ 		delete from community where idx = #{idx}
+ 	</delete>
   
 </mapper>

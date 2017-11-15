@@ -120,13 +120,13 @@ $(document).ready(function(){
 						</thead>
 						<tbody id="dlist">
 							<c:forEach var="ddata" items="${dlist}">
-							<tr>
+							<tr id="${ddata.idx}">
 								<td>${ddata.dtitle}</td>
 								<td>${ddata.nick}</td>
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
-										class="btn-danger btn-md" onclick="<%-- deletedreport(${dlist.idx}); --%>">삭제</button></td>
+										class="btn-danger btn-md" onclick="deletediary('${ddata.idx}');">삭제</button></td>
 								<td><button type="button"
 										class="btn-danger btn-md" onclick="">신고사유</button></td>
 							</tr>
@@ -158,9 +158,9 @@ $(document).ready(function(){
 					</select>
 						<input class="s form-control mr-sm-2" type="text"
 							placeholder="Search" name="keyword">
-						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit" onclick="">검색</button>
 						<button type="button" class="btt btn-info btn-md"
-							onclick="">신고된 게시물 보기</button>
+							onclick="reportclist();">신고된 게시물 보기</button>
 					</form>
 						
 					</div>
@@ -174,15 +174,15 @@ $(document).ready(function(){
 								<th>신고사유보기</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="clist">
 							<c:forEach var="cdata" items="${clist}" >
-							<tr>
+							<tr id="${cdata.idx}">
 								<td>${cdata.ctitle}</td>
 								<td>${cdata.nick}</td>
 								<td><button type="button"
 										class="btn-info btn-md" onclick="">글보기</button></td>
 								<td><button type="button"
-										class="btn-info btn-md" onclick="">삭제</button></td>
+										class="btn-info btn-md" onclick="deletecommunity('${cdata.idx}');">삭제</button></td>
 								<td><button type="button"
 										class="btn-info btn-md" onclick="">신고사유</button></td>
 							</tr>

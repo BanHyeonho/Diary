@@ -74,7 +74,7 @@ function blacklist(){
 
 }
 
-//일지계시판-신고된 게시물보기 버튼누르면 신고된글리스트 불러오기
+//일지게시판-신고된 게시물보기 버튼누르면 신고된글리스트 불러오기
 function reportdlist(){
 	var data = {
 		'report':"a"
@@ -106,24 +106,73 @@ function reportdlist(){
 	
 }
 
-////일지계시판-신고된 글 삭제 버튼 누르면 삭제 
-//function deletedreport(idx){
-//	var data ={
-//		'idx':idx
-//	};
-//	var setting = {
-//			url='/deletedreport.do',
-//			data: data,
-//			type= 'get',
-//			dataType= 'json',
-//			success : function(data){
-//				
-//			},error : function(){
-//				alert("error");
-//			}
-//			
-//		
-//	};
-//	$.ajax(setting);
-//	
-//}
+//일지게시판-신고된 글 삭제 버튼 누르면 삭제 
+function deletediary(ix){
+	if(confirm("삭제하시겠습니까")){
+		
+	var data ={	'idx':ix };
+	var setting = {
+			url : '/deletediary.do',
+			data: data,
+			type : 'get',
+			dataType : 'json',
+			success : function(data){
+				$('#' + ix).remove();
+				alert("삭제되었습니다");
+			},error : function(){
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	}
+}
+
+function reportclist(){
+	var data = {
+		'report':"a"
+	};
+	var setting ={
+		url : '/reportclist.do', 
+		type : 'get',
+		data : data,
+		dataType : 'json',
+		success : function(data){
+			var reportclist = data.reportclist;
+			$("#clist").html('');
+			for( i = 0; i<reportclist.length; i++ ){
+				$("#clist").append(
+				'<tr><td>'+reportclist[i].ctitle+'</td><td>'
+				+reportclist[i].nick+'</td><td>'
+				+'<button type="button"	class="btn-info btn-md"> 글보기 </button></td><td>'
+				+'<button type="button"	class="btn-info btn-md"> 삭제 </button></td><td>'
+				+'<button type="button" class="btn-info btn-md"> 신고사유 </button></td></tr>'
+				);
+			}
+			
+		},error:function(){
+			alert("error");
+		}
+		
+	};
+	$.ajax(setting);
+	
+}
+
+function deletecommunity(ix){
+	if(confirm("삭제하시겠습니까?")){
+	var data ={ 'idx': ix};
+	var setting = {
+			url : '/deletecommunity.do',
+			data: data,
+			type : 'get',
+			dataType : 'json',
+			success : function(data){
+				$('#' + ix).remove();
+				alert("삭제되었습니다");
+			},error : function(){
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	} 
+	}

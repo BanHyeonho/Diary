@@ -51,11 +51,11 @@ public class AdminServiceimpl implements AdminService{
 //		
 //	}
 //
-//	@Override
-//	public void deletedreport(int idx) {
-//		// TODO Auto-generated method stub
-//			dao.reportdlist(idx);
-//	}
+	@Override
+	public void deletediary(int idx) {
+		// TODO Auto-generated method stub
+			dao.deletediary(idx);
+	}
 
 	@Override
 	public List<MemberVo> searchMember(String option,String keyword) {
@@ -99,12 +99,12 @@ public class AdminServiceimpl implements AdminService{
 //		return dao.reportcomment();
 //	}
 
-//	@Override
-//	public List<CommunityVo> reportClist(int report) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+	@Override
+	public List<CommunityVo> reportclist() {
+		// TODO Auto-generated method stub
+		return dao.reportclist();
+	}
+
 //	@Override
 //	public void reportCOk(MemberVo vo, int idx) {
 //		// TODO Auto-generated method stub
@@ -117,12 +117,12 @@ public class AdminServiceimpl implements AdminService{
 //		
 //	}
 //
-//	@Override
-//	public void deleteCreport(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+	@Override
+	public void deletecommunity(int idx) {
+		// TODO Auto-generated method stub
+		dao.deletecommunity(idx);
+	}
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub

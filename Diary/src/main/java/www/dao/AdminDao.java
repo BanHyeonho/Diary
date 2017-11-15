@@ -23,18 +23,18 @@ public interface AdminDao {
 //
 //	public void reportcancel(int idx); // 신고된여행일지글 신고취소
 //
-//	public void deletereport(int idx); // 신고된 여행일지글삭제
-//
+	public void deletediary(int idx); // 신고된 여행일지글삭제
+
 	public List<MemberVo> searchById(String id); // 회원검색(아이디)
 
 	public List<MemberVo> searchByNick(String nick); // 회원검색(닉네임)
 //	
-//	public List<CommunityVo> reportClist(int report); // 신고된커뮤니티글보기
-//
+	public List<CommunityVo> reportclist(); // 신고된커뮤니티글보기
+
 //	public void reportCcancel(int idx); // 신고된커뮤니티글 신고취소
 //
-//	public void deleteCreport(int idx); // 신고된 커뮤니티글삭제
-//	
+	public void deletecommunity(int idx); //  커뮤니티글삭제
+	
 //	public ReportVo reportReason(int idx); //여행일지글 신고사유 보기
 //	
 //	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
