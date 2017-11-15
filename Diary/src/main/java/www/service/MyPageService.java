@@ -22,7 +22,7 @@ public interface MyPageService {
 //	public void deletemyscrap(int idx);	//스크랩글 삭제
 	public List<MsgVo> msg(String id);	//쪽지함 보기
 	public void deletemsg(int idx);		//쪽지삭제
-//	public void sendmsg(MsgVo vo);		//쪽지 보내기
+	public void sendmsg(MsgVo vo);		//쪽지 보내기
 //	public List<MsgVo> msgChk();		//chk==1인 경우를 조회
 //	public void blockMember(BlockVo vo);//차단하기
 	

@@ -29,5 +29,11 @@
 <delete id="deletemsg" parameterType="int">
 	delete FROM msg where idx=#{idx}
 </delete>
+<!-- 메세지 답장하기, 본 -->
+<insert id="sendmsg" parameterType="www.dto.MsgVo">
+	 Insert into msg (IDX,SENDER,SENDERID,RECEIVER,RECEIVERID,CONTENT,CHK)
+	values (MSG_SEQ.nextval,#{sender},#{senderid},#{receiver},#{receiverid},#{content},#{chk}) 
+	
+</insert>
 
 </mapper>

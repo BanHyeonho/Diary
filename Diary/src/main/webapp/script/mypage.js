@@ -92,6 +92,7 @@ function mywrite(id) {
 	$.ajax(setting);
 }
 
+//내가쓴 만남의장 글보기
 function myCommunity(id){
 	var id = id;
 	var data = {
@@ -175,8 +176,11 @@ function msg_1(id){
 	
 	
 }
+
+// 메세지 삭제
 function msg_delete(d){
 	
+	if (confirm("정말 삭제하시겠습니까?") == true) {
 	var idx = {'idx':d};
 	
 	var setting = {
@@ -193,6 +197,7 @@ function msg_delete(d){
 			}
 	};
 	$.ajax(setting);
+	}
 	
 }
 function mag_form(sender,senderid,receiver,receiverid){

@@ -98,12 +98,12 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		 dao.deletemsg(idx);
 	}
-//
-//	@Override
-//	public void sendmsg(MsgVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
+	@Override
+	public void sendmsg(MsgVo vo) {
+		// TODO Auto-generated method stub
+		dao.sendmsg(vo);
+	}
 //
 //	@Override
 //	public List<MsgVo> msgChk() {
