@@ -60,9 +60,35 @@
       		
     		</div>
     	
-
-
+				<div>
+			<table>
+				<form action="/ccomment.do"> 
+				<tr>
+					<td>${user.nick }</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="text" name="contents" size="90" rows="3">
+					<button>댓글쓰기</button>
+					</td>
+				</tr>
+				</form>
+			</table>
+		
+		
+		</div>
 	
+		<div>
+			<table>
+			<tr>
+				<td>nick</td>
+			</tr>
+			<hr>
+			<tr>
+				<td>댓글 내용 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
+			</tr>
+			</table>
+		</div>
 	
 	
 	

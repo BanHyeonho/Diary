@@ -100,6 +100,8 @@
     	</c:forEach>
  		</tbody>
  	</table>
+ 		
+ 		
  	
  	<div>
   		<ul class="pagination justify-content-center">
@@ -126,15 +128,14 @@
     	</li>
  	 	</ul>
 		</div>
-		
-	
-	</div>
-		<%@ include file="../layout/nav.jsp"%>
-		<%@ include file="../layout/footer.jsp"%>
-	</div>
+
+
 	
 	
 	</div>	
+
+
+
 
 
 </body>
