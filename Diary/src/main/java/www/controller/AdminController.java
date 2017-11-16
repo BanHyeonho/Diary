@@ -127,13 +127,26 @@ public class AdminController {
 		return mav;
 	}//커뮤니티글 리스트보여주기
 	
+	@RequestMapping(value="/communitySearch.do",method=RequestMethod.GET)
+	public ModelAndView communitySearch(ModelAndView mav,String option,String keyword) {
+		
+		logger.info(option);
+		logger.info(keyword);
+	
+		mav.addObject("clist",sv.diarySearch(option, keyword));
+		mav.addObject("idx", "2");
+		mav.setViewName("admin/admin");
+		return mav;
+	} // 여행일지 검색(글제목,닉네임)
+	
+	
 	@RequestMapping(value="/reportclist.do",method=RequestMethod.GET)
 	public @ResponseBody Map<String, List<CommunityVo>> reportclist(String report) {
 		logger.info(report);
 		Map<String,List<CommunityVo>> map = new HashMap<String, List<CommunityVo>>();
 		map.put("reportclist",sv.reportclist());
 		return map;
-	} 
+	} //커뮤니티 삭제하기
 	
 //	public @ResponseBody Map<String,String> reportCOk(MemberVo vo,int idx) {
 //		return null;

@@ -38,15 +38,11 @@ public interface AdminDao {
 //	public ReportVo reportReason(int idx); //여행일지글 신고사유 보기
 //	
 //	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
-//	
-//	public List<DiaryVo> serchByNickDiary(String keyword);	//닉네임 필터 키워드로 다이어리 검색
-//	
-//	public List<DiaryVo> serchByTitleDiary(String keyword); 	//글제목 필터 키워드로 다이어리 검색
-//	
-//	public List<CommunityVo> serchByNickCommunity(String keyword);	//닉네임 필터 키워드로 커뮤니티 검색
-//	
-//	public List<CommunityVo> serchByTitleCommunity(String keyword); 	//글제목 필터 키워드로 커뮤니티 검색
-//	
+
+	
+	public List<CommunityVo> searchByCNick(String keyword);	//닉네임 필터 키워드로 커뮤니티 검색
+	
+	public List<CommunityVo> searchByCTitle(String keyword); 	//글제목 필터 키워드로 커뮤니티 검색
 
 	public List<CommunityVo> allcommunity(); //커뮤니티 리스트 30개보기
 

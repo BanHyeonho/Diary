@@ -123,6 +123,15 @@ public class AdminServiceimpl implements AdminService{
 		dao.deletecommunity(idx);
 	}
 
+	@Override
+	public List<CommunityVo> communitySearch(String option, String keyword) {
+		// TODO Auto-generated method stub
+		if(option.equals("닉네임")){
+			return dao.searchByCNick(keyword);
+		}
+		return dao.searchByCTitle(keyword);
+	}
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub
