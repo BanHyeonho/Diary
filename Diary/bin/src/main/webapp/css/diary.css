@@ -69,7 +69,14 @@
 .page{margin-left: 200px; margin-right:  200px;}
 
 /*  community contents */
-
-
 .form-control { background-color: #ffffff;}
+
+/* oneMember.jsp */
+.infotable {margin:8px 110px;}
+.li {margin:8px 180px;}
+.li span{style="font-family:sans-serif"; font-size: 15px;}
+.li .lii{width:40px;}
+/* .ct button{padding:8px} */
+.ct span{font-size: 13px;}
+
 	
