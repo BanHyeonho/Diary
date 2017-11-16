@@ -60,34 +60,36 @@
       		
     		</div>
     	
+    		
 				<div>
 			<table>
-				<form action="/ccomment.do"> 
+				<form action="/ccommentwrite.do" method="post"> 
 				<tr>
 					<td>${user.nick }</td>
 				</tr>
 				<tr>
 					<td>
 					<input type="text" name="contents" size="90" rows="3">
-					<button>댓글쓰기</button>
+					<button type="submit">댓글쓰기</button>
 					</td>
 				</tr>
 				</form>
 			</table>
-		
-		
 		</div>
+			
 	
 		<div>
+		<c:forEach items="${list }" var="data1" >
 			<table>
 			<tr>
-				<td>nick</td>
+				<td>${data1.nick}</td>
 			</tr>
 			<hr>
 			<tr>
-				<td>댓글 내용 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
+				<td>${data1.contents }</td>
 			</tr>
 			</table>
+		</c:forEach>
 		</div>
 	
 	
