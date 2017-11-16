@@ -128,9 +128,6 @@
     	</li>
  	 	</ul>
 		</div>
-
-
-	
 	
 	</div>	
 
@@ -138,7 +135,6 @@
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
-
 
 </body>
 </html>

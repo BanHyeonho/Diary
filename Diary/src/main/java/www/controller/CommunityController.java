@@ -1,5 +1,7 @@
 package www.controller;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -42,18 +44,32 @@ public class CommunityController {
 	
 	@RequestMapping(value="/onecommunity.do",method = RequestMethod.GET)
 	public ModelAndView oneCommunity(ModelAndView mav,int idx) {
-		logger.info("ff : "+idx);
+		
 		mav.addObject("data", sv.oneCommunity(idx));
+		
+		List<CommentVo> list = sv.ccomment(idx);
+		
+		for (CommentVo vo : list) {
+			logger.info("ff : "+vo);
+		}
+		
+		mav.addObject("list",sv.ccomment(idx) );
+		
 		mav.setViewName("user/onecommunity");
 		
 		return mav;
 	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
 	
-	@RequestMapping(value="/writeccomment.do",method = RequestMethod.POST)
-	public @ResponseBody Map<String, CommentVo> writeCcomment(CommentVo vo) {
+	@RequestMapping(value="/ccommentinsert.do",method = RequestMethod.POST)
+	public @ResponseBody Map<String, CommentVo> Ccommentinsert(CommentVo vo) {
+		logger.info("ff : "+vo);
+		sv.ccommentinsert(vo);
 		
-	//	sv.writecccomment(vo);
-		return null;
+		
+		
+		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
+		
+		return map;
 	}// 댓글쓰기
 	
 
@@ -62,9 +78,6 @@ public class CommunityController {
 //		return null;
 //	} // 검색하기
 //
-
-//
-
 //
 //	public @ResponseBody Map<String, CommentVo> updateCcomment(CommentVo vo) {
 //		return null;
