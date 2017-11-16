@@ -19,16 +19,16 @@
   
   </select>
   
-   <select id="ccomment" parameterType="Integer" resultType="www.dto.CommunityVo">
+   <select id="ccomment" parameterType="Integer" resultType="www.dto.CommentVo">
   
-  select * from ccomment where idx=#{idx}
+  select * from ccomment where LINKEDIDX=#{idx}
   
   </select>
   
   
-  <insert id="insertccomment" parameterType="www.dto.CommentVo">
-  insert into ccomment(IDX,NICK,CONTENTS,CDATE,CIDX)
-  values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{cidx})
+  <insert id="ccommentinsert" parameterType="www.dto.CommentVo">
+  insert into CCOMMENT(IDX,NICK,CONTENTS,CDATE,LINKEDIDX)
+  values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx})
   
   </insert>
   

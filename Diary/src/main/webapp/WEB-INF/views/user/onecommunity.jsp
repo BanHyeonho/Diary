@@ -8,16 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
 </head>
-	
-<body items="${list }" var="data">
+<script type="text/javascript" src="script/onecommunity.js"></script>
+<body>
 	<div class="wrap">
 	<%@ include file="../layout/header.jsp"%>
 	<div class="container">
 	<div class="contents" >
 	<h1>만남의 장</h1>
 
-	<input type="hidden" name="id" value="${user.id}" />
-	<input type="hidden" name="nick" value="${user.nick}" />
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
 		<tr>
@@ -52,7 +50,7 @@
     	</tr>
     	
 		</tbody>
-		</table>
+</table>
 
 			<div class="form-group">
       		
@@ -63,21 +61,21 @@
     		
 				<div>
 			<table>
-				<form action="/ccommentwrite.do" method="post"> 
 				<tr>
 					<td>${user.nick }</td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="contents" size="90" rows="3">
-					<button type="submit">댓글쓰기</button>
+					<input type="text" id="contents" size="90" >
+					<button type="button" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button>
 					</td>
 				</tr>
-				</form>
+				
 			</table>
 		</div>
 			
-	
+		<hr>
+		
 		<div>
 		<c:forEach items="${list }" var="data1" >
 			<table>

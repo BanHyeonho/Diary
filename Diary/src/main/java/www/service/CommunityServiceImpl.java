@@ -33,9 +33,9 @@ public class CommunityServiceImpl implements CommunityService{
 	
 	
 	@Override
-	public void insertccomment(CommentVo vo) {
+	public void ccommentinsert(CommentVo vo) {
 		// TODO Auto-generated method stub
-		dao.insertccomment(vo);
+		dao.ccommentinsert(vo);
 	}
 
 
