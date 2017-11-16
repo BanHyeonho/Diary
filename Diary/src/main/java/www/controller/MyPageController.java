@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
@@ -40,7 +41,7 @@ public class MyPageController {
 
 	@RequestMapping(value="/deleteInfoAction.do",method = RequestMethod.GET)
 	public ModelAndView deleteInfoAction(ModelAndView mav,String id,HttpSession session) {
-		logger.info(id);
+		//logger.info(id);
 		
 		session.invalidate();
 		sv.deleteinfo(id);
@@ -79,10 +80,12 @@ public class MyPageController {
 //	} // 스크랩글 삭제
 //
 	@RequestMapping(value="/msg.do", method = RequestMethod.POST)
-	public @ResponseBody Map<String,List<MsgVo>> msg(String id) {
-		Map<String,List<MsgVo>> map = new HashMap<String,List<MsgVo>>();
-		logger.info("hghghgh"+sv.msg(id).toString());
+	public @ResponseBody Map<String,List> msg(String id) {
+		Map<String,List> map = new HashMap<String,List>();
+		//logger.info("hghghgh"+sv.msg(id).toString());
 		map.put("msg",sv.msg(id));
+		map.put("block",sv.myblock(id)); //쪽지함 이동시 차단한 회원 안보이게 하기
+		
 		return map;
 	} // 쪽지함보기(리스트)
 
@@ -90,7 +93,7 @@ public class MyPageController {
 	@RequestMapping(value="/deleteMsg.do",method = RequestMethod.GET)
 	public @ResponseBody Map<String,String> deleteMsg(int idx) {
 		
-		logger.info(""+idx);
+		//logger.info(""+idx);
 		sv.deletemsg(idx);
 		
 		
@@ -116,7 +119,23 @@ public class MyPageController {
 //		return null;
 //	}//나를 팔로우한사람 보는 리스트
 //	
-//	public ModelAndView blockMember(BlockVo vo){
-//		return null;
-//	}//차단하기
+	@RequestMapping(value="/blockMember.do",method = RequestMethod.GET)
+	public @ResponseBody Map<String,String> blockMember(BlockVo vo,ModelAndView mav){
+		logger.info(vo.toString());
+		sv.blockMember(vo);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("result", "차단 성공");
+		return map;
+	}//차단하기
+	@RequestMapping(value="/blockList.do",method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<BlockVo>> blockList(String id) {
+		Map<String, List<BlockVo>> map = new HashMap<String, List<BlockVo>>();
+		
+		
+		map.put("blocknick", sv.myblock(id));
+		
+		
+		return map;
+	} // 내가 차단한 회원 목록을 보여줌 (list)
 }
