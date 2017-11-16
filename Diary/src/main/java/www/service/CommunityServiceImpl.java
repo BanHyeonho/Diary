@@ -24,7 +24,7 @@ public class CommunityServiceImpl implements CommunityService{
 	public CommunityVo oneCommunity(int idx) {
 		// TODO Auto-generated method stub
 		
-		return null;
+		return dao.oneCommunity(idx);
 	}
 
 	

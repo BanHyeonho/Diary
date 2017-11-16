@@ -22,25 +22,23 @@ public class AdminServiceimpl implements AdminService{
 		// TODO Auto-generated method stub
 		return dao.allmember();
 	}
-//
-//	@Override
-//	public List<MemberVo> blacklist(int report) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+
+	@Override
+	public List<MemberVo> blacklist() {
+		// TODO Auto-generated method stub
+		
+			return dao.blacklist();
+		
+	}
+
 //	@Override
 //	public void deletemember(int idx) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 //
-//	@Override
-//	public List<DiaryVo> reportlist(int report) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+
+
 //	@Override
 //	public void reportOk(MemberVo vo, int idx) {
 //		// TODO Auto-generated method stub
@@ -53,11 +51,11 @@ public class AdminServiceimpl implements AdminService{
 //		
 //	}
 //
-//	@Override
-//	public void deletereport(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void deletediary(int idx) {
+		// TODO Auto-generated method stub
+			dao.deletediary(idx);
+	}
 
 	@Override
 	public List<MemberVo> searchMember(String option,String keyword) {
@@ -89,18 +87,24 @@ public class AdminServiceimpl implements AdminService{
 		return dao.searchByDTitle(keyword);
 	}
 
+	@Override
+	public List<DiaryVo> reportdlist() {
+		// TODO Auto-generated method stub
+		return dao.reportdlist();
+	}
+
 //	@Override
 //	public List<CommentVo> reportcomment(int report) {
 //		// TODO Auto-generated method stub
 //		return dao.reportcomment();
 //	}
 
-//	@Override
-//	public List<CommunityVo> reportClist(int report) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+	@Override
+	public List<CommunityVo> reportclist() {
+		// TODO Auto-generated method stub
+		return dao.reportclist();
+	}
+
 //	@Override
 //	public void reportCOk(MemberVo vo, int idx) {
 //		// TODO Auto-generated method stub
@@ -113,12 +117,12 @@ public class AdminServiceimpl implements AdminService{
 //		
 //	}
 //
-//	@Override
-//	public void deleteCreport(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+	@Override
+	public void deletecommunity(int idx) {
+		// TODO Auto-generated method stub
+		dao.deletecommunity(idx);
+	}
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub

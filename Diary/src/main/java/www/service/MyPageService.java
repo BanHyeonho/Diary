@@ -2,6 +2,7 @@ package www.service;
 
 import java.util.List;
 
+import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
@@ -12,7 +13,7 @@ public interface MyPageService {
 	public void updateinfo(MemberVo vo);	//개인정보수정
 	public void deleteinfo(String id);	//회원탈퇴
 	public List<DiaryVo> mydiary(String id);//내가쓴글 보기(팔로우글보기)
-	public List<CommunityVo> mycommu(String id); // 내가쓴 만남의장 글 보기
+	public List<CommunityVo> community(String id); // 내가쓴 만남의장 글 보기
 //	public List<FollowVo> following(String id);	//내가 팔로우한사람 보기
 //	public List<FollowVo> followers(String id);	//나를 팔로우한사람 보기
 //	public void addfollow(FollowVo vo);	//팔로우하기
@@ -24,7 +25,8 @@ public interface MyPageService {
 	public void deletemsg(int idx);		//쪽지삭제
 	public void sendmsg(MsgVo vo);		//쪽지 보내기
 //	public List<MsgVo> msgChk();		//chk==1인 경우를 조회
-//	public void blockMember(BlockVo vo);//차단하기
-	
+	public void blockMember(BlockVo vo);//차단하기
+	public List<BlockVo> myblock(String id); ////쪽지함 이동시 차단 목록 안보이게 하기  ,내가 차단한 회원목록 보여주기
+//	public List<BlockVo> blockList(String id); //내가 차단한 회원목록 보여주기
 	
 }

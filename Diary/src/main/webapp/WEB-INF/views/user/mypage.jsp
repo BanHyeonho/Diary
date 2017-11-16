@@ -23,7 +23,7 @@
 		<div class="contents ">
 			<div style="height: 50px">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#privacy">개인정보변경</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
@@ -35,6 +35,8 @@
 						href="#follwoing">팔로윙</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#msg" onclick="msg_1('${user.id}')">쪽지함</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>
 			</div>
 			<!-- privacy -->
@@ -260,6 +262,21 @@
 						</tbody>
 					</table>
 
+				</div>
+			<!--block_list  -->	
+				<div id="block_list" class="tab-pane fade show">
+					<table class="table table-striped table-hover table-bordered">
+						<thead class="thead-dark">
+							<tr>
+								<th colspan="2">차단회원목록</th>
+							</tr>
+						</thead>
+						<tbody id="my_black">
+							
+								<!-- <td><button class="btn btn-outline-danger">차단 취소</button></td> -->
+							
+						</tbody>
+					</table>
 				</div>
 
 			</div>
