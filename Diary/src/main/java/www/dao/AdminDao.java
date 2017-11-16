@@ -40,15 +40,17 @@ public interface AdminDao {
 //	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
 
 	
-	public List<CommunityVo> searchByCNick(String keyword);	//닉네임 필터 키워드로 커뮤니티 검색
+	public List<CommunityVo> searchByCNick(String nick);	//닉네임 필터 키워드로 커뮤니티 검색
 	
-	public List<CommunityVo> searchByCTitle(String keyword); 	//글제목 필터 키워드로 커뮤니티 검색
+	public List<CommunityVo> searchByCTitle(String ctitle); 	//글제목 필터 키워드로 커뮤니티 검색
 
 	public List<CommunityVo> allcommunity(); //커뮤니티 리스트 30개보기
 
-	public List<DiaryVo> searchByDNick(String id); //일지검색(닉네임)
+	public List<DiaryVo> searchByDNick(String nick); //일지검색(닉네임)
 
 	public List<DiaryVo> searchByDTitle(String dtitle);//일지검색(글제목)
+
+	public MemberVo oneMember(String id);
 	
 //	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
 	

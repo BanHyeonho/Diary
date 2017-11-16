@@ -45,9 +45,8 @@ public interface AdminService {
 //	
 //	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
 	
-	public List<CommunityVo> communitySearch(String option,String keyword); // 글검색(글제목,닉네임)
-//	
-//	public List<DiaryVo> serchDiary(String keyword,int choose);	// 필터(닉네임,글제목) 과 키워드로 여행일지 검색
-//	
-//	public List<DiaryVo> serchCommunity(String keyword,int choose);	// 필터(닉네임,글제목) 과 키워드로 커뮤니티 검색
+	public List<CommunityVo> communitySearch(String option,String keyword); // 만남의장 검색(글제목,닉네임)
+
+	public MemberVo oneMember(String id);
+
 }

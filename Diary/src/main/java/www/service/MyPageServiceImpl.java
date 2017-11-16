@@ -36,7 +36,7 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.mydiary(id);
 	}
 	@Override
-	public List<CommunityVo> mycommu(String id) {
+	public List<CommunityVo> community(String id) {
 		// TODO Auto-generated method stub
 		
 		
@@ -92,17 +92,18 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.msg(id);
 	}
 //
-//	@Override
-//	public void deletemsg(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void sendmsg(MsgVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void deletemsg(int idx) {
+		// TODO Auto-generated method stub
+		
+		 dao.deletemsg(idx);
+	}
+
+	@Override
+	public void sendmsg(MsgVo vo) {
+		// TODO Auto-generated method stub
+		dao.sendmsg(vo);
+	}
 //
 //	@Override
 //	public List<MsgVo> msgChk() {
@@ -116,6 +117,7 @@ public class MyPageServiceImpl implements MyPageService{
 //		
 //	}
 
+	
 	
 
 }

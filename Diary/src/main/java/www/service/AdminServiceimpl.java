@@ -132,6 +132,12 @@ public class AdminServiceimpl implements AdminService{
 		return dao.searchByCTitle(keyword);
 	}
 
+	@Override
+	public MemberVo oneMember(String id) {
+		// TODO Auto-generated method stub
+		return dao.oneMember(id);
+	}
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub

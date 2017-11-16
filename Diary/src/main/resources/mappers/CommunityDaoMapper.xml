@@ -13,4 +13,10 @@
   
   </insert>
   
+  <select id="oneCommunity" parameterType="Integer" resultType="www.dto.CommunityVo">
+  
+  select * from COMMUNITY where idx=#{idx}
+  
+  </select>
+  
 </mapper>
