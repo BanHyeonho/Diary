@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="script/admin.js"></script>
 <link rel="stylesheet" href="css/diary.css">
 <link href="css/simplex.css" rel="stylesheet" />
+<script type="text/javascript" src="script/oneMember.js"></script>
 </head>
 <body>
 	<div class="infotable">
@@ -47,16 +47,16 @@
 		</table>
 		</div>
 			<div class="li">
-				<input type="checkbox"
+				<input type="checkbox" id="chk" disabled="disabled"
 					<c:if test="${userinfo.reportcount>=3}">checked</c:if> /><span>블랙리스트</span>  <br/>
 			
-				<span>신고횟수</span><input class="lii" type="number" name="reportcount" value="${userinfo.reportcount}">
+				<span>신고횟수</span><input class="lii" type="number" name="reportcount" onchange="rcount(this);"  value="${userinfo.reportcount}">
 			</div>
 			
 		
 		<center class="ct">
-			<button type="submit" class="btn-success btn-sm" onclick=""><span>확인</span></button>
-			<button type="button" class="btn-danger btn-sm" onclick=""><span>계정삭제</span></button>
+			<button type="submit" class="btn-success btn-sm" onclick="confirmm('${userinfo.id}');"><span>확인</span></button>
+			<button type="button" class="btn-danger btn-sm" onclick="deleteAccount('${userinfo.id}')"><span>계정삭제</span></button>
 			<button type="button" class="btn-info btn-sm" onclick=""><span>쪽지보내기</span></button>
 		</center>
 	</form>

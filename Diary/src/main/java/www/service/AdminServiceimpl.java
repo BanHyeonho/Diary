@@ -138,6 +138,18 @@ public class AdminServiceimpl implements AdminService{
 		return dao.oneMember(id);
 	}
 
+	@Override
+	public void updatedmember(MemberVo vo) {
+		// TODO Auto-generated method stub
+		dao.updatedmember(vo);
+	}
+
+	@Override
+	public void deleteAccount(String id) {
+		// TODO Auto-generated method stub
+		dao.deleteAccount(id);
+	}
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub

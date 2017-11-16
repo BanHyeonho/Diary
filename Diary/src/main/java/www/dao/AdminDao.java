@@ -50,7 +50,11 @@ public interface AdminDao {
 
 	public List<DiaryVo> searchByDTitle(String dtitle);//일지검색(글제목)
 
-	public MemberVo oneMember(String id);
+	public MemberVo oneMember(String id); //정보보기 버튼누를때
+
+	public void updatedmember(MemberVo vo); //정보보기버튼에서 확인버튼누를때
+
+	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
 	
 //	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
 	

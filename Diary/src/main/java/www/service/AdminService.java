@@ -47,6 +47,10 @@ public interface AdminService {
 	
 	public List<CommunityVo> communitySearch(String option,String keyword); // 만남의장 검색(글제목,닉네임)
 
-	public MemberVo oneMember(String id);
+	public MemberVo oneMember(String id); //정보보기 버튼누를때
+
+	public void updatedmember(MemberVo vo); //정보보기버튼에서 확인버튼누를때
+
+	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
 
 }

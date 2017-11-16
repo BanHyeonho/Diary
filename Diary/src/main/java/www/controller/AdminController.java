@@ -43,11 +43,7 @@ public class AdminController {
 	} // 회원리스트 보기
 
 	@RequestMapping(value = "/memberSearch.do", method = RequestMethod.GET)
-	public ModelAndView memberSearch(ModelAndView mav, String option, String keyword) { // combo
-																						// 아이디
-																						// 인지
-																						// 닉네임인지
-																						// 값
+	public ModelAndView memberSearch(ModelAndView mav, String option, String keyword) { 
 		mav.addObject("mlist", sv.searchMember(option, keyword));
 		mav.addObject("idx", "0");
 		mav.setViewName("admin/admin");
@@ -68,15 +64,30 @@ public class AdminController {
 		mav.setViewName("admin/oneMember");
 		return mav;
 	}// 회원한명 정보 상세히 보기
+	
+	@RequestMapping(value = "/confirm.do", method = RequestMethod.GET)
+	public ModelAndView confirm(ModelAndView mav,MemberVo vo ) {
+		// List<MemberVo> list = sv.allmember();
+		// for (MemberVo memberVo : list) {
+		// logger.info(memberVo.toString());
+		// }
+
+		sv.updatedmember(vo);
+		mav.setViewName("redirect:/admin.do");
+		return mav;
+	} // 정보보기후 신고회수 고치고 확인 버튼눌렀을때
 
 	// public @ResponseBody Map<String, String> reportMsg(MsgVo vo) {
 	// return null;
 	// } // 경고쪽지 보내기
-	//
-	// public ModelAndView deleteMember(String id) {
-	// return null;
-	// } // 계정삭제
-	//
+	 
+	@RequestMapping(value = "/deleteAccount.do", method = RequestMethod.GET)
+	 public ModelAndView deleteAccount(ModelAndView mav,MemberVo vo) {
+		sv.deleteAccount(vo.getId());
+		mav.setViewName("redirect:/admin.do");
+		return mav;
+	 } // 정보보기버튼 클릭후 계정삭제
+	
 	@RequestMapping(value = "/alldiary.do", method = RequestMethod.GET)
 	public ModelAndView alldiary(ModelAndView mav) {
 		// List<DiaryVo> list =sv.alldiary();
