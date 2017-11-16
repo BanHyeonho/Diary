@@ -1,12 +1,10 @@
 package www.dto;
 
-import java.util.Date;
-
 public class DiaryVo {
 
 	private int idx; // 인덱스
 	private String id; // 아이디
-	private String nick; // 작성자
+	private String nick; // 작성자 닉네임
 	private String dtitle; // 글제목
 	private String place; // 여행지
 	private String contents; // 글내용
@@ -14,10 +12,10 @@ public class DiaryVo {
 	private String dpicture; // 여행지사진경로
 	private String sdate; // 여행시작일
 	private String edate; // 여행종료일
-	private Date ddate; // 작성일
-	private int hitcount; // 조회수
+	private String ddate; // 작성일
+	private int dhitcount; // 조회수
 	private int good; // 좋아요
-	private int reportcount; // 신고횟수
+	private int dreportcount; // 신고횟수
 	private String dpublic; // 글 공개/비공개
 
 	public int getIdx() {
@@ -101,20 +99,21 @@ public class DiaryVo {
 		this.edate = edate;
 	}
 
-	public Date getDdate() {
+	public String getDdate() {
 		return ddate;
 	}
 
-	public void setDdate(Date ddate) {
+	public void setDdate(String ddate) {
 		this.ddate = ddate;
 	}
 
-	public int getHitcount() {
-		return hitcount;
+
+	public int getDhitcount() {
+		return dhitcount;
 	}
 
-	public void setHitcount(int hitcount) {
-		this.hitcount = hitcount;
+	public void setDhitcount(int dhitcount) {
+		this.dhitcount = dhitcount;
 	}
 
 	public int getGood() {
@@ -125,12 +124,12 @@ public class DiaryVo {
 		this.good = good;
 	}
 
-	public int getReportcount() {
-		return reportcount;
+	public int getDreportcount() {
+		return dreportcount;
 	}
 
-	public void setReportcount(int reportcount) {
-		this.reportcount = reportcount;
+	public void setDreportcount(int dreportcount) {
+		this.dreportcount = dreportcount;
 	}
 
 	public String getDpublic() {
@@ -145,8 +144,9 @@ public class DiaryVo {
 	public String toString() {
 		return "DiaryVo [idx=" + idx + ", id=" + id + ", nick=" + nick + ", dtitle=" + dtitle + ", place=" + place
 				+ ", contents=" + contents + ", mapposition=" + mapposition + ", dpicture=" + dpicture + ", sdate="
-				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", hitcount=" + hitcount + ", good=" + good
-				+ ", reportcount=" + reportcount + ", dpublic=" + dpublic + "]";
+				+ sdate + ", edate=" + edate + ", ddate=" + ddate + ", dhitcount=" + dhitcount + ", good=" + good
+				+ ", dreportcount=" + dreportcount + ", dpublic=" + dpublic + "]";
 	}
+
 
 }

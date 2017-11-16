@@ -52,7 +52,6 @@ public class MainController {
 	@RequestMapping(value = "/joinAction.do", method = RequestMethod.POST)
 	public ModelAndView joinAction(ModelAndView mav, MemberVo vo, HttpSession session) {
 		
-		
 		sv.memberjoin(vo);
 		session.setAttribute("user", vo);
 		mav.setViewName("redirect:/main.do");
@@ -92,16 +91,21 @@ public class MainController {
 	@RequestMapping(value = "/community.do", method = RequestMethod.GET)
 	 public ModelAndView community(ModelAndView mav) {
 		 
-		 List<CommunityVo> list=sv.community();
+		List<CommunityVo> list=sv.community();
 		logger.info("개수"+list.size());
 		mav.addObject("list", list);
 		mav.setViewName("user/community");
 		return mav;
 	 } // 만남의장으로 이동
 	
-	// public ModelAndView diary() {
-	// return null;
-	// } // 여행일지로 이동
+	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
+	 public ModelAndView diary(ModelAndView mav) {
+		
+		mav.addObject("list", sv.diary());
+		
+		mav.setViewName("user/diary");
+	 return mav;
+	 } // 여행일지로 이동
 	
 	@RequestMapping(value = "/diarywrite.do", method = RequestMethod.GET)
 	 public ModelAndView diarywrite(ModelAndView mav) {

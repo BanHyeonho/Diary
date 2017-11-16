@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
 import www.dto.CommunityVo;
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.dto.TopVo;
 
@@ -124,6 +125,12 @@ public class MainServiceImpl implements MainService{
 		
 		
 		return dao.login(vo);
+	}
+
+	@Override
+	public List<DiaryVo> diary() {
+		// TODO Auto-generated method stub
+		return dao.diary();
 	}
 
 	

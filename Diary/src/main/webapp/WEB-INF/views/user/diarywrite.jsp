@@ -45,11 +45,7 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
-/* #map{width:300px;height:300px;display: inline-block;}
-.oneDiaryDiv{width:48%;float: right; border: 1px solid black;}
-.oneDiaryDiv ul{list-style: none;float: left; margin-left: -110px;}
-.oneDiary{width:100%;height:600px;border: 1px solid black;float: right;}
-.oneDiaryContents{width: 730px;} 옛날꺼 */
+
 </style>
 </head>
 <body>
@@ -57,13 +53,21 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
 		<div class="contents" style="position: relative; overflow:hidden; height: 700px;">
+		<form action="/writeDiary.do" method="post" name="writingForm">
 		<div class="btn-group" role="group" aria-label="Basic example">
-		<input type="text" class="form-control" placeholder="글 제목"/><button class="btn-info btn-sm">스크랩 가져오기</button>
+		<input type="hidden" name="id" value="${user.id }" />
+		<input type="hidden" name="nick" value="${user.nick }" />
+		<input type="hidden" name="place" />
+		<input type="hidden" name="contents" />
+		<input type="hidden" name="mapposition" />
+		<input type="text" class="form-control" name="dtitle" placeholder="글 제목"/><button class="btn-info btn-sm">스크랩 가져오기</button>
 		</div>
-		<button type="button" style="float: right;" onclick="change()">샥!</button>
+		<label><input type="radio" name="dpublic" value="Y" >공개</label><label><input type="radio"  name="dpublic" value="N" checked >비공개</label>
+		<input type="date" name="sdate" /> ~ <input type="date" name="edate"/> 
+		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change()">★</button>
 		
-		<div class="map_wrap" style="position: absolute;">
-		<button type="button" style="position: absolute; z-index: 10;" onclick="hiddenSearch();">V</button>
+		<div class="map_wrap" style="position: absolute;top: 50px">
+		<button type="button" class="btn-outline-info" style="position: absolute; z-index: 10;" onclick="hiddenSearch();">&nbsp;</button>
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
     <div id="menu_wrap" class="bg_white">
@@ -79,40 +83,18 @@
     </div>
 </div>
 		
-		<div class="writingPlace" style="position: absolute;left: 100%;">
-			<input type="file" class="form-control" />
-			<textarea rows="30" cols="50" class="form-control" ></textarea>
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		<!-- <div class="oneDiaryContents">한줄내리기 위한 div 옛날꺼 새로엎음
-		<div class="btn-group" role="group" aria-label="Basic example">
-		<input type="text" id="search" class="form-control"/><input type="button" onclick="searchAction();" id="seachBtn" value="검색" class="btn-primary btn-sm" />
-		</div>
-		<br/> 
-	 	<div id="map">
-		</div>
-		
-		<div class="oneDiaryDiv">
-		<ul id="oneDiaryTab">
-			<li id="diaryList"><a class="click" href="#" id="oneDiary1">oneDiary1</a></li>
-			<li id="plusDiary"><a href="javascript:plusDiary();">+</a></li>
+		<div class="writingPlace" style="position: absolute;left: 100%;top:50px;float: right;">
+		<ul id="oneDiaryTab" class="nav nav-tabs" style="position: absolute;display: table-row;right: 100%;">
+			
 		</ul>
-		
-		<div  class="oneDiary1 oneDiary">
-			<input type='file' /><br/>
-			<textarea rows="30" cols="50" class="form-control" ></textarea>
+			
 		</div>
 		
+		<center><button type="button" onclick='writing();' class="btn-success btn-lg" style="margin-top:530px">글쓰기</button></center>
 		
-		</div>oneDiaryDiv 
+		</form>
 		
-		</div>한줄내리기 위한 div  -->
+		
 		
 		
 		</div><!-- contents -->

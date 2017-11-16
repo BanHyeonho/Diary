@@ -16,7 +16,7 @@ public class MemberVo {
 	private String answer; // 답변
 	private String picture; // 사진경로
 	private int reportcount; // 신고횟수
-	private Date joindate; // 가입일
+	private String joindate; // 가입일
 
 	
 	public String getName() {
@@ -123,11 +123,12 @@ public class MemberVo {
 		this.reportcount = reportcount;
 	}
 
-	public Date getJoindate() {
+
+	public String getJoindate() {
 		return joindate;
 	}
 
-	public void setJoindate(Date joindate) {
+	public void setJoindate(String joindate) {
 		this.joindate = joindate;
 	}
 
@@ -138,6 +139,5 @@ public class MemberVo {
 				+ pwq + ", answer=" + answer + ", picture=" + picture + ", reportcount=" + reportcount + ", joindate="
 				+ joindate + "]";
 	}
-
 
 }

@@ -1,11 +1,19 @@
 package www.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.MsgVo;
 import www.service.MyPageService;
-//@Controller
+@Controller
 public class MsgController {
 	
 	@Autowired
@@ -14,9 +22,17 @@ public class MsgController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MsgController.class);
 	
-//	public @ResponseBody Map<String,String> sendmsg(MsgVo vo){
-//		return null;
-//	}//쪽지보내기
+	@RequestMapping(value="/sendmsg.do",method = RequestMethod.POST)
+	public ModelAndView sendmsg(MsgVo vo,ModelAndView mav){
+		
+		logger.info(vo.toString());
+		sv.sendmsg(vo);
+		
+		
+		mav.addObject("result", "메세지 보내기에 성공하였습니다");
+		mav.setViewName("user/msgSend");
+		return mav;
+	}//쪽지보내기
 
 	
 	
