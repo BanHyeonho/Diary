@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.MyPageDao;
+import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
@@ -111,12 +112,27 @@ public class MyPageServiceImpl implements MyPageService{
 //		return null;
 //	}
 //
+	@Override
+	public void blockMember(BlockVo vo) {
+		// TODO Auto-generated method stub
+		dao.blockMember(vo);
+	}
+
+	@Override
+	public List<BlockVo> myblock(String id) {
+		// TODO Auto-generated method stub
+		
+		return dao.myblock(id);
+	}
+
 //	@Override
-//	public void blockMember(BlockVo vo) {
+//	public List<BlockVo> blockList(String id) {
 //		// TODO Auto-generated method stub
 //		
+//		return dao.blockList(id);
 //	}
 
+	
 	
 
 }

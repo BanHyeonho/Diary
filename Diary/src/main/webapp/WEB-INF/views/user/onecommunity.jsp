@@ -77,17 +77,18 @@
 		<hr>
 		
 		<div>
-		<c:forEach items="${list }" var="data1" >
-			<table>
+		
+		<table id="ccomment">
+			<c:forEach items="${list }" var="data1" >
 			<tr>
 				<td>${data1.nick}</td>
 			</tr>
-			<hr>
 			<tr>
 				<td>${data1.contents }</td>
 			</tr>
-			</table>
-		</c:forEach>
+			</c:forEach> 
+		</table>
+		
 		</div>
 	
 	

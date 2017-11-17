@@ -176,3 +176,37 @@ function deletecommunity(ix){
 	$.ajax(setting);
 	} 
 	}
+
+//function communitysearch(){
+//	var option =document.searchtool.option.value;
+//	var keyword = document.searchtool.keyword.value;
+//	console.log(option);
+//	console.log(option);
+//	var data = {
+//			'opt' : option,
+//			'key' : keyword
+//		};
+//	var setting = {
+//			url : '/communitySearch.do',
+//			type : 'get',
+//			data : data,
+//			dataType : 'json',
+//			success :  function(data){
+//				var communitySearch = data.communitySearch;
+//				$("#clist").html('');
+//				for( i = 0; i<communitySearch.length;i++){
+//					$("#clist").append(
+//					'<tr id='+communitySearch[i].idx+'><td>'+communitySearch[i].ctitle+'</td><td>'
+//					+communitySearch[i].nick+'</td><td>'
+//					+'<button type="button"	class="btn-info btn-md" onclick="">글보기</button></td><td>'
+//					+'<button type="button"	class="btn-info btn-md" onclick="deletecommunity('+communitySearch[i].idx+');">삭제</button></td><td>'
+//					+'<button type="button" class="btn-info btn-md"> 신고사유 </button></td></tr>'
+//					);
+//				}
+//			},error : function() {
+//				alert("error");
+//			}
+//	};
+//	$.ajax(setting);
+//	
+//}

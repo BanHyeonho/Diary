@@ -15,7 +15,7 @@ public class MemberVo {
 	private String pwq; // 비밀번호 질문
 	private String answer; // 답변
 	private String picture; // 사진경로
-	private int reportcount; // 신고횟수
+	private String reportcount; // 신고횟수
 	private String joindate; // 가입일
 
 	
@@ -115,14 +115,13 @@ public class MemberVo {
 		this.picture = picture;
 	}
 
-	public int getReportcount() {
+	public String getReportcount() {
 		return reportcount;
 	}
 
-	public void setReportcount(int reportcount) {
+	public void setReportcount(String reportcount) {
 		this.reportcount = reportcount;
 	}
-
 
 	public String getJoindate() {
 		return joindate;
@@ -139,5 +138,7 @@ public class MemberVo {
 				+ pwq + ", answer=" + answer + ", picture=" + picture + ", reportcount=" + reportcount + ", joindate="
 				+ joindate + "]";
 	}
+
+	
 
 }

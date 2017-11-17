@@ -35,5 +35,15 @@
 	values (MSG_SEQ.nextval,#{sender},#{senderid},#{receiver},#{receiverid},#{content},#{chk}) 
 	
 </insert>
+<!-- 차단하기 -->
+<insert id="blockMember" parameterType="www.dto.BlockVo">
+	Insert into block (IDX,BLOCKNICK,ID)
+	values (BLOCK_SEQ.nextval,#{blockNick},#{id})
+
+</insert>
+<select id="myblock" parameterType="String" resultType="www.dto.BlockVo">
+	select * from block where id=#{id}
+
+</select>
 
 </mapper>
