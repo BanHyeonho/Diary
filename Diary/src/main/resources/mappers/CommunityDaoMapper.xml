@@ -21,7 +21,7 @@
   
    <select id="ccomment" parameterType="Integer" resultType="www.dto.CommentVo">
   
-  select * from ccomment where LINKEDIDX=#{idx}
+  select * from ccomment where LINKEDIDX=#{idx} order by idx
   
   </select>
   
