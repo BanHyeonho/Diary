@@ -31,7 +31,9 @@
   values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx})
   
   </insert>
-  
+  <delete id="deleteccomment" parameterType="Integer">
+  delete from CCOMMENT where idx=#{idx}
+  </delete>
   
   
 </mapper>
