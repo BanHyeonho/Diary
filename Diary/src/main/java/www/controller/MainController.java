@@ -36,7 +36,7 @@ public class MainController {
 	public ModelAndView mainn(ModelAndView mav) {
 
 		List<TopVo> list = sv.Top();
-		
+		logger.info(""+list.size());
 		mav.addObject("list", list);
 		mav.setViewName("user/main");
 		return mav;

@@ -11,7 +11,7 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
 		
-		<c:forEach items="${list }" var="data" begin="1" varStatus="rank">
+		<c:forEach items="${list }" var="data" begin="0" varStatus="rank">
 		
 			<div class="contents jumbotron" >
 				<h2 class="title">${rank.count} 등!${data.dtitle}</h2>
