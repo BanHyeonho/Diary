@@ -27,8 +27,7 @@ public class DiaryServiceImpl implements DiaryService {
 
 		DiaryVo diary = dao.onediary(vo.getLinkedidx());
 
-		System.out.println(vo.getId());
-		if (!vo.getId().equals("") && dao.hitCountChk(vo) == null) {
+		if (vo.getId()!=null&&!vo.getId().equals("") && dao.hitCountChk(vo) == null) {
 			diary.setDhitcount(diary.getDhitcount() + 1);
 			dao.hitcount(diary);
 			dao.hitcounted(vo);

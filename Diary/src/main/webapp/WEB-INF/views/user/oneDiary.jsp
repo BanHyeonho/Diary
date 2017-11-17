@@ -43,6 +43,10 @@
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+	
 	<script type="text/javascript" src="script/oneDiary.js"></script>	
+	<script type="text/javascript">
+	createMap();
+	</script>
 </body>
 </html>
