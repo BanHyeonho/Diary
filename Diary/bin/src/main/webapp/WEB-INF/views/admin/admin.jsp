@@ -12,6 +12,11 @@
 $(document).ready(function(){
 	change('${idx}');
 });
+
+function openWin(id){  
+    window.open("http://localhost:8089/oneMember.do?id="+id, "한명의 멤버보기", "width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+}  
+
 </script>
 </head>
 <body>
@@ -69,7 +74,7 @@ $(document).ready(function(){
 								<input type="checkbox" disabled="disabled" <c:if test="${mdata.reportcount>=3}">checked</c:if> />						
 								</td>
 								<td><button type="button"
-										class="btt btn-success btn-md" onclick="">정보보기</button></td>
+										class="btt btn-success btn-md" onclick="javascript:openWin('${mdata.id}');">정보보기</button></td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -151,14 +156,14 @@ $(document).ready(function(){
 				<!-- communityboard -->
 				<div id="communityboard" class="tab-pane fade show">
 					<div class="searchtool">
-					<form class="ss form-inline my-2 my-lg-0" method="get" action="/communitySearch.do">
+					<form class="ss form-inline my-2 my-lg-0" name="searchtool" method="get" action="/communitySearch.do">
 					<select class="form-control" name="option">
 						<option>글제목</option>
 						<option>닉네임</option>
 					</select>
 						<input class="s form-control mr-sm-2" type="text"
 							placeholder="Search" name="keyword">
-						<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit" onclick="communitysearch();">검색</button><!--onclick="communitysearch();"  -->
 						<button type="button" class="btt btn-info btn-md"
 							onclick="reportclist();">신고된 게시물 보기</button>
 					</form>

@@ -27,7 +27,7 @@ function toggle(){
 <div class="navi btn-group-vertical" data-toggle="buttons">
 <div>
 		<button type="button" class="up  btn-outline-primary btn-lg" onclick="location.href='#head'" >맨위로</button>
-		<button type="button" class="btn btn-outline-primary btn-lg">여행일지</button>
+		<button type="button" class="btn btn-outline-primary btn-lg" onclick="location.href='/diary.do'">여행일지</button>
 		<button type="button" class="btn btn-outline-warning btn-lg" onclick="location.href='/diarywrite.do'">여행일지 쓰기</button>
 		<button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='/community.do'">만남의 장</button>
 		<button type="button" class="btn btn-outline-info btn-lg">팔로잉</button>

@@ -64,7 +64,7 @@ public class AdminController {
 		mav.addObject("userinfo", sv.oneMember(vo.getId()));
 		mav.setViewName("admin/oneMember");
 		return mav;
-	}// 회원한명 정보 상세히 보기
+	}// 정보보기버튼-회원한명 정보 상세히 보기
 	
 	@RequestMapping(value = "/confirm.do", method = RequestMethod.GET)
 	public ModelAndView confirm(ModelAndView mav,MemberVo vo ) {
@@ -128,7 +128,14 @@ public class AdminController {
 		map.put("deletediary", "deletediary");
 		return map;
 	} // 여행일지 글삭제
-
+	
+	@RequestMapping(value = "/viewDiary.do", method = RequestMethod.GET)
+	public ModelAndView viewDiary(ModelAndView mav, DiaryVo vo) {
+		mav.addObject("viewDiary", sv.viewDiary(vo.getIdx()));
+		mav.setViewName("admin/viewDiary");
+		return mav;
+	}// 일지게시판 글보기버튼-상세히 보기
+	
 	// public @ResponseBody Map<String,String> reportOk(MemberVo vo,int idx) {
 	// return null;
 	// } // 여행일지 신고확정 글쓴이에게 경고카운트 누적
@@ -175,6 +182,13 @@ public class AdminController {
 		return map;
 	} // 커뮤니티 신고된 글리스트보기
 
+	@RequestMapping(value = "/viewCommunity.do", method = RequestMethod.GET)
+	public ModelAndView viewCommunity(ModelAndView mav, DiaryVo vo) {
+		mav.addObject("viewCommunity", sv.viewCommunity(vo.getIdx()));
+		mav.setViewName("admin/viewCommunity");
+		return mav;
+	}// 만남의장 글보기버튼-상세히 보기
+	
 	// public @ResponseBody Map<String,String> reportCOk(MemberVo vo,int idx) {
 	// return null;
 	// } // 커뮤니티 신고확정 글쓴이에게 경고카운트 누적
@@ -205,8 +219,23 @@ public class AdminController {
 	 public @ResponseBody Map<String, List<CommentVo>> reportcomment(String report) {
 			logger.info(report);
 			Map<String, List<CommentVo>> map = new HashMap<String, List<CommentVo>>();
-			map.put("reportcomment", sv.reportcomment());
+			map.put("reportDcomment", sv.reportDcomment());	// 일지댓글
+			map.put("reportCcomment", sv.reportCcomment());	// 만남댓금
 			return map;
 		}//댓글 리스트 글보여주기
-
-}
+	 
+		@RequestMapping(value = "/deleteDcomment.do", method = RequestMethod.GET)
+		public @ResponseBody Map<String, String> deleteDcomment(CommentVo vo) {
+			Map<String, String> map = new HashMap<String, String>();
+			sv.deleteDcomment(vo.getIdx());
+			map.put("deleteDcomment", "deleteDcomment");
+			return map;
+		} //  신고된 댓글삭제
+		
+		/*@RequestMapping(value = "/viewDComment.do", method = RequestMethod.GET)
+		public ModelAndView viewDComment(ModelAndView mav, CommentVo vo) {
+			mav.addObject("viewCommunity", sv.viewCommunity(vo.getIdx()));
+			mav.setViewName("admin/viewCommunity");
+			return mav;
+		}// 여행일지 댓글보기버튼-상세히 보기
+*/}

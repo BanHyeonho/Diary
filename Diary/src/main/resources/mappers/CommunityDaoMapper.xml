@@ -19,4 +19,19 @@
   
   </select>
   
+   <select id="ccomment" parameterType="Integer" resultType="www.dto.CommentVo">
+  
+  select * from ccomment where LINKEDIDX=#{idx}
+  
+  </select>
+  
+  
+  <insert id="ccommentinsert" parameterType="www.dto.CommentVo">
+  insert into CCOMMENT(IDX,NICK,CONTENTS,CDATE,LINKEDIDX)
+  values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx})
+  
+  </insert>
+  
+  
+  
 </mapper>
