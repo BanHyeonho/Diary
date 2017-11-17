@@ -282,7 +282,13 @@ function DviewopenWin(idx) {
 function CviewopenWin(idx) {
 	window.open("http://localhost:8089/viewCommunity.do?idx=" + idx,
 					"만남의장 글보기",
-					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+
+function dreportReason(idx) {
+	window.open("http://localhost:8089/dreportReason.do?idx=" + idx,
+					"여행일지 신고사유보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
 //function communitysearch(){

@@ -10,6 +10,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 
 @Service
 public class AdminServiceimpl implements AdminService{
@@ -172,6 +173,12 @@ public class AdminServiceimpl implements AdminService{
 	public CommunityVo viewCommunity(int idx) {
 		// TODO Auto-generated method stub
 		return dao.viewCommunity(idx);
+	}
+
+	@Override
+	public List<ReportVo> dreportReason(int linkedidx) {
+		// TODO Auto-generated method stub
+		return dao.dreportReason(linkedidx);
 	}
 
 	

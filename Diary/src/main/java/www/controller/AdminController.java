@@ -17,6 +17,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 import www.service.AdminService;
 
 @Controller
@@ -104,8 +105,8 @@ public class AdminController {
 	@RequestMapping(value = "/diarySearch.do", method = RequestMethod.GET)
 	public ModelAndView diarySearch(ModelAndView mav, String option, String keyword) {
 
-		logger.info(option);
-		logger.info(keyword);
+//		logger.info(option);
+//		logger.info(keyword);
 
 		mav.addObject("dlist", sv.diarySearch(option, keyword));
 		mav.addObject("idx", "1");
@@ -115,7 +116,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/reportdlist.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, List<DiaryVo>> reportdlist(String report) {
-		logger.info(report);
+		//logger.info(report);
 		Map<String, List<DiaryVo>> map = new HashMap<String, List<DiaryVo>>();
 		map.put("reportdlist", sv.reportdlist());
 		return map;
@@ -136,13 +137,26 @@ public class AdminController {
 		return mav;
 	}// 일지게시판 글보기버튼-상세히 보기
 	
+	@RequestMapping(value = "/dreportReason.do", method = RequestMethod.GET)
+	public ModelAndView dreportReason(ModelAndView mav, ReportVo vo) {
+		
+		logger.info(""+vo.getIdx());
+		logger.info(""+sv.dreportReason(vo.getIdx()).size());
+		
+		mav.addObject("dreportReason", sv.dreportReason(vo.getIdx()));
+		mav.setViewName("admin/reportReason");
+		return mav;
+	}// 일지게시판 신고사유버튼-상세히 보기
+	
 	// public @ResponseBody Map<String,String> reportOk(MemberVo vo,int idx) {
 	// return null;
-	// } // 여행일지 신고확정 글쓴이에게 경고카운트 누적
+	// } // 여행일지 신고확정 글쓴이에게 경고카운트 누적-유죄
 	//
 	// public @ResponseBody Map<String,String> reportcancel(DiaryVo vo) {
 	// return null;
-	// } // 여행일지 신고취소
+	// } // 여행일지 신고취소-무죄
+	
+	
 
 	@RequestMapping(value = "/allcommunity.do", method = RequestMethod.GET)
 	public ModelAndView allcommunity(ModelAndView mav) {
@@ -176,7 +190,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/reportclist.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, List<CommunityVo>> reportclist(String report) {
-		logger.info(report);
+		//logger.info(report);
 		Map<String, List<CommunityVo>> map = new HashMap<String, List<CommunityVo>>();
 		map.put("reportclist", sv.reportclist());
 		return map;

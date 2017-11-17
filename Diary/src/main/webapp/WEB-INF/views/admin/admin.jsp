@@ -138,7 +138,7 @@
 									<td><button type="button" class="btn-danger btn-md"
 											onclick="deletediary('${ddata.idx}');">삭제</button></td>
 									<td><button type="button" class="btn-danger btn-md"
-											onclick="">신고사유</button></td>
+											onclick="javascript:dreportReason('${ddata.idx}');">신고사유</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

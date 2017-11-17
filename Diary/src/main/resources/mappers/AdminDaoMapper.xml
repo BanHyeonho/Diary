@@ -126,4 +126,8 @@
 	 	select * from community where idx = #{idx}
 	</select>
 	
+	<select id="dreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from dreport where LINKEDIDX = #{idx}
+	</select>
+	
 </mapper>

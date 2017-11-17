@@ -6,6 +6,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 
 public interface AdminService {
 
@@ -59,7 +60,9 @@ public interface AdminService {
 
 	public DiaryVo viewDiary(int idx); //일지게시판 글보기 버튼
 
-	public CommunityVo viewCommunity(int idx);
+	public CommunityVo viewCommunity(int idx); //커뮤니티 글보기 버튼
+
+	public List<ReportVo> dreportReason(int linkedidx); //일지게시판 신고사유보기
 
 	
 
