@@ -140,6 +140,7 @@ function msg_1(id){
 	var data = {
 		'id' : id
 	};
+	$("#msg_ham").empty();
 	var setting = {
 		url : '/msg.do',
 		type : 'post',
@@ -258,9 +259,10 @@ function mag_form(sender,senderid,receiver,receiverid){
 	
 	
 }
-var dis =[];
+
 //회원 차단하기
 function block(blockNick,id){
+	
 	if (confirm(blockNick+"을(를) 정말 차단 하시겠습니까?") == true) {
 		
 		var datas ={
@@ -281,13 +283,13 @@ function block(blockNick,id){
 					
 					if($('#msg_ham')[0].children[i].children[0].children[0].text==blockNick){
 						arr.push($('#msg_ham')[0].children[i].id);
-						dis.push(arr[i]);
+						
 						
 					}
 				}
 				
 				for (var i = 0; i < arr.length; i++) {
-					$('#'+arr[i]).css('display','none');
+					$('#'+arr[i]).remove();
 					
 				}
 			},
@@ -307,6 +309,7 @@ function block(blockNick,id){
 function block_list(id){
 	
 	
+	$("#my_black").empty();
 	var data = {
 			'id' : id
 		};
@@ -352,10 +355,6 @@ function unBlock(ub){
 				success : function(data){
 					alert(data.result);
 					$('#'+ub).remove();
-					
-					for (var i = 0; i < dis.length; i++) {
-						$('#'+dis[i]).css('display','');
-					}
 					
 				},
 				error : function() {

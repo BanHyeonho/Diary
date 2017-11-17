@@ -114,8 +114,9 @@ public class MainController {
 	 } // 여행일지쓰기로 이동
 
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
-	public ModelAndView mypage(ModelAndView mav) {
+	public ModelAndView mypage(ModelAndView mav,String i) {
 		
+		mav.addObject("i", i);
 		mav.setViewName("user/mypage");
 		
 		return mav;
