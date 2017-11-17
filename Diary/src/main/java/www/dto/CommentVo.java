@@ -9,6 +9,7 @@ public class CommentVo {
 	private int linkedidx; // 참조인덱스
 	private String contents; // 내용
 	private Date cdate; // 작성일
+	private int report;//
 	public int getIdx() {
 		return idx;
 	}
@@ -27,25 +28,30 @@ public class CommentVo {
 	public void setLinkedidx(int linkedidx) {
 		this.linkedidx = linkedidx;
 	}
-	
 	public String getContents() {
 		return contents;
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
 	public Date getCdate() {
 		return cdate;
 	}
 	public void setCdate(Date cdate) {
 		this.cdate = cdate;
 	}
+	public int getReport() {
+		return report;
+	}
+	public void setReport(int report) {
+		this.report = report;
+	}
 	@Override
 	public String toString() {
 		return "CommentVo [idx=" + idx + ", nick=" + nick + ", linkedidx=" + linkedidx + ", contents=" + contents
-				+ ", cdate=" + cdate + "]";
+				+ ", cdate=" + cdate + ", report=" + report + "]";
 	}
+	
 	
 	
 }

@@ -68,12 +68,17 @@ public class MyPageController {
 		map.put("mycommu", sv.community(id));
 		return map;
 	} // 만남의장에 내가쓴글 보기
-//
-//
-//
-//	public @ResponseBody Map<String,List<DiaryVo>> myScrap(String id) {
-//		return null;
-//	} // 스크랩글 보기 로 이동(리스트)
+
+
+	@RequestMapping(value="/myScrap.do", method =RequestMethod.POST)
+	public @ResponseBody Map<String,List> myScrap(String id) {
+		Map<String, List> map = new HashMap<String,List>();
+		
+		map.put("myScrap",sv.myScrap(id));
+		
+		map.put("mydiary", sv.mydiary(id));  //스크랩에서 가져온 인덱스로 select 문 써야함 이거 틀림 (나의 아이디로 select scrap ,scrap한 값의 linkedidx로 select diary idx )
+		return map;
+	} // 스크랩글 보기 로 이동(리스트)
 //
 //	public @ResponseBody Map<String,String> deleteMyScrap(int idx) {
 //		return null;

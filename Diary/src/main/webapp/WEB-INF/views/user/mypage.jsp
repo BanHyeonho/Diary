@@ -28,7 +28,7 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#scrap">스크랩</a></li>
+						href="#scrap" onclick="scrap_list('${user.id}')">스크랩</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#followers">팔로워</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
@@ -202,14 +202,14 @@
 								<th>추천수</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<!--  {} 넣어서 for each 로 돌려 -->
+						<tbody id="scrap_body">
+							<!-- <tr>
+								 {} 넣어서 for each 로 돌려
+								 <td></td>
 								<td></td>
 								<td></td>
 								<td></td>
-								<td></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
