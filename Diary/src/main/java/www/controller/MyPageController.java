@@ -87,7 +87,7 @@ public class MyPageController {
 		map.put("block",sv.myblock(id)); //쪽지함 이동시 차단한 회원 안보이게 하기
 		
 		return map;
-	} // 쪽지함보기(리스트)
+	} // 쪽지함보기(리스트)// 쪽지함 이동시 차단 회원 안보이게 함(리스트)
 
 	
 	@RequestMapping(value="/deleteMsg.do",method = RequestMethod.GET)
@@ -138,4 +138,17 @@ public class MyPageController {
 		
 		return map;
 	} // 내가 차단한 회원 목록을 보여줌 (list)
+	@RequestMapping(value="/unBlock.do",method = RequestMethod.GET)
+	public @ResponseBody Map<String,String> unBlock(int idx) {
+		
+		//logger.info(""+idx);
+		sv.unBlock(idx);
+		
+		
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "차단 해제 성공");
+		
+		return map;
+	} // 쪽지 삭제
 }

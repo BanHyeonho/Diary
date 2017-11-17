@@ -149,7 +149,7 @@ function msg_1(id){
 			var mymsg = data.msg;
 			var myblock = data.block;
 			// console.log(mydiary[0]);
-			console.log(myblock[0].blockNick);
+			//console.log(myblock[0].blockNick);
 			//alert(myblock[0]);
 			var arr = [];
 			if ($('#msg_ham')[0].children[0] == null) {
@@ -258,7 +258,7 @@ function mag_form(sender,senderid,receiver,receiverid){
 	
 	
 }
-
+var dis =[];
 //회원 차단하기
 function block(blockNick,id){
 	if (confirm(blockNick+"을(를) 정말 차단 하시겠습니까?") == true) {
@@ -281,10 +281,14 @@ function block(blockNick,id){
 					
 					if($('#msg_ham')[0].children[i].children[0].children[0].text==blockNick){
 						arr.push($('#msg_ham')[0].children[i].id);
+						dis.push(arr[i]);
+						
 					}
 				}
+				
 				for (var i = 0; i < arr.length; i++) {
-					$('#'+arr[i]).remove();
+					$('#'+arr[i]).css('display','none');
+					
 				}
 			},
 			error : function(){
@@ -299,6 +303,7 @@ function block(blockNick,id){
 	}
 }
 
+//회원 차단 목록
 function block_list(id){
 	
 	
@@ -317,9 +322,9 @@ function block_list(id){
 					for (var i = 0; i < myblock.length; i++) {
 				
 						$('#my_black').append(
-								'<tr><td><a href="/oneDiary.do?idx='
-										+ myblock[i].idx + '">' + myblock[i].blockNick
-										
+								'<tr id='+myblock[i].idx+' ><td>'
+										 + myblock[i].blockNick+ '</td><td>'
+										+ '<button type="button" class="btn btn-outline-danger" onclick="unBlock('+myblock[i].idx+');">차단 해제</button>' 
 										
 										+ '</td></tr>');
 
@@ -333,4 +338,30 @@ function block_list(id){
 
 		};
 		$.ajax(setting);
+}
+function unBlock(ub){
+	
+	if (confirm("정말 해제하시겠습니까?") == true) {
+		var idx = {'idx':ub};
+		
+		var setting = {
+				url : '/unBlock.do',
+				type : 'get',
+				data : idx,
+				dataType : 'json',
+				success : function(data){
+					alert(data.result);
+					$('#'+ub).remove();
+					
+					for (var i = 0; i < dis.length; i++) {
+						$('#'+dis[i]).css('display','');
+					}
+					
+				},
+				error : function() {
+					alert('차단해제를 실패하였습니다');
+				}
+		};
+		$.ajax(setting);
+		}
 }

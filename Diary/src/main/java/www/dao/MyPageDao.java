@@ -29,6 +29,6 @@ public interface MyPageDao {
 	public void sendmsg(MsgVo vo);		//쪽지 보내기
 	public void blockMember(BlockVo vo);//차단하기
 	public List<BlockVo> myblock(String id); //쪽지함 이동시 차단 목록 안보이게 하기
-//	public List<BlockVo> blockList(String id);	//차단한 사람 리스트 보기
+	public void unBlock(int idx); // 차단해제 하기
 	
 }

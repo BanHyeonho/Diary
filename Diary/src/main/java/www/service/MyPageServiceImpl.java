@@ -125,12 +125,13 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.myblock(id);
 	}
 
-//	@Override
-//	public List<BlockVo> blockList(String id) {
-//		// TODO Auto-generated method stub
-//		
-//		return dao.blockList(id);
-//	}
+	@Override
+	public void unBlock(int idx) {
+		// TODO Auto-generated method stub
+		dao.unBlock(idx);
+	}
+
+
 
 	
 	
