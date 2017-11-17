@@ -93,11 +93,11 @@ public class AdminServiceimpl implements AdminService{
 		return dao.reportdlist();
 	}
 
-//	@Override
-//	public List<CommentVo> reportcomment(int report) {
-//		// TODO Auto-generated method stub
-//		return dao.reportcomment();
-//	}
+	@Override
+	public List<CommentVo> reportcomment() {
+		// TODO Auto-generated method stub
+		return dao.reportcomment();
+	}
 
 	@Override
 	public List<CommunityVo> reportclist() {

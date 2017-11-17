@@ -56,6 +56,6 @@ public interface AdminDao {
 
 	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
 	
-//	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
+	public List<CommentVo> reportcomment(); //신고된댓글 리스트 30개보기
 	
 }

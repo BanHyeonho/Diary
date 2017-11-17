@@ -31,7 +31,7 @@ public interface AdminService {
 
 	public List<DiaryVo> diarySearch(String option,String keyword); // 글검색(글제목,닉네임)
 
-//	public List<CommentVo> reportcomment(); //신고된댓글보기
+	public List<CommentVo> reportcomment(); //신고된댓글보기
 
 	public List<CommunityVo> reportclist(); // 신고된커뮤니티글보기	30개
 	

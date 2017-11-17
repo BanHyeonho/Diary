@@ -102,4 +102,10 @@
 		delete from member where id = #{id}
 	</delete> 
 	
+	<select id="reportcomment" resultType="www.dto.CommentVo">
+ 	
+ 	 <![CDATA[select * from (select * from comment
+		where coreportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
 </mapper>

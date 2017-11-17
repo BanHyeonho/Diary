@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
@@ -200,22 +201,12 @@ public class AdminController {
 	// return null;
 	// }//커뮤니티 글 신고사유 보기
 
-	public ModelAndView searchCommunity(String keyword, int choose) { // choose
-																		// 닉네임
-																		// 인지
-																		// 제목인지
-																		// 커뮤니티에서
-																		// 검색
-		return null;
-	}
-
-	// @RequestMapping(value="/reportcomment.do",method=RequestMethod.GET)
-	// public ModelAndView reportcomment(ModelAndView mav,int report){
-	//
-	// mav.addObject("rclist",sv.reportcomment());
-	// mav.addObject("idx", "3");
-	// mav.setViewName("admin/admin");
-	// return mav;
-	// }//댓글 리스트 글보여주기
+	 @RequestMapping(value="/reportcomment.do",method=RequestMethod.GET)
+	 public @ResponseBody Map<String, List<CommentVo>> reportcomment(String report) {
+			logger.info(report);
+			Map<String, List<CommentVo>> map = new HashMap<String, List<CommentVo>>();
+			map.put("reportcomment", sv.reportcomment());
+			return map;
+		}//댓글 리스트 글보여주기
 
 }

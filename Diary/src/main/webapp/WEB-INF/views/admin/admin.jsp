@@ -32,8 +32,7 @@ function openWin(id){
 						href="#diaryboard" onclick="location.href='/alldiary.do'">일지게시판</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#communityboard" onclick="location.href='/allcommunity.do'">만남게시판</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#comment">댓글</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="tab"	href="#comment" onclick="commentList();">댓글</a></li>
 				</ul>
 			</div>
 
@@ -235,7 +234,7 @@ function openWin(id){
 								<th>신고사유보기</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="commentlist">
 							<c:forEach var="codata" items="${rclist}">
 							<tr>
 								<td>
