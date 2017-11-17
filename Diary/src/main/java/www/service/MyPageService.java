@@ -27,6 +27,6 @@ public interface MyPageService {
 //	public List<MsgVo> msgChk();		//chk==1인 경우를 조회
 	public void blockMember(BlockVo vo);//차단하기
 	public List<BlockVo> myblock(String id); ////쪽지함 이동시 차단 목록 안보이게 하기  ,내가 차단한 회원목록 보여주기
-//	public List<BlockVo> blockList(String id); //내가 차단한 회원목록 보여주기
+	public void unBlock(int idx);   //차단 해제하기
 	
 }

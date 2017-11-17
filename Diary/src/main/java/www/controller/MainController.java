@@ -98,9 +98,14 @@ public class MainController {
 		return mav;
 	 } // 만남의장으로 이동
 	
-	// public ModelAndView diary() {
-	// return null;
-	// } // 여행일지로 이동
+	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
+	 public ModelAndView diary(ModelAndView mav) {
+		
+		mav.addObject("list", sv.diary());
+		
+		mav.setViewName("user/diary");
+	 return mav;
+	 } // 여행일지로 이동
 	
 	@RequestMapping(value = "/diarywrite.do", method = RequestMethod.GET)
 	 public ModelAndView diarywrite(ModelAndView mav) {

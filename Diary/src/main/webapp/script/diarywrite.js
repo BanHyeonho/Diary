@@ -140,6 +140,7 @@ function saveMarker(place){
 				if (savePlaces[i].place_name == place.place_name) {
 					alert('삭제되었습니다.');
 					infowindow.close();
+					deleteTab(place.place_name);
 					saveMark[i].setMap(null);
 					for (var j = i; j < savePlaces.length; j++) {
 						
@@ -156,6 +157,7 @@ function saveMarker(place){
 		}else{//추가
 			
 			savePlaces.push(place);
+			createTab(place.place_name);
 			removeMarker();
 			map = new daum.maps.Map(mapContainer, mapOption);
 			removeAllChildNods(document.getElementById('placesList'));
@@ -313,13 +315,13 @@ function hiddenSearch(){
 	$('#menu_wrap').toggle(100);
 }
 
-function change(){
+function change(){// 탭 이동
 	if($('.map_wrap').css('left')=="0px"){
 		$('.map_wrap').animate({
 			left:"-100%"
 		},100);
 		$('.writingPlace').animate({
-			left:"0"
+			left:"207px"
 		},100);
 	}else{
 		$('.map_wrap').animate({
@@ -331,152 +333,76 @@ function change(){
 	}
 	
 }
-
-
-
-/*var infowindow = null;	옛날꺼
-var mapContainer = null;
-var mapOption = null;
-var map = null;
-var place = null;
-var ps = null;
-var savePlaces = [];
-var placeCount = 0;
-
-window.onload = function() {
-	createMap();
-}
-function createMap() {
-	infowindow = new daum.maps.InfoWindow({
-		zIndex : 1
-	});
-
-	mapContainer = document.getElementById('map'), // 지도를 표시할 div
-	mapOption = {
-		center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-		level : 15
-	// 지도의 확대 레벨
-	};
-
-	// 지도를 생성합니다
-	map = new daum.maps.Map(mapContainer, mapOption);
+function createTab(title){
+	$('.oneDiary').css('display', 'none');
+	$('.click').css('background','white');
+	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
+	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="25" cols="100" class="form-control textArea" ></textarea></div>');
+	$('.' + title).css('display', '');
 	
-	for (var i = 0; i < savePlaces.length; i++) {
-		
-		displayMarker(savePlaces[i]);
-	}
-
-}
-
-function searchAction() {
-	createMap();
-	place = document.getElementById('search').value;
-	// 장소 검색 객체를 생성합니다
-	ps = new daum.maps.services.Places();
-
-	// 키워드로 장소를 검색합니다
-	ps.keywordSearch(place, placesSearchCB);
-}
-
-// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
-	if (status === daum.maps.services.Status.OK) {
-
-		// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-		// LatLngBounds 객체에 좌표를 추가합니다
-		var bounds = new daum.maps.LatLngBounds();
-
-		for (var i = 0; i < data.length; i++) {
-			displayMarker(data[i]);
-			bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
-		}
-
-		// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-		map.setBounds(bounds);
-	}
-}
-
-// 지도에 마커를 표시하는 함수입니다
-
-function displayMarker(place) {
-
-	// 마커를 생성하고 지도에 표시합니다
-	var marker = new daum.maps.Marker({
-		map : map,
-		position : new daum.maps.LatLng(place.y, place.x)
-	});
-
-	// 마커에 클릭이벤트를 등록합니다
-	daum.maps.event.addListener(marker, 'mouseover', function() {
-		// 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-		infowindow.setContent('<div style="padding:5px;font-size:12px;">'
-				+ place.place_name + '</div>');
-		infowindow.open(map, marker);
-
-	});// 이벤트
-	daum.maps.event.addListener(marker, 'mouseout', function() {
-		infowindow.close();
-	});
-
-	daum.maps.event.addListener(marker, 'click', function() {
-		var text = place.place_name + '을(를) 추가하시겠습니까?';
-		for (var i = 0; i < savePlaces.length; i++) {
-			if(place.place_name==savePlaces[i].place_name){
-				text = place.place_name + '을(를) 삭제하시겠습니까?';
-			}	
-		}
-		if (confirm(text)) {
-			// console.log(place.y, place.x);
-			if(text==place.place_name + '을(를) 삭제하시겠습니까?'){//북마크 삭제
-				for (var i = 0; i < savePlaces.length; i++) {
-					if (savePlaces[i].place_name == place.place_name) {
-						alert('삭제되었습니다.');
-						deleteTab(place.place_name);
-						for (var j = i; j < savePlaces.length; j++) {
-							
-							if(j+1>=savePlaces.length){
-								savePlaces.length = j;
-								
-								placeCount--;
-								break;
-							}
-							savePlaces[j] = savePlaces[j + 1];
-
-						}
-						
-						marker.setMap(null);
-						infowindow.close();
-						
-						break;
-					}
-				}
-			}else{//추가
-				savePlaces[placeCount] = place;
-				placeCount++;
-				createMap();
-				plusTab(place.place_name);
-			}
-			
-		} else {
-			alert('취소되었습니다.');
-			
-
-		}
-	});
-
-}
-
-var count = 2;
-function plusTab(name) {
-	$('#oneDiaryTab').append('<li><a class="click" href="#" id="' +name+'">'+name+'</a></li>');
-}
-function deleteTab(name){
-	$('#'+name).remove();
-}
-$(document).ready(function() { // 탭 이동
 	$('.click').click(function() {
 		$('.oneDiary').css('display', 'none');
-		var id = $(this).attr('id');
+		var id = $(this).parent().attr('id');
 		$('.' + id).css('display', '');
+		$('.click').css('background','white');
+		$(this).css('background','lightgray');
 	});
-});*/
+}
+function deleteTab(title){
+	$('#'+title).remove();
+	$('.'+title).remove();
+	$('#place'+title).remove();
+}
+
+function writing(){
+	
+	var place ="";
+	var content="";
+	var mappositions="";
+	for (var i = 0; i < $('.places').length; i++) {	//여행지 갯수만큼 반복
+		place=place+$('.places')[i].value+"/";
+	}
+	document.writingForm.place.value=place.substr(0,place.length-1);
+	//여행지 값 구하기 완료
+	
+	for (var i = 0; i < $('.textArea').length; i++) {	//여행지설명 갯수만큼 반복
+		content=content+$('.textArea')[i].value+"/";
+	}
+	
+	document.writingForm.contents.value=content.substr(0,content.length-1);
+	
+	for (var i = 0; i < savePlaces.length; i++) {
+		mappositions=mappositions+savePlaces[i].y+","+savePlaces[i].x+"/"
+	}
+	
+	document.writingForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
+	
+	
+	if(document.writingForm.dtitle.value==''){
+		alert('글제목을 입력하세요.');
+		document.writingForm.dtitle.focus();
+		return false;
+	}else if(document.writingForm.sdate.value==''){
+		alert('여행 시작일을 입력하세요.');
+		document.writingForm.sdate.focus();
+		return false;
+	}else if(document.writingForm.edate.value==''){
+		alert('여행 마지막일을 입력하세요.');
+		document.writingForm.edate.focus();
+		return false;
+	}else if(document.writingForm.place.value==''){
+		alert('여행지를 입력하세요.');
+		document.getElementById('keyword').focus();
+		return false;
+	}else if(document.writingForm.contents.value==''){
+		alert('여행지에 대한 설명을 입력하세요.');
+		change();
+		return false;
+	}else{
+		document.writingForm.submit();
+	}
+	
+}
+
+

@@ -128,15 +128,13 @@
     	</li>
  	 	</ul>
 		</div>
-
-
-	
 	
 	</div>	
 
-
-
-
+			<%@ include file="../layout/nav.jsp"%>
+			<%@ include file="../layout/footer.jsp"%>
+		</div>
+	</div>
 
 </body>
 </html>

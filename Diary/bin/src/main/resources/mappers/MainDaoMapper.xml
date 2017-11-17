@@ -34,6 +34,12 @@
 		select * from COMMUNITY order
 		by idx desc
 	</select>
+	<select id="diary" resultType="www.dto.DiaryVo">
+		<![CDATA[select * from (select * from DIARY
+		order by ddate desc) where rownum <= 30
+		 ]]>
+	</select>
+
 
 	<select id="Top" resultType="www.dto.TopVo">
 		<![CDATA[select * from (select * from DIARY

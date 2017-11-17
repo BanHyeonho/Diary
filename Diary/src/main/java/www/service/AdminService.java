@@ -44,8 +44,13 @@ public interface AdminService {
 //	public ReportVo reportReason(int idx); //여행일지글 신고사유 보기
 //	
 //	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
-//	
-//	public List<DiaryVo> serchDiary(String keyword,int choose);	// 필터(닉네임,글제목) 과 키워드로 여행일지 검색
-//	
-//	public List<DiaryVo> serchCommunity(String keyword,int choose);	// 필터(닉네임,글제목) 과 키워드로 커뮤니티 검색
+	
+	public List<CommunityVo> communitySearch(String option,String keyword); // 만남의장 검색(글제목,닉네임)
+
+	public MemberVo oneMember(String id); //정보보기 버튼누를때
+
+	public void updatedmember(MemberVo vo); //정보보기버튼에서 확인버튼누를때
+
+	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
+
 }
