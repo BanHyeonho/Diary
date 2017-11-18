@@ -20,6 +20,7 @@ import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
+import www.dto.ScrapVo;
 import www.service.MyPageService;
 
 @Controller
@@ -79,11 +80,16 @@ public class MyPageController {
 		map.put("mydiary", sv.mydiary(id));  //스크랩에서 가져온 인덱스로 select 문 써야함 이거 틀림 (나의 아이디로 select scrap ,scrap한 값의 linkedidx로 select diary idx )
 		return map;
 	} // 스크랩글 보기 로 이동(리스트)
-//
-//	public @ResponseBody Map<String,String> deleteMyScrap(int idx) {
-//		return null;
-//	} // 스크랩글 삭제
-//
+
+	@RequestMapping(value="/deleteMyScrap.do", method =RequestMethod.GET)
+	public @ResponseBody Map<String,String> deleteMyScrap(ScrapVo vo) {
+		
+		sv.deletemyscrap(vo);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		return map;
+	} // 스크랩글 삭제
+
 	@RequestMapping(value="/msg.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String,List> msg(String id) {
 		Map<String,List> map = new HashMap<String,List>();

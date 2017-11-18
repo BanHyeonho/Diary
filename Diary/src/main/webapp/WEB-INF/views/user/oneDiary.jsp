@@ -38,7 +38,7 @@
 		</c:if>
 		
 		
-		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span><button type="button">추천수 : ${data.Diary.good }</button>
+		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span><button type="button" id="good" onclick="good('${user.id}','${data.Diary.idx }','${data.Diary.good }');">추천수 : ${data.Diary.good }</button>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
 		<button type="button">신고</button>
 		</c:if>
@@ -46,7 +46,16 @@
 		<span style="float: right;" onclick="add();">글쓴이 : ${data.Diary.nick }</span>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
 		<ul id="add" style="position: absolute;right:0px; z-index: 10;display: none;">
-			<li><a id="follow" href="javascript:follow('${data.Diary.id }','${data.Diary.nick }','${ user.id}','${user.nick }');">팔로우하기</a></li>
+			<li><a id="follow" href="javascript:follow('${data.Diary.id }','${data.Diary.nick }','${ user.id}','${user.nick }');">
+			<c:choose>
+			<c:when test="${data.Follow==null }">
+			팔로우하기
+			</c:when>
+			<c:otherwise>
+			팔로우 취소하기
+			</c:otherwise>
+			</c:choose>
+			</a></li>
 			<li><a href="javascript:mag_form('${ data.Diary.nick }','${ data.Diary.id }','${user.nick }','${user.id }');">쪽지보내기</a></li>
 		</ul>
 		</c:if>

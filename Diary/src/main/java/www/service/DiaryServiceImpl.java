@@ -10,6 +10,7 @@ import www.dao.DiaryDao;
 import www.dao.MyPageDao;
 import www.dto.CommentVo;
 import www.dto.DiaryVo;
+import www.dto.GoodVo;
 import www.dto.HitCountVo;
 import www.dto.ScrapVo;
 
@@ -28,7 +29,7 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public Map<String, Object> onediary(HitCountVo vo) {
-
+		
 		DiaryVo diary = dao.onediary(vo.getLinkedidx());
 		
 		if (vo.getId()!=null&&!vo.getId().equals("") && dao.hitCountChk(vo) == null) {
@@ -41,6 +42,10 @@ public class DiaryServiceImpl implements DiaryService {
 	
 		if(vo.getId()!=null&&dao.scrapChk(vo)!=null){
 		map.put("Scrap", "Scrap");
+		}
+		
+		if(vo.getId()!=null&&dao.followChk(vo)!=null){
+			map.put("Follow", "Follow");
 		}
 		map.put("Diary", diary);
 		map.put("Comment", dao.comment(vo.getLinkedidx()));
@@ -58,6 +63,13 @@ public class DiaryServiceImpl implements DiaryService {
 	public void insertscrap(ScrapVo vo) {
 		dao.insertscrap(vo);
 		
+	}
+
+	@Override
+	public void good(GoodVo vo) {
+		// TODO Auto-generated method stub
+		vo.setGood(vo.getGood()+1);
+		//dao.good(vo);
 	}
 
 }

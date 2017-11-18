@@ -63,4 +63,9 @@
 	select * from SCRAP where id=#{id}
 </select>
 
+<!-- 스크랩삭제 -->
+<delete id="deletemyscrap" parameterType="www.dto.ScrapVo">
+	delete from SCRAP where id = #{id} and linkedidx = #{linkedidx}
+</delete>
+
 </mapper>
