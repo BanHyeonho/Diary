@@ -8,6 +8,7 @@ import www.dto.DiaryVo;
 import www.dto.FollowVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
+import www.dto.ScrapVo;
 
 public interface MyPageDao {
 	
@@ -22,7 +23,7 @@ public interface MyPageDao {
 //	public List<CommunityVo> mycommunity(String id);//내가쓴 만남의장글 보기
 //	public void updatemycommunity(CommunityVo vo);	//내가쓴 만남의장글 수정
 //	public List<MsgVo> msgChk();		//chk==1인 경우를 조회
-//	public List<DiaryVo> myScrap(String id);	//스크랩글 보기(여행일지쓰기에서 스크랩배끼기눌렀을 경우사용)
+	public List<ScrapVo> myScrap(String id);	//스크랩글 보기 리스트(여행일지쓰기에서 스크랩배끼기눌렀을 경우사용)
 //	public void deletemyscrap(int idx);	//스크랩글 삭제
 	public List<MsgVo> msg(String id);	//쪽지함 보기
 //	public void msgReset();				//쪽지함의 글 chk 값을 0으로 리셋

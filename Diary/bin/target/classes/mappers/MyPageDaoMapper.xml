@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.dao.MyPageDao">
+
+<!-- 회원정보수정  -->
+<update id="updateinfo" parameterType="www.dto.MemberVo">
+	update member set PASSWORD=#{password},NAME=#{name},GENDER=#{gender},BIRTH=#{birth},EMAIL=#{email},PHONE=#{phone},ADDR=#{addr},PWQ=#{pwq},ANSWER=#{answer},PICTURE=#{picture} Where ID=#{id}
+</update>
+<!-- 회원탈퇴 -->
+<delete id="deleteinfo" parameterType="String">
+	delete FROM member WHERE ID=#{id}
+
+</delete>
+<!-- 내가 쓴 여행일지 글 -->
+<select id="mydiary" parameterType="String" resultType="www.dto.DiaryVo">
+	select * from diary where id=#{id}
+</select>
+<!-- 내가 쓴 만남의장 글 -->
+<select id="mycommu" parameterType="String" resultType="www.dto.CommunityVo">
+	select * from COMMUNITY where id=#{id}
+</select>
+<!-- 쪽지함 보기 -->
+<select id="msg" parameterType="String" resultType="www.dto.MsgVo">
+	select * from MSG where RECEIVERID =#{id} order by idx desc
+</select>
+<!-- 쪽지삭제 -->
+<delete id="deletemsg" parameterType="int">
+	delete FROM msg where idx=#{idx}
+</delete>
+<!-- 메세지 답장하기, 본 -->
+<insert id="sendmsg" parameterType="www.dto.MsgVo">
+	 Insert into msg (IDX,SENDER,SENDERID,RECEIVER,RECEIVERID,CONTENT,CHK)
+	values (MSG_SEQ.nextval,#{sender},#{senderid},#{receiver},#{receiverid},#{content},#{chk}) 
+	
+</insert>
+<!-- 차단하기 -->
+<insert id="blockMember" parameterType="www.dto.BlockVo">
+	Insert into block (IDX,BLOCKNICK,ID)
+	values (BLOCK_SEQ.nextval,#{blockNick},#{id})
+
+</insert>
+<!-- 차단리스트 가져오기 -->
+<select id="myblock" parameterType="String" resultType="www.dto.BlockVo">
+	select * from block where id=#{id}
+
+</select>
+
+<!-- 차단해제 하기 -->
+<delete id="unBlock" parameterType="int">
+	delete FROM block where idx=#{idx}
+</delete>
+<<<<<<< HEAD
+
+<!-- 팔로우하기 -->
+<insert id="addfollow" parameterType="www.dto.FollowVo">
+	insert into FOLLOW values(FOLLOW_SEQ.NEXTVAL,#{following},#{followers},#{followingId},#{followersId})
+</insert>
+
+=======
+<!-- 내가 스크랩한 리스트 -->
+<select id="myScrap" parameterType="String" resultType="www.dto.ScrapVo">
+	select * from SCRAP where id=#{id}
+</select>
+>>>>>>> refs/remotes/origin/lee
+</mapper>

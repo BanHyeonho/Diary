@@ -1,6 +1,7 @@
 package www.dto;
 
 public class ScrapVo {
+
 	private int idx;
 	private int linkedidx;
 	private String id;

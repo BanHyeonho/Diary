@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.dao.DiaryDao">
+<!--   <select id="selectBlog" resultType="Blog">
+    select * from Blog where id = #{id}
+  </select> -->
+  <insert id="diarywrite" parameterType="www.dto.DiaryVo">
+  insert into DIARY(IDX,ID,NICK,DTITLE,PLACE,CONTENTS,MAPPOSITION,DPICTURE,SDATE,EDATE,DDATE,DHITCOUNT,GOOD,DREPORTCOUNT,DPUBLIC )
+values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},'쓰레기값',#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
+  </insert>
+  
+  <insert id="writedcomment" parameterType="www.dto.CommentVo">
+  insert into DCOMMENT values(DCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx},0)
+  </insert>
+  
+  <insert id="insertscrap" parameterType="www.dto.ScrapVo">
+  insert into SCRAP values(SCRAP_SEQ.NEXTVAL,#{id},#{linkedidx})
+  </insert>
+  
+  <insert id="hitcounted" parameterType="www.dto.HitCountVo">
+  insert into DHITCOUNT values(DHITCOUNT_SEQ.NEXTVAL,#{linkedidx},#{id})
+  </insert>
+  <select id="hitCountChk" resultType="www.dto.HitCountVo" parameterType="www.dto.HitCountVo">
+    select * from DHITCOUNT where ID = #{id} and LINKEDIDX = #{linkedidx}
+  </select>
+  
+  <select id="scrapChk" resultType="www.dto.ScrapVo" parameterType="www.dto.HitCountVo">
+    select * from SCRAP where ID = #{id} and LINKEDIDX = #{linkedidx}
+  </select>
+  
+  <select id="onediary" resultType="www.dto.DiaryVo" parameterType="Integer">
+    select * from DIARY where idx = #{idx}
+  </select>
+  <update id="hitcount" parameterType="www.dto.DiaryVo">
+  	update DIARY set DHITCOUNT = #{dhitcount} where IDX=#{idx}
+  </update>
+  <select id="comment" parameterType="Integer" resultType="www.dto.CommentVo">
+  	select * from DCOMMENT where LINKEDIDX = #{idx}
+  </select>
+  
+</mapper>

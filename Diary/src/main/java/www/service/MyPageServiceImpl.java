@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.MyPageDao;
+import www.dto.ScrapVo;
 import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
@@ -74,12 +75,8 @@ public class MyPageServiceImpl implements MyPageService{
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-//
-//	@Override
-//	public List<DiaryVo> myScrap(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+
 //
 //	@Override
 //	public void deletemyscrap(int idx) {
@@ -130,6 +127,12 @@ public class MyPageServiceImpl implements MyPageService{
 	public void unBlock(int idx) {
 		// TODO Auto-generated method stub
 		dao.unBlock(idx);
+	}
+
+	@Override
+	public List<ScrapVo> myScrap(String id) {
+		// TODO Auto-generated method stub
+		return dao.myScrap(id);
 	}
 
 
