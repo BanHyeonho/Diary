@@ -6,6 +6,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 
 public interface AdminDao {
 
@@ -56,6 +57,16 @@ public interface AdminDao {
 
 	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
 	
-//	public List<CommentVo> reportcomment(int report); //신고된댓글 리스트 30개보기
+	public List<CommentVo> reportDcomment(); //여행일지 신고된댓글 리스트 30개보기
+
+	public List<CommentVo> reportCcomment(); //만남의장 신고된 댓글 리스트 30개보기
+
+	public void deleteDcomment(int idx); //신고된 댓글 삭제하기 
+
+	public DiaryVo viewDiary(int idx); //일지게시판-글보기 버튼
+
+	public CommunityVo viewCommunity(int idx); //커뮤니티-글보기 버튼
+
+	public List<ReportVo> dreportReason(int linkedidx); //일지게시판-신고사유버튼
 	
 }
