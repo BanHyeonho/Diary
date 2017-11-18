@@ -80,6 +80,16 @@ public class CommunityController {
 		return map;
 	} // 댓글삭제
 	
+	@RequestMapping(value="/deletecommu.do",method = RequestMethod.GET)
+	public ModelAndView deletecommunity(ModelAndView mav,int idx){
+		
+		sv.deletecommunity(idx);
+		
+		mav.setViewName("redirect:/community.do");
+		
+		return mav;
+	}//만남의장 글보기 에서 만남의장 게시글 삭제
+	
 
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {

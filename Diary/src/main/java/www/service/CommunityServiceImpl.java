@@ -51,5 +51,12 @@ public class CommunityServiceImpl implements CommunityService{
 		// TODO Auto-generated method stub
 		dao.deleteccomment(idx);
 	}
+
+
+	@Override
+	public void deletecommunity(int idx) {
+		// TODO Auto-generated method stub
+		dao.deletecommunity(idx);
+	}
 	
 }

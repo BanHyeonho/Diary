@@ -142,11 +142,9 @@ function msg_1(id){
 	var data = {
 		'id' : id
 	};
-<<<<<<< HEAD
-	console.log(data);
-=======
+
 	$("#msg_ham").empty();
->>>>>>> refs/remotes/origin/lee
+
 	var setting = {
 		url : '/msg.do',
 		type : 'post',
