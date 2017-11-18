@@ -18,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
+import www.dto.FollowVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
+import www.dto.ScrapVo;
 import www.service.MyPageService;
 
 @Controller
@@ -71,12 +73,12 @@ public class MyPageController {
 
 
 	@RequestMapping(value="/myScrap.do", method =RequestMethod.POST)
-	public @ResponseBody Map<String,List> myScrap(String id) {
-		Map<String, List> map = new HashMap<String,List>();
+	public @ResponseBody Map<String,List<ScrapVo>> myScrap(String id) {
+		Map<String, List<ScrapVo>> map = new HashMap<String,List<ScrapVo>>();
 		
 		map.put("myScrap",sv.myScrap(id));
 		
-		map.put("mydiary", sv.mydiary(id));  //스크랩에서 가져온 인덱스로 select 문 써야함 이거 틀림 (나의 아이디로 select scrap ,scrap한 값의 linkedidx로 select diary idx )
+		
 		return map;
 	} // 스크랩글 보기 로 이동(리스트)
 //
@@ -115,15 +117,23 @@ public class MyPageController {
 		mav.setViewName("user/msgSend");
 		return mav;
 	} // 쪽지 보내기폼으로 이동 답장하기
-//	
-//	public @ResponseBody Map<String,List<FollowVo>> following(String id) {
-//		return null;
-//	}//내가 팔로우한사람 보는 리스트
-//	
-//	public @ResponseBody Map<String,List<FollowVo>> followers(String id) {
-//		return null;
-//	}//나를 팔로우한사람 보는 리스트
-//	
+	
+	@RequestMapping(value="/following.do", method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<FollowVo>> following(String id) {
+		Map<String,List <FollowVo>> map = new HashMap<String,List <FollowVo>>();
+		
+		map.put("following_go", sv.following(id));
+		return map;
+	}//내가 팔로우한사람 보는 리스트
+	
+	@RequestMapping(value="/followers.do", method = RequestMethod.POST)
+	public @ResponseBody Map<String,List<FollowVo>> followers(String id) {
+		Map<String,List <FollowVo>> map = new HashMap<String,List <FollowVo>>();
+		
+		map.put("followers_go", sv.followers(id));
+		return map;
+	}//나를 팔로우한사람 보는 리스트
+
 	@RequestMapping(value="/blockMember.do",method = RequestMethod.GET)
 	public @ResponseBody Map<String,String> blockMember(BlockVo vo,ModelAndView mav){
 		logger.info(vo.toString());

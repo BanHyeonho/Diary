@@ -39,11 +39,6 @@
 				<td><input type="text" class="form-control"
 					value="${userinfo.name}" name="name" readonly="readonly" /></td>
 			</tr>
-			<tr>
-				<th class="join">비밀번호</th>
-				<td><input type="password" class="form-control"
-					value="${userinfo.password}" name="password" readonly="readonly" /></td>
-			</tr>
 		</table>
 		</div>
 			<div class="li">

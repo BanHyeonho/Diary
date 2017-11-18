@@ -6,6 +6,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 
 public interface AdminService {
 
@@ -31,7 +32,9 @@ public interface AdminService {
 
 	public List<DiaryVo> diarySearch(String option,String keyword); // 글검색(글제목,닉네임)
 
-//	public List<CommentVo> reportcomment(); //신고된댓글보기
+	public List<CommentVo> reportDcomment(); // 여행일지 신고된댓글보기
+	
+	public List<CommentVo> reportCcomment(); //만남의장 신고된 댓글보기
 
 	public List<CommunityVo> reportclist(); // 신고된커뮤니티글보기	30개
 	
@@ -52,5 +55,15 @@ public interface AdminService {
 	public void updatedmember(MemberVo vo); //정보보기버튼에서 확인버튼누를때
 
 	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
+
+	public void deleteDcomment(int idx); //아직?
+
+	public DiaryVo viewDiary(int idx); //일지게시판 글보기 버튼
+
+	public CommunityVo viewCommunity(int idx); //커뮤니티 글보기 버튼
+
+	public List<ReportVo> dreportReason(int linkedidx); //일지게시판 신고사유보기
+
+	
 
 }
