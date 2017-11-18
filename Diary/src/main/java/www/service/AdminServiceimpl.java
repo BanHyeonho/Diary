@@ -181,6 +181,12 @@ public class AdminServiceimpl implements AdminService{
 		return dao.dreportReason(linkedidx);
 	}
 
+	@Override
+	public List<ReportVo> creportReason(int linkedidx) {
+		// TODO Auto-generated method stub
+		return dao.creportReason(linkedidx);
+	}
+
 	
 
 //	@Override

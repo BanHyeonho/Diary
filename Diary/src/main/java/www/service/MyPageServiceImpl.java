@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.MyPageDao;
+import www.dto.ScrapVo;
 import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
+import www.dto.FollowVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
 
@@ -43,13 +45,13 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return dao.mycommu(id);
 	}
-//
-//	@Override
-//	public void addfollow(FollowVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
+	@Override
+	public void addfollow(FollowVo vo) {
+		// TODO Auto-generated method stub
+		dao.addfollow(vo);
+	}
+
 //	@Override
 //	public void deletefollow(int idx) {
 //		// TODO Auto-generated method stub
@@ -73,12 +75,8 @@ public class MyPageServiceImpl implements MyPageService{
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-//
-//	@Override
-//	public List<DiaryVo> myScrap(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+
 //
 //	@Override
 //	public void deletemyscrap(int idx) {
@@ -125,12 +123,19 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.myblock(id);
 	}
 
-//	@Override
-//	public List<BlockVo> blockList(String id) {
-//		// TODO Auto-generated method stub
-//		
-//		return dao.blockList(id);
-//	}
+	@Override
+	public void unBlock(int idx) {
+		// TODO Auto-generated method stub
+		dao.unBlock(idx);
+	}
+
+	@Override
+	public List<ScrapVo> myScrap(String id) {
+		// TODO Auto-generated method stub
+		return dao.myScrap(id);
+	}
+
+
 
 	
 	

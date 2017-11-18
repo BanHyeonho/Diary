@@ -64,7 +64,6 @@
 		 ]]>
 
 	</select>
-
 	<delete id="deletediary" parameterType="Integer">
 		delete from diary where idx = #{idx}
 	</delete>
@@ -79,7 +78,6 @@
 	<delete id="deletecommunity" parameterType="Integer">
 		delete from community where idx = #{idx}
 	</delete>
-
 
 	<select id="searchByCNick" resultType="www.dto.CommunityVo" parameterType="String">
 		select * from community
@@ -101,5 +99,35 @@
 	<delete id="deleteAccount" parameterType="String">
 		delete from member where id = #{id}
 	</delete> 
+	
+	<select id="reportDcomment" resultType="www.dto.CommentVo">
+ 	
+ 	 <![CDATA[select * from (select * from dcomment
+		where reportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
+	
+	<select id="reportCcomment" resultType="www.dto.CommentVo">
+ 	
+ 	 <![CDATA[select * from (select * from ccomment
+		where reportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
+	
+	<delete id="deleteDcomment" parameterType="Integer">
+		delete from dcomment where idx = #{idx}
+	</delete>
+	
+	<select id="viewDiary" resultType="www.dto.DiaryVo" parameterType="Integer">
+	 	select * from diary where idx = #{idx}
+	</select>
+	
+	<select id="viewCommunity" resultType="www.dto.CommunityVo" parameterType="Integer">
+	 	select * from community where idx = #{idx}
+	</select>
+	
+	<select id="dreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from dreport where LINKEDIDX = #{idx}
+	</select>
 	
 </mapper>

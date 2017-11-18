@@ -68,12 +68,17 @@ public class MyPageController {
 		map.put("mycommu", sv.community(id));
 		return map;
 	} // 만남의장에 내가쓴글 보기
-//
-//
-//
-//	public @ResponseBody Map<String,List<DiaryVo>> myScrap(String id) {
-//		return null;
-//	} // 스크랩글 보기 로 이동(리스트)
+
+
+	@RequestMapping(value="/myScrap.do", method =RequestMethod.POST)
+	public @ResponseBody Map<String,List> myScrap(String id) {
+		Map<String, List> map = new HashMap<String,List>();
+		
+		map.put("myScrap",sv.myScrap(id));
+		
+		map.put("mydiary", sv.mydiary(id));  //스크랩에서 가져온 인덱스로 select 문 써야함 이거 틀림 (나의 아이디로 select scrap ,scrap한 값의 linkedidx로 select diary idx )
+		return map;
+	} // 스크랩글 보기 로 이동(리스트)
 //
 //	public @ResponseBody Map<String,String> deleteMyScrap(int idx) {
 //		return null;
@@ -87,7 +92,7 @@ public class MyPageController {
 		map.put("block",sv.myblock(id)); //쪽지함 이동시 차단한 회원 안보이게 하기
 		
 		return map;
-	} // 쪽지함보기(리스트)
+	} // 쪽지함보기(리스트)// 쪽지함 이동시 차단 회원 안보이게 함(리스트)
 
 	
 	@RequestMapping(value="/deleteMsg.do",method = RequestMethod.GET)
@@ -138,4 +143,17 @@ public class MyPageController {
 		
 		return map;
 	} // 내가 차단한 회원 목록을 보여줌 (list)
+	@RequestMapping(value="/unBlock.do",method = RequestMethod.GET)
+	public @ResponseBody Map<String,String> unBlock(int idx) {
+		
+		//logger.info(""+idx);
+		sv.unBlock(idx);
+		
+		
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "차단 해제 성공");
+		
+		return map;
+	} // 쪽지 삭제
 }

@@ -44,5 +44,12 @@ public class CommunityServiceImpl implements CommunityService{
 		// TODO Auto-generated method stub
 		return dao.ccomment(idx);
 	}
+
+
+	@Override
+	public void deleteccomment(int idx) {
+		// TODO Auto-generated method stub
+		dao.deleteccomment(idx);
+	}
 	
 }

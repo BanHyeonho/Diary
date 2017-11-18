@@ -28,13 +28,13 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#scrap">스크랩</a></li>
+						href="#scrap" onclick="scrap_list('${user.id}')">스크랩</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#followers">팔로워</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#follwoing">팔로윙</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#msg" onclick="msg_1('${user.id}')">쪽지함</a></li>
+						href="#msg" onclick="msg_1('${user.id}');">쪽지함</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>
@@ -202,14 +202,14 @@
 								<th>추천수</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<!--  {} 넣어서 for each 로 돌려 -->
+						<tbody id="scrap_body">
+							<!-- <tr>
+								 {} 넣어서 for each 로 돌려
+								 <td></td>
 								<td></td>
 								<td></td>
 								<td></td>
-								<td></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>

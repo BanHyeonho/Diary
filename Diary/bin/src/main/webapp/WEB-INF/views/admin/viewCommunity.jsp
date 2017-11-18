@@ -7,14 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
+
+<link href="css/simplex.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/diary.css">
 </head>
-
-
-
 <script type="text/javascript" src="script/onecommunity.js"></script>
 <body>
 	<div class="wrap">
-	<%@ include file="../layout/header.jsp"%>
+	
 	<div class="container">
 	<div class="contents" >
 	<h1>만남의 장</h1>
@@ -23,42 +23,41 @@
 		<tbody>
 		<tr>
 			<td>제목</td>
-			<td>
-			${data.ctitle }
+			<td colspan="3">
+			${viewCommunity.ctitle }
 			</td>
-			<td>닉네임</td>
-			<td>
-			${data.nick }
-			</td>
-		
+		</tr>
     	<tr> 
        		<td>지역</td>
-         	<td>${data.cplace}</td>
+         	<td>${viewCommunity.cplace}</td>
       		<td>인원</td>
-      		<td>${data.attendee}</td>
+      		<td>${viewCommunity.attendee}</td>
     	</tr>
     	<tr>
        		<td>성별</td>
-         	<td> ${data.gender}</td>
+         	<td>${viewCommunity.gender}</td>
       		<td>차량유무</td>
-      		<td>${data.car }</body></td>
+      		<td>${viewCommunity.car }</body></td>
     	</tr>
     	<tr>
        		<td>여행날짜</td>
          	<td colspan="3">	
-          		${data.sdate }
+          		${viewCommunity.sdate }
           		~
-           		${data.edate }
+           		${viewCommunity.edate }
          		
       		</td>
       	</tr>
-  
+      	<tr>
+      	
+    	</tr>
+    	
 		</tbody>
 </table>
-	
+
 			<div class="form-group">
       		
-      		<textarea class="form-control" name="contents" rows="20" readonly="readonly" style="background-color: #fff;">${data.contents }</textarea>
+      		<textarea class="form-control" name="contents" rows="20" readonly="readonly" style="background-color: #fff;">${viewCommunity.contents }</textarea>
       		
     		</div>
     	
@@ -66,7 +65,7 @@
 				<div>
 			<table>
 				<tr>
-					<td>${user.nick } </td>
+					<td>${user.nick }</td>
 				</tr>
 				<tr>
 					<td>
@@ -80,33 +79,24 @@
 			
 		<hr>
 		
-		
 		<div>
-	
-		<table id="ccomment" border="1"   table class="table table-bordered">
-			<c:forEach items="${list }" var="data1" >
-			<tr class='${data1.idx}'>
-				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
-				
+		<c:forEach items="${list }" var="data1" >
+			<table>
+			<tr>
+				<td>${data1.nick}</td>
 			</tr>
-			<tr class='${data1.idx}'>
-			<td>${data1.contents } <button type="button"  class="btn btn-primary btn-sm">신고</button></td>
+			<hr>
+			<tr>
+				<td>${data1.contents }</td>
 			</tr>
-			
-			</c:forEach> 
-		</table>
+			</table>
+		</c:forEach>
 		</div>
-		
-		
 	
-		
-	    <button type="button" class="btn btn-primary btn-lg">글삭제</button>
-    	<button type="button" class="btn btn-primary btn-lg">글수정</button>
-    	
+	
 	
 	</div>
-		<%@ include file="../layout/nav.jsp"%>
-		<%@ include file="../layout/footer.jsp"%>
+		
 	</div>
 	</div>
 	

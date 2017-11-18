@@ -9,7 +9,7 @@ public class CommentVo {
 	private int linkedidx; // 참조인덱스
 	private String contents; // 내용
 	private Date cdate; // 작성일
-	private int reportcount; //신고회수
+	private int reportcount; //신고횟수
 	public int getIdx() {
 		return idx;
 	}
@@ -53,5 +53,4 @@ public class CommentVo {
 	}
 
 	
-
 }
