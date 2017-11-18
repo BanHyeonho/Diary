@@ -46,4 +46,8 @@
 
 </select>
 
+<!-- 팔로우하기 -->
+<insert id="addfollow" parameterType="www.dto.FollowVo">
+	insert into FOLLOW values(FOLLOW_SEQ.NEXTVAL,#{following},#{followers},#{followingId},#{followersId})
+</insert>
 </mapper>

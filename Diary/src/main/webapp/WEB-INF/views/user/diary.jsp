@@ -19,7 +19,7 @@
 				<h1>여행일지</h1>
 
 		<c:forEach items="${list }" var="data">
-				<div class="card border-info">
+				<div class="card border-info" style="height: 200px;">
 					<div class="card-body">
 						<blockquote class="card-blockquote">
 				<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}">

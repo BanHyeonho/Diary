@@ -136,10 +136,12 @@ function myCommunity(id){
 
 //쪽지함 가기
 function msg_1(id){
+	
 	var id = id;
 	var data = {
 		'id' : id
 	};
+	console.log(data);
 	var setting = {
 		url : '/msg.do',
 		type : 'post',
@@ -149,7 +151,7 @@ function msg_1(id){
 			var mymsg = data.msg;
 			var myblock = data.block;
 			// console.log(mydiary[0]);
-			console.log(myblock[0].blockNick);
+			//console.log(myblock[0].blockNick);
 			//alert(myblock[0]);
 			var arr = [];
 			if ($('#msg_ham')[0].children[0] == null) {
@@ -255,8 +257,6 @@ function mag_form(sender,senderid,receiver,receiverid){
 	form.submit();
 
 
-	
-	
 }
 
 //회원 차단하기
