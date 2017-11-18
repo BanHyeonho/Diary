@@ -62,3 +62,116 @@ $('.click').click(function() {
 	$('.click').css('background','white');
 	$(this).css('background','lightgray');
 });
+function add(){
+	$('#add').toggle(100);
+}
+function comment(nick,idx){
+	var text = $('#comment').val();
+	var data = {
+			"nick" : nick,
+			"linkedidx" : idx,
+			"contents" : text
+	};
+	var setting = {
+			"url" : "/writeDComment.do",
+			"type" : "post",
+			"dataType" : "json",
+			"data" : data,
+			"success" : function(data){
+				$('#comment').val('');
+				alert('성공');
+			},
+			"error" : function(){}
+	};
+	
+	$.ajax(setting);
+}
+function scrap(idx,id){
+	
+	if($('#scrap').text().trim()=="스크랩하기"){
+		if(confirm('스크랩 하시겠습니까?')){
+			
+			var data = {
+					"id":id,
+					"linkedidx":idx
+			};
+			
+			var setting={
+					"url" : "/insertScrap.do",
+					"dataType" : "json",
+					"data":data,
+					"type":"get",
+					"success":function(){
+						$('#scrap').text('스크랩취소');
+					},
+					"error":function(){}
+			};
+			
+			
+			$.ajax(setting);
+		}
+	}else{
+		if(confirm('스크랩취소 하시겠습니까?')){
+			
+//			var data = {
+//					"id":id,
+//					"linkedidx":idx
+//			};
+//			
+//			var setting={
+//					"url" : "/insertScrap.do",
+//					"dataType" : "json",
+//					"data":data,
+//					"type":"get",
+//					"success":function(){
+//						$('#scrap').text('스크랩하기');
+//					},
+//					"error":function(){}
+//			};
+//			
+//			
+//			$.ajax(setting);
+//			
+//			
+			
+		}
+	}
+	
+}
+function follow(followingId,following,followersId,followers){
+	console.log(followingId,following,followersId,followers);
+	
+	if($('#follow').text()=="팔로우하기"){
+		if(confirm(following+"님을 팔로우 하시겠습니까?")){
+			var data = {
+					"followingId":followingId,
+					"following":following,
+					"followersId":followersId,
+					"followers":followers
+			};
+			
+			var setting={
+					"url" : "/addFollow.do",
+					"dataType" : "json",
+					"data":data,
+					"type":"get",
+					"success":function(){
+						alert('팔로우 되었습니다.');
+						$('#follow').text('팔로우 취소하기');
+					},
+					"error":function(){}
+			};
+			
+			
+			$.ajax(setting);
+		}
+	}else{	//팔로우 취소
+		
+	}
+	
+	
+	
+}
+
+
+

@@ -34,7 +34,7 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#follwoing">팔로윙</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#msg" onclick="msg_1('${user.id}')">쪽지함</a></li>
+						href="#msg" onclick="msg_1('${user.id}');">쪽지함</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>

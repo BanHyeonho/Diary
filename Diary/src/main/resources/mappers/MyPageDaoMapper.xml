@@ -46,8 +46,15 @@
 	select * from block where id=#{id}
 
 </select>
+
 <!-- 차단해제 하기 -->
 <delete id="unBlock" parameterType="int">
 	delete FROM block where idx=#{idx}
 </delete>
+
+<!-- 팔로우하기 -->
+<insert id="addfollow" parameterType="www.dto.FollowVo">
+	insert into FOLLOW values(FOLLOW_SEQ.NEXTVAL,#{following},#{followers},#{followingId},#{followersId})
+</insert>
+
 </mapper>

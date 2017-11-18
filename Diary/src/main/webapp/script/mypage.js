@@ -136,10 +136,12 @@ function myCommunity(id){
 
 //쪽지함 가기
 function msg_1(id){
+	
 	var id = id;
 	var data = {
 		'id' : id
 	};
+	console.log(data);
 	var setting = {
 		url : '/msg.do',
 		type : 'post',
@@ -255,8 +257,6 @@ function mag_form(sender,senderid,receiver,receiverid){
 	form.submit();
 
 
-	
-	
 }
 var dis =[];
 //회원 차단하기

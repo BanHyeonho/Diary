@@ -9,6 +9,7 @@ import www.dao.MyPageDao;
 import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
+import www.dto.FollowVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
 
@@ -43,13 +44,13 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return dao.mycommu(id);
 	}
-//
-//	@Override
-//	public void addfollow(FollowVo vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
+	@Override
+	public void addfollow(FollowVo vo) {
+		// TODO Auto-generated method stub
+		dao.addfollow(vo);
+	}
+
 //	@Override
 //	public void deletefollow(int idx) {
 //		// TODO Auto-generated method stub
