@@ -196,7 +196,7 @@
 									<td><button type="button" class="btn-info btn-md"
 											onclick="deletecommunity('${cdata.idx}');">삭제</button></td>
 									<td><button type="button" class="btn-info btn-md"
-											onclick="">신고사유</button></td>
+											onclick="javascript:creportReason('${cdata.idx}');">신고사유</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
