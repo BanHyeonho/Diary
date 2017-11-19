@@ -17,9 +17,9 @@ public interface MyPageDao {
 	public List<DiaryVo> mydiary(String id);//내가쓴글 보기(팔로우글보기)
 	public List<CommunityVo> mycommu(String id);
 	public void addfollow(FollowVo vo);	//팔로우하기
-//	public void deletefollow(int idx);	//팔로우삭제하기
-//	public List<FollowVo> following(String id);	//내가 팔로우한사람 보기
-//	public List<FollowVo> followers(String id);	//나를 팔로우한사람 보기
+	public void deletefollow(int idx);	//팔로우삭제하기
+	public List<FollowVo> following(String id);	//내가 팔로우한사람 보기
+	public List<FollowVo> followers(String id);	//나를 팔로우한사람 보기
 //	public List<CommunityVo> mycommunity(String id);//내가쓴 만남의장글 보기
 //	public void updatemycommunity(CommunityVo vo);	//내가쓴 만남의장글 수정
 //	public List<MsgVo> msgChk();		//chk==1인 경우를 조회
