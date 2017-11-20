@@ -60,7 +60,7 @@
 	<select id="reportdlist" resultType="www.dto.DiaryVo">
  	
  	 <![CDATA[select * from (select * from diary
-		where dreportcount>=3 order by nick desc) where rownum <= 30
+		where dreportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 
 	</select>
@@ -71,7 +71,7 @@
 	<select id="reportclist" resultType="www.dto.CommunityVo">
  	
  	 <![CDATA[select * from (select * from community
-		where creportcount>=3 order by nick desc) where rownum <= 30
+		where creportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 	</select>
 
@@ -134,4 +134,20 @@
 	 	select * from creport where LINKEDIDX = #{idx}
 	</select>
 	
+	<update id="acquit" parameterType="Integer">
+		update diary set reportcount=0 where idx = #{idx}
+	</update>
+	
+	
+	<update id="guilt" parameterType="String">
+		update member set reportcount = #{reportcount} where id = #{id}
+	</update>
+	
+	<update id="guiltt" parameterType="Integer">
+		update member set reportcount =0 where idx = #{idx}
+	</update>
+	
+	<!-- <select id="dcoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from dcomment where idx = #{idx}
+	</select> -->
 </mapper>

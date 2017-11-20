@@ -23,14 +23,14 @@
 		<div class="contents ">
 			<div style="height: 50px">
 				<ul class="nav nav-tabs">
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#user" onclick="location.href='/admin.do'" id="a">계정관리</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="location.href='/admin.do'">계정관리</a></li>
+						href="#diaryboard" onclick="location.href='/alldiary.do'" id="b">일지게시판</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#diaryboard" onclick="location.href='/alldiary.do'">일지게시판</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#communityboard" onclick="location.href='/allcommunity.do'">만남게시판</a></li>
+						href="#communityboard" onclick="location.href='/allcommunity.do'" id="c">만남게시판</a></li>
 					 <li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#comment" onclick="commentList();">댓글</a></li> 
+						href="#comment" onclick="commentList();" id="d">댓글</a></li> 
 					<!-- <li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" data-toggle="dropdown" href="#comment" onclick="commentList();
 						role="button" aria-haspopup="true" aria-expanded="false" >댓글</a>
@@ -217,11 +217,10 @@
 					</div>
 				</div>
 
-				<!--comment -->
-				<div id="comment" class="tab-pane fade show" method="get"
-					action="/commentSearch.do">
+				<!--여행일지 comment -->
+				<div id="comment" class="tab-pane fade show">
 					<div class="searchtool">
-						<h3>신고된 댓글</h3>
+						<h3>여행일지 신고된 댓글</h3>
 						<form class="ss form-inline my-2 my-lg-0">
 							<select class="form-control" name="option">
 								<option>댓글내용</option>
@@ -230,7 +229,7 @@
 								placeholder="Search" name="keyword">
 							<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
 							<button type="button" class="btt btn-warning btn-md"
-								data-toggle="tab" href="#comment" onclick="Comcomment();">만남의장
+								data-toggle="tab" href="#Comcomment" onclick="Comcomment();">만남의장
 								댓글보기</button>
 						</form>
 
@@ -245,16 +244,16 @@
 								<th>신고사유보기</th>
 							</tr>
 						</thead>
-						<tbody id="commentlist">
+						<tbody id="dcommentlist">
 							<c:forEach var="codata" items="${rclist}">
 								<tr>
-									<td><c:choose>
+									<td><%-- <c:choose>
 											<c:when test="${codata.content.length>=15}">${codata.content.substring(0,15)}</c:when>
 											<c:otherwise>
 								${codata.content}
 								</c:otherwise>
 
-										</c:choose></td>
+										</c:choose> --%></td>
 									<td>${codata.nick}</td>
 									<td><button type="button" class="btn-warning btn-md"
 											onclick="">글보기</button></td>
@@ -264,6 +263,53 @@
 											onclick="">신고사유</button></td>
 								</tr>
 							</c:forEach>
+						</tbody>
+
+					</table>
+					<div class="page">
+						<ul class="pagination">
+							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+							</li>
+							<li class="page-item active"><a class="page-link" href="#">1</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#">4</a></li>
+							<li class="page-item"><a class="page-link" href="#">5</a></li>
+							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			<!--만남의장 comment -->
+				<div id="Comcomment" class="tab-pane fade show">
+					<div class="searchtool">
+						<h3>만남의장 신고된 댓글</h3>
+						<form class="ss form-inline my-2 my-lg-0">
+							<select class="form-control" name="option">
+								<option>댓글내용</option>
+								<option>닉네임</option>
+							</select> <input class="s form-control mr-sm-2" type="text"
+								placeholder="Search" name="keyword">
+							<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
+							<button type="button" class="btt btn-warning btn-md"
+								data-toggle="tab" href="#comment" onclick="commentList();">여행일지 신고
+								댓글보기</button>
+						</form>
+
+					</div>
+					<table class="table table-striped table-hover table-bordered">
+						<thead class="table-warning">
+							<tr>
+								<th>댓글내용</th>
+								<th>닉네임</th>
+								<th>글보기</th>
+								<th>삭제</th>
+								<th>신고사유보기</th>
+							</tr>
+						</thead>
+						<tbody id="ccommentlist">
 						</tbody>
 
 					</table>

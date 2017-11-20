@@ -42,7 +42,7 @@ public class AdminController {
 		mav.addObject("idx", "0");
 		mav.setViewName("admin/admin");
 		return mav;
-	} // 회원리스트 보기
+	} // 계정관리-회원리스트 보기
 
 	@RequestMapping(value = "/memberSearch.do", method = RequestMethod.GET)
 	public ModelAndView memberSearch(ModelAndView mav, String option, String keyword) { 
@@ -50,7 +50,7 @@ public class AdminController {
 		mav.addObject("idx", "0");
 		mav.setViewName("admin/admin");
 		return mav;
-	} // 회원검색(아이디,닉네임)
+	} // 계정관리-회원검색(아이디,닉네임)
 
 	@RequestMapping(value = "/blackMember.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, List<MemberVo>> blackMember(String report) {
@@ -58,14 +58,14 @@ public class AdminController {
 		Map<String, List<MemberVo>> map = new HashMap<String, List<MemberVo>>();
 		map.put("blacklist", sv.blacklist());
 		return map;
-	} // 블랙리스트 보기
+	} // 계정관리-블랙리스트 보기
 
 	@RequestMapping(value = "/oneMember.do", method = RequestMethod.GET)
 	public ModelAndView oneMember(ModelAndView mav, MemberVo vo) {
 		mav.addObject("userinfo", sv.oneMember(vo.getId()));
 		mav.setViewName("admin/oneMember");
 		return mav;
-	}// 정보보기버튼-회원한명 정보 상세히 보기
+	}// 계정관리-정보보기버튼-회원한명 정보 상세히 보기
 	
 	@RequestMapping(value = "/confirm.do", method = RequestMethod.GET)
 	public ModelAndView confirm(ModelAndView mav,MemberVo vo ) {
@@ -77,7 +77,7 @@ public class AdminController {
 		sv.updatedmember(vo);
 		mav.setViewName("redirect:/admin.do");
 		return mav;
-	} // 정보보기후 신고회수 고치고 확인 버튼눌렀을때
+	} // 계정관리-정보보기후 신고회수 고치고 확인 버튼눌렀을때
 
 	// public @ResponseBody Map<String, String> reportMsg(MsgVo vo) {
 	// return null;
@@ -88,7 +88,7 @@ public class AdminController {
 		sv.deleteAccount(vo.getId());
 		mav.setViewName("redirect:/admin.do");
 		return mav;
-	 } // 정보보기버튼 클릭후 계정삭제
+	 } // 계정보기-정보보기버튼 클릭후 계정삭제
 	
 	@RequestMapping(value = "/alldiary.do", method = RequestMethod.GET)
 	public ModelAndView alldiary(ModelAndView mav) {
@@ -100,7 +100,7 @@ public class AdminController {
 		mav.addObject("idx", "1");
 		mav.setViewName("admin/admin");
 		return mav;
-	}// 여행일지글 리스트 보기
+	}// 일지게시판-여행일지글 리스트 보기
 
 	@RequestMapping(value = "/diarySearch.do", method = RequestMethod.GET)
 	public ModelAndView diarySearch(ModelAndView mav, String option, String keyword) {
@@ -112,7 +112,7 @@ public class AdminController {
 		mav.addObject("idx", "1");
 		mav.setViewName("admin/admin");
 		return mav;
-	} // 여행일지 검색(글제목,닉네임)
+	} // 일지게시판-여행일지 검색(글제목,닉네임)
 
 	@RequestMapping(value = "/reportdlist.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, List<DiaryVo>> reportdlist(String report) {
@@ -120,7 +120,7 @@ public class AdminController {
 		Map<String, List<DiaryVo>> map = new HashMap<String, List<DiaryVo>>();
 		map.put("reportdlist", sv.reportdlist());
 		return map;
-	} // 여행일지 신고된글 리스트 보기
+	} // 일지게시판-여행일지 신고된글 리스트 보기
 
 	@RequestMapping(value = "/deletediary.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> deletediary(DiaryVo vo) {
@@ -128,11 +128,11 @@ public class AdminController {
 		sv.deletediary(vo.getIdx());
 		map.put("deletediary", "deletediary");
 		return map;
-	} // 여행일지 글삭제
+	} // 일지게시판-여행일지 글삭제
 	
 	@RequestMapping(value = "/viewDiary.do", method = RequestMethod.GET)
 	public ModelAndView viewDiary(ModelAndView mav, DiaryVo vo) {
-		
+		logger.info(""+sv.viewDiary(vo.getIdx()));
 		mav.addObject("viewDiary", sv.viewDiary(vo.getIdx()));
 		mav.setViewName("admin/viewDiary");
 		return mav;
@@ -149,20 +149,21 @@ public class AdminController {
 		return mav;
 	}// 일지게시판 신고사유버튼-상세히 보기
 	
-	// public @ResponseBody Map<String,String> reportOk(MemberVo vo,int idx) {
-	// return null;
-	// } // 여행일지 신고확정 글쓴이에게 경고카운트 누적-유죄
+	@RequestMapping(value = "/guilt.do", method = RequestMethod.GET)
+	 public ModelAndView guilt(ModelAndView mav,ReportVo vo,int idx) {
+		
+		sv.guilt(vo);
+		mav.setViewName("redirect:/alldiary.do");
+	 return mav;
+	 } // 여행일지 신고확정 글쓴이에게 경고카운트 누적,-유죄
 	
 	@RequestMapping(value = "/acquit.do", method = RequestMethod.GET)
 	public ModelAndView acquit(ModelAndView mav,DiaryVo vo) {
 
-		mav.addObject("acquit", sv.acquit(vo.getDreportcount()));
-		mav.addObject("idx", "1");
-		mav.setViewName("admin/");
+		sv.acquit(vo.getIdx());
+		mav.setViewName("redirect:/alldiary.do");
 		return mav;
 	} // 여행일지 신고취소-무죄
-	
-	
 
 	@RequestMapping(value = "/allcommunity.do", method = RequestMethod.GET)
 	public ModelAndView allcommunity(ModelAndView mav) {
@@ -255,10 +256,14 @@ public class AdminController {
 			return map;
 		} //  신고된 댓글삭제
 		
-		/*@RequestMapping(value = "/viewDComment.do", method = RequestMethod.GET)
-		public ModelAndView viewDComment(ModelAndView mav, CommentVo vo) {
-			mav.addObject("viewCommunity", sv.viewCommunity(vo.getIdx()));
-			mav.setViewName("admin/viewCommunity");
-			return mav;
-		}// 여행일지 댓글보기버튼-상세히 보기
-*/}
+//		@RequestMapping(value = "/creportReason.do", method = RequestMethod.GET)
+//		public ModelAndView dcoreportReason(ModelAndView mav, ReportVo vo) {
+//			
+//			logger.info(""+vo.getIdx());
+//			logger.info(""+sv.creportReason(vo.getIdx()).size());
+//			
+//			mav.addObject("dcoreportReason", sv.dcoreportReason(vo.getIdx()));
+//			mav.setViewName("admin/coReportreason");
+//			return mav;
+//		}// 여행일지댓글: 신고사유버튼-상세히 보기
+}

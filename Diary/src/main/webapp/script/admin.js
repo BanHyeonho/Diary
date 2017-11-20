@@ -21,21 +21,38 @@ function change(idx){
 		$('#diaryboard').attr('class','tab-pane fade show');
 		$('#communityboard').attr('class','tab-pane fade show');
 		$('#comment').attr('class','tab-pane fade show');
+		$('#a').attr('class','nav-link active');
+		$('#b').attr('class','nav-link');
+		$('#c').attr('class','nav-link');
+		$('#d').attr('class','nav-link');
 	}else if(idx=='1'){
 		$('#diaryboard').attr('class','tab-pane fade active show in');
 		$('#user').attr('class','tab-pane fade show');
 		$('#communityboard').attr('class','tab-pane fade show');
 		$('#comment').attr('class','tab-pane fade show');
+		$('#a').attr('class','nav-link');
+		$('#b').attr('class','nav-link active');
+		$('#c').attr('class','nav-link');
+		$('#d').attr('class','nav-link');
 	}else if(idx=='2'){
 		$('#communityboard').attr('class','tab-pane fade active show in');
 		$('#user').attr('class','tab-pane fade show');
 		$('#diaryboard').attr('class','tab-pane fade show');
 		$('#comment').attr('class','tab-pane fade show');
-	}else if(idx=='3'){
+		$('#a').attr('class','nav-link');
+		$('#b').attr('class','nav-link');
+		$('#c').attr('class','nav-link active');
+		$('#d').attr('class','nav-link');
+	}else{
 		$('#comment').attr('class','tab-pane fade active show in');
+		$('#Comcomment').attr('class','tab-pane fade active show in');
 		$('#user').attr('class','tab-pane fade show');
 		$('#communityboard').attr('class','tab-pane fade show');
 		$('#diaryboard').attr('class','tab-pane fade show');
+		$('#a').attr('class','nav-link');
+		$('#b').attr('class','nav-link');
+		$('#c').attr('class','nav-link');
+		$('#d').attr('class','nav-link active');
 	}
 	
 }
@@ -191,14 +208,14 @@ function commentList(){
 			dataType : 'json',
 			success : function(data){
 				var reportDcomment = data.reportDcomment;
-				if ($('#commentlist')[0].children[0] == null) {
+				if ($('#dcommentlist')[0].children[0] == null) {
 				for( i = 0; i<reportDcomment.length; i++ ){
-					$("#commentlist").append(
+					$("#dcommentlist").append(
 					'<tr id='+reportDcomment[i].idx+'><td>'+reportDcomment[i].contents+'</td><td>'
 					+reportDcomment[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-warning btn-md"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-warning btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}
@@ -226,15 +243,14 @@ function Comcomment(){
 			success : function(data){
 				var reportCcomment = data.reportCcomment;
 				$("#commentlist").html('');
-				
-				if ($('#commentlist')[0].children[0] == null) {
+				if ($('#ccommentlist')[0].children[0] == null) {
 				for( i = 0; i<reportCcomment.length; i++ ){
-					$("#commentlist").append(
+					$("#ccommentlist").append(
 					'<tr id='+reportCcomment[i].idx+'><td>'+reportCcomment[i].contents+'</td><td>'
 					+reportCcomment[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-warning btn-md"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="deletecomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}
@@ -297,6 +313,26 @@ function creportReason(idx) {
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
+//(여행일지)댓글-글보기 버튼 눌렀을때
+function dcoview(idx) {
+	window.open("http://localhost:8080/viewDiary.do?idx=" + idx,
+					"여행일지 신고된 댓글의 글보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+
+//(만남의장)댓글-글보기 버튼 눌렀을때
+function ccoview(idx) {
+	window.open("http://localhost:8080/viewCommunity.do?idx=" + idx,
+					"만남의장 신고된댓글의 글보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+
+////여행일지댓글 -신고사유 버튼 눌렀을때
+//function dcoreportReason(idx) {
+//	window.open("http://localhost:8080/dcoreportReason.do?idx=" + idx,
+//					"여행일지댓글 신고사유보기",
+//					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+//}
 //function communitysearch(){
 //	var option =document.searchtool.option.value;
 //	var keyword = document.searchtool.keyword.value;

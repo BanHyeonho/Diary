@@ -70,5 +70,15 @@ public interface AdminDao {
 	public List<ReportVo> dreportReason(int linkedidx); //일지게시판-신고사유버튼
 
 	public List<ReportVo> creportReason(int linkedidx); //만남의장-신고사유버튼
+
+	public void acquit(int idx); //신고사유-무죄버튼눌렀을때
+
+	public void guilt(String id); //신고사유-유죄버튼눌렀을때-게시자경고 
+
+	public String findGilt(int idx);// 신고글 작성자 아이디 찾기
+	
+	public void warning(String id);	//경고 누적하기
+//	public List<ReportVo> dcoreportReason(int idx); //(여행일지)댓글-신고사유버튼
+
 	
 }
