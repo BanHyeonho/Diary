@@ -92,6 +92,7 @@ function blacklist(){
 }
 
 //일지게시판-신고된 게시물보기 버튼누르면 신고된글리스트 불러오기
+var d =null;
 function reportdlist(){
 	var data = {
 		'report':"a"
@@ -103,8 +104,13 @@ function reportdlist(){
 		dataType : 'json',
 		success : function(data){
 			var reportdlist = data.reportdlist;
+			
+			if(d==null){ //신고사유버튼 한번만 뜨게
+				$('#dTable').append('<th>신고사유</th>');
+			}
+			d=data;
 			$("#dlist").html('');
-			for( i = 0; i<reportdlist.length; i++ ){
+		for( i = 0; i<reportdlist.length; i++ ){
 				$("#dlist").append(
 				'<tr><td>'+reportdlist[i].dtitle+'</td><td>'
 				+reportdlist[i].nick+'</td><td>'
@@ -123,7 +129,8 @@ function reportdlist(){
 	
 }
 
-//일지게시판-신고된 글 삭제 버튼 누르면 삭제 
+//일지게시판-신고된 글 삭제 버튼 누르면 삭제
+
 function deletediary(ix){
 	if(confirm("삭제하시겠습니까")){
 		
@@ -145,6 +152,7 @@ function deletediary(ix){
 }
 
 //만남게시판 -신고된 게시물보기 버튼눌렀을때 
+var c=null;
 function reportclist(){
 	var data = {
 		'report':"a"
@@ -157,6 +165,10 @@ function reportclist(){
 		success : function(data){
 			var reportclist = data.reportclist;
 			$("#clist").html('');
+			if(c==null){
+				$('#cTable').append('<th>신고사유</th>')
+			}
+			c=data;
 			for( i = 0; i<reportclist.length; i++ ){
 				$("#clist").append(
 				'<tr><td>'+reportclist[i].ctitle+'</td><td>'
@@ -302,7 +314,7 @@ function CviewopenWin(idx) {
 }
 //여행일지 -신고사유 버튼눌렀을때
 function dreportReason(idx) {
-	window.open("http://localhost:8080/dreportReason.do?idx=" + idx,
+	window.open("http://localhost:8080/dreportReason.do?d=d&idx=" + idx,
 					"여행일지 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }

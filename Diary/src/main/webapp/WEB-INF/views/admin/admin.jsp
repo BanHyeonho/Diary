@@ -120,12 +120,11 @@
 					</div>
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-danger">
-							<tr>
+							<tr id="dTable">
 								<th>글제목</th>
 								<th>닉네임</th>
 								<th>글보기</th>
 								<th>삭제</th>
-								<th>신고사유보기</th>
 							</tr>
 						</thead>
 						<tbody id="dlist">
@@ -137,8 +136,6 @@
 											onclick="javascript:DviewopenWin('${ddata.idx}');">글보기</button></td>
 									<td><button type="button" class="btn-danger btn-md"
 											onclick="deletediary('${ddata.idx}');">삭제</button></td>
-									<td><button type="button" class="btn-danger btn-md"
-											onclick="javascript:dreportReason('${ddata.idx}');">신고사유</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -178,12 +175,11 @@
 					</div>
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-info">
-							<tr>
+							<tr id="cTable">
 								<th>글제목</th>
 								<th>닉네임</th>
 								<th>글보기</th>
 								<th>삭제</th>
-								<th>신고사유보기</th>
 							</tr>
 						</thead>
 						<tbody id="clist">
@@ -195,8 +191,6 @@
 											onclick="javascript:CviewopenWin('${cdata.idx}');">글보기</button></td>
 									<td><button type="button" class="btn-info btn-md"
 											onclick="deletecommunity('${cdata.idx}');">삭제</button></td>
-									<td><button type="button" class="btn-info btn-md"
-											onclick="javascript:creportReason('${cdata.idx}');">신고사유</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

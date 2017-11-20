@@ -135,17 +135,17 @@
 	</select>
 	
 	<update id="acquit" parameterType="Integer">
-		update diary set reportcount=0 where idx = #{idx}
+		update diary set dreportcount = 0 where idx = #{idx}
 	</update>
 	
+	<select id="findGilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where id = (select id from Diary where idx = #{idx})
+	</select>
 	
-	<update id="guilt" parameterType="String">
+	<update id="warning" parameterType="www.dto.MemberVo">
 		update member set reportcount = #{reportcount} where id = #{id}
 	</update>
-	
-	<update id="guiltt" parameterType="Integer">
-		update member set reportcount =0 where idx = #{idx}
-	</update>
+
 	
 	<!-- <select id="dcoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
 	 	select * from dcomment where idx = #{idx}

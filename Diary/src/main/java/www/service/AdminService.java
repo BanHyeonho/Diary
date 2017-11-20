@@ -68,7 +68,7 @@ public interface AdminService {
 
 	public void acquit(int idx); //신고사유 무죄버튼눌렀을때
 
-	public void guilt(ReportVo vo);// 신고사유 유죄버튼눌렀을때-해당글게시자에게 경고1회
+	public void guilt(int idx);// 신고사유 유죄버튼눌렀을때-해당글게시자에게 경고1회
 
 //	public List<ReportVo> dcoreportReason(int idx); //일지게시판 댓글신고사유보기
 

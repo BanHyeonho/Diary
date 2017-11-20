@@ -139,28 +139,26 @@ public class AdminController {
 	}// 일지게시판 글보기버튼-상세히 보기
 	
 	@RequestMapping(value = "/dreportReason.do", method = RequestMethod.GET)
-	public ModelAndView dreportReason(ModelAndView mav, ReportVo vo) {
-		
-		logger.info(""+vo.getIdx());
-		logger.info(""+sv.dreportReason(vo.getIdx()).size());
+	public ModelAndView dreportReason(ModelAndView mav, ReportVo vo,String d) {
 		
 		mav.addObject("reportReason", sv.dreportReason(vo.getIdx()));
+		mav.addObject("d", d);
 		mav.setViewName("admin/reportReason");
 		return mav;
 	}// 일지게시판 신고사유버튼-상세히 보기
 	
 	@RequestMapping(value = "/guilt.do", method = RequestMethod.GET)
-	 public ModelAndView guilt(ModelAndView mav,ReportVo vo,int idx) {
+	 public ModelAndView guilt(ModelAndView mav,int idx) {
 		
-		sv.guilt(vo);
+		sv.guilt(idx);
 		mav.setViewName("redirect:/alldiary.do");
 	 return mav;
 	 } // 여행일지 신고확정 글쓴이에게 경고카운트 누적,-유죄
 	
 	@RequestMapping(value = "/acquit.do", method = RequestMethod.GET)
-	public ModelAndView acquit(ModelAndView mav,DiaryVo vo) {
+	public ModelAndView acquit(ModelAndView mav,int idx) {
 
-		sv.acquit(vo.getIdx());
+		sv.acquit(idx);
 		mav.setViewName("redirect:/alldiary.do");
 		return mav;
 	} // 여행일지 신고취소-무죄

@@ -49,8 +49,8 @@
  	</table>
  		
 	<center class="ct">
-			<button type="button" class="btn-primary btn-sm" onclick="guilt('<%=idx %>');"><span>유죄</span></button>
-			<button type="button" class="btn-red btn-sm" onclick="acquit('<%=idx %>');"><span>무죄</span></button>	
+			<button type="button" class="btn-primary btn-sm" onclick="guilt('<%=idx %>','${d }');"><span>유죄</span></button>
+			<button type="button" class="btn-red btn-sm" onclick="acquit('<%=idx %>','${d }');"><span>무죄</span></button>	
 	</center>
 	</div>
 	</div>
