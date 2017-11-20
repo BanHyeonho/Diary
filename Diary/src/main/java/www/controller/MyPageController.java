@@ -81,16 +81,23 @@ public class MyPageController {
 		
 		return map;
 	} // 스크랩글 보기 로 이동(리스트)
-//
-//	public @ResponseBody Map<String,String> deleteMyScrap(int idx) {
-//		return null;
-//	} // 스크랩글 삭제
-//
+
+	@RequestMapping(value="/deleteMyScrap.do", method =RequestMethod.GET)
+	public @ResponseBody Map<String,String> deleteMyScrap(ScrapVo vo) {
+		
+		//sv.deletemyscrap(vo);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		return map;
+	} // 스크랩글 삭제
+
 	@RequestMapping(value="/msg.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String,List> msg(String id) {
 		Map<String,List> map = new HashMap<String,List>();
 		//logger.info("hghghgh"+sv.msg(id).toString());
-		map.put("msg",sv.msg(id));
+		sv.msgchkupdate(id);
+		
+		map.put("msg",sv.msg(id)); //쪽지함 리스트
 		map.put("block",sv.myblock(id)); //쪽지함 이동시 차단한 회원 안보이게 하기
 		
 		return map;
@@ -165,5 +172,5 @@ public class MyPageController {
 		map.put("result", "차단 해제 성공");
 		
 		return map;
-	} // 쪽지 삭제
+	} 
 }

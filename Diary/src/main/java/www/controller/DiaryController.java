@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommentVo;
+import www.dto.GoodVo;
 import www.dto.HitCountVo;
 import www.dto.ScrapVo;
 import www.service.DiaryService;
@@ -28,7 +29,6 @@ public class DiaryController {
 	@RequestMapping(value="/oneDiary.do",method=RequestMethod.GET)
 	public ModelAndView oneDiary(ModelAndView mav,HitCountVo vo) {
 		
-		logger.info(vo.toString());
 		Map<String,Object> map =sv.onediary(vo);
 		mav.addObject("data", map);
 		mav.setViewName("user/oneDiary");
@@ -75,9 +75,17 @@ public class DiaryController {
 //	public ModelAndView search(DiaryVo vo) {
 //		return null;
 //	} // 여행일지 글 검색
-//	
-//	public @ResponseBody Map<String, String> good(int idx,String id) {
-//		return null;
-//	} // 추천하기	글의 인덱스,아이디
+	
+	@RequestMapping(value="/good.do",method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> good(GoodVo vo) {
+		
+		sv.good(vo);
+		Map<String, String> map = new HashMap<String, String>();
+		return map;
+	} // 추천하기	글의 인덱스,아이디
 
+	@RequestMapping(value="/bad.do",method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> bad(GoodVo vo) {
+		return null;
+	} // 추천취소하기	글의 인덱스,아이디
 }

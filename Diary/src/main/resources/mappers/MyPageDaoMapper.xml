@@ -63,6 +63,14 @@
 	<!-- select * from SCRAP where id=#{id} -->
 	select * from diary where idx in (select linkedidx from scrap where id = #{id})
 </select>
+
+
+<!-- 스크랩삭제 -->
+<delete id="deletemyscrap" parameterType="www.dto.ScrapVo">
+	delete from SCRAP where id = #{id} and linkedidx = #{linkedidx}
+</delete>
+
+
 <!-- 나를 팔로우한 사람들 보기 -->
 <select id="followers" parameterType="String" resultType="www.dto.FollowVo">
 	select * From follow where FOLLOWINGID = #{id}
@@ -76,4 +84,12 @@
 <delete id="deletefollow" parameterType="www.dto.FollowVo">
 	delete FROM follow WHERE IDX=#{idx}
 </delete>
+
+<select id="msgchk" parameterType="String" resultType="www.dto.MsgVo">
+	select chk from msg where receiverid = #{id} and chk=1
+</select>
+<update id="msgchkupdate" parameterType="String">
+	update msg set chk = '0' where receiverid = #{id}
+</update>
+
 </mapper>

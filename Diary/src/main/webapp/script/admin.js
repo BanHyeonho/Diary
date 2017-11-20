@@ -61,7 +61,7 @@ function blacklist(){
 							+blacklist[i].nick+'</td><td>'
 							+blacklist[i].reportcount +'</td><td>'
 							+'<input type="checkbox" checked disabled="disabled" >'+'</td><td>'
-							+'<button type="button"	class="btt btn-success btn-md">정보보기</button></td></tr>'
+							+'<button type="button"	class="btt btn-success btn-md" onclick="javascript:openWin('+blacklist[i].id+');">정보보기</button></td></tr>'
 						);
 				}
 			},
@@ -91,9 +91,9 @@ function reportdlist(){
 				$("#dlist").append(
 				'<tr><td>'+reportdlist[i].dtitle+'</td><td>'
 				+reportdlist[i].nick+'</td><td>'
-				+'<button type="button"	class="btn-danger btn-md"> 글보기 </button></td><td>'
-				+'<button type="button"	class="btn-danger btn-md"> 삭제 </button></td><td>'
-				+'<button type="button" class="btn-danger btn-md"> 신고사유 </button></td></tr>'
+				+'<button type="button"	class="btn-danger btn-md" onclick="javascript:DviewopenWin('+reportdlist[i].idx+');"> 글보기 </button></td><td>'
+				+'<button type="button"	class="btn-danger btn-md" onclick="deletediary('+reportdlist[i].idx+');"> 삭제 </button></td><td>'
+				+'<button type="button" class="btn-danger btn-md" onclick="javascript:dreportReason('+reportdlist[i].idx+');"> 신고사유 </button></td></tr>'
 				);
 			}
 			
@@ -144,9 +144,9 @@ function reportclist(){
 				$("#clist").append(
 				'<tr><td>'+reportclist[i].ctitle+'</td><td>'
 				+reportclist[i].nick+'</td><td>'
-				+'<button type="button"	class="btn-info btn-md"> 글보기 </button></td><td>'
-				+'<button type="button"	class="btn-info btn-md"> 삭제 </button></td><td>'
-				+'<button type="button" class="btn-info btn-md"> 신고사유 </button></td></tr>'
+				+'<button type="button"	class="btn-info btn-md" onclick="javascript:CviewopenWin('+reportclist[i].idx+');"> 글보기 </button></td><td>'
+				+'<button type="button"	class="btn-info btn-md" onclick="deletecommunity('+reportclist[i].idx+');"> 삭제 </button></td><td>'
+				+'<button type="button" class="btn-info btn-md" onclick="javascript:creportReason('+reportclist[i].idx+');"> 신고사유 </button></td></tr>'
 				);
 			}
 			
@@ -268,25 +268,31 @@ function deleteDcomment(ix){
 	}
 //계정관리-정보보기버튼 눌렀을 때
 function openWin(id) {
-	window.open("http://localhost:8089/oneMember.do?id=" + id,
+	window.open("http://localhost:8080/oneMember.do?id=" + id,
 					"한명의 멤버보기",
 					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 }
-
+//여행일지-글보기버튼 눌렀을때
 function DviewopenWin(idx) {
-	window.open("http://localhost:8089/viewDiary.do?idx=" + idx,
+	window.open("http://localhost:8080/viewDiary.do?idx=" + idx,
 					"여행일지 글보기",
-					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+					"width=1000, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 }
-
+//만남의장 -글보기 버튼 눌렀을때
 function CviewopenWin(idx) {
-	window.open("http://localhost:8089/viewCommunity.do?idx=" + idx,
+	window.open("http://localhost:8080/viewCommunity.do?idx=" + idx,
 					"만남의장 글보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
-
+//여행일지 -신고사유 버튼눌렀을때
 function dreportReason(idx) {
-	window.open("http://localhost:8089/dreportReason.do?idx=" + idx,
+	window.open("http://localhost:8080/dreportReason.do?idx=" + idx,
+					"여행일지 신고사유보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+//만남의장 -신고사유 버튼 눌렀을때
+function creportReason(idx) {
+	window.open("http://localhost:8080/creportReason.do?idx=" + idx,
 					"여행일지 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }

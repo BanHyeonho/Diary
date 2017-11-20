@@ -130,4 +130,8 @@
 	 	select * from dreport where LINKEDIDX = #{idx}
 	</select>
 	
+	<select id="creportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from creport where LINKEDIDX = #{idx}
+	</select>
+	
 </mapper>

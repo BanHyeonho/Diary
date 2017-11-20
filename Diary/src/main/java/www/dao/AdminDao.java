@@ -68,5 +68,7 @@ public interface AdminDao {
 	public CommunityVo viewCommunity(int idx); //커뮤니티-글보기 버튼
 
 	public List<ReportVo> dreportReason(int linkedidx); //일지게시판-신고사유버튼
+
+	public List<ReportVo> creportReason(int linkedidx); //만남의장-신고사유버튼
 	
 }

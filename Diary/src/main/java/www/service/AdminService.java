@@ -64,6 +64,6 @@ public interface AdminService {
 
 	public List<ReportVo> dreportReason(int linkedidx); //일지게시판 신고사유보기
 
-	
+	public List<ReportVo> creportReason(int linkedidx); //만남의장 신고사유보기
 
 }

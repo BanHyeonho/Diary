@@ -18,7 +18,12 @@
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
-	
+	<c:if test="${msg!=null }">
+		<script type="text/javascript">
+		
+		msg_1('${user.id}');
+		</script>	
+	</c:if>
 	<div class="container">
 		<div class="contents ">
 			<div style="height: 50px">
@@ -237,11 +242,7 @@
 							</tr>
 						</thead>
 						<tbody id="following_list">
-							<!-- <tr>
-								<td></td>
-								<td><button class="btn btn-outline-danger">팔로우 취소</button></td>
-								 {} 넣어서 for each 로 돌려
-							</tr> -->
+						
 						</tbody>
 					</table>
 
