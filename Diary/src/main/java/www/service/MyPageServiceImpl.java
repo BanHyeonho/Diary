@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.MyPageDao;
-import www.dto.ScrapVo;
 import www.dto.BlockVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.FollowVo;
 import www.dto.MemberVo;
 import www.dto.MsgVo;
+import www.dto.ScrapVo;
 
 @Service
 public class MyPageServiceImpl implements MyPageService{
@@ -52,11 +52,12 @@ public class MyPageServiceImpl implements MyPageService{
 		dao.addfollow(vo);
 	}
 
-//	@Override
-//	public void deletefollow(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void deletefollow(int idx) {
+		dao.deletefollow(idx);
+		// TODO Auto-generated method stub
+		
+	}
 //
 //	@Override
 //	public List<CommunityVo> mycommunity(String id) {
@@ -64,26 +65,28 @@ public class MyPageServiceImpl implements MyPageService{
 //		return null;
 //	}
 //
-//	@Override
-//	public List<FollowVo> following(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public List<FollowVo> followers(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<FollowVo> following(String id) {
+		// TODO Auto-generated method stub
+		
+		return dao.following(id);
+	}
+
+	@Override
+	public List<FollowVo> followers(String id) {
+		// TODO Auto-generated method stub
+		
+		return dao.followers(id);
+	}
 
 
-//
-//	@Override
-//	public void deletemyscrap(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
+	@Override
+	public void deletemyscrap(ScrapVo vo) {
+		// TODO Auto-generated method stub
+		dao.deletemyscrap(vo);
+	}
+
 	@Override
 	public List<MsgVo> msg(String id) {
 		// TODO Auto-generated method stub

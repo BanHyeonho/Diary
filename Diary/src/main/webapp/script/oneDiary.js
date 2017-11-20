@@ -113,26 +113,25 @@ function scrap(idx,id){
 	}else{
 		if(confirm('스크랩취소 하시겠습니까?')){
 			
-//			var data = {
-//					"id":id,
-//					"linkedidx":idx
-//			};
-//			
-//			var setting={
-//					"url" : "/insertScrap.do",
-//					"dataType" : "json",
-//					"data":data,
-//					"type":"get",
-//					"success":function(){
-//						$('#scrap').text('스크랩하기');
-//					},
-//					"error":function(){}
-//			};
-//			
-//			
-//			$.ajax(setting);
-//			
-//			
+			var data = {
+					"id":id,
+					"linkedidx":idx
+			};
+			
+			var setting={
+					"url" : "/deleteMyScrap.do",
+					"dataType" : "json",
+					"data":data,
+					"type":"get",
+					"success":function(){
+						$('#scrap').text('스크랩하기');
+					},
+					"error":function(){}
+			};
+			
+			
+			$.ajax(setting);
+			
 			
 		}
 	}
@@ -141,7 +140,7 @@ function scrap(idx,id){
 function follow(followingId,following,followersId,followers){
 	console.log(followingId,following,followersId,followers);
 	
-	if($('#follow').text()=="팔로우하기"){
+	if($('#follow').text().trim()=="팔로우하기"){
 		if(confirm(following+"님을 팔로우 하시겠습니까?")){
 			var data = {
 					"followingId":followingId,
@@ -173,5 +172,51 @@ function follow(followingId,following,followersId,followers){
 	
 }
 
-
-
+var origingood = $('#good').text(); 
+function good(id,idx,count){
+	if(id==null){
+		alert('로그인 해주세요');
+		return false;
+	}
+	var data={
+			"id" : id,
+			"linkedidx" : idx,
+			"good" : count
+	};
+	if(origingood==$('#good').text()){
+		if(confirm('추천 하시겠습니까?')){
+			
+			
+			var setting ={
+					"url" : "/good.do",
+					"data" : data,
+					"dataType" : "json",
+					"success" : function(){
+						
+						$('#good').text($('#good').text().replace($('#good').text().substr($('#good').text().indexOf(':')+2),Number($('#good').text().substr(a.indexOf(':')+2))+1));
+					},
+					"error" : function(){}
+			};
+			$.ajax(setting);
+		}
+	}else{
+		if(confirm('추천을 취소 하시겠습니까?')){
+			
+			var setting ={
+					"url" : "/bad.do",
+					"data" : data,
+					"dataType" : "json",
+					"success" : function(){
+						
+						$('#good').text($('#good').text().replace($('#good').text().substr($('#good').text().indexOf(':')+2),Number($('#good').text().substr(a.indexOf(':')+2))-1));
+					},
+					"error" : function(){}
+			};
+			$.ajax(setting);
+			
+			
+		}
+	}
+	
+	
+}
