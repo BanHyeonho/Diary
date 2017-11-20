@@ -19,10 +19,10 @@
 				<h1>여행일지</h1>
 
 		<c:forEach items="${list }" var="data">
-				<div class="card border-info">
+				<div class="card border-info" style="height: 200px;">
 					<div class="card-body">
 						<blockquote class="card-blockquote">
-				<a href="/oneDiary.do?idx=${data.idx }">
+				<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}">
 						<h2>${data.dtitle }</h2>
 						<img alt="대표이미지" src="#" />
 							<p>
@@ -38,22 +38,7 @@
 				</div>
 		</c:forEach>
 		
-				<%-- <c:forEach items="${list }" var="data" begin="1" varStatus="rank">
-		
-			<div class="contents jumbotron" >
-				<h5 class="title">${rank.count} 등!${data.dtitle}</h5>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="${data.dpicture}" ; width="200px" height="100px"
-						align="left" alt="여행사진">
-					<!-- 프로필 사진 -->
-					<img src="${data.picture}" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?idx=0">${data.contents}</a>
-				</p>
-			</div>
-		</c:forEach> --%>
-		<button type="button" class="btn-primary btn-lg diaryMore">더보기</button>
+		<button type="button" class="btn-success btn-lg diaryMore">더보기</button>
 			</div>
 
 			

@@ -65,12 +65,30 @@ public class CommunityController {
 		logger.info("ff : "+vo);
 		sv.ccommentinsert(vo);
 		
-		
-		
 		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
 		
 		return map;
 	}// 댓글쓰기
+	
+	@RequestMapping(value="/deleteccomment.do",method = RequestMethod.GET)
+	public @ResponseBody Map<String, String> deleteCcomment(int idx) {
+		
+		sv.deleteccomment(idx);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		return map;
+	} // 댓글삭제
+	
+	@RequestMapping(value="/deletecommu.do",method = RequestMethod.GET)
+	public ModelAndView deletecommunity(ModelAndView mav,int idx){
+		
+		sv.deletecommunity(idx);
+		
+		mav.setViewName("redirect:/community.do");
+		
+		return mav;
+	}//만남의장 글보기 에서 만남의장 게시글 삭제
 	
 
 //
@@ -83,7 +101,5 @@ public class CommunityController {
 //		return null;
 //	}// 댓글수정
 //
-//	public @ResponseBody Map<String, String> deleteCcomment(int idx) {
-//		return null;
-//	} // 댓글삭제
+
 }

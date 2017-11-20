@@ -356,6 +356,7 @@ function deleteTab(title){
 }
 
 function writing(){
+	
 	var place ="";
 	var content="";
 	var mappositions="";
@@ -376,8 +377,31 @@ function writing(){
 	}
 	
 	document.writingForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
+	var con = document.writingForm.contents.value.replace(/\//g,'');
 	
-	document.writingForm.submit();
+	if(document.writingForm.dtitle.value==''){
+		alert('글제목을 입력하세요.');
+		document.writingForm.dtitle.focus();
+		return false;
+	}else if(document.writingForm.sdate.value==''){
+		alert('여행 시작일을 입력하세요.');
+		document.writingForm.sdate.focus();
+		return false;
+	}else if(document.writingForm.edate.value==''){
+		alert('여행 마지막일을 입력하세요.');
+		document.writingForm.edate.focus();
+		return false;
+	}else if(document.writingForm.place.value==''){
+		alert('여행지를 입력하세요.');
+		document.getElementById('keyword').focus();
+		return false;
+	}else if(con==''){
+		alert('여행지에 대한 설명을 입력하세요.');
+		change();
+		return false;
+	}else{
+		document.writingForm.submit();
+	}
 	
 }
 

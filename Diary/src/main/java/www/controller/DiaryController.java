@@ -1,5 +1,6 @@
 package www.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -8,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import www.dto.CommentVo;
 import www.dto.HitCountVo;
+import www.dto.ScrapVo;
 import www.service.DiaryService;
 
 @Controller
@@ -38,11 +42,18 @@ public class DiaryController {
 //	public ModelAndView deleteDiary(int idx) {
 //		return null;
 //	} // 글 삭제
-//
-//	public @ResponseBody Map<String, CommentVo> writeDComment(CommentVo vo) {
-//		return null;
-//	} // 댓글 쓰기
-//
+	
+	@RequestMapping(value="/writeDComment.do",method=RequestMethod.POST)
+	public @ResponseBody Map<String, CommentVo> writeDComment(CommentVo vo) {
+		
+		
+		sv.writedcomment(vo);
+		
+		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
+		
+		return map;
+	} // 댓글 쓰기
+
 //	public @ResponseBody Map<String, String> deleteDComment(int idx) {
 //		return null;
 //	} // 댓글 삭제
@@ -50,11 +61,17 @@ public class DiaryController {
 //	public @ResponseBody Map<String, CommentVo> updateDComment(CommentVo vo) {
 //		return null;
 //	} // 댓글 수정
-//
-//	public @ResponseBody Map<String, String> insertScrap(String id, int idx) {
-//		return null;
-//	} // 스크랩 하기
-//
+
+	@RequestMapping(value="/insertScrap.do",method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> insertScrap(ScrapVo vo) {
+		
+		logger.info(vo.toString());
+		sv.insertscrap(vo);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		return map;
+	} // 스크랩 하기
+
 //	public ModelAndView search(DiaryVo vo) {
 //		return null;
 //	} // 여행일지 글 검색

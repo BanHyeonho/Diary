@@ -16,8 +16,8 @@
 <!-- 내가 쓴 여행일지 글 -->
 <select id="mydiary" parameterType="String" resultType="www.dto.DiaryVo">
 	select * from diary where id=#{id}
-<!-- 내가 쓴 만남의장 글 -->
 </select>
+<!-- 내가 쓴 만남의장 글 -->
 <select id="mycommu" parameterType="String" resultType="www.dto.CommunityVo">
 	select * from COMMUNITY where id=#{id}
 </select>
@@ -41,9 +41,26 @@
 	values (BLOCK_SEQ.nextval,#{blockNick},#{id})
 
 </insert>
+<!-- 차단리스트 가져오기 -->
 <select id="myblock" parameterType="String" resultType="www.dto.BlockVo">
 	select * from block where id=#{id}
 
+</select>
+
+<!-- 차단해제 하기 -->
+<delete id="unBlock" parameterType="int">
+	delete FROM block where idx=#{idx}
+</delete>
+
+
+<!-- 팔로우하기 -->
+<insert id="addfollow" parameterType="www.dto.FollowVo">
+	insert into FOLLOW values(FOLLOW_SEQ.NEXTVAL,#{following},#{followers},#{followingId},#{followersId})
+</insert>
+
+<!-- 내가 스크랩한 리스트 -->
+<select id="myScrap" parameterType="String" resultType="www.dto.ScrapVo">
+	select * from SCRAP where id=#{id}
 </select>
 
 </mapper>

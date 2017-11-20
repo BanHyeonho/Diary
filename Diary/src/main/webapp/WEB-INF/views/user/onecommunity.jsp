@@ -8,6 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
 </head>
+
+
+
 <script type="text/javascript" src="script/onecommunity.js"></script>
 <body>
 	<div class="wrap">
@@ -20,10 +23,14 @@
 		<tbody>
 		<tr>
 			<td>제목</td>
-			<td colspan="3">
+			<td>
 			${data.ctitle }
 			</td>
-		</tr>
+			<td>닉네임</td>
+			<td>
+			${data.nick }
+			</td>
+		
     	<tr> 
        		<td>지역</td>
          	<td>${data.cplace}</td>
@@ -45,13 +52,10 @@
          		
       		</td>
       	</tr>
-      	<tr>
-      	
-    	</tr>
-    	
+  
 		</tbody>
 </table>
-
+	
 			<div class="form-group">
       		
       		<textarea class="form-control" name="contents" rows="20" readonly="readonly" style="background-color: #fff;">${data.contents }</textarea>
@@ -62,7 +66,7 @@
 				<div>
 			<table>
 				<tr>
-					<td>${user.nick }</td>
+					<td>${user.nick } </td>
 				</tr>
 				<tr>
 					<td>
@@ -76,22 +80,29 @@
 			
 		<hr>
 		
-		<div>
 		
-		<table id="ccomment">
+		<div>
+	
+		<table id="ccomment" border="1"   table class="table table-bordered">
 			<c:forEach items="${list }" var="data1" >
-			<tr>
-				<td>${data1.nick}</td>
+			<tr class='${data1.idx}'>
+				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment.do('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
+				
 			</tr>
-			<tr>
-				<td>${data1.contents }</td>
+			<tr class='${data1.idx}'>
+			<td>${data1.contents } <button type="button"  class="btn btn-primary btn-sm">신고</button></td>
 			</tr>
+			
 			</c:forEach> 
 		</table>
-		
 		</div>
+		
+		
 	
-	
+		
+	    <c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='/deletecommu.do?idx=${data.idx }'" >글삭제</button></c:if>
+    	<c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg">글수정</button></c:if>
+    	
 	
 	</div>
 		<%@ include file="../layout/nav.jsp"%>

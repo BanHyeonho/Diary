@@ -127,6 +127,7 @@ function deletediary(ix){
 	}
 }
 
+//만남게시판 -신고된 게시물보기 버튼눌렀을때 
 function reportclist(){
 	var data = {
 		'report':"a"
@@ -157,7 +158,7 @@ function reportclist(){
 	$.ajax(setting);
 	
 }
-
+//만남의장 삭제 버튼눌렀을때
 function deletecommunity(ix){
 	if(confirm("삭제하시겠습니까?")){
 	var data ={ 'idx': ix};
@@ -176,6 +177,119 @@ function deletecommunity(ix){
 	$.ajax(setting);
 	} 
 	}
+
+//댓글탭 눌렀을때 여행일지신고된 댓글보기 
+function commentList(){
+
+	var data = {
+			'clist':"a"
+		};
+		var setting ={
+			url : '/reportcomment.do', 
+			type : 'get',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				var reportDcomment = data.reportDcomment;
+				if ($('#commentlist')[0].children[0] == null) {
+				for( i = 0; i<reportDcomment.length; i++ ){
+					$("#commentlist").append(
+					'<tr id='+reportDcomment[i].idx+'><td>'+reportDcomment[i].contents+'</td><td>'
+					+reportDcomment[i].nick+'</td><td>'
+					+'<button type="button"	class="btn-warning btn-md"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-warning btn-md"> 신고사유 </button></td></tr>'
+					);
+				}
+				}
+			},error:function(){
+				alert("error");
+			}
+			
+		};
+		$.ajax(setting);
+	
+	
+}
+
+//만남의장 댓글보기 눌렀을때 신고된 댓글 불러오기
+function Comcomment(){
+	
+	var data = {
+			'colist':"a"
+		};
+		var setting ={
+			url : '/reportcomment.do', 
+			type : 'get',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				var reportCcomment = data.reportCcomment;
+				$("#commentlist").html('');
+				
+				if ($('#commentlist')[0].children[0] == null) {
+				for( i = 0; i<reportCcomment.length; i++ ){
+					$("#commentlist").append(
+					'<tr id='+reportCcomment[i].idx+'><td>'+reportCcomment[i].contents+'</td><td>'
+					+reportCcomment[i].nick+'</td><td>'
+					+'<button type="button"	class="btn-warning btn-md"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deletecomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-warning btn-md"> 신고사유 </button></td></tr>'
+					);
+				}
+				}
+			},error:function(){
+				alert("error");
+			}
+			
+		};
+		$.ajax(setting);
+	
+	
+}
+// 여행일지 신고된 댓글 삭제하기 
+function deleteDcomment(ix){
+	if(confirm("삭제하시겠습니까?")){
+	var data ={ 'idx': ix};
+	var setting = {
+			url : '/deleteDcomment.do',
+			data: data,
+			type : 'get',
+			dataType : 'json',
+			success : function(data){
+				$('#' + ix).remove();
+				alert("삭제되었습니다");
+			},error : function(){
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	} 
+	}
+//계정관리-정보보기버튼 눌렀을 때
+function openWin(id) {
+	window.open("http://localhost:8089/oneMember.do?id=" + id,
+					"한명의 멤버보기",
+					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+}
+
+function DviewopenWin(idx) {
+	window.open("http://localhost:8089/viewDiary.do?idx=" + idx,
+					"여행일지 글보기",
+					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+}
+
+function CviewopenWin(idx) {
+	window.open("http://localhost:8089/viewCommunity.do?idx=" + idx,
+					"만남의장 글보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+
+function dreportReason(idx) {
+	window.open("http://localhost:8089/dreportReason.do?idx=" + idx,
+					"여행일지 신고사유보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
 
 //function communitysearch(){
 //	var option =document.searchtool.option.value;

@@ -8,8 +8,8 @@
   </select> -->
   
   <insert id="communityinsert" parameterType="www.dto.CommunityVo">
-  insert into COMMUNITY(IDX,ID,NICK,CTITLE,CONTENTS,SDATE,EDATE,CDATE,CHITCOUNT,CREPORTCOUNT,CPLACE,CAR,ATTENDEE)
-  values(COMMUNITY_SEQ.NEXTVAL,#{id},#{nick},#{ctitle},#{contents},#{sdate},#{edate},sysdate,#{chitcount},#{creportcount},#{cplace},#{car},#{attendee})
+  insert into COMMUNITY(IDX,ID,NICK,CTITLE,CONTENTS,SDATE,EDATE,CDATE,CHITCOUNT,CREPORTCOUNT,CPLACE,CAR,ATTENDEE,GENDER)
+  values(COMMUNITY_SEQ.NEXTVAL,#{id},#{nick},#{ctitle},#{contents},#{sdate},#{edate},sysdate,#{chitcount},#{creportcount},#{cplace},#{car},#{attendee},#{gender})
   
   </insert>
   
@@ -31,7 +31,13 @@
   values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx})
   
   </insert>
+  <delete id="deleteccomment" parameterType="Integer">
+  delete from CCOMMENT where idx=#{idx}
+  </delete>
   
+  <delete id="deletecommunity" parameterType="Integer">
+  delete from COMMUNITY where idx=#{idx}
+  </delete>
   
   
 </mapper>

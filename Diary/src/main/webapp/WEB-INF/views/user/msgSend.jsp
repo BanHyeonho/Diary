@@ -25,7 +25,7 @@ alert('보내기 성공');
 	<table>
 		<tr>
 		<td><label for="receiver" style="font-size: 20px;">받는 사람</label></td>
-		<td><input type="text" class="form-control" name="receiver" value="${data.sender }"/></td>
+		<td><input type="text" class="form-control" name="receiver" value="${data.sender }" readonly="readonly"/></td>
 		<input type="hidden" name="receiverid" value="${data.senderid }" />
 		<input type="hidden" name="sender" value="${data.receiver }" />
 		<input type="hidden" name="senderid" value="${data.receiverid }" />

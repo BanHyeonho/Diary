@@ -377,7 +377,7 @@ function writing(){
 	}
 	
 	document.writingForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
-	
+	var con = document.writingForm.contents.value.replace(/\//g,'');
 	
 	if(document.writingForm.dtitle.value==''){
 		alert('글제목을 입력하세요.');
@@ -395,7 +395,7 @@ function writing(){
 		alert('여행지를 입력하세요.');
 		document.getElementById('keyword').focus();
 		return false;
-	}else if(document.writingForm.contents.value==''){
+	}else if(con==''){
 		alert('여행지에 대한 설명을 입력하세요.');
 		change();
 		return false;

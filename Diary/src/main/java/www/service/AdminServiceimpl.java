@@ -10,6 +10,7 @@ import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.ReportVo;
 
 @Service
 public class AdminServiceimpl implements AdminService{
@@ -93,11 +94,17 @@ public class AdminServiceimpl implements AdminService{
 		return dao.reportdlist();
 	}
 
-//	@Override
-//	public List<CommentVo> reportcomment(int report) {
-//		// TODO Auto-generated method stub
-//		return dao.reportcomment();
-//	}
+	@Override
+	public List<CommentVo> reportDcomment() {
+		// TODO Auto-generated method stub
+		return dao.reportDcomment();
+	}
+	
+	@Override
+	public List<CommentVo> reportCcomment() {
+		// TODO Auto-generated method stub
+		return dao.reportCcomment();
+	}
 
 	@Override
 	public List<CommunityVo> reportclist() {
@@ -150,6 +157,32 @@ public class AdminServiceimpl implements AdminService{
 		dao.deleteAccount(id);
 	}
 
+	@Override
+	public void deleteDcomment(int idx) {
+		// TODO Auto-generated method stub
+		dao.deleteDcomment(idx);
+	}
+
+	@Override
+	public DiaryVo viewDiary(int idx) {
+		// TODO Auto-generated method stub
+		return dao.viewDiary(idx);
+	}
+
+	@Override
+	public CommunityVo viewCommunity(int idx) {
+		// TODO Auto-generated method stub
+		return dao.viewCommunity(idx);
+	}
+
+	@Override
+	public List<ReportVo> dreportReason(int linkedidx) {
+		// TODO Auto-generated method stub
+		return dao.dreportReason(linkedidx);
+	}
+
+	
+
 //	@Override
 //	public ReportVo reportReason(int idx) {
 //		// TODO Auto-generated method stub
@@ -161,17 +194,7 @@ public class AdminServiceimpl implements AdminService{
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-//
-//	@Override
-//	public List<DiaryVo> serchDiary(String keyword, int choose) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public List<DiaryVo> serchCommunity(String keyword, int choose) {
-//		// TODO Auto-generated method stub
-//		return null;
+
 //	}
 	
 	
