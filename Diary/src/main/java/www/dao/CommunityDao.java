@@ -13,6 +13,7 @@ public interface CommunityDao {
 	public void ccommentinsert(CommentVo vo); //만남의장에 댓글쓰기
 	public void deleteccomment(int idx);	 //만남의장 댓글삭제
 	public void deletecommunity(int idx);	//만남의장 글 삭제
+	public void updatecommu(int idx);		//만남의장 글 수정
 //	public void updateccomment(CommentVo vo); //만남의장 댓글수정
 //	public HitCountVo hitCountChk(HitCountVo vo);	//조회했는지 아닌지 확인
 	

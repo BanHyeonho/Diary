@@ -90,6 +90,15 @@ public class CommunityController {
 		return mav;
 	}//만남의장 글보기 에서 만남의장 게시글 삭제
 	
+	@RequestMapping(value="/updatecommu.do",method = RequestMethod.GET)
+	public ModelAndView updatecommu(ModelAndView mav,int idx){
+		
+		sv.updatecommu(idx);
+		
+		mav.setViewName("user:/updatecommu.do");
+		
+		return mav;
+	}//만남의장 글 수정
 
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {

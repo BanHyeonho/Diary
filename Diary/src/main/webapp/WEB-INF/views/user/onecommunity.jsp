@@ -86,7 +86,7 @@
 		<table id="ccomment" border="1"   table class="table table-bordered">
 			<c:forEach items="${list }" var="data1" >
 			<tr class='${data1.idx}'>
-				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment.do('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
+				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
 				
 			</tr>
 			<tr class='${data1.idx}'>
@@ -101,7 +101,7 @@
 	
 		
 	    <c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='/deletecommu.do?idx=${data.idx }'" >글삭제</button></c:if>
-    	<c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg">글수정</button></c:if>
+    	<c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='/updatecommu.do?idx=${data.idx }'">글수정</button></c:if>
     	
 	
 	</div>
