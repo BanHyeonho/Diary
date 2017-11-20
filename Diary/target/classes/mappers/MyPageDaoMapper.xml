@@ -84,5 +84,7 @@
 <delete id="deletefollow" parameterType="www.dto.FollowVo">
 	delete FROM follow WHERE IDX=#{idx}
 </delete>
-
+<select id="getfollowidx" parameterType="www.dto.FollowVo" resultType="int">
+	select idx From follow where FOLLOWING = #{following} and  FOLLOWERS = #{followers} and FOLLOWINGID = #{followingId} and FOLLOWERSID = #{followersId}	
+</select>
 </mapper>

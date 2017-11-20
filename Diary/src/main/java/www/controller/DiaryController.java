@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import www.dto.CommentVo;
 import www.dto.GoodVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 import www.dto.ScrapVo;
 import www.service.DiaryService;
 
@@ -72,9 +73,14 @@ public class DiaryController {
 		return map;
 	} // 스크랩 하기
 
-//	public ModelAndView search(DiaryVo vo) {
-//		return null;
-//	} // 여행일지 글 검색
+	@RequestMapping(value="/search.do",method=RequestMethod.GET)
+	public ModelAndView search(ModelAndView mav,String keyword,String option) {
+		logger.info("사이즈즈즈즈즈");
+		logger.info("사이즈"+sv.search(option, keyword).size());
+		mav.addObject("list", sv.search(option, keyword));
+		mav.setViewName("user/diary");
+		return mav;
+	} // 여행일지 글 검색
 	
 	@RequestMapping(value="/good.do",method=RequestMethod.GET)
 	public @ResponseBody Map<String, String> good(GoodVo vo) {
@@ -84,8 +90,19 @@ public class DiaryController {
 		return map;
 	} // 추천하기	글의 인덱스,아이디
 
-	@RequestMapping(value="/bad.do",method=RequestMethod.GET)
-	public @ResponseBody Map<String, String> bad(GoodVo vo) {
-		return null;
-	} // 추천취소하기	글의 인덱스,아이디
+	@RequestMapping(value="/reportForm.do",method=RequestMethod.POST)
+	public ModelAndView reportForm(ModelAndView mav,ReportVo vo) {
+		
+		mav.addObject("report", vo);
+		mav.setViewName("user/reportForm");
+		return mav;
+	} // 신고 폼으로 이동
+	@RequestMapping(value="/report.do",method=RequestMethod.POST)
+	public @ResponseBody Map<String, String> report(ReportVo vo) {
+		
+		sv.report(vo);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		return map;
+	} // 신고 처리
 }
