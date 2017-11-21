@@ -137,6 +137,7 @@ function myCommunity(id){
 
 //쪽지함 가기
 function msg_1(id){
+	//setInterval(function(){$('#msg_chk').css('background-color','white');});
 	var id = id;
 	var data = {
 		'id' : id
@@ -501,3 +502,5 @@ function follow_delete(fb){
 		$.ajax(setting);
 		}
 }
+
+
