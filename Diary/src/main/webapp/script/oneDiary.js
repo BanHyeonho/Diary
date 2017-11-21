@@ -1,7 +1,9 @@
 var map=null;
-function createMap(mapposition){
+
+function createMap(mapposition,place){
 	console.log(mapposition);
 	var mappositions = mapposition.split('/');
+	var places = place.split('/');
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -26,12 +28,21 @@ for (i = 0; i < points.length; i++) {
     marker = new daum.maps.Marker({ position : points[i] });
     marker.setMap(map);
     
+    //위치이름 찍기
+    displayInfowindow(marker, places[i]);
+  
+    
     // LatLngBounds 객체에 좌표를 추가합니다
     bounds.extend(points[i]);
 }
 setBounds(bounds);
 }
-
+function displayInfowindow(marker, title) {
+    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    var infowindow = new daum.maps.InfoWindow({zIndex:1});
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+}
 function setBounds(bounds) {
     // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
     // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
@@ -292,5 +303,25 @@ function report(title,reporter,witerid,linkedidx){
 	
 	$.ajax(setting);
 	
+	
+}
+function deleteDiary(idx){
+	if(confirm('정말 삭제하시겠습니까?')){
+		location.replace("/deleteDiary.do?idx="+idx);
+	}
+}
+function updateForm(dtitle,place,contents,mapposition ,dpicture ,sdate,edate,dpublic){
+	
+	$('<form action="/updateDiary.do" method="post"></form>')
+	.append("<input type='hidden' name='dtitle' value="+dtitle+" />")
+	.append("<input type='hidden' name='place' value="+place+" />")
+	.append("<input type='hidden' name='contents' value="+contents+" />")
+	.append("<input type='hidden' name='mapposition' value="+mapposition+" />")
+	.append("<input type='hidden' name='dpicture' value="+dpicture+" />")
+	.append("<input type='hidden' name='sdate' value="+sdate+" />")
+	.append("<input type='hidden' name='edate' value="+edate+" />")
+	.append("<input type='hidden' name='dpublic' value="+dpublic+" />")
+	.appendTo('body')
+	.submit();
 	
 }

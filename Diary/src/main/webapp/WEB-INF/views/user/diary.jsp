@@ -17,7 +17,7 @@
 		<%@ include file="../layout/nav.jsp"%>
 			<div class="contents" style="position: relative;">
 			<div style="position: absolute; right: 0;">
-			<select id="option"><option>글제목</option><option>글내용</option><option>작성자</option></select><input type="text" id="keyword"/><input type="button" onclick="search();" value="검색"/></div>
+			<select id="option"><option>글제목</option><option>여행지</option><option>작성자</option></select><input type="text" id="keyword"/><input type="button" onclick="search();" value="검색"/></div>
 			<h1>여행일지</h1>
 		<c:forEach items="${list }" var="data">
 				<div class="card border-info" style="height: 200px;">
