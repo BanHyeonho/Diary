@@ -32,5 +32,6 @@ public interface MyPageDao {
 	public void blockMember(BlockVo vo);//차단하기
 	public List<BlockVo> myblock(String id); //쪽지함 이동시 차단 목록 안보이게 하기
 	public void unBlock(int idx); // 차단해제 하기
+	public int getfollowidx(FollowVo vo);		//팔로우해제를 위한 인덱스 값받기
 	
 }
