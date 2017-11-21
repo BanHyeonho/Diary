@@ -35,5 +35,10 @@
   delete from CCOMMENT where idx=#{idx}
   </delete>
   
+  <update id="updatecommu" parameterType="www.dto.CommunityVo">
+  update community set ctitle=#{ctitle} , contents=#{contents} , gender=#{gender} , sdate=#{sdate} , edate=#{edate} , car=#{car} , attendee=#{attendee} where idx=#{idx}
+  
+  </update>
+  
   
 </mapper>

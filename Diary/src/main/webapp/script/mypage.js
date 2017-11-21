@@ -50,9 +50,16 @@ function deletee(id) {
 
 }
 
+function privacyy(){
+	$('.color a').css('background','white');
+	$('#block_listt a').css('color','');
+}
 // 내가 쓴글 확인
 function mywrite(id) {
 	var id = id;
+	$('.color a').css('background','white');
+	$('#mywrite a').css('background','#f4c1bc');
+	$('#block_listt a').css('color','');
 	var data = {
 		'id' : id
 	};
@@ -65,6 +72,7 @@ function mywrite(id) {
 			var mydiary = data.mydiary;
 			// console.log(mydiary[0]);
 			$("#my_diary").empty();
+			
 			if ($('#my_diary')[0].children[0] == null) {
 				for (var i = 0; i < mydiary.length; i++) {
 					// console.log(mydiary[i].dtitle);
@@ -95,6 +103,8 @@ function mywrite(id) {
 
 //내가쓴 만남의장 글보기
 function myCommunity(id){
+	$('#mywrite a').css('background','#cbe1ba');
+	$('#block_listt a').css('color','');
 	var id = id;
 	var data = {
 		'id' : id
@@ -134,10 +144,17 @@ function myCommunity(id){
 	};
 	$.ajax(setting);
 }
-
+function write_write(){ //내가쓴글 탭 색깔 변경
+	$('#mywrite a').css('background','#f4c1bc');
+}
 //쪽지함 가기
 function msg_1(id){
-	//setInterval(function(){$('#msg_chk').css('background-color','white');});
+	$('.color a').css('background','white');
+	$('#msg_1 a').css('background','#cbe1ba');
+	$('#block_listt a').css('color','');
+	
+	setInterval(function(){$('#msg_chk').css('background-color','white');});
+	
 	var id = id;
 	var data = {
 		'id' : id
@@ -309,8 +326,10 @@ function block(blockNick,id){
 
 //회원 차단 목록
 function block_list(id){
+	$('.color a').css('background','white');
+	$('#block_listt a').css('background','#212529');
 	
-	
+	$('#block_listt a').css('color','white');
 	$("#my_black").empty();
 	var data = {
 			'id' : id
@@ -369,6 +388,11 @@ function unBlock(ub){
 }
 // 내가 스크랩한 회원 리스트
 function scrap_list(id){
+
+	$('.color a').css('background','white');
+	$('#scrap_list a').css('background','#f4dcc0');
+	$('#block_listt a').css('color','');
+	
 	var id = id;
 	var data = {
 		'id' : id
@@ -413,6 +437,9 @@ function scrap_list(id){
 // 팔로워 리스트 보기
 function followers(id){
 	var id = id;
+	$('.color a').css('background','white');
+	$('#followerss a').css('background','#e3cbe4');
+	$('#block_listt a').css('color','');
 	var data = {
 		'id' : id
 	};
@@ -448,6 +475,9 @@ function followers(id){
 // 내가 팔로잉한 회원 리스트
 function following(id){
 	var id = id;
+	$('.color a').css('background','white');
+	$('#followingg a').css('background','#b8e3f2');
+	$('#block_listt a').css('color','');
 	var data = {
 		'id' : id
 	};

@@ -52,10 +52,14 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public void deletefollow(int idx) {
-		dao.deletefollow(idx);
+	public void deletefollow(FollowVo vo) {
+		
+		if(vo.getFollowers()!=null){
+			vo.setIdx(dao.getfollowidx(vo));
+		}
+		
+		dao.deletefollow(vo.getIdx());
 		// TODO Auto-generated method stub
-
 	}
 
 	//

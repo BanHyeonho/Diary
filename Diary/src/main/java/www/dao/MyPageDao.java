@@ -32,7 +32,9 @@ public interface MyPageDao {
 	public void blockMember(BlockVo vo);//차단하기
 	public List<BlockVo> myblock(String id); //쪽지함 이동시 차단 목록 안보이게 하기
 	public void unBlock(int idx); // 차단해제 하기
+	public int getfollowidx(FollowVo vo);		//팔로우해제를 위한 인덱스 값받기
 	public List<MsgVo> msgchk(String id);  ////메세지함 1 or 0인지 체크해서 result값 보냄
 	public void msgchkupdate(String id);  //메세지함 에있는 chk 를 0으로만듬
+
 	
 }

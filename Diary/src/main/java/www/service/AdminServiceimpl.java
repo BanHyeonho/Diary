@@ -187,7 +187,31 @@ public class AdminServiceimpl implements AdminService{
 		return dao.creportReason(linkedidx);
 	}
 
-	
+	@Override
+	public void acquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.acquit(idx);
+	}
+
+	@Override
+	public void guilt(int idx) {
+	//유죄-작성자를 찾아야하고,걔한태 경고 누적,인덱스로 해당글 삭제
+		MemberVo vo = dao.findGilt(idx);
+		vo.setReportcount(vo.getReportcount()+1);
+		dao.warning(vo);
+		dao.deletediary(idx);
+		
+		
+	}
+
+
+
+//	@Override
+//	public List<ReportVo> dcoreportReason(int idx) {
+//		// TODO Auto-generated method stub
+//		return dao.dcoreportReason(idx);
+//	}
+//	
 
 //	@Override
 //	public ReportVo reportReason(int idx) {

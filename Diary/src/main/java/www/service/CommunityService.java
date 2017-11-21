@@ -14,6 +14,7 @@ public interface CommunityService {
 //	public void updateccomment(CommentVo vo);//만남의장 댓글수정
 	public List<CommentVo> ccomment(int idx);//만남의장 댓글출력
 	public void deletecommunity(int idx);
+	public void updatecommu(CommunityVo vo);
 	
 	
 	
