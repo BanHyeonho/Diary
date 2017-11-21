@@ -13,11 +13,12 @@
 	<%@ include file="../layout/header.jsp"%>
 	<div class="container">
 	<div class="contents" >
-	<h1>만남의 장 글쓰기</h1>
+	<h1>글수정</h1>
 
-	<form action="/updatecommunity.do"  method="post">
+	<form action="/updatecommu2.do"  method="post">
 	<input type="hidden" name="id" value="${user.id}" />
 	<input type="hidden" name="nick" value="${user.nick}" />
+	<input type="hidden" name="idx" value="${update.idx}" />
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
 		<tr>
@@ -25,13 +26,13 @@
 			
 			
 			<td colspan="3">
-			<input type="text" name="ctitle" size="70">
+			<input type="text" name="ctitle" size="70" value="${update.ctitle}">
 			</td>
 		</tr>
     	<tr> 
        		<td>지역</td>
          	<td>
-           			<select name="cplace">
+           			<select name="cplace" value="${update.cplace}">
            				<option value="서울">서울</option>
            				<option value="부산">부산</option>
            				<option value="대전">대전</option>
@@ -41,7 +42,7 @@
       		</td>
       		<td>인원</td>
       		<td>
-      		<input type="number" name="attendee">
+      		<input type="number" name="attendee" value="${update.attendee}">
       		</td>
     	</tr>
     	<tr>
@@ -60,9 +61,9 @@
     	<tr>
        		<td>여행날짜</td>
          	<td colspan="3">	
-          		<input type="date" name="sdate">
+          		<input type="date" name="sdate" value="${update.sdate}">
           		~
-           		<input type="date" name="edate">
+           		<input type="date" name="edate" value="${update.edate}">
          		
       		</td>
       	</tr>
@@ -75,11 +76,11 @@
 
 		<div class="form-group">
       		
-      		<textarea class="form-control" name="contents" rows="20"></textarea>
+      		<textarea class="form-control" name="contents" rows="20" >${update.contents}</textarea>
       		
     	</div>
     	
-    	<button type="submit" class="btn btn-primary btn-lg btn-block">글쓰기</button>
+    	<button type="submit" class="btn btn-primary btn-lg btn-block">수정하기</button>
 	</form>
 	
 	</div>

@@ -39,5 +39,10 @@
   delete from COMMUNITY where idx=#{idx}
   </delete>
   
+  <update id="updatecommu" parameterType="www.dto.CommunityVo">
+  update community set ctitle=#{ctitle},contents=#{contents},sdate=#{sdate},edate=#{edate},cplace=#{cplace},car=#{car},attendee=#{attendee},gender=#{gender} where idx=#{idx}
+  
+  </update>
+  
   
 </mapper>

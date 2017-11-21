@@ -86,7 +86,7 @@
 		<table id="ccomment" border="1"   table class="table table-bordered">
 			<c:forEach items="${list }" var="data1" >
 			<tr class='${data1.idx}'>
-				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment.do('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
+				<td>${data1.nick} <c:if test="${data1.nick==user.nick}"><button type="button" class="btn btn-primary btn-sm" onclick="deleteccomment('${data1.idx}');">댓글 삭제</button> </c:if>  </td>
 				
 			</tr>
 			<tr class='${data1.idx}'>
@@ -96,12 +96,30 @@
 			</c:forEach> 
 		</table>
 		</div>
-		
-		
 	
 		
 	    <c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='/deletecommu.do?idx=${data.idx }'" >글삭제</button></c:if>
-    	<c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg">글수정</button></c:if>
+    	<c:if test="${data.nick==user.nick}">
+    	
+    	<form action="/updatecommu.do" method="POST">
+    	<input type ="hidden" name="idx"value="${data.idx }">
+    	<input type ="hidden" name="nick"value="${data.nick }">
+    	<input type ="hidden" name="ctitle"value="${data.ctitle }">
+    	<input type ="hidden" name="contents"value="${data.contents }">
+    	<input type ="hidden" name="sdate"value="${data.sdate }">
+    	<input type ="hidden" name="edate"value="${data.edate }">
+    	<input type ="hidden" name="chitcount"value="${data.chitcount }">
+    	<input type ="hidden" name="cplace"value="${data.cplace }">
+    	<input type ="hidden" name="car"value="${data.car }">
+    	<input type ="hidden" name="attendee"value="${data.attendee }">
+    	<input type ="hidden" name="gender"value="${data.gender }">
+    	
+    	
+    	<button type="submit" class="btn btn-primary btn-lg" >글수정</button>
+    	
+    	</form>
+    	
+    	</c:if>
     	
 	
 	</div>
