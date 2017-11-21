@@ -42,11 +42,17 @@
 		</c:when>
 		<c:otherwise>
 			<div class="login_form">
-
-				<button type="button" class="btn btn-info btn-lg" onclick="location.href='/mypage.do'">마이페이지</button><button type="button" class="btn btn-primary btn-lg" onclick='location.replace("/logout.do")'>로그아웃</button>
-
+				<span style=" font-size: 20px; color: blue;">${user.nick}</span><label style="font-weight: bold;">님 방갑습니다</label>
+				<button type="button" id="msg_chk"class="btn btn-outline-success" onclick="msg_move()">쪽지함</button><br>
+				<div style="height:50px; box-sizing:border-box; padding: 10px;" >
+				
+				<button type="button" class="btn btn-info btn-lg" onclick="location.href='/mypage.do'">마이페이지</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" onclick='location.replace("/logout.do")'>로그아웃</button>
+				</div>
 			</div>
-
+		<script type="text/javascript">
+		msg_hham('${user.id}');
+		document.addEventListener('click',function(){msg_hham('${user.id}');});
+		</script>
 		</c:otherwise>
 
 	</c:choose>

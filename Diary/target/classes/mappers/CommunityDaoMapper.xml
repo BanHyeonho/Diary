@@ -44,5 +44,36 @@
   
   </update>
   
+  <select id="csearch" resultType="www.dto.CommunityVo" parameterType="www.dto.CommunityVo">
+  
+  select * from community where 1=1
+  <if test="cplace neq '지역'">
+  	and cplace=#{cplace}
+  </if> 
+  <if test="gender neq 'anything'">
+  	and gender=#{gender}
+  </if> 
+<!--   <if test="sdate neq null">
+  	and sdate=#{sdate}
+  </if> 
+  <if test="edate neq null">
+  	and edate=#{edate}
+  </if> 	
+  
+  <if test="ctitle neq '전체'">
+  	and ctitle=#{ctitle}
+  </if>
+  
+  <if test="ctitle eq '제목'">
+  	and ctitle=#{ctitle}
+  </if>
+  <if test="ctitle eq'내용'">
+  	and contents=#{contents}
+  </if>
+  <if test="ctitle eq '닉네임'">
+  	and nick=#{nick}
+  </if>  -->
+  </select>
+  
   
 </mapper>

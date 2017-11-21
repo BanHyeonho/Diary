@@ -38,9 +38,25 @@
 		</c:if>
 		
 		
-		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span><button type="button" id="good" onclick="good('${user.id}','${data.Diary.idx }','${data.Diary.good }');">추천수 : ${data.Diary.good }</button>
+		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span>
+		
+		<c:choose>
+		<c:when test="${user!=null }">
+		<button type="button" id="good" onclick="
+		<c:if test="${data.Good==null }">
+		good('${user.id}','${data.Diary.idx }','${data.Diary.good }');
+		</c:if>
+		<c:if test="${data.Good!=null }">
+		alert('이미 추천하셨습니다.');
+		</c:if>
+		">추천수 : ${data.Diary.good }</button>
+		</c:when>
+		<c:otherwise>
+		추천수 : ${data.Diary.good }
+		</c:otherwise>
+		</c:choose>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
-		<button type="button">신고</button>
+		<button type="button" onclick="openForm('${data.Diary.id }','${user.nick }','${data.Diary.dtitle }','${data.Diary.idx}');">신고</button>
 		</c:if>
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
 		<span style="float: right;" onclick="add();">글쓴이 : ${data.Diary.nick }</span>

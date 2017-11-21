@@ -84,5 +84,15 @@
 <delete id="deletefollow" parameterType="www.dto.FollowVo">
 	delete FROM follow WHERE IDX=#{idx}
 </delete>
+<select id="getfollowidx" parameterType="www.dto.FollowVo" resultType="int">
+	select idx From follow where FOLLOWING = #{following} and  FOLLOWERS = #{followers} and FOLLOWINGID = #{followingId} and FOLLOWERSID = #{followersId}	
+</select>
+
+<select id="msgchk" parameterType="String" resultType="www.dto.MsgVo">
+	select chk from msg where receiverid = #{id} and chk=1
+</select>
+<update id="msgchkupdate" parameterType="String">
+	update msg set chk = '0' where receiverid = #{id}
+</update>
 
 </mapper>

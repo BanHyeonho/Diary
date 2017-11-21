@@ -14,7 +14,7 @@
 		<%@ include file="../layout/header.jsp"%>
 	<div class="container">
 	<div class="contents" >
-	<form action="#">
+	<form action="/csearch.do" method="post">
 	<h1>만남의 장</h1>
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
@@ -22,7 +22,8 @@
        		<td>지역</td>
          	<td>
         		
-           			<select name="지역">
+           			<select name="cplace">
+           				<option>지역</option>
            				<option value="서울">서울</option>
            				<option value="부산">부산</option>
            				<option value="대전">대전</option>
@@ -35,8 +36,8 @@
        		<td>성별</td>
          	<td>
             	<input type="radio" name="gender" value="anything" checked> 상관없음
-             	<input type="radio" name="gender" value="male"> 남
-           		<input type="radio" name="gender" value="female"> 여
+             	<input type="radio" name="gender" value="M"> 남
+           		<input type="radio" name="gender" value="W"> 여
       		</td>
     	</tr>
     	<tr>
@@ -53,14 +54,15 @@
          	<td colspan="2"> 
          	
            		<div>
-          			<select name="제목">
+          			<select name="ctilte">
+          			<option value="전체">전체</option>
            			<option value="제목">제목</option>
            			<option value="내용">내용</option>
            			<option value="닉네임">닉네임</option>
            			</select>
           
            			<input type="text" placeholder="검색어 입력" size="60">
-           			<button>검색</button>
+           			<button type="submit">검색</button>
            			<button type='button' onclick="location.href='/communitywrite.do'">글쓰기</button>
            		</div>
      	
