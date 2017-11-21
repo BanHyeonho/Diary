@@ -31,10 +31,16 @@ public class FollowController {
 		Map<String, String> map = new HashMap<String, String>();
 		return map;
 	} // 팔로우하기
-
-//	public @ResponseBody Map<String, String> deleteFollow(FollowVo vo) {
-//		return null;
-//	} // 팔로우 삭제
+	
+	@RequestMapping(value="/deleteFollow.do",method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> deleteFollow(FollowVo vo) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("followdelte", "팔로우가 해제되었습니다.");
+		logger.info("팔로우 삭제 할 인덱스를 찾기위한 값들"+vo.toString());
+		sv.deletefollow(vo);
+		
+		return map;
+	} // 팔로우 삭제
 //
 //	public ModelAndView followDiary(String id) {
 //		return null;

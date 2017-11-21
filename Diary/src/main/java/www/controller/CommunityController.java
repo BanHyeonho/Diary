@@ -80,6 +80,36 @@ public class CommunityController {
 		return map;
 	} // 댓글삭제
 	
+	@RequestMapping(value="/deletecommu.do",method = RequestMethod.GET)
+	public ModelAndView deletecommunity(ModelAndView mav,int idx){
+		
+		sv.deletecommunity(idx);
+		
+		mav.setViewName("redirect:/community.do");
+		
+		return mav;
+	}//만남의장 글보기 에서 만남의장 게시글 삭제
+	
+	@RequestMapping(value="/updatecommu.do",method = RequestMethod.POST)
+	public ModelAndView updatecommu(ModelAndView mav,CommunityVo vo){
+		
+		mav.addObject("update", vo);
+		mav.setViewName("user/updatecommunity");
+		
+		return mav;
+	}//만남의장 글 수정
+	
+	@RequestMapping(value="/updatecommu2.do",method = RequestMethod.POST)
+	public ModelAndView updatecommu2(ModelAndView mav,CommunityVo vo){
+		
+		logger.info("GG"+vo.toString());
+		
+		sv.updatecommu(vo);
+		
+		mav.setViewName("redirect:/onecommunity.do?idx="+vo.getIdx());
+		
+		return mav;
+	}//만남의장 글 수정처리
 
 //
 //	public ModelAndView SearchCommunity(CommunityVo vo) {

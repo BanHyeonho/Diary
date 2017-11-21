@@ -1,10 +1,13 @@
 package www.service;
 
+import java.util.List;
 import java.util.Map;
 
 import www.dto.CommentVo;
 import www.dto.DiaryVo;
+import www.dto.GoodVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 import www.dto.ScrapVo;
 
 public interface DiaryService {
@@ -17,5 +20,7 @@ public interface DiaryService {
 //	public void deletedcomment(int idx);	//여행일지 댓글삭제
 //	public void updatedcomment(CommentVo vo);//여행일지 댓글수정
 	public void insertscrap(ScrapVo vo);	//스크랩하기	자신의id,글의 idx
-//	public void good(GoodVo vo);		//추천!
+	public void good(GoodVo vo);		//추천!
+	public void report(ReportVo vo);	//신고하기
+	public List<DiaryVo> search(String option,String keyword);
 }

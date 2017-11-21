@@ -58,6 +58,7 @@
 	insert into FOLLOW values(FOLLOW_SEQ.NEXTVAL,#{following},#{followers},#{followingId},#{followersId})
 </insert>
 
+
 <!-- 내가 스크랩한 리스트 -->
 <select id="myScrap" parameterType="String" resultType="www.dto.ScrapVo">
 	select * from SCRAP where id=#{id}
