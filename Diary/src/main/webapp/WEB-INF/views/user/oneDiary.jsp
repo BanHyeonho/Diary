@@ -12,7 +12,9 @@
 </head>
 <body>
 <%
+
 	Map<String,Object> map =(Map)request.getAttribute("data");
+
 		DiaryVo vo = (DiaryVo)map.get("Diary");
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
@@ -56,7 +58,7 @@
 		</c:otherwise>
 		</c:choose>
 		<c:if test="${user.nick== data.Diary.nick}">
-		<a href="javascript:updateForm('${data.Diary.dtitle }','${data.Diary.place }','${data.Diary.contents }','${data.Diary.mapposition }','${data.Diary.dpicture }','${data.Diary.sdate }','${data.Diary.edate }','${data.Diary.dpublic }');">글수정</a>&nbsp;<a href="javascript:deleteDiary('${data.Diary.idx }');">글삭제</a>
+		<a href="javascript:updateForm('${ data.Diary.idx }','${data.Diary.dtitle }','${data.Diary.place }','${data.Diary.contents }','${data.Diary.mapposition }','${data.Diary.dpicture }','${data.Diary.sdate }','${data.Diary.edate }','${data.Diary.dpublic }');">글수정</a>&nbsp;<a href="javascript:deleteDiary('${data.Diary.idx }');">글삭제</a>
 		</c:if>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
 		<button type="button" onclick="openForm('${data.Diary.id }','${user.nick }','${data.Diary.dtitle }','${data.Diary.idx}');">신고</button>

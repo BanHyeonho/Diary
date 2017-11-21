@@ -74,8 +74,8 @@ function mywrite(id) {
 					//console.log($('#my_diary'));
 
 					$('#my_diary').append(
-							'<tr><td><a href="/oneDiary.do?idx='
-									+ mydiary[i].idx + '">' + mydiary[i].dtitle
+							'<tr><td><a href="/oneDiary.do?linkedidx='
+									+ mydiary[i].idx + '&id='+id+'">' + mydiary[i].dtitle
 									+ '</a></td><td>' + mydiary[i].ddate
 									+ '</td><td>' + mydiary[i].dhitcount
 									+ '</td><td>' + mydiary[i].good

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.*" %>
     <%@ page import="www.dto.DiaryVo" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,8 +11,8 @@
 </head>
 <body>
 <%
-	Map<String,Object> map =(Map)request.getAttribute("data");
-		DiaryVo vo = (DiaryVo)map.get("Diary");
+		DiaryVo vo =(DiaryVo)request.getAttribute("Diary");
+		
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
 %>
@@ -21,19 +20,36 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
 		<%@ include file="../layout/nav.jsp"%>
-		<div class="contents" style="position: relative; overflow-x:hidden; height: auto;">
+		<div class="contents" style="position: relative; overflow-x:hidden; height: 600px;">
 
 		<h2 style="display: inline;">${Diary.dtitle }</h2>
-		
+		<form action="/updateDiaryAction.do" method="post" name="updateForm">
+		<input type="hidden" name="idx" value="${Diary.idx }" />
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
-		
+		<button type="button">스크랩글 가져오기</button>
+		<label><input type="radio" name="dpublic" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
 		
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
-		<span style="float: right;" onclick="add();">글쓴이 : ${user.nick }</span>
+		<span style="float: right;">글쓴이 : ${user.nick }</span>
 		
 
-    <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
+    
+<div class="map_wrap" >
+		<button type="button" class="btn-outline-info" style="position: absolute; z-index: 10;" onclick="hiddenSearch();">&nbsp;</button>
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
+    <div id="menu_wrap" class="bg_white">
+        <div class="option">
+            <div>
+                    키워드 : <input type="text" id="keyword" size="15"> 
+               <button type="button" onclick="searchPlaces();">검색하기</button> 
+            </div>
+        </div>
+        <hr>
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
+    </div>
+</div>
  
 		
 		<div class="writingPlace" style="position: absolute;left: 100%;top:50px;float: right;">
@@ -51,13 +67,14 @@
 		</div>
 		
 		
-		
+		<center><button type="button" onclick="update();">수정하기</button></center>
+		</form>
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
-	<script type="text/javascript" src="script/oneDiary.js"></script>	
+	<script type="text/javascript" src="script/updateDiary.js"></script>	
 	<script type="text/javascript">
 	createMap('${Diary.mapposition}','${Diary.place}');
 	</script>

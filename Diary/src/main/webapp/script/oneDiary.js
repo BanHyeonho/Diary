@@ -310,12 +310,13 @@ function deleteDiary(idx){
 		location.replace("/deleteDiary.do?idx="+idx);
 	}
 }
-function updateForm(dtitle,place,contents,mapposition ,dpicture ,sdate,edate,dpublic){
+function updateForm(idx,dtitle,place,contents,mapposition ,dpicture ,sdate,edate,dpublic){
 	
 	$('<form action="/updateDiary.do" method="post"></form>')
+	.append("<input type='hidden' name='idx' value="+idx+" />")
 	.append("<input type='hidden' name='dtitle' value="+dtitle+" />")
 	.append("<input type='hidden' name='place' value="+place+" />")
-	.append("<input type='hidden' name='contents' value="+contents+" />")
+	.append("<textarea name='contents'>"+contents+"</textarea>")
 	.append("<input type='hidden' name='mapposition' value="+mapposition+" />")
 	.append("<input type='hidden' name='dpicture' value="+dpicture+" />")
 	.append("<input type='hidden' name='sdate' value="+sdate+" />")
