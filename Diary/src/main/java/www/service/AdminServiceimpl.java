@@ -229,6 +229,18 @@ public class AdminServiceimpl implements AdminService{
 		dao.nwarning(vo);
 		dao.deleteCcomment(idx);
 	}
+
+	@Override
+	public void Coacquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.Coacquit(idx);
+	}
+
+	@Override
+	public void Doacquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.Doacquit(idx);
+	}
 	
 
 //	@Override

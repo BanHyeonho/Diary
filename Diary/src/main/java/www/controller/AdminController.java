@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +35,23 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
-	public ModelAndView admin(ModelAndView mav) {
+	public ModelAndView admin(ModelAndView mav,HttpSession session) {
 		// List<MemberVo> list = sv.allmember();
 		// for (MemberVo memberVo : list) {
 		// logger.info(memberVo.toString());
 		// }
 		mav.addObject("mlist", sv.allmember());
-		mav.addObject("idx", "0");
+		
+		if(session.getAttribute("dco")!=null){
+			session.removeAttribute("dco");
+			mav.addObject("idx", "3");
+		}else if(session.getAttribute("cco")!=null){
+			session.removeAttribute("cco");
+			mav.addObject("idx", "4");
+		}else{
+			mav.addObject("idx", "0");	
+		}
+		
 		mav.setViewName("admin/admin");
 		return mav;
 	} // 계정관리-회원리스트 보기
@@ -292,18 +304,41 @@ public class AdminController {
 		}// 커뮤니티댓글: 신고사유버튼-상세히 보기
 		
 		@RequestMapping(value = "/doGuilt.do", method = RequestMethod.GET)
-		 public ModelAndView doGuilt(ModelAndView mav,int idx) {
-			
+		 public ModelAndView doGuilt(ModelAndView mav,int idx,HttpSession session) {
+			logger.info("인덱스"+idx);
 			sv.doGuilt(idx);
-			mav.setViewName("redirect:/reportcomment.do");
+			session.setAttribute("dco", "dco");
+			mav.setViewName("redirect:/admin.do");
 		 return mav;
 		 } // 여행일지 댓글신고  글쓴이에게 경고카운트 누적,-유죄
 		
 		@RequestMapping(value = "/coGuilt.do", method = RequestMethod.GET)
-		 public ModelAndView coGuilt(ModelAndView mav,int idx) {
+		 public ModelAndView coGuilt(ModelAndView mav,int idx,HttpSession session) {
 			
 			sv.coGuilt(idx);
-			mav.setViewName("redirect:/reportcomment.do");
+			session.setAttribute("cco", "cco");
+			mav.setViewName("redirect:/admin.do");
 		 return mav;
-		 }
+		 }// 커뮤니티 댓글신고  글쓴이에게 경고카운트 누적,-유죄
+		
+		@RequestMapping(value = "/Doacquit.do", method = RequestMethod.GET)
+		public ModelAndView Doacquit(ModelAndView mav,int idx,HttpSession session) {
+
+			sv.Doacquit(idx);
+			session.setAttribute("dco", "dco");
+			mav.setViewName("redirect:/admin.do");
+
+			return mav;
+		} // 여행일지댓글 신고취소-무죄
+		
+		@RequestMapping(value = "/Coacquit.do", method = RequestMethod.GET)
+		public ModelAndView Coacquit(ModelAndView mav,int idx,HttpSession session) {
+
+			sv.Coacquit(idx);
+			session.setAttribute("cco", "cco");
+			mav.setViewName("redirect:/admin.do");
+
+			return mav;
+		} // 커뮤니티댓글 신고취소-무죄
+
 }

@@ -94,5 +94,9 @@ public interface AdminDao {
 
 	public void nwarning(MemberVo vo);  //(여행일지댓글)-닉네임으로 경고누적
 
+	public void Coacquit(int idx);//(커뮤니티댓글)무죄-신고사유
+
+	public void Doacquit(int idx); //(여행일지댓글)무죄-신고사유
+
 	
 }

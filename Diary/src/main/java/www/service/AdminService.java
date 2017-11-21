@@ -70,7 +70,7 @@ public interface AdminService {
 
 	public void Dacquit(int idx); //(여행일지)신고사유 무죄버튼
 	
-	public void Cacquit(int idx);//(여행일지)신고사유 무죄버튼
+	public void Cacquit(int idx);//(커뮤니티)신고사유 무죄버튼
 
 	public void dGuilt(int idx);// (여행일지)신고사유 유죄버튼
 
@@ -83,6 +83,10 @@ public interface AdminService {
 	public void doGuilt(int idx);// (여행일지댓글)신고사유 유죄버튼
 
 	public void coGuilt(int idx);// (커뮤니티댓글)신고사유 유죄버튼
+
+	public void Coacquit(int idx);//(커뮤니티댓글)신고사유 무죄버튼
+
+	public void Doacquit(int idx); //(여행일지댓글)신고사유 무죄버튼
 
 
 }

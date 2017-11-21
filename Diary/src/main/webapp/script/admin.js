@@ -43,9 +43,17 @@ function change(idx){
 		$('#b').attr('class','nav-link');
 		$('#c').attr('class','nav-link active');
 		$('#d').attr('class','nav-link');
-	}else{
+	}else if(idx=='3'){
 		$('#comment').attr('class','tab-pane fade active show in');
+		$('#user').attr('class','tab-pane fade show');
+		$('#communityboard').attr('class','tab-pane fade show');$('#diaryboard').attr('class','tab-pane fade show');
+		$('#a').attr('class','nav-link');
+		$('#b').attr('class','nav-link');
+		$('#c').attr('class','nav-link');
+		$('#d').attr('class','nav-link active');
+	}else if(idx=='4'){
 		$('#Comcomment').attr('class','tab-pane fade active show in');
+		$('#comment').attr('class','tab-pane fade show');
 		$('#user').attr('class','tab-pane fade show');
 		$('#communityboard').attr('class','tab-pane fade show');
 		$('#diaryboard').attr('class','tab-pane fade show');
@@ -220,6 +228,8 @@ function commentList(){
 			dataType : 'json',
 			success : function(data){
 				var reportDcomment = data.reportDcomment;
+				$('.nav-link').attr('class','nav-link');
+				$('#d').attr('class','nav-link active');
 				if ($('#dcommentlist')[0].children[0] == null) {
 				for( i = 0; i<reportDcomment.length; i++ ){
 					$("#dcommentlist").append(
@@ -362,7 +372,7 @@ function ccoview(idx) {
 
 //여행일지댓글 -신고사유 버튼 눌렀을때
 function dcoreportReason(idx) {
-	window.open("http://localhost:8080/dcoreportReason.do?idx=" + idx,
+	window.open("http://localhost:8080/dcoreportReason.do?dco=dco&idx=" + idx,
 					"여행일지댓글 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }

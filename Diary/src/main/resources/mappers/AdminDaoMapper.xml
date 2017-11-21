@@ -178,4 +178,12 @@
 		update member set reportcount = #{reportcount} where nick = #{nick}
 	</update>
 	
+	<update id="Coacquit" parameterType="Integer">
+		update CCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+	</update>
+	
+	<update id="Doacquit" parameterType="Integer">
+		update DCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+	</update>
+	
 </mapper>
