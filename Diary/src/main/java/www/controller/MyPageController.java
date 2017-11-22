@@ -143,7 +143,7 @@ public class MyPageController {
 
 	@RequestMapping(value="/blockMember.do",method = RequestMethod.GET)
 	public @ResponseBody Map<String,String> blockMember(BlockVo vo,ModelAndView mav){
-		logger.info(vo.toString());
+		//logger.info(vo.toString());
 		sv.blockMember(vo);
 		
 		Map<String,String> map = new HashMap<String, String>();

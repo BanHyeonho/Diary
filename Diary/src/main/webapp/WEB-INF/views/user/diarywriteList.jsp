@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>팔로워 목록</title>
 <link href="css/simplex.css" rel="stylesheet" />
+<script type="text/javascript" src="script/diarywrite.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <body>
 	<h1>내 스크랩 목록</h1>
@@ -20,7 +22,7 @@
 			<tbody id="scarp_listwow">
 		 	<c:forEach items="${scrap_listwow}" var="scarp" >
 				<tr>
-					<td><a href="#">${scarp.dtitle }<a></a></td> <td>${scarp.nick}</td>
+					<td><a  onclick="scrap_show('${scarp.place}','${scarp.contents}','${scarp.mapposition}')">${scarp.dtitle }<a></a></td> <td>${scarp.nick}</td>
 				</tr>
 			</c:forEach> 
 			</tbody>

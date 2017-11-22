@@ -404,16 +404,17 @@ function writing(){
 	}
 	
 }
-
+//스크랩한글 리스트 목록 뽑아서 글쓸떄 사용할수 있도록 함
 function scrap_list(id){
 	
-	
+				
 	
 			
 			var form = document.createElement("form");      // form 엘리멘트 생성
 			 form.setAttribute("method","get");             // method 속성 설정
 			 form.setAttribute("action","/copyScrapList.do");       // action 속성 설정
 			 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
+			 
 			 var input =document.createElement("input"); 
 			 input.setAttribute("type","hidden");
 			 input.setAttribute("name","id");
@@ -424,4 +425,19 @@ function scrap_list(id){
 			 var Settings = 'width=500,height=600,top=100,left=100';
 				window.open("","popup_window",Settings);
 				form.submit();
+}
+
+function scrap_show(p,c,m){
+	
+if (confirm("현재 글쓰기에 추가 하시겠습니까?") == true) {
+		
+		
+		opener.document.writingForm.dtitle.value=p;
+		//부모에게 값 전달 , 현호가 지도에 표시 해주고 컨텐츠 넣고. 장소 넣고 해라
+	
+		
+	}
+	
+	
+	
 }
