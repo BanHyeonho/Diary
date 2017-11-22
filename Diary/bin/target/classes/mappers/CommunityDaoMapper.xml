@@ -8,8 +8,8 @@
   </select> -->
   
   <insert id="communityinsert" parameterType="www.dto.CommunityVo">
-  insert into COMMUNITY(IDX,ID,NICK,CTITLE,CONTENTS,SDATE,EDATE,CDATE,CHITCOUNT,CREPORTCOUNT,CPLACE,CAR,ATTENDEE)
-  values(COMMUNITY_SEQ.NEXTVAL,#{id},#{nick},#{ctitle},#{contents},#{sdate},#{edate},sysdate,#{chitcount},#{creportcount},#{cplace},#{car},#{attendee})
+  insert into COMMUNITY(IDX,ID,NICK,CTITLE,CONTENTS,SDATE,EDATE,CDATE,CHITCOUNT,CREPORTCOUNT,CPLACE,CAR,ATTENDEE,GENDER)
+  values(COMMUNITY_SEQ.NEXTVAL,#{id},#{nick},#{ctitle},#{contents},#{sdate},#{edate},sysdate,#{chitcount},#{creportcount},#{cplace},#{car},#{attendee},#{gender})
   
   </insert>
   
@@ -34,6 +34,45 @@
   <delete id="deleteccomment" parameterType="Integer">
   delete from CCOMMENT where idx=#{idx}
   </delete>
+  
+  <delete id="deletecommunity" parameterType="Integer">
+  delete from COMMUNITY where idx=#{idx}
+  </delete>
+  
+  <update id="updatecommu" parameterType="www.dto.CommunityVo">
+  update community set ctitle=#{ctitle},contents=#{contents},sdate=#{sdate},edate=#{edate},cplace=#{cplace},car=#{car},attendee=#{attendee},gender=#{gender} where idx=#{idx}
+  
+  </update>
+  
+  <select id="csearch" resultType="www.dto.CommunityVo" parameterType="www.dto.CommunityVo">
+  
+  select * from community where 1=1
+  <if test="cplace neq '지역'">
+  	and cplace=#{cplace}
+  </if> 
+  <if test="gender neq 'anything'">
+  	and gender=#{gender}
+   </if> 
+	<if test="sdate neq ''">
+  	<![CDATA[and sdate>=#{sdate} ]]>
+  </if> 
+  <if test="edate neq ''">
+  	<![CDATA[and edate<=#{edate} ]]>
+  </if> 	
+	<if test="ctitle eq '전체'">
+	and ctitle like '%' || #{contents} || '%' or contents like '%' || #{contents} || '%' or nick like '%' || #{contents} || '%'
+	</if>
+  <if test="ctitle eq 'ctitle'">
+  	and ctitle like '%' || #{contents} || '%'
+  </if>
+  <if test="ctitle eq'contents'">
+  	and contents like '%' || #{contents} || '%'
+  </if>
+  <if test="ctitle eq 'nick'">
+  	and nick like '%' || #{contents} || '%'
+  </if>   
+ 
+  </select>
   
   
 </mapper>

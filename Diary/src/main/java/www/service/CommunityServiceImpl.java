@@ -65,5 +65,12 @@ public class CommunityServiceImpl implements CommunityService{
 		// TODO Auto-generated method stub
 		dao.updatecommu(vo);
 	}
+
+
+	@Override
+	public List<CommunityVo> csearch(CommunityVo vo) {
+		// TODO Auto-generated method stub
+		return dao.csearch(vo);
+	}
 	
 }

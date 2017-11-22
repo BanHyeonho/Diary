@@ -74,8 +74,8 @@ function mywrite(id) {
 					//console.log($('#my_diary'));
 
 					$('#my_diary').append(
-							'<tr><td><a href="/oneDiary.do?idx='
-									+ mydiary[i].idx + '">' + mydiary[i].dtitle
+							'<tr><td><a href="/oneDiary.do?linkedidx='
+									+ mydiary[i].idx + '&id='+id+'">' + mydiary[i].dtitle
 									+ '</a></td><td>' + mydiary[i].ddate
 									+ '</td><td>' + mydiary[i].dhitcount
 									+ '</td><td>' + mydiary[i].good
@@ -137,14 +137,12 @@ function myCommunity(id){
 
 //쪽지함 가기
 function msg_1(id){
-	
+	//setInterval(function(){$('#msg_chk').css('background-color','white');});
 	var id = id;
 	var data = {
 		'id' : id
 	};
-
 	$("#msg_ham").empty();
-
 	var setting = {
 		url : '/msg.do',
 		type : 'post',
@@ -260,6 +258,8 @@ function mag_form(sender,senderid,receiver,receiverid){
 	form.submit();
 
 
+	
+	
 }
 
 //회원 차단하기
@@ -380,44 +380,58 @@ function scrap_list(id){
 		dataType : 'json',
 		success : function(data) {
 			var myScrap = data.myScrap;
-			var mydiary = data.mydiary;
-//			console.log(myScrap);
-//			console.log(mydiary);
-//			console.log(myScrap.length);
-//			console.log(mydiary.length);
+		
+
 			if ($('#scrap_body')[0].children[0] == null) {
 				
-			for(var i = 0; i <myScrap.length; i++){
-				for(var j = 0; j < mydiary.length; j++){
-					if(myScrap[i].linkedidx == mydiary[j].idx){
+				
+		
+				for (var i = 0; i < myScrap.length; i++) {
 						$('#scrap_body').append(
 								'<tr><td><a href="/oneDiary.do?idx='
-								+ mydiary[j].idx + '">' + mydiary[j].dtitle
-								+ '</a></td><td>' + mydiary[j].ddate
-								+ '</td><td>' + mydiary[j].dhitcount
-								+ '</td><td>' + mydiary[j].good
+								+ myScrap[i].idx + '">' + myScrap[i].dtitle
+								+ '</a></td><td>' + myScrap[i].ddate
+								+ '</td><td>' + myScrap[i].dhitcount
+								+ '</td><td>' + myScrap[i].good
 								+ '</td></tr>');
 						
-					}
 				}
+		
+			
+		
+			
 			}
 			
-			
-			// console.log(mydiary[0]);
-			
-				for (var i = 0; i < mydiary.length; i++) {
-					// console.log(mydiary[i].dtitle);
-					// console.log(mydiary[i].ddate);
-					// console.log(mydiary[i].dhitcount);
-					// console.log(mydiary[i].good);
-					console.log($('#my_diary'));
+		},
+		error : function() {
+			alert('error');
+		}
 
-					$('#my_diary').append(
-							'<tr><td><a href="/oneDiary.do?idx='
-									+ mydiary[i].idx + '">' + mydiary[i].dtitle
-									+ '</a></td><td>' + mydiary[i].ddate
-									+ '</td><td>' + mydiary[i].dhitcount
-									+ '</td><td>' + mydiary[i].good
+	};
+	$.ajax(setting);
+}
+// 팔로워 리스트 보기
+function followers(id){
+	var id = id;
+	var data = {
+		'id' : id
+	};
+	var setting = {
+		url : '/followers.do',
+		type : 'post',
+		data : data,
+		dataType : 'json',
+		success : function(data) {
+			var followers_go = data.followers_go;
+		
+			$("#followers_list").empty();
+			if ($('#followers_list')[0].children[0] == null) {
+				for (var i = 0; i < followers_go.length; i++) {
+			
+					$('#followers_list').append(
+							'<tr><td>'
+									 + followers_go[i].followers
+									
 									+ '</td></tr>');
 
 				}
@@ -431,3 +445,62 @@ function scrap_list(id){
 	};
 	$.ajax(setting);
 }
+// 내가 팔로잉한 회원 리스트
+function following(id){
+	var id = id;
+	var data = {
+		'id' : id
+	};
+	var setting = {
+		url : '/following.do',
+		type : 'post',
+		data : data,
+		dataType : 'json',
+		success : function(data) {
+			var following_go = data.following_go;
+			//consolo.log(following_go);
+			$("#following_list").empty();
+			if ($('#following_list')[0].children[0] == null) {
+				for (var i = 0; i < following_go.length; i++) {
+
+					$('#following_list').append(
+							'<tr id="'+following_go[i].idx+'"><td>'
+									 + following_go[i].following +
+									 '<td><button class="btn btn-outline-danger" onclick=follow_delete('+following_go[i].idx+')>팔로우 취소</button></td>'
+									+ '</td></tr>');
+
+				}
+			}
+			
+		},
+		error : function() {
+			alert('error');
+		}
+
+	};
+	$.ajax(setting);
+}
+function follow_delete(fb){
+	
+	if (confirm("정말 해제하시겠습니까?") == true) {
+		var idx = {'idx':fb};
+		
+		var setting = {
+				url : '/deleteFollow.do',
+				type : 'get',
+				data : idx,
+				dataType : 'json',
+				success : function(data){
+					alert(data.followdelte);
+					$('#'+fb).remove();
+					
+				},
+				error : function() {
+					alert('차단해제를 실패하였습니다');
+				}
+		};
+		$.ajax(setting);
+		}
+}
+
+

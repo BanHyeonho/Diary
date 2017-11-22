@@ -44,5 +44,35 @@
   
   </update>
   
+  <select id="csearch" resultType="www.dto.CommunityVo" parameterType="www.dto.CommunityVo">
+  
+  select * from community where 1=1
+  <if test="cplace neq '지역'">
+  	and cplace=#{cplace}
+  </if> 
+  <if test="gender neq 'anything'">
+  	and gender=#{gender}
+   </if> 
+	<if test="sdate neq ''">
+  	<![CDATA[and sdate>=#{sdate} ]]>
+  </if> 
+  <if test="edate neq ''">
+  	<![CDATA[and edate<=#{edate} ]]>
+  </if> 	
+	<if test="ctitle eq '전체'">
+	and ctitle like '%' || #{contents} || '%' or contents like '%' || #{contents} || '%' or nick like '%' || #{contents} || '%'
+	</if>
+  <if test="ctitle eq 'ctitle'">
+  	and ctitle like '%' || #{contents} || '%'
+  </if>
+  <if test="ctitle eq'contents'">
+  	and contents like '%' || #{contents} || '%'
+  </if>
+  <if test="ctitle eq 'nick'">
+  	and nick like '%' || #{contents} || '%'
+  </if>   
+ 
+  </select>
+  
   
 </mapper>

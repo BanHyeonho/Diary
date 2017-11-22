@@ -39,5 +39,36 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   <select id="comment" parameterType="Integer" resultType="www.dto.CommentVo">
   	select * from DCOMMENT where LINKEDIDX = #{idx}
   </select>
+  <select id="followChk" parameterType="www.dto.HitCountVo" resultType="www.dto.FollowVo">
+  	select idx from DIARY where id in (select FOLLOWINGID from FOLLOW where FOLLOWERSID = #{id}) and idx = #{linkedidx}
+  </select>
+  
+  <update id="good" parameterType="www.dto.GoodVo">
+  	update Diary set GOOD = #{good} where idx = #{linkedidx}
+  </update>
+  <insert id="gooded" parameterType="www.dto.GoodVo">
+  	insert into GOOD values(GOOD_SEQ.NEXTVAL,#{linkedidx},#{id})
+  </insert>
+  <select id="goodchk" parameterType="www.dto.GoodVo" resultType="www.dto.GoodVo">
+  	select * from GOOD where id=#{id} and linkedidx = #{linkedidx}
+  </select>
+  <insert id="report" parameterType="www.dto.ReportVo">
+  	insert into DREPORT values(DREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{title},#{type},#{reason},#{linkedidx})
+  </insert>
+  
+  <select id="searchByWriter" resultType="www.dto.DiaryVo" parameterType="String">
+  	select * from DIARY where nick like '%' || #{nick} || '%' 
+  </select>
+  <select id="searchByTitle" resultType="www.dto.DiaryVo" parameterType="String">
+  	select * from DIARY where DTITLE like '%' || #{dtitle} || '%'
+  </select>
+  <select id="searchByPlace" resultType="www.dto.DiaryVo" parameterType="String">
+  	select * from DIARY where CONTENTS like '%' || #{place} || '%'
+  </select>
+  
+  <delete id="deletediary" parameterType="Integer">
+  	delete from DIARY where idx = #{idx}
+  </delete>
+  
   
 </mapper>

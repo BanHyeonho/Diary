@@ -18,7 +18,12 @@
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
-	
+	<c:if test="${msg!=null }">
+		<script type="text/javascript">
+		
+		msg_1('${user.id}');
+		</script>	
+	</c:if>
 	<div class="container">
 		<div class="contents ">
 			<div style="height: 50px">
@@ -30,9 +35,9 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#scrap" onclick="scrap_list('${user.id}')">스크랩</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#followers">팔로워</a></li>
+						href="#followers" onclick="followers('${user.id}')">팔로워</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#follwoing">팔로윙</a></li>
+						href="#follwoing" onclick="following('${user.id}')">팔로윙</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#msg" onclick="msg_1('${user.id}');">쪽지함</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
@@ -222,11 +227,8 @@
 								<th>닉네임</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<!--  {} 넣어서 for each 로 돌려 -->
-							</tr>
+						<tbody id= "followers_list">
+							
 						</tbody>
 					</table>
 
@@ -239,12 +241,8 @@
 								<th colspan="2">닉네임</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td><button class="btn btn-outline-danger">팔로우 취소</button></td>
-								<!--  {} 넣어서 for each 로 돌려 -->
-							</tr>
+						<tbody id="following_list">
+						
 						</tbody>
 					</table>
 
