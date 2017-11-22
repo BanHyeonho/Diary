@@ -32,12 +32,6 @@ public class AdminServiceimpl implements AdminService{
 		
 	}
 
-//	@Override
-//	public void deletemember(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
 
 	@Override
 	public void deletediary(int idx) {
@@ -241,22 +235,24 @@ public class AdminServiceimpl implements AdminService{
 		// TODO Auto-generated method stub
 		dao.Doacquit(idx);
 	}
-	
 
-//	@Override
-//	public ReportVo reportReason(int idx) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public ReportVo reportCReason(int idx) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<CommentVo> dcosearch(String option, String keyword) {
+		// TODO Auto-generated method stub
+		if(option.equals("댓글내용")){
+		return dao.searchByDcontent(keyword);
+		}
+		return dao.searchByDcoNick(keyword);
+		
+	}
 
-//	}
-	
+	@Override
+	public List<CommentVo> ccosearch(String option, String keyword) {
+		if(option.equals("댓글내용")){
+			return dao.searchByCcontent(keyword);
+			}
+			return dao.searchByCcoNick(keyword);
+	}
 	
 
 }

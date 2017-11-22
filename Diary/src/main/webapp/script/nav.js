@@ -24,3 +24,36 @@ function goWrite(session){
 		location.href='/diarywrite.do';
 	}
 }
+
+function wow_following(id){
+		$("#aa").toggle();
+		
+		var id = id;
+		var data = {
+			'id' : id
+		};
+		var setting = {
+			url : '/following.do',
+			type : 'post',
+			data : data,
+			dataType : 'json',
+			success : function(data) {
+				var following_go = data.following_go;
+				//consolo.log(following_go);
+				$("#aa").empty();
+				if ($('#aa')[0].children[0] == null) {
+					for (var i = 0; i < following_go.length; i++) {
+						//alert(following_go[i].following);
+						$('#aa').append('<a href="/search.do?option=작성자&keyword='+ following_go[i].following +'">'+ following_go[i].following +'</a><br/>');
+
+					}
+				}
+				
+			},
+			error : function() {
+				alert('error');
+			}
+
+		};
+		$.ajax(setting);
+}
