@@ -405,4 +405,23 @@ function writing(){
 	
 }
 
-
+function scrap_list(id){
+	
+	
+	
+			
+			var form = document.createElement("form");      // form 엘리멘트 생성
+			 form.setAttribute("method","get");             // method 속성 설정
+			 form.setAttribute("action","/copyScrapList.do");       // action 속성 설정
+			 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
+			 var input =document.createElement("input"); 
+			 input.setAttribute("type","hidden");
+			 input.setAttribute("name","id");
+			 input.value=id;
+			 form.appendChild(input);    
+			 document.body.appendChild(form);    
+			
+			 var Settings = 'width=500,height=600,top=100,left=100';
+				window.open("","popup_window",Settings);
+				form.submit();
+}

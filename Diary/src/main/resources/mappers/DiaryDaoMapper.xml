@@ -62,10 +62,13 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   <select id="searchByTitle" resultType="www.dto.DiaryVo" parameterType="String">
   	select * from DIARY where DTITLE like '%' || #{dtitle} || '%'
   </select>
-  <select id="searchByContent" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where CONTENTS like '%' || #{contents} || '%'
+  <select id="searchByPlace" resultType="www.dto.DiaryVo" parameterType="String">
+  	select * from DIARY where CONTENTS like '%' || #{place} || '%'
   </select>
   
+  <delete id="deletediary" parameterType="Integer">
+  	delete from DIARY where idx = #{idx}
+  </delete>
   
   
 </mapper>

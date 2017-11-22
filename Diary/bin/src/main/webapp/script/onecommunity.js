@@ -17,13 +17,14 @@ function ccomment(nick,idx){
 					
 					var html = $("#ccomment").html();
 					html+="<tr  vertical-align: bottom>"
-					+"<td>"+nick +"</td></tr>"
+					+"<td>"+nick+'<button type="button" class="btn btn-primary btn-sm" onclick=deleteccomment('+idx+');">댓글 삭제</button>'
+					+"</td></tr>"
 					+"<tr>"
-					+"<td>"+contents +"</td>"
+					+"<td>"+contents +'<button type="button"  class="btn btn-primary btn-sm">신고</button></td>'
 					+"</tr>";
 					$("#ccomment").html(html);
 						
-					
+					 
 					
 				},
 				error:function(e){}

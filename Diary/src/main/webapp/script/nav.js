@@ -44,8 +44,8 @@ function wow_following(id){
 				if ($('#aa')[0].children[0] == null) {
 					for (var i = 0; i < following_go.length; i++) {
 						//alert(following_go[i].following);
-						$('#aa').append('<a href="/search.do?option=작성자&keyword='+ following_go[i].following +'">'+ following_go[i].following +'</a><br/>');
-
+						$('#aa').append('<a href="#" onclick=following_write("'+following_go[i].following+'");>'+ following_go[i].following +'</a><br/>');
+						
 					}
 				}
 				
@@ -56,4 +56,8 @@ function wow_following(id){
 
 		};
 		$.ajax(setting);
+}
+
+function following_write(b){
+	location.href="/search.do?option=작성자&keyword="+b;
 }

@@ -12,7 +12,9 @@
 </head>
 <body>
 <%
+
 	Map<String,Object> map =(Map)request.getAttribute("data");
+
 		DiaryVo vo = (DiaryVo)map.get("Diary");
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
@@ -38,15 +40,43 @@
 		</c:if>
 		
 		
-		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span><button type="button">추천수 : ${data.Diary.good }</button>
+		<span>${data.Diary.sdate } ~ ${data.Diary.edate } 조회수 : ${data.Diary.dhitcount }</span>
+		
+		<c:choose>
+		<c:when test="${user!=null }">
+		<button type="button" id="good" onclick="
+		<c:if test="${data.Good==null }">
+		good('${user.id}','${data.Diary.idx }','${data.Diary.good }');
+		</c:if>
+		<c:if test="${data.Good!=null }">
+		alert('이미 추천하셨습니다.');
+		</c:if>
+		">추천수 : ${data.Diary.good }</button>
+		</c:when>
+		<c:otherwise>
+		추천수 : ${data.Diary.good }
+		</c:otherwise>
+		</c:choose>
+		<c:if test="${user.nick== data.Diary.nick}">
+		<a href="javascript:updateForm('${ data.Diary.idx }','${data.Diary.dtitle }','${data.Diary.place }','${data.Diary.contents }','${data.Diary.mapposition }','${data.Diary.dpicture }','${data.Diary.sdate }','${data.Diary.edate }','${data.Diary.dpublic }');">글수정</a>&nbsp;<a href="javascript:deleteDiary('${data.Diary.idx }');">글삭제</a>
+		</c:if>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
-		<button type="button">신고</button>
+		<button type="button" onclick="openForm('${data.Diary.id }','${user.nick }','${data.Diary.dtitle }','${data.Diary.idx}');">신고</button>
 		</c:if>
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
 		<span style="float: right;" onclick="add();">글쓴이 : ${data.Diary.nick }</span>
 		<c:if test="${user.nick!=data.Diary.nick && user!=null }">
 		<ul id="add" style="position: absolute;right:0px; z-index: 10;display: none;">
-			<li><a id="follow" href="javascript:follow('${data.Diary.id }','${data.Diary.nick }','${ user.id}','${user.nick }');">팔로우하기</a></li>
+			<li><a id="follow" href="javascript:follow('${data.Diary.id }','${data.Diary.nick }','${ user.id}','${user.nick }');">
+			<c:choose>
+			<c:when test="${data.Follow==null }">
+			팔로우하기
+			</c:when>
+			<c:otherwise>
+			팔로우 취소하기
+			</c:otherwise>
+			</c:choose>
+			</a></li>
 			<li><a href="javascript:mag_form('${ data.Diary.nick }','${ data.Diary.id }','${user.nick }','${user.id }');">쪽지보내기</a></li>
 		</ul>
 		</c:if>
@@ -85,10 +115,11 @@
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/oneDiary.js"></script>	
 	<script type="text/javascript">
-	createMap('${data.Diary.mapposition}');
+	createMap('${data.Diary.mapposition}','${data.Diary.place}');
 	</script>
 </body>
 </html>

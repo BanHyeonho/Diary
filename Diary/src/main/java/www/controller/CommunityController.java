@@ -112,9 +112,16 @@ public class CommunityController {
 	}//만남의장 글 수정처리
 
 //
-//	public ModelAndView SearchCommunity(CommunityVo vo) {
-//		return null;
-//	} // 검색하기
+	@RequestMapping(value="/csearch.do",method=RequestMethod.POST)
+	public ModelAndView SearchCommunity(ModelAndView mav,CommunityVo vo) {
+		logger.info("검색 조건들 : "+vo.toString());
+		sv.csearch(vo);
+		logger.info("검색 갯수 : "+sv.csearch(vo).size());
+		mav.addObject("list", sv.csearch(vo));
+		mav.setViewName("user/community");
+		
+		return mav;
+	} // 검색하기
 //
 //
 //	public @ResponseBody Map<String, CommentVo> updateCcomment(CommentVo vo) {

@@ -96,12 +96,30 @@
 			</c:forEach> 
 		</table>
 		</div>
-		
-		
 	
 		
-	    <button type="button" class="btn btn-primary btn-lg">글삭제</button>
-    	<button type="button" class="btn btn-primary btn-lg">글수정</button>
+	    <c:if test="${data.nick==user.nick}"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='/deletecommu.do?idx=${data.idx }'" >글삭제</button></c:if>
+    	<c:if test="${data.nick==user.nick}">
+    	
+    	<form action="/updatecommu.do" method="POST">
+    	<input type ="hidden" name="idx"value="${data.idx }">
+    	<input type ="hidden" name="nick"value="${data.nick }">
+    	<input type ="hidden" name="ctitle"value="${data.ctitle }">
+    	<input type ="hidden" name="contents"value="${data.contents }">
+    	<input type ="hidden" name="sdate"value="${data.sdate }">
+    	<input type ="hidden" name="edate"value="${data.edate }">
+    	<input type ="hidden" name="chitcount"value="${data.chitcount }">
+    	<input type ="hidden" name="cplace"value="${data.cplace }">
+    	<input type ="hidden" name="car"value="${data.car }">
+    	<input type ="hidden" name="attendee"value="${data.attendee }">
+    	<input type ="hidden" name="gender"value="${data.gender }">
+    	
+    	
+    	<button type="submit" class="btn btn-primary btn-lg" >글수정</button>
+    	
+    	</form>
+    	
+    	</c:if>
     	
 	
 	</div>

@@ -56,7 +56,9 @@ public interface AdminService {
 
 	public void deleteAccount(String id); //정보보기버튼에서 계정삭제버튼 누를때 
 
-	public void deleteDcomment(int idx); //아직?
+	public void deleteDcomment(int idx); //여행일지 댓글삭제
+	
+	public void deleteCcomment(int idx); //커뮤니티 댓글삭제
 
 	public DiaryVo viewDiary(int idx); //일지게시판 글보기 버튼
 
@@ -66,11 +68,25 @@ public interface AdminService {
 
 	public List<ReportVo> creportReason(int linkedidx); //만남의장 신고사유보기
 
-	public void acquit(int idx); //신고사유 무죄버튼눌렀을때
+	public void Dacquit(int idx); //(여행일지)신고사유 무죄버튼
+	
+	public void Cacquit(int idx);//(커뮤니티)신고사유 무죄버튼
 
-	public void guilt(int idx);// 신고사유 유죄버튼눌렀을때-해당글게시자에게 경고1회
+	public void dGuilt(int idx);// (여행일지)신고사유 유죄버튼
 
-//	public List<ReportVo> dcoreportReason(int idx); //일지게시판 댓글신고사유보기
+	public void cGuilt(int idx);//(커뮤니티)신고사유 유죄버튼
+
+	public List<ReportVo> dcoreportReason(int idx); //일지게시판 댓글신고사유보기
+
+	public List<ReportVo> ccoreportReason(int idx);  //커뮤니티 댓글신고사유보기
+
+	public void doGuilt(int idx);// (여행일지댓글)신고사유 유죄버튼
+
+	public void coGuilt(int idx);// (커뮤니티댓글)신고사유 유죄버튼
+
+	public void Coacquit(int idx);//(커뮤니티댓글)신고사유 무죄버튼
+
+	public void Doacquit(int idx); //(여행일지댓글)신고사유 무죄버튼
 
 
 }

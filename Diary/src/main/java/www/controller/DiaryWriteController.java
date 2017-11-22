@@ -1,5 +1,7 @@
 package www.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.DiaryVo;
 import www.service.DiaryService;
+import www.service.MyPageService;
 
 @Controller
 public class DiaryWriteController {
@@ -18,14 +21,20 @@ public class DiaryWriteController {
 	@Autowired
 	DiaryService sv;
 	
-//	@Autowired
-//	MyPageService mv;
+	@Autowired
+	MyPageService mv;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DiaryWriteController.class);
 
-//	public ModelAndView copyScrapList(String id) {
-//		return null;
-//	} // 스크랩 배끼기(자신의스크랩리스트 창보여줌)
+	@RequestMapping(value="/copyScrapList.do",method=RequestMethod.GET)
+	public ModelAndView copyScrapList(ModelAndView mav ,String id) {
+		logger.info("이름이 null 뜬다!"+mv.myScrap(id).size());
+		mav.addObject("scrap_listwow", mv.myScrap(id));
+//		logger.info("asdfl;kasldfkjasd"+mv.myScrap(id).toString());
+		
+		mav.setViewName("user/diarywriteList");
+		return mav;
+	} // 스크랩 배끼기(자신의스크랩리스트 창보여줌)
 //
 //	public ModelAndView copyScrap(int idx) {
 //		return null;

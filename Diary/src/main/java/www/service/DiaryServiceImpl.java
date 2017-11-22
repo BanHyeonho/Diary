@@ -90,10 +90,16 @@ public class DiaryServiceImpl implements DiaryService {
 		
 		if(option.equals("글제목")){
 			return dao.searchByTitle(keyword);
-		}else if(option.equals("글내용")){
-			return dao.searchByContent(keyword);
+		}else if(option.equals("여행지")){
+			return dao.searchByPlace(keyword);
 		}		
 		return dao.searchByWriter(keyword);
+	}
+
+	@Override
+	public void deletediary(int idx) {
+		dao.deletediary(idx);
+		
 	}
 
 

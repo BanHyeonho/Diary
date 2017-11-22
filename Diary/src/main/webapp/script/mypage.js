@@ -82,8 +82,8 @@ function mywrite(id) {
 					//console.log($('#my_diary'));
 
 					$('#my_diary').append(
-							'<tr><td><a href="/oneDiary.do?idx='
-									+ mydiary[i].idx + '">' + mydiary[i].dtitle
+							'<tr><td><a href="/oneDiary.do?linkedidx='
+									+ mydiary[i].idx + '&id='+id+'">' + mydiary[i].dtitle
 									+ '</a></td><td>' + mydiary[i].ddate
 									+ '</td><td>' + mydiary[i].dhitcount
 									+ '</td><td>' + mydiary[i].good
@@ -245,7 +245,7 @@ function mag_form(sender,senderid,receiver,receiverid){
 	 form.setAttribute("action","/sendMsgForm.do");       // action 속성 설정
 	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
 	 document.body.appendChild(form);       
-	 
+	
 	var senderNick = document.createElement("input");
 	senderNick.setAttribute("type","hidden");
 	senderNick.setAttribute("name","sender");

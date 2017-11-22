@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +35,23 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
-	public ModelAndView admin(ModelAndView mav) {
+	public ModelAndView admin(ModelAndView mav,HttpSession session) {
 		// List<MemberVo> list = sv.allmember();
 		// for (MemberVo memberVo : list) {
 		// logger.info(memberVo.toString());
 		// }
 		mav.addObject("mlist", sv.allmember());
-		mav.addObject("idx", "0");
+		
+		if(session.getAttribute("dco")!=null){
+			session.removeAttribute("dco");
+			mav.addObject("idx", "3");
+		}else if(session.getAttribute("cco")!=null){
+			session.removeAttribute("cco");
+			mav.addObject("idx", "4");
+		}else{
+			mav.addObject("idx", "0");	
+		}
+		
 		mav.setViewName("admin/admin");
 		return mav;
 	} // 계정관리-회원리스트 보기
@@ -147,19 +159,18 @@ public class AdminController {
 		return mav;
 	}// 일지게시판 신고사유버튼-상세히 보기
 	
-	@RequestMapping(value = "/guilt.do", method = RequestMethod.GET)
-	 public ModelAndView guilt(ModelAndView mav,int idx) {
+	@RequestMapping(value = "/dGuilt.do", method = RequestMethod.GET)
+	 public ModelAndView dGuilt(ModelAndView mav,int idx) {
 		
-		sv.guilt(idx);
+		sv.dGuilt(idx);
 		mav.setViewName("redirect:/alldiary.do");
 	 return mav;
 	 } // 여행일지 신고확정 글쓴이에게 경고카운트 누적,-유죄
 	
-	@RequestMapping(value = "/acquit.do", method = RequestMethod.GET)
-	public ModelAndView acquit(ModelAndView mav,int idx) {
+	@RequestMapping(value = "/Dacquit.do", method = RequestMethod.GET)
+	public ModelAndView Dacquit(ModelAndView mav,int idx) {
 
-
-		sv.acquit(idx);
+		sv.Dacquit(idx);
 		mav.setViewName("redirect:/alldiary.do");
 
 		return mav;
@@ -172,7 +183,7 @@ public class AdminController {
 		mav.addObject("idx", "2");
 		mav.setViewName("admin/admin");
 		return mav;
-	}// 만남의장글 리스트보여주기
+	}// 커뮤니티 리스트보여주기
 
 	@RequestMapping(value = "/communitySearch.do", method = RequestMethod.GET)
 	public ModelAndView communitySearch(ModelAndView mav, String option, String keyword) {
@@ -181,7 +192,7 @@ public class AdminController {
 		mav.addObject("idx", "2");
 		mav.setViewName("admin/admin");
 		return mav;
-	} // 만남의장 검색(글제목,닉네임)
+	} // 커뮤니티 검색(글제목,닉네임)
 
 	// @RequestMapping(value="/communitySearch.do",method=RequestMethod.GET)
 	// public @ResponseBody Map<String, List<CommunityVo>>
@@ -201,35 +212,41 @@ public class AdminController {
 		Map<String, List<CommunityVo>> map = new HashMap<String, List<CommunityVo>>();
 		map.put("reportclist", sv.reportclist());
 		return map;
-	} //만남의장 신고된 글리스트보기
+	} //커뮤니티 신고된 글리스트보기
 
 	@RequestMapping(value = "/viewCommunity.do", method = RequestMethod.GET)
 	public ModelAndView viewCommunity(ModelAndView mav, DiaryVo vo) {
 		mav.addObject("viewCommunity", sv.viewCommunity(vo.getIdx()));
 		mav.setViewName("admin/viewCommunity");
 		return mav;
-	}// 만남의장 글보기버튼-상세히 보기
+	}// 커뮤니티 글보기버튼-상세히 보기
 	
 	@RequestMapping(value = "/creportReason.do", method = RequestMethod.GET)
 	public ModelAndView creportReason(ModelAndView mav, ReportVo vo) {
 		
-		logger.info(""+vo.getIdx());
-		logger.info(""+sv.creportReason(vo.getIdx()).size());
+//		logger.info(""+vo.getIdx());
+//		logger.info(""+sv.creportReason(vo.getIdx()).size());
 		
 		mav.addObject("reportReason", sv.creportReason(vo.getIdx()));
 		mav.setViewName("admin/reportReason");
 		return mav;
-	}// 만남의장 신고사유버튼-상세히 보기
+	}// 커뮤니티 신고사유버튼-상세히 보기
 	
-	// public @ResponseBody Map<String,String> reportCOk(MemberVo vo,int idx) {
-	// return null;
-	// } // 커뮤니티 신고확정 글쓴이에게 경고카운트 누적
-	//
-	//
-	// public @ResponseBody Map<String,String> reportCcancel(CommunityVo vo) {
-	// return null;
-	// } // 커뮤니티 신고취소
-	//
+	@RequestMapping(value = "/cGuilt.do", method = RequestMethod.GET)
+	 public ModelAndView cGuilt(ModelAndView mav,int idx) {
+		logger.info(""+idx);
+		sv.cGuilt(idx);
+		mav.setViewName("redirect:/alldiary.do");
+	 return mav;
+	 } // 커뮤니티 신고확정 글쓴이에게 경고카운트 누적,-유죄
+	
+	@RequestMapping(value = "/Cacquit.do", method = RequestMethod.GET)
+	public ModelAndView Cacquit(ModelAndView mav,int idx) {
+
+		sv.Cacquit(idx);
+		mav.setViewName("redirect:/alldiary.do");
+		return mav;
+	} // 커뮤니티 신고취소-무죄
 	@RequestMapping(value = "/deletecommunity.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> deletecommunity(CommunityVo vo) {
 		Map<String, String> map = new HashMap<String, String>();
@@ -238,7 +255,6 @@ public class AdminController {
 		return map;
 	} // 커뮤니티 글삭제
   
-	
 	 @RequestMapping(value="/reportcomment.do",method=RequestMethod.GET)
 	 public @ResponseBody Map<String, List<CommentVo>> reportcomment(String report) {
 			logger.info(report);
@@ -254,16 +270,75 @@ public class AdminController {
 			sv.deleteDcomment(vo.getIdx());
 			map.put("deleteDcomment", "deleteDcomment");
 			return map;
-		} //  신고된 댓글삭제
+		} //(여행일지)신고댓글삭제
 		
-//		@RequestMapping(value = "/creportReason.do", method = RequestMethod.GET)
-//		public ModelAndView dcoreportReason(ModelAndView mav, ReportVo vo) {
-//			
-//			logger.info(""+vo.getIdx());
-//			logger.info(""+sv.creportReason(vo.getIdx()).size());
-//			
-//			mav.addObject("dcoreportReason", sv.dcoreportReason(vo.getIdx()));
-//			mav.setViewName("admin/coReportreason");
-//			return mav;
-//		}// 여행일지댓글: 신고사유버튼-상세히 보기
+		@RequestMapping(value = "/deleteCcomment.do", method = RequestMethod.GET)
+		public @ResponseBody Map<String, String> deleteCcomment(CommentVo vo) {
+			Map<String, String> map = new HashMap<String, String>();
+			sv.deleteCcomment(vo.getIdx());
+			map.put("deleteCcomment", "deleteCcomment");
+			return map;
+		} //(커뮤니티)신고댓글삭제
+		
+		@RequestMapping(value = "/dcoreportReason.do", method = RequestMethod.GET)
+		public ModelAndView dcoreportReason(ModelAndView mav, ReportVo vo,String dco) {
+			
+			logger.info(""+vo.getIdx());
+			logger.info(""+sv.creportReason(vo.getIdx()).size());
+			
+			mav.addObject("coreportReason", sv.dcoreportReason(vo.getIdx()));
+			mav.addObject("dco", dco);
+			mav.setViewName("admin/coReportreason");
+			return mav;
+		}// 여행일지댓글: 신고사유버튼-상세히 보기
+		
+		@RequestMapping(value = "/ccoreportReason.do", method = RequestMethod.GET)
+		public ModelAndView ccoreportReason(ModelAndView mav, ReportVo vo) {
+			
+			logger.info(""+vo.getIdx());
+			logger.info(""+sv.creportReason(vo.getIdx()).size());
+			
+			mav.addObject("coreportReason", sv.ccoreportReason(vo.getIdx()));
+			mav.setViewName("admin/coReportreason");
+			return mav;
+		}// 커뮤니티댓글: 신고사유버튼-상세히 보기
+		
+		@RequestMapping(value = "/doGuilt.do", method = RequestMethod.GET)
+		 public ModelAndView doGuilt(ModelAndView mav,int idx,HttpSession session) {
+			logger.info("인덱스"+idx);
+			sv.doGuilt(idx);
+			session.setAttribute("dco", "dco");
+			mav.setViewName("redirect:/admin.do");
+		 return mav;
+		 } // 여행일지 댓글신고  글쓴이에게 경고카운트 누적,-유죄
+		
+		@RequestMapping(value = "/coGuilt.do", method = RequestMethod.GET)
+		 public ModelAndView coGuilt(ModelAndView mav,int idx,HttpSession session) {
+			
+			sv.coGuilt(idx);
+			session.setAttribute("cco", "cco");
+			mav.setViewName("redirect:/admin.do");
+		 return mav;
+		 }// 커뮤니티 댓글신고  글쓴이에게 경고카운트 누적,-유죄
+		
+		@RequestMapping(value = "/Doacquit.do", method = RequestMethod.GET)
+		public ModelAndView Doacquit(ModelAndView mav,int idx,HttpSession session) {
+
+			sv.Doacquit(idx);
+			session.setAttribute("dco", "dco");
+			mav.setViewName("redirect:/admin.do");
+
+			return mav;
+		} // 여행일지댓글 신고취소-무죄
+		
+		@RequestMapping(value = "/Coacquit.do", method = RequestMethod.GET)
+		public ModelAndView Coacquit(ModelAndView mav,int idx,HttpSession session) {
+
+			sv.Coacquit(idx);
+			session.setAttribute("cco", "cco");
+			mav.setViewName("redirect:/admin.do");
+
+			return mav;
+		} // 커뮤니티댓글 신고취소-무죄
+
 }
