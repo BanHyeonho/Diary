@@ -17,6 +17,7 @@
 	<form action="/csearch.do" method="post">
 	<h1>만남의 장</h1>
 	<table class="table table-striped table-hover table-bordered">
+	
 		<tbody>
     	<tr>
        		<td>지역</td>
@@ -54,14 +55,14 @@
          	<td colspan="2"> 
          	
            		<div>
-          			<select name="ctilte">
-          			<option value="전체">전체</option>
-           			<option value="제목">제목</option>
-           			<option value="내용">내용</option>
-           			<option value="닉네임">닉네임</option>
+          			<select name="ctitle">
+          			<option>전체</option>
+           			<option value="ctitle">제목</option>
+           			<option value="contents">내용</option>
+           			<option value="nick">닉네임</option>
            			</select>
           
-           			<input type="text" placeholder="검색어 입력" size="60">
+           			<input type="text" placeholder="검색어 입력" name="contents" size="60">
            			<button type="submit">검색</button>
            			<button type='button' onclick="location.href='/communitywrite.do'">글쓰기</button>
            		</div>
@@ -82,6 +83,8 @@
       		<th>인원</th>
       		<th>여행날짜</th>
       		<th>차량유무</th>
+      		<th>조회수</th>
+      		<th>작성일</th>
     	</tr>
   		</thead>
   		<tbody>
@@ -98,6 +101,8 @@
       			<td>
       			<input type="checkbox" name="chk_info" disabled=true value="car">
       			</td>
+      			<td>${data.chitcount }</td>
+      			<td>${data.cdate }/<td>
     		</tr>
     	</c:forEach>
  		</tbody>

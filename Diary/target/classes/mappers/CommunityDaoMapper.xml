@@ -71,6 +71,7 @@
   <if test="ctitle eq 'nick'">
   	and nick like '%' || #{contents} || '%'
   </if>   
+ 	order by idx desc
  
   </select>
   

@@ -52,6 +52,7 @@
 		<script type="text/javascript">
 		msg_hham('${user.id}');
 		document.addEventListener('click',function(){msg_hham('${user.id}');});
+		
 		</script>
 		</c:otherwise>
 

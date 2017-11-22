@@ -55,5 +55,6 @@ function msg_move(){
 	
 	location.href=('/mypage.do?msg=msg');
 	
+	
 }
 

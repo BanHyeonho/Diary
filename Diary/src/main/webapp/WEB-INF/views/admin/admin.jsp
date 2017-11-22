@@ -24,13 +24,13 @@
 			<div style="height: 50px">
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#user" onclick="location.href='/admin.do'" id="a">계정관리</a></li>
+						href="#user" onclick="location.href='/admin.do'" id="a">사용자 계정</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#diaryboard" onclick="location.href='/alldiary.do'" id="b">일지게시판</a></li>
+						href="#diaryboard" onclick="location.href='/alldiary.do'" id="b">여행일지 게시판 </a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#communityboard" onclick="location.href='/allcommunity.do'" id="c">만남게시판</a></li>
+						href="#communityboard" onclick="location.href='/allcommunity.do'" id="c">커뮤니티 게시판</a></li>
 					 <li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#comment" onclick="commentList();" id="d">댓글</a></li> 
+						href="#comment" onclick="commentList();" id="d">신고 댓글</a></li> 
 					<!-- <li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" data-toggle="dropdown" href="#comment" onclick="commentList();
 						role="button" aria-haspopup="true" aria-expanded="false" >댓글</a>
