@@ -37,8 +37,8 @@
        		<td>성별</td>
          	<td>
             	<input type="radio" name="gender" value="anything" checked> 상관없음
-             	<input type="radio" name="gender" value="m"> 남
-           		<input type="radio" name="gender" value="w"> 여
+             	<input type="radio" name="gender" value="M"> 남
+           		<input type="radio" name="gender" value="W"> 여
       		</td>
     	</tr>
     	<tr>
@@ -56,6 +56,7 @@
          	
            		<div>
           			<select name="ctitle">
+          			<option>전체</option>
            			<option value="ctitle">제목</option>
            			<option value="contents">내용</option>
            			<option value="nick">닉네임</option>
