@@ -83,6 +83,8 @@
       		<th>인원</th>
       		<th>여행날짜</th>
       		<th>차량유무</th>
+      		<th>조회수</th>
+      		<th>작성일</th>
     	</tr>
   		</thead>
   		<tbody>
@@ -99,6 +101,8 @@
       			<td>
       			<input type="checkbox" name="chk_info" disabled=true value="car">
       			</td>
+      			<td>${data.chitcount }</td>
+      			<td>${data.cdate }/<td>
     		</tr>
     	</c:forEach>
  		</tbody>

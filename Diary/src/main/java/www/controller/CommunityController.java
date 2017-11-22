@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
+import www.dto.HitCountVo;
 import www.service.CommunityService;
 
 @Controller
@@ -22,8 +23,6 @@ public class CommunityController {
 
 	@Autowired
 	CommunityService sv;
-
-	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 
 	@RequestMapping(value="/communitywrite.do",method = RequestMethod.GET)
 	public ModelAndView writeCommunity(ModelAndView mav) {
@@ -43,18 +42,14 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value="/onecommunity.do",method = RequestMethod.GET)
-	public ModelAndView oneCommunity(ModelAndView mav,int idx) {
+	public ModelAndView oneCommunity(ModelAndView mav,HitCountVo vo) {
 		
-		mav.addObject("data", sv.oneCommunity(idx));
-		
-		List<CommentVo> list = sv.ccomment(idx);
-		
-		for (CommentVo vo : list) {
-			logger.info("ff : "+vo);
-		}
-		
-		mav.addObject("list",sv.ccomment(idx) );
-		
+//		mav.addObject("data", sv.oneCommunity(vo));
+//		
+//		List<CommentVo> list = sv.ccomment(vo);
+//				
+//		mav.addObject("list",sv.ccomment(vo) );
+//		
 		mav.setViewName("user/onecommunity");
 		
 		return mav;
@@ -62,7 +57,7 @@ public class CommunityController {
 	
 	@RequestMapping(value="/ccommentinsert.do",method = RequestMethod.POST)
 	public @ResponseBody Map<String, CommentVo> Ccommentinsert(CommentVo vo) {
-		logger.info("ff : "+vo);
+		
 		sv.ccommentinsert(vo);
 		
 		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
@@ -102,8 +97,6 @@ public class CommunityController {
 	@RequestMapping(value="/updatecommu2.do",method = RequestMethod.POST)
 	public ModelAndView updatecommu2(ModelAndView mav,CommunityVo vo){
 		
-		logger.info("GG"+vo.toString());
-		
 		sv.updatecommu(vo);
 		
 		mav.setViewName("redirect:/onecommunity.do?idx="+vo.getIdx());
@@ -114,9 +107,8 @@ public class CommunityController {
 //
 	@RequestMapping(value="/csearch.do",method=RequestMethod.POST)
 	public ModelAndView SearchCommunity(ModelAndView mav,CommunityVo vo) {
-		logger.info("검색 조건들 : "+vo.toString());
+		
 		sv.csearch(vo);
-		logger.info("검색 갯수 : "+sv.csearch(vo).size());
 		mav.addObject("list", sv.csearch(vo));
 		mav.setViewName("user/community");
 		
