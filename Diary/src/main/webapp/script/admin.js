@@ -43,9 +43,17 @@ function change(idx){
 		$('#b').attr('class','nav-link');
 		$('#c').attr('class','nav-link active');
 		$('#d').attr('class','nav-link');
-	}else{
+	}else if(idx=='3'){
 		$('#comment').attr('class','tab-pane fade active show in');
+		$('#user').attr('class','tab-pane fade show');
+		$('#communityboard').attr('class','tab-pane fade show');$('#diaryboard').attr('class','tab-pane fade show');
+		$('#a').attr('class','nav-link');
+		$('#b').attr('class','nav-link');
+		$('#c').attr('class','nav-link');
+		$('#d').attr('class','nav-link active');
+	}else if(idx=='4'){
 		$('#Comcomment').attr('class','tab-pane fade active show in');
+		$('#comment').attr('class','tab-pane fade show');
 		$('#user').attr('class','tab-pane fade show');
 		$('#communityboard').attr('class','tab-pane fade show');
 		$('#diaryboard').attr('class','tab-pane fade show');
@@ -220,6 +228,8 @@ function commentList(){
 			dataType : 'json',
 			success : function(data){
 				var reportDcomment = data.reportDcomment;
+				$('.nav-link').attr('class','nav-link');
+				$('#d').attr('class','nav-link active');
 				if ($('#dcommentlist')[0].children[0] == null) {
 				for( i = 0; i<reportDcomment.length; i++ ){
 					$("#dcommentlist").append(
@@ -227,7 +237,7 @@ function commentList(){
 					+reportDcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-warning btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}
@@ -261,8 +271,8 @@ function Comcomment(){
 					'<tr id='+reportCcomment[i].idx+'><td>'+reportCcomment[i].contents+'</td><td>'
 					+reportCcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="deletecomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}
@@ -294,6 +304,27 @@ function deleteDcomment(ix){
 	$.ajax(setting);
 	} 
 	}
+
+//커뮤니티 신고된 댓글 삭제하기 
+function deleteCcomment(ix){
+	if(confirm("삭제하시겠습니까?")){
+	var data ={ 'idx': ix};
+	var setting = {
+			url : '/deleteCcomment.do',
+			data: data,
+			type : 'get',
+			dataType : 'json',
+			success : function(data){
+				$('#' + ix).remove();
+				alert("삭제되었습니다");
+			},error : function(){
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	} 
+	}
+
 //계정관리-정보보기버튼 눌렀을 때
 function openWin(id) {
 	window.open("http://localhost:8080/oneMember.do?id=" + id,
@@ -339,12 +370,19 @@ function ccoview(idx) {
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
-////여행일지댓글 -신고사유 버튼 눌렀을때
-//function dcoreportReason(idx) {
-//	window.open("http://localhost:8080/dcoreportReason.do?idx=" + idx,
-//					"여행일지댓글 신고사유보기",
-//					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
-//}
+//여행일지댓글 -신고사유 버튼 눌렀을때
+function dcoreportReason(idx) {
+	window.open("http://localhost:8080/dcoreportReason.do?dco=dco&idx=" + idx,
+					"여행일지댓글 신고사유보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
+
+//만남의장 -신고사유 버튼 눌렀을때
+function ccoreportReason(idx) {
+	window.open("http://localhost:8080/ccoreportReason.do?idx=" + idx,
+					"여행일지댓글 신고사유보기",
+					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
+}
 //function communitysearch(){
 //	var option =document.searchtool.option.value;
 //	var keyword = document.searchtool.keyword.value;

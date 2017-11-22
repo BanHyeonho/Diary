@@ -37,11 +37,11 @@
   		</thead>
   		<tbody>
   		
-  		 <c:forEach var="d" items="${reportReason}"  > 
+  		 <c:forEach var="di" items="${reportReason}"  > 
     		<tr>
-      			<td>${d.reporter}</td>
-      			<td>${d.type}</td>
-      			<td>${d.reason}</td>
+      			<td>${di.reporter}</td>
+      			<td>${di.type}</td>
+      			<td>${di.reason}</td>
     		</tr>
     	 </c:forEach>
     	

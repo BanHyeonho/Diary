@@ -59,9 +59,8 @@ public interface AdminDao {
 	
 	public List<CommentVo> reportDcomment(); //여행일지 신고된댓글 리스트 30개보기
 
-	public List<CommentVo> reportCcomment(); //만남의장 신고된 댓글 리스트 30개보기
+	public List<CommentVo> reportCcomment(); //커뮤니티 신고된 댓글 리스트 30개보기
 
-	public void deleteDcomment(int idx); //신고된 댓글 삭제하기 
 
 	public DiaryVo viewDiary(int idx); //일지게시판-글보기 버튼
 
@@ -69,14 +68,35 @@ public interface AdminDao {
 
 	public List<ReportVo> dreportReason(int linkedidx); //일지게시판-신고사유버튼
 
-	public List<ReportVo> creportReason(int linkedidx); //만남의장-신고사유버튼
+	public List<ReportVo> creportReason(int linkedidx); //커뮤니티-신고사유버튼
 
-	public void acquit(int idx); //신고사유-무죄버튼눌렀을때
-
-	public MemberVo findGilt(int idx);//유죄1- 신고된글 작성자 아이디 찾기
+	public void Dacquit(int idx); //(여행일지)무죄-신고사유
 	
-	public void warning(MemberVo vo);	//유죄2-경고 누적하기
-//	public List<ReportVo> dcoreportReason(int idx); //(여행일지)댓글-신고사유버튼
+	public void Cacquit(int idx); //(커뮤니티)무죄-신고사유
+	
+	public MemberVo findDguilt(int idx);//(여행일지)유죄1- 신고된글 작성자 아이디 찾기
+	
+	public MemberVo findCguilt(int idx); //(커뮤니티)유죄1- 신고된글 작성자 아이디 찾기
+	
+	public void warning(MemberVo vo);	//유죄2-아디이디로 경고 누적하기
+
+	public void deleteDcomment(int idx); //신고된 여행일지댓글 삭제하기 
+
+	public void deleteCcomment(int idx); //신고된 커뮤니티댓글 삭제하기
+
+	public List<ReportVo> dcoreportReason(int idx); //(여행일지)댓글-신고사유버튼
+
+	public List<ReportVo> ccoreportReason(int idx); //(커뮤니티)댓글-신고사유버튼
+
+	public MemberVo findDoguilt(int idx); //(여행일지댓글)유죄1- 신고된글 작성자 닉네임 찾기
+	
+	public MemberVo findCoguilt(int idx);  //(커뮤니티댓글)유죄1- 신고된글 작성자 닉네임 찾기
+
+	public void nwarning(MemberVo vo);  //(여행일지댓글)-닉네임으로 경고누적
+
+	public void Coacquit(int idx);//(커뮤니티댓글)무죄-신고사유
+
+	public void Doacquit(int idx); //(여행일지댓글)무죄-신고사유
 
 	
 }
