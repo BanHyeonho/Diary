@@ -39,19 +39,6 @@ public class AdminServiceimpl implements AdminService{
 //	}
 //
 
-
-//	@Override
-//	public void reportOk(MemberVo vo, int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void reportcancel(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
 	@Override
 	public void deletediary(int idx) {
 		// TODO Auto-generated method stub
@@ -112,18 +99,7 @@ public class AdminServiceimpl implements AdminService{
 		return dao.reportclist();
 	}
 
-//	@Override
-//	public void reportCOk(MemberVo vo, int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void reportCcancel(int idx) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
 	@Override
 	public void deletecommunity(int idx) {
 		// TODO Auto-generated method stub
@@ -188,30 +164,84 @@ public class AdminServiceimpl implements AdminService{
 	}
 
 	@Override
-	public void acquit(int idx) {
+	public void Dacquit(int idx) {
 		// TODO Auto-generated method stub
-		dao.acquit(idx);
+		dao.Dacquit(idx);
 	}
 
 	@Override
-	public void guilt(int idx) {
-	//유죄-작성자를 찾아야하고,걔한태 경고 누적,인덱스로 해당글 삭제
-		MemberVo vo = dao.findGilt(idx);
+	public void Cacquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.Cacquit(idx);
+	}
+	
+	@Override
+	public void dGuilt(int idx) {
+	//유죄-1.작성자를 찾아 2.경고 누적 3.인덱스로 해당글 삭제
+		MemberVo vo = dao.findDguilt(idx);
 		vo.setReportcount(vo.getReportcount()+1);
 		dao.warning(vo);
 		dao.deletediary(idx);
 		
-		
 	}
 
+	@Override
+	public void cGuilt(int idx) {
+		// TODO Auto-generated method stub
+		MemberVo vo = dao.findCguilt(idx);
+		vo.setReportcount(vo.getReportcount()+1);
+		dao.warning(vo);
+		dao.deletecommunity(idx);
+	}
 
+	@Override
+	public void deleteCcomment(int idx) {
+		// TODO Auto-generated method stub
+		dao.deleteCcomment(idx);
+	}
+	
+	@Override
+	public List<ReportVo> dcoreportReason(int idx) {
+		// TODO Auto-generated method stub
+		return dao.dcoreportReason(idx);
+	}
 
-//	@Override
-//	public List<ReportVo> dcoreportReason(int idx) {
-//		// TODO Auto-generated method stub
-//		return dao.dcoreportReason(idx);
-//	}
-//	
+	@Override
+	public List<ReportVo> ccoreportReason(int idx) {
+		// TODO Auto-generated method stub
+		return dao.ccoreportReason(idx);
+	}
+
+	@Override
+	public void doGuilt(int idx) {
+		// TODO Auto-generated method stub
+		MemberVo vo = dao.findDoguilt(idx);
+		vo.setReportcount(vo.getReportcount()+1);
+		dao.nwarning(vo);
+		dao.deleteDcomment(idx);
+	}
+
+	@Override
+	public void coGuilt(int idx) {
+		// TODO Auto-generated method stub
+		MemberVo vo = dao.findCoguilt(idx);
+		vo.setReportcount(vo.getReportcount()+1);
+		dao.nwarning(vo);
+		dao.deleteCcomment(idx);
+	}
+
+	@Override
+	public void Coacquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.Coacquit(idx);
+	}
+
+	@Override
+	public void Doacquit(int idx) {
+		// TODO Auto-generated method stub
+		dao.Doacquit(idx);
+	}
+	
 
 //	@Override
 //	public ReportVo reportReason(int idx) {

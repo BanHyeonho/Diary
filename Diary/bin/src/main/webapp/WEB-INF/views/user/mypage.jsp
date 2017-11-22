@@ -18,24 +18,35 @@
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
-	
+	<c:if test="${msg!=null }">
+		<script type="text/javascript">
+		
+		msg_1('${user.id}');
+		$(document).ready(function(){
+		$('#msg').attr('class','privacy tab-pane fade active show in');
+		$('#privacy').attr('class','tab-pane fade show');
+		$('#msg_1 a').css('background','#cbe1ba');
+
+		});
+		</script>	
+	</c:if>
 	<div class="container">
 		<div class="contents ">
 			<div style="height: 50px">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#privacy">개인정보변경</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+					<li class="nav-item color" id="privacyy"><a class="nav-link" data-toggle="tab"
+						href="#privacy" onclick="privacyy();">개인정보변경</a></li>
+					<li class="nav-item color" id="mywrite"><a class="nav-link " data-toggle="tab"
 						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+					<li class="nav-item color" id="scrap_list"><a class="nav-link " data-toggle="tab"
 						href="#scrap" onclick="scrap_list('${user.id}')">스크랩</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#followers">팔로워</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#follwoing">팔로윙</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+					<li class="nav-item color" id="followerss"><a class="nav-link " data-toggle="tab"
+						href="#followers" onclick="followers('${user.id}')">팔로워</a></li>
+					<li class="nav-item color" id="followingg"><a class="nav-link " data-toggle="tab"
+						href="#follwoing" onclick="following('${user.id}')">팔로윙</a></li>
+					<li class="nav-item color" id="msg_1"><a class="nav-link " data-toggle="tab"
 						href="#msg" onclick="msg_1('${user.id}');">쪽지함</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="tab"
+					<li class="nav-item color" id="block_listt"><a class="nav-link " data-toggle="tab"
 						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>
 			</div>
@@ -174,7 +185,7 @@
 				<!-- myCommunity 만남의장 리스트 -->
 				<div id="myCommunity" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>만남의장</h1> <button type="button"class="btn btn-primary" data-toggle="tab" href="#my_write">여행일지 내가쓴글</button>
+					<h1>만남의장</h1> <button type="button"class="btn btn-primary" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
 						<thead class="table-success">
 							
 							<tr>
@@ -222,11 +233,8 @@
 								<th>닉네임</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<!--  {} 넣어서 for each 로 돌려 -->
-							</tr>
+						<tbody id= "followers_list">
+							
 						</tbody>
 					</table>
 
@@ -239,12 +247,8 @@
 								<th colspan="2">닉네임</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td><button class="btn btn-outline-danger">팔로우 취소</button></td>
-								<!--  {} 넣어서 for each 로 돌려 -->
-							</tr>
+						<tbody id="following_list">
+						
 						</tbody>
 					</table>
 
@@ -252,7 +256,7 @@
 				<!-- 쪾지함  -->
 				<div id="msg" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="thead-dark" >
+						<thead class="table-success" >
 							<tr>
 							<th>보낸사람</th><th>내용</th><th>답장하기</th><th>메세지삭제</th>
 							</tr>

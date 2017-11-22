@@ -22,7 +22,7 @@
 						align="left" alt="여행사진">
 					<!-- 프로필 사진 -->
 					<img src="${data.picture}" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?linkedidx=${data.idx }">
+						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}">
 						<c:forTokens items="${data.contents}" delims="/" var="contents">
 						<p>${contents }</p>
 						</c:forTokens>

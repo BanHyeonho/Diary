@@ -119,12 +119,12 @@
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 .writingPlace{position: absolute;left: 100%;top:50px;float: right;}
 #oneDiaryTab{position: absolute;display: table-row;right: 100%;}
-<<<<<<< HEAD
+
 ul{list-style: none;}
-=======
+
 
 
 
 /* 마이페이지_차단목록_차단버튼 */
 .block_button{float:right; }
->>>>>>> refs/remotes/origin/lee
+

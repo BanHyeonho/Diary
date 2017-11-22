@@ -118,6 +118,10 @@
 		delete from dcomment where idx = #{idx}
 	</delete>
 	
+	<delete id="deleteCcomment" parameterType="Integer">
+		delete from ccomment where idx = #{idx}
+	</delete>
+	
 	<select id="viewDiary" resultType="www.dto.DiaryVo" parameterType="Integer">
 	 	select * from diary where idx = #{idx}
 	</select>
@@ -134,20 +138,52 @@
 	 	select * from creport where LINKEDIDX = #{idx}
 	</select>
 	
-	<update id="acquit" parameterType="Integer">
+	<update id="Dacquit" parameterType="Integer">
 		update diary set dreportcount = 0 where idx = #{idx}
 	</update>
 	
-	<select id="findGilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	<select id="findDguilt" parameterType="Integer" resultType="www.dto.MemberVo">
 	select * from MEMBER where id = (select id from Diary where idx = #{idx})
+	</select>
+	
+	<select id="findCguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where id = (select id from Community where idx = #{idx})
 	</select>
 	
 	<update id="warning" parameterType="www.dto.MemberVo">
 		update member set reportcount = #{reportcount} where id = #{id}
 	</update>
-
 	
-	<!-- <select id="dcoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
-	 	select * from dcomment where idx = #{idx}
-	</select> -->
+	<update id="Cacquit" parameterType="Integer">
+		update community set creportcount = 0 where idx = #{idx}
+	</update>
+	
+	 <select id="dcoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from DCOREPORT where LINKEDIDX = #{idx}
+	</select> 
+	
+	 <select id="ccoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from CCOREPORT where LINKEDIDX = #{idx}
+	</select>
+	
+	<select id="findDoguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where nick = (select nick from DCOMMENT where idx = #{idx})
+	</select>
+	
+	<select id="findCoguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where nick = (select nick from CCOMMENT where idx = #{idx})
+	</select>
+	
+	<update id="nwarning" parameterType="www.dto.MemberVo">
+		update member set reportcount = #{reportcount} where nick = #{nick}
+	</update>
+	
+	<update id="Coacquit" parameterType="Integer">
+		update CCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+	</update>
+	
+	<update id="Doacquit" parameterType="Integer">
+		update DCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+	</update>
+	
 </mapper>
