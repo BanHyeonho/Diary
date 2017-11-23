@@ -51,15 +51,24 @@ function deletee(id) {
 }
 
 function privacyy(){
-	$('.color a').css('background','white');
-	$('#block_listt a').css('color','');
+	
+	$('.color a').css('color','#626261');
+	$('#privacyy a').css('color','#d9534f');
+	
+	
+	$('#privacy').attr('class','privacy tab-pane fade in active show');
+	$('#privacy').siblings().attr('class','tab-pane fade');
 }
 // 내가 쓴글 확인
 function mywrite(id) {
+	$('.color a').css('color','#626261');
+	$('#mywrite a').css('color','#d9534f');
+	
+	$('#my_write').attr('class','privacy tab-pane fade in active show');
+	$('#my_write').siblings().attr('class','tab-pane fade');
 	var id = id;
-	$('.color a').css('background','white');
-	$('#mywrite a').css('background','#f4c1bc');
-	$('#block_listt a').css('color','');
+	
+	
 	var data = {
 		'id' : id
 	};
@@ -103,8 +112,12 @@ function mywrite(id) {
 
 //내가쓴 만남의장 글보기
 function myCommunity(id){
-	$('#mywrite a').css('background','#cbe1ba');
-	$('#block_listt a').css('color','');
+	
+	
+	
+	$('#myCommunity').attr('class','privacy tab-pane fade in active show');
+	$('#myCommunity').siblings().attr('class','tab-pane fade');
+	
 	var id = id;
 	var data = {
 		'id' : id
@@ -145,15 +158,18 @@ function myCommunity(id){
 	$.ajax(setting);
 }
 function write_write(){ //내가쓴글 탭 색깔 변경
-	$('#mywrite a').css('background','#f4c1bc');
+	
+	$('#my_write').attr('class','privacy tab-pane fade in active show');
+	$('#my_write').siblings().attr('class','tab-pane fade');
 }
 //쪽지함 가기
 function msg_1(id){
-	$('.color a').css('background','white');
-	$('#msg_1 a').css('background','#cbe1ba');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#msg_1 a').css('color','#d9534f');
+	$('#msg').attr('class','privacy tab-pane fade in active show');
+	$('#msg').siblings().attr('class','tab-pane fade');
 	
-	setInterval(function(){$('#msg_chk').css('background-color','white');});
+	setInterval(function(){$('#msg_chk').css('background-color','#1f9bcf');});
 	
 	var id = id;
 	var data = {
@@ -326,10 +342,12 @@ function block(blockNick,id){
 
 //회원 차단 목록
 function block_list(id){
-	$('.color a').css('background','white');
-	$('#block_listt a').css('background','#212529');
+	$('.color a').css('color','#626261');
+	$('#block_listt a').css('color','#d9534f');
+	$('#block_list').attr('class','privacy tab-pane fade in active show');
+	$('#block_list').siblings().attr('class','tab-pane fade');
 	
-	$('#block_listt a').css('color','white');
+	
 	$("#my_black").empty();
 	var data = {
 			'id' : id
@@ -389,9 +407,11 @@ function unBlock(ub){
 // 내가 스크랩한 회원 리스트
 function scrap_list(id){
 
-	$('.color a').css('background','white');
-	$('#scrap_list a').css('background','#f4dcc0');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#scrap_list a').css('color','#d9534f');
+	
+	$('#scrap').attr('class','privacy tab-pane fade in active show');
+	$('#scrap').siblings().attr('class','tab-pane fade');
 	
 	var id = id;
 	var data = {
@@ -437,9 +457,11 @@ function scrap_list(id){
 // 팔로워 리스트 보기
 function followers(id){
 	var id = id;
-	$('.color a').css('background','white');
-	$('#followerss a').css('background','#e3cbe4');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#followerss a').css('color','#d9534f');
+	
+	$('#followers').attr('class','privacy tab-pane fade in active show');
+	$('#followers').siblings().attr('class','tab-pane fade');
 	var data = {
 		'id' : id
 	};
@@ -475,9 +497,11 @@ function followers(id){
 // 내가 팔로잉한 회원 리스트
 function following(id){
 	var id = id;
-	$('.color a').css('background','white');
-	$('#followingg a').css('background','#b8e3f2');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#followingg a').css('color','#d9534f');
+	
+	$('#follwoing').attr('class','privacy tab-pane fade in active show');
+	$('#follwoing').siblings().attr('class','tab-pane fade');
 	var data = {
 		'id' : id
 	};
