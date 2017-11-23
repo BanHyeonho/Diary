@@ -2,11 +2,215 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="www.dao.AdminDao">
-<!--  <select id="searchById" resultType="www.dto.MemberVo">
-    select * from MEMBER where id = #{id}
-  </select>
-  <select id="searchByNick" resultType="www.dto.MemberVo">
-    select * from MEMBER where NICK = #{nick}
-  </select>  --> 
+
+	<select id="searchById" resultType="www.dto.MemberVo"
+		parameterType="String">
+		select * from Member
+		<where>id like '%' || #{id} || '%' </where>
+	</select>
+	
+	<select id="searchByNick" resultType="www.dto.MemberVo"
+		parameterType="String">
+		select * from Member
+		<where>nick like '%' || #{nick} || '%' </where>
+	</select>
+
+	<select id="allmember" resultType="www.dto.MemberVo">
+ 		 <![CDATA[select * from (select * from member
+		order by joindate desc) where rownum <= 30
+		 ]]>
+	</select>
+
+	<select id="alldiary" resultType="www.dto.DiaryVo">
+   		<![CDATA[select * from (select * from diary
+		order by ddate desc) where rownum <= 30
+		 ]]>
+	</select>
+
+	<select id="allcommunity" resultType="www.dto.CommunityVo">
+   <![CDATA[select * from (select * from community
+		order by cdate desc) where rownum <= 30
+		 ]]>
+	</select>
+
+	<!-- <select id="reportcomment" resultType="www.dto.CommentVo" parameterType="Integer"> 
+		<![CDATA[select * from (select * from comment order by date desc) where rownum 
+		<= 30 ]]> </select> -->
+
+	<select id="searchByDNick" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from Diary
+		<where> nick like '%' || #{nick} || '%' </where>
+	</select>
+	<select id="searchByDTitle" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from Diary
+		<where> dtitle like '%' || #{dtitle} || '%' </where>
+	</select>
+
+	<select id="blacklist" resultType="www.dto.MemberVo">
+ 	
+ 	 <![CDATA[select * from (select * from member
+		where reportcount>=3 order by reportcount desc) where rownum <= 30
+		 ]]>
+
+	</select>
+
+	<select id="reportdlist" resultType="www.dto.DiaryVo">
+ 	
+ 	 <![CDATA[select * from (select * from diary
+		where dreportcount>=1 order by nick desc) where rownum <= 30
+		 ]]>
+
+	</select>
+	
+	<delete id="deletediary" parameterType="Integer">
+		delete from diary where idx = #{idx}
+	</delete>
+
+	<select id="reportclist" resultType="www.dto.CommunityVo">
+ 	
+ 	 <![CDATA[select * from (select * from community
+		where creportcount>=1 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
+
+	<delete id="deletecommunity" parameterType="Integer">
+		delete from community where idx = #{idx}
+	</delete>
+
+	<select id="searchByCNick" resultType="www.dto.CommunityVo" parameterType="String">
+		select * from community
+		<where> nick like '%' || #{nick} || '%' </where>
+	</select>
+	
+	<select id="searchByCTitle" resultType="www.dto.CommunityVo" parameterType="String">
+		select * from community
+		<where> ctitle like '%' || #{ctitle} || '%' </where>
+	</select>
+	
+	<select id="oneMember" resultType="www.dto.MemberVo" parameterType="String">
+	 	select * from member where id = #{id}
+	</select>
+
+	<update id="updatedmember" parameterType="www.dto.MemberVo">
+		update member set reportcount=#{reportcount} where id = #{id}
+	</update>
+	
+	<delete id="deleteAccount" parameterType="String">
+		delete from member where id = #{id}
+	</delete> 
+	
+	<select id="reportDcomment" resultType="www.dto.CommentVo">
+ 	
+ 	 <![CDATA[select * from (select * from dcomment
+		where reportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
+	
+	<select id="reportCcomment" resultType="www.dto.CommentVo">
+ 	
+ 	 <![CDATA[select * from (select * from ccomment
+		where reportcount>=3 order by nick desc) where rownum <= 30
+		 ]]>
+	</select>
+	
+	<delete id="deleteDcomment" parameterType="Integer">
+		delete from dcomment where idx = #{idx}
+	</delete>
+	
+	<delete id="deleteCcomment" parameterType="Integer">
+		delete from ccomment where idx = #{idx}
+	</delete>
+	
+	<select id="viewDiary" resultType="www.dto.DiaryVo" parameterType="Integer">
+	 	select * from diary where idx = #{idx}
+	</select>
+	
+	<select id="viewCommunity" resultType="www.dto.CommunityVo" parameterType="Integer">
+	 	select * from community where idx = #{idx}
+	</select>
+	
+	<select id="dreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from dreport where LINKEDIDX = #{idx}
+	</select>
+	
+	<select id="creportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from creport where LINKEDIDX = #{idx}
+	</select>
+	
+	<update id="Dacquit" parameterType="Integer">
+		update diary set dreportcount = 0 where idx = #{idx}
+	</update>
+	
+	<select id="findDguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where id = (select id from Diary where idx = #{idx})
+	</select>
+	
+	<select id="findCguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where id = (select id from Community where idx = #{idx})
+	</select>
+	
+	<update id="warning" parameterType="www.dto.MemberVo">
+		update member set reportcount = #{reportcount} where id = #{id}
+	</update>
+	
+	<update id="Cacquit" parameterType="Integer">
+		update community set creportcount = 0 where idx = #{idx}
+	</update>
+	
+	 <select id="dcoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from DCOREPORT where LINKEDIDX = #{idx}
+	</select> 
+	
+	 <select id="ccoreportReason" resultType="www.dto.ReportVo" parameterType="Integer">
+	 	select * from CCOREPORT where LINKEDIDX = #{idx}
+	</select>
+	
+	<select id="findDoguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where nick = (select nick from DCOMMENT where idx = #{idx})
+	</select>
+	
+	<select id="findCoguilt" parameterType="Integer" resultType="www.dto.MemberVo">
+	select * from MEMBER where nick = (select nick from CCOMMENT where idx = #{idx})
+	</select>
+	
+	<update id="nwarning" parameterType="www.dto.MemberVo">
+		update member set reportcount = #{reportcount} where nick = #{nick}
+	</update>
+	
+	<update id="Coacquit" parameterType="Integer">
+		update CCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+	</update>
+	
+	<update id="Doacquit" parameterType="Integer">
+		update DCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+	</update>
+	
+	<select id="searchByDcontent" resultType="www.dto.CommentVo"
+		parameterType="String">
+		select * from DCOMMENT
+		<where> CONTENTS like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByDcoNick" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from DCOMMENT
+		<where> nick like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByCcontent" resultType="www.dto.CommentVo"
+		parameterType="String">
+		select * from CCOMMENT
+		<where> CONTENTS like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByCcoNick" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from CCOMMENT
+		<where> nick like '%' || #{keyword} || '%' </where>
+	</select>
+	
 </mapper>

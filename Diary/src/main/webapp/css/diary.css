@@ -14,7 +14,7 @@
 
 .container{max-width:980px; margin:50px auto 0; padding: 0px;}
 	/* 메인컨텐츠  */
-	.contents {height:250px; width:680px;margin-left: 300px;}
+	.contents {height:250px; width:730px;margin-left: 250px;}
 	/* 좌측 네비게이션 */
 	.navi {position: fixed ;top:210px;}
 	 /*네비메인버튼  */
@@ -26,36 +26,10 @@
 	/*네비메인버튼  */
 	
 	.navi > div {width:200px;}
-
-
-
-
-
-/* pwSeaarach.jsp  */ 
-.pwsearch{
-	text-align: center;
-	font-size: 20px;
-}
-.pwbtn{
-	margin-left: 30px;
-	margin-right:  30px;
-}
-
-/* join.jsp  */
-.email input {width:200px; float:left;}
-.email span{display: block; float:left; padding:8px}
-.email select {width:200px; float:left;}
-.phone select {width:100px; float:left;}
-.phone span{float:left; padding:4px}
-.phone input {width:100px; float:left;}
-
-/* mapage.jsp  */
-	/*privacy  */
-	.table {
-	    text-align: center;
-	    font-size: initial;
-	}
-	.kal{margin: auto;width:140px;}
+	/* 탭   */
+	.tab{position: fixed;top:230px;z-index: 10;}
 	
-	/*my_write  */
-	
+
+
+
+

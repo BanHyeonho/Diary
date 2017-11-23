@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.CommunityVo;
-import www.dto.DiaryVo;
 import www.dto.MemberVo;
+import www.dto.TopVo;
 import www.service.MainService;
 
 @Controller
@@ -34,8 +34,8 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public ModelAndView mainn(ModelAndView mav) {
 
-		List<DiaryVo> list = sv.Top();
-		
+		List<TopVo> list = sv.Top();
+		//logger.info(""+list.size());
 		mav.addObject("list", list);
 		mav.setViewName("user/main");
 		return mav;
@@ -50,7 +50,6 @@ public class MainController {
 
 	@RequestMapping(value = "/joinAction.do", method = RequestMethod.POST)
 	public ModelAndView joinAction(ModelAndView mav, MemberVo vo, HttpSession session) {
-		
 		
 		sv.memberjoin(vo);
 		session.setAttribute("user", vo);
@@ -91,24 +90,35 @@ public class MainController {
 	@RequestMapping(value = "/community.do", method = RequestMethod.GET)
 	 public ModelAndView community(ModelAndView mav) {
 		 
-		 List<CommunityVo> list=sv.community();
-		logger.info("개수"+list.size());
+		List<CommunityVo> list=sv.community();
+		//logger.info("개수"+list.size());
 		mav.addObject("list", list);
 		mav.setViewName("user/community");
 		return mav;
 	 } // 만남의장으로 이동
 	
-	// public ModelAndView diary() {
-	// return null;
-	// } // 여행일지로 이동
-	//
-	// public ModelAndView diarywrite() {
-	// return null;
-	// } // 여행일지쓰기로 이동
+	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
+	 public ModelAndView diary(ModelAndView mav) {
+		
+		mav.addObject("list", sv.diary());
+		
+		mav.setViewName("user/diary");
+	 return mav;
+	 } // 여행일지로 이동
+	
+	@RequestMapping(value = "/diarywrite.do", method = RequestMethod.GET)
+	 public ModelAndView diarywrite(ModelAndView mav) {
+		mav.setViewName("user/diarywrite");
+	 return mav;
+	 } // 여행일지쓰기로 이동
 
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
-	public ModelAndView mypage(ModelAndView mav) {
+	public ModelAndView mypage(ModelAndView mav,String i,String msg) {
+		
+		mav.addObject("i", i);
+		mav.addObject("msg",msg);
 		mav.setViewName("user/mypage");
+		
 		return mav;
 	} // 마이페이지로 이동 개인정보 변경탭
 
@@ -128,7 +138,7 @@ public class MainController {
 
 	@RequestMapping(value = "/pwSearchAction.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String, String> pwSearchAction(MemberVo vo) {
-		logger.info(vo.toString());
+		//logger.info(vo.toString());
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("result", sv.pwchk(vo));
 

@@ -59,12 +59,7 @@
          </tr>
          <tr class="email">
 				<th class="join">이메일<font color="red">*</font></th>
-				<td><input type="text" class="form-control" name="email1"/><span>@</span><select class="emaill form-control" name="email2">
-				<option>daum.net</option>
-				<option>naver.com</option>
-				<option>goole.com</option>
-				</select></td>
-			<input type="hidden" name="email">
+				<td><input type="text" class="form-control" name="email"/></td>
 			</tr>
          <tr class="phone">
             <th class="join">연락처</th>
@@ -98,15 +93,14 @@
          </tr>
       </table>
       <center>
-         <button type="submit" class="btn-success btn-lg joinbtn" onclick="return confirm();">확인</button>
-         <button type="reset" class="btn-warning btn-lg joinbtn">취소</button>
+         <button type="submit" class="btn-success btn-lg" onclick="return confirm();">확인</button>
+         <button type="reset" class="btn-warning btn-lg">취소</button>
       </center>
    </form>
    
 </div>
-<%@ include file="../layout/nav.jsp"%>
-      <%@ include file="../layout/footer.jsp"%>
  </div>
+      <%@ include file="../layout/footer.jsp"%>
 </div>
 </body>
 </html>
