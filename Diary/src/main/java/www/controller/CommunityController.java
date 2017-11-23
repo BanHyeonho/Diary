@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jdk.nashorn.internal.runtime.options.LoggingOption.LoggerInfo;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
@@ -44,13 +45,16 @@ public class CommunityController {
 	@RequestMapping(value="/onecommunity.do",method = RequestMethod.GET)
 	public ModelAndView oneCommunity(ModelAndView mav,HitCountVo vo) {
 		
-//		mav.addObject("data", sv.oneCommunity(vo));
-//		
-//		List<CommentVo> list = sv.ccomment(vo);
-//				
-//		mav.addObject("list",sv.ccomment(vo) );
-//		
+		mav.addObject("data", sv.oneCommunity(vo));
+		
+		List<CommentVo> list = sv.ccomment(vo.getLinkedidx());
+		
+		mav.addObject("list",sv.ccomment(vo.getLinkedidx()));
+		
+		
+		
 		mav.setViewName("user/onecommunity");
+		
 		
 		return mav;
 	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
