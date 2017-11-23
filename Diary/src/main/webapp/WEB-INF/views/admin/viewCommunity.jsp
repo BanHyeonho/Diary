@@ -9,12 +9,11 @@
 <title>Diary&Community</title>
 
 <link href="css/simplex.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 </head>
 <script type="text/javascript" src="script/onecommunity.js"></script>
-<body>
+<body style="padding-top: 50px;">
 	<div class="wrap">
-	
 	<div class="container">
 	<div class="contents" >
 	<h1>만남의 장</h1>
@@ -101,7 +100,5 @@
 	</div>
 	
 	
-
-
 </body>
 </html>

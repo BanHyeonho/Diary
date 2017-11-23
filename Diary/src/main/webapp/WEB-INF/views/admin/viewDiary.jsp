@@ -9,11 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
 <link href="css/simplex.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=543b81c594d5dd2c622b96e281dc3022&libraries=services"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
-<body>
+<body style="padding-top: 50px;">
 <%
 DiaryVo vo =(DiaryVo)request.getAttribute("viewDiary");
 System.out.println(vo.toString());
