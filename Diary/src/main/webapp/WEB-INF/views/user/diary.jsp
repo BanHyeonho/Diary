@@ -12,7 +12,7 @@
 		<div class="container">
 			<h1 class="page-tit">여행일지</h1>
 			<div class="list-search">
-				<form class="form-inline my-2 my-lg-0">
+				<div class="form-inline my-2 my-lg-0">
 					<select id="option" class="form-control">
 						<option>글제목</option>
 						<option>여행지</option>
@@ -20,7 +20,7 @@
 					</select>
 					<input class="form-control" type="text" placeholder="Search" id="keyword"/>
 					<button class="btn btn-primary" type="submit" onclick="search();">Search</button>
-				</form>
+				</div>
 			</div>
 			
 			<div class="card-list">

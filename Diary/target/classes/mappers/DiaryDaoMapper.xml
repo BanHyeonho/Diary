@@ -3,9 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.dao.DiaryDao">
-<!--   <select id="selectBlog" resultType="Blog">
-    select * from Blog where id = #{id}
-  </select> -->
+
   <insert id="diarywrite" parameterType="www.dto.DiaryVo">
   insert into DIARY(IDX,ID,NICK,DTITLE,PLACE,CONTENTS,MAPPOSITION,DPICTURE,SDATE,EDATE,DDATE,DHITCOUNT,GOOD,DREPORTCOUNT,DPUBLIC )
 values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},'쓰레기값',#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
@@ -57,18 +55,21 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   </insert>
   
   <select id="searchByWriter" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where nick like '%' || #{nick} || '%' 
+  	select * from DIARY where nick like '%' || #{nick} || '%' and DPUBLIC ='Y'
   </select>
   <select id="searchByTitle" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where DTITLE like '%' || #{dtitle} || '%'
+  	select * from DIARY where DTITLE like '%' || #{dtitle} || '%' and DPUBLIC ='Y'
   </select>
   <select id="searchByPlace" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where CONTENTS like '%' || #{place} || '%'
+  	select * from DIARY where CONTENTS like '%' || #{place} || '%' and DPUBLIC ='Y'
   </select>
   
   <delete id="deletediary" parameterType="Integer">
   	delete from DIARY where idx = #{idx}
   </delete>
   
+  <update id="updatediary" parameterType="www.dto.DiaryVo">
+  	update DIARY set place=#{place},contents=#{contents},mapposition=#{mapposition},sdate=#{sdate},edate=#{edate},dpublic=#{dpublic} where idx=#{idx}
+  </update>
   
 </mapper>
