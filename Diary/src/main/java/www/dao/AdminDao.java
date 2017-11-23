@@ -98,5 +98,13 @@ public interface AdminDao {
 
 	public void Doacquit(int idx); //(여행일지댓글)무죄-신고사유
 
+	public List<CommentVo> searchByDcontent(String keyword); //여행일지 댓글 내용으로 검색
+
+	public List<CommentVo> searchByDcoNick(String keyword); //여행일지 댓글 닉네임으로 검색
+
+	public List<CommentVo> searchByCcontent(String keyword);//커뮤니티 댓글내용으로 검색
+
+	public List<CommentVo> searchByCcoNick(String keyword); //커뮤니티 댓글내용으로 검색
+
 	
 }

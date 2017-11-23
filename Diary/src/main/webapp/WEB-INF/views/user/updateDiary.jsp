@@ -19,15 +19,14 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<%@ include file="../layout/nav.jsp"%>
-		<div class="contents" style="position: relative; overflow-x:hidden; height: 600px;">
+		<div class="contents" style="position: relative; overflow-x:hidden; height: 700px;">
 
-		<h2 style="display: inline;">${Diary.dtitle }</h2>
 		<form action="/updateDiaryAction.do" method="post" name="updateForm">
+		<h2 style="display: inline;">${Diary.dtitle }</h2>
 		<input type="hidden" name="idx" value="${Diary.idx }" />
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
 		<button type="button">스크랩글 가져오기</button>
-		<label><input type="radio" name="dpublic" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
+		<label><input type="radio" name="dpublic" value="Y" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" value="N" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
 		
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
 		<span style="float: right;">글쓴이 : ${user.nick }</span>
@@ -67,7 +66,7 @@
 		</div>
 		
 		
-		<center><button type="button" onclick="update();">수정하기</button></center>
+		<center><button type="button" onclick="update();"style="margin-top:530px">수정하기</button></center>
 		</form>
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
@@ -76,7 +75,7 @@
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/updateDiary.js"></script>	
 	<script type="text/javascript">
-	createMap('${Diary.mapposition}','${Diary.place}');
+	setting('${Diary.mapposition}','${Diary.place}');
 	</script>
 </body>
 </html>

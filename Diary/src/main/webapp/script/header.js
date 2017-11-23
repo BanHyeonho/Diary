@@ -31,14 +31,14 @@ function msg_hham(id){
 	        	// console.log($('#msg_chk').css('background-color'));
 	        	 setInterval(function(){
 	        		 if($('#msg_chk').css('background-color')=="rgb(255, 0, 0)"){
-	        			 $('#msg_chk').css('background-color','white');
+	        			 $('#msg_chk').css('background-color','#1f9bcf');
 	        		 }else{
 	        			 $('#msg_chk').css('background-color','red');
 	        		 }
 	        		 
 	        	 },1000);
 	         }else{
-	        	 $('#msg_chk').css('background-color','white');
+	        	 $('#msg_chk').css('background-color','#1f9bcf');
 	         }
 	    },
 		error : function() {

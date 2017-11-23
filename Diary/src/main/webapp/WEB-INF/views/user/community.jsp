@@ -82,7 +82,9 @@
       		<th>지역</th>
       		<th>인원</th>
       		<th>여행날짜</th>
-      		<th>차량유무</th>
+      		<th>차량</th>
+      		<th>조회수</th>
+      		
     	</tr>
   		</thead>
   		<tbody>
@@ -99,6 +101,8 @@
       			<td>
       			<input type="checkbox" name="chk_info" disabled=true value="car">
       			</td>
+      			<td>${data.chitcount}</td>
+      			
     		</tr>
     	</c:forEach>
  		</tbody>
@@ -134,9 +138,8 @@
 	
 	</div>	
 
-			<%@ include file="../layout/nav.jsp"%>
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 
 </body>

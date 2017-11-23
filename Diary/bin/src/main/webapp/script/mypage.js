@@ -56,6 +56,8 @@ function privacyy(){
 }
 // 내가 쓴글 확인
 function mywrite(id) {
+	$('#my_write').attr('class','tab-pane fade in active show');
+	
 	var id = id;
 	$('.color a').css('background','white');
 	$('#mywrite a').css('background','#f4c1bc');
@@ -245,7 +247,7 @@ function mag_form(sender,senderid,receiver,receiverid){
 	 form.setAttribute("action","/sendMsgForm.do");       // action 속성 설정
 	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
 	 document.body.appendChild(form);       
-	 
+	
 	var senderNick = document.createElement("input");
 	senderNick.setAttribute("type","hidden");
 	senderNick.setAttribute("name","sender");

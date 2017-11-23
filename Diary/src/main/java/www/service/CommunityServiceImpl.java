@@ -26,6 +26,12 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public CommunityVo oneCommunity(int idx) {
 		// TODO Auto-generated method stub
+		//chitcount 테이블에서 아이디랑 글idx로 값이 있는지 확인 값이 있으면 이미 조회한 적 있음 없으면 조회한적 없음
+		//조회한적 없으면 chitcount 테이블에 아이디랑 글의 인덱스를 같이 insert
+		//글의 인덱스로 글정보를 갖고와서 조회수를 1 update 시킨다
+		//결과를 리턴한다.
+		
+		
 		
 		return dao.oneCommunity(idx);
 	}
@@ -71,6 +77,14 @@ public class CommunityServiceImpl implements CommunityService{
 	public List<CommunityVo> csearch(CommunityVo vo) {
 		// TODO Auto-generated method stub
 		return dao.csearch(vo);
+	}
+
+
+	@Override
+	public void chitcount(CommunityVo vo) {
+		// TODO Auto-generated method stub
+		
+		dao.chitcount(vo);
 	}
 	
 }

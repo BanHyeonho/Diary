@@ -99,9 +99,8 @@
    </form>
    
 </div>
-<%@ include file="../layout/nav.jsp"%>
-      <%@ include file="../layout/footer.jsp"%>
  </div>
+      <%@ include file="../layout/footer.jsp"%>
 </div>
 </body>
 </html>

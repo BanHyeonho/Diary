@@ -215,13 +215,13 @@
 				<div id="comment" class="tab-pane fade show">
 					<div class="searchtool">
 						<h3>여행일지 신고된 댓글</h3>
-						<form class="ss form-inline my-2 my-lg-0">
+						<form class="ss form-inline my-2 my-lg-0" name="dcosearchtool"	method="get">
 							<select class="form-control" name="option">
 								<option>댓글내용</option>
 								<option>닉네임</option>
 							</select> <input class="s form-control mr-sm-2" type="text"
 								placeholder="Search" name="keyword">
-							<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
+							<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="dcosearch();">검색</button>
 							<button type="button" class="btt btn-warning btn-md"
 								data-toggle="tab" href="#Comcomment" onclick="Comcomment();">만남의장
 								댓글보기</button>
@@ -280,13 +280,13 @@
 				<div id="Comcomment" class="tab-pane fade show">
 					<div class="searchtool">
 						<h3>만남의장 신고된 댓글</h3>
-						<form class="ss form-inline my-2 my-lg-0">
+						<form class="ss form-inline my-2 my-lg-0" name="ccosearchtool" method="get">
 							<select class="form-control" name="option">
 								<option>댓글내용</option>
 								<option>닉네임</option>
 							</select> <input class="s form-control mr-sm-2" type="text"
 								placeholder="Search" name="keyword">
-							<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
+							<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="ccosearch();">검색</button>
 							<button type="button" class="btt btn-warning btn-md"
 								data-toggle="tab" href="#comment" onclick="commentList();">여행일지 신고
 								댓글보기</button>
@@ -329,5 +329,6 @@
 		<%@ include file="../layout/nav.jsp"%>
 		<%@ include file="../layout/footer.jsp"%>
 	</div>
+	
 </body>
 </html>

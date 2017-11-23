@@ -230,6 +230,7 @@ function commentList(){
 				var reportDcomment = data.reportDcomment;
 				$('.nav-link').attr('class','nav-link');
 				$('#d').attr('class','nav-link active');
+				$('#dcommentlist').empty();
 				if ($('#dcommentlist')[0].children[0] == null) {
 				for( i = 0; i<reportDcomment.length; i++ ){
 					$("#dcommentlist").append(
@@ -383,36 +384,72 @@ function ccoreportReason(idx) {
 					"여행일지댓글 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
-//function communitysearch(){
-//	var option =document.searchtool.option.value;
-//	var keyword = document.searchtool.keyword.value;
-//	console.log(option);
-//	console.log(option);
-//	var data = {
-//			'opt' : option,
-//			'key' : keyword
-//		};
-//	var setting = {
-//			url : '/communitySearch.do',
-//			type : 'get',
-//			data : data,
-//			dataType : 'json',
-//			success :  function(data){
-//				var communitySearch = data.communitySearch;
-//				$("#clist").html('');
-//				for( i = 0; i<communitySearch.length;i++){
-//					$("#clist").append(
-//					'<tr id='+communitySearch[i].idx+'><td>'+communitySearch[i].ctitle+'</td><td>'
-//					+communitySearch[i].nick+'</td><td>'
-//					+'<button type="button"	class="btn-info btn-md" onclick="">글보기</button></td><td>'
-//					+'<button type="button"	class="btn-info btn-md" onclick="deletecommunity('+communitySearch[i].idx+');">삭제</button></td><td>'
-//					+'<button type="button" class="btn-info btn-md"> 신고사유 </button></td></tr>'
-//					);
-//				}
-//			},error : function() {
-//				alert("error");
-//			}
-//	};
-//	$.ajax(setting);
-//	
-//}
+
+//여행일지댓글 검색할때
+function dcosearch(){
+	var option =document.dcosearchtool.option.value;
+	var keyword = document.dcosearchtool.keyword.value;
+	
+	var data = {
+			'nick' : option,
+			'contents' : keyword
+		};
+	var setting = {
+			url : '/dcosearch.do',
+			type : 'get',
+			data : data,
+			dataType : 'json',
+			success :  function(data){
+				var dcosearch = data.dcosearch;
+				$("#dcommentlist").html('');
+				console.log('하하하');
+				for( i = 0; i<dcosearch.length;i++){
+					$("#dcommentlist").append(
+					'<tr id='+dcosearch[i].idx+'><td>'+dcosearch[i].contents+'</td><td>'
+					+dcosearch[i].nick+'</td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+dcosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deletecommunity('+dcosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					);
+				}
+			},error : function() {
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	
+}
+
+//커뮤니댓글 검색할때
+function ccosearch(){
+	var option =document.ccosearchtool.option.value;
+	var keyword = document.ccosearchtool.keyword.value;
+	
+	var data = {
+			'nick' : option,
+			'contents' : keyword
+		};
+	var setting = {
+			url : '/ccosearch.do',
+			type : 'get',
+			data : data,
+			dataType : 'json',
+			success :  function(data){
+				var ccosearch = data.ccosearch;
+				$("#ccommentlist").html('');
+				for( i = 0; i<ccosearch.length;i++){
+					$("#ccommentlist").append(
+					'<tr id='+ccosearch[i].idx+'><td>'+ccosearch[i].contents+'</td><td>'
+					+ccosearch[i].nick+'</td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deletecommunity('+ccosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+ccosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					);
+				}
+			},error : function() {
+				alert("error");
+			}
+	};
+	$.ajax(setting);
+	
+}

@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+
+/* header */
+body {padding-top:160px;}
+.navbar {padding:1.5rem 1rem;}
+.login_form {display:block; text-align:right;}
+.login_form:after {content:""; display:block; clear:both;}
+.login_form .form-group {margin-bottom:10px;}
+.login_form .form-inline .form-control-sm {width:120px; height:30px; margin-right:6px; padding:10px; font-size:12px;}
+.login_form .form-inline .btn-sm {width:66px; height:30px; padding:inherit; font-size:11px; line-height:30px;}
+.login_form .login_btn {text-align:right;}
+.login_form .login_btn .btn,
+.login_form .mypage_btn .btn {margin-left:2px; padding:1px 10px; font-size:11px;}
+.login_form .login-after {margin:0 10px 0 0;}
+.login_form .login-after strong {color:#fff;}
+.navbar-nav .nav-item+.nav-item {margin-left:2rem;}
+@media (min-width:1200px){
+	.navbar-nav .nav-item+.nav-item {margin-left:3rem;}
+}
+
+/* footer */
+.footer {margin-top:60px; padding:30px 0; background:#444;}
+
+
+/* main */
+.main-visual {height:600px; margin-top:-160px; padding-top:220px; background:url("https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg"); background-size:cover;}
+.main-visual .jumbotron {background:none; text-align:right;}
+.main-visual .jumbotron p {color:#fff;}
+.wrap-ranking {margin-top:60px;}
+.h1 {margin-bottom:20px;}
+.page-tit {margin-bottom:40px; font-size:3rem; font-weight:400;}
+
+
+/* card list */
+.card-list .col-lg-4 {margin-bottom:40px;}
+.card-list .card .thumb {display:block; height:200px; overflow:hidden;}
+.card-list .card .thumb img {width:100%; height:100%;}
+.card-list .card-footer {position:relative; padding:0.75rem 20px 0.75rem 60px; }
+.card-list .card-footer .profile-thumb {position:absolute; left:20px; width:30px; height:30px; border-radius:50%; overflow:hidden;}
+.card-list .card-footer .profile-thumb img {width:100%; height:100%;}
+.card-list .card-footer .name {line-height:30px;}
+.card-list .more-btn {display:block; margin:0 auto;}
+
+
+/* diary */
+.list-search {margin:60px auto; width:476px;}
+.list-search .btn-primary {height:47px;}
+
+@media screen and (max-width:576px) {
+	.list-search {width:auto;}
+}
+@media (min-width:576px){
+	.list-search .btn-primary,
+	.list-search input[type="text"] {margin-left:4px;}
+}
+
+/* pwSeaarach.jsp  */ 
+.pwsearch{
+	text-align: center;
+	font-size: 20px;
+}
+.pwbtn{
+	margin-left: 30px;
+	margin-right:  30px;
+}
+
+/* join.jsp  */
+.phone select {width:100px; float:left;}
+.phone span{float:left; padding:4px}
+.phone input {width:100px; float:left;}
+
+/* mapage.jsp  */
+
+	/*privacy  */
+	.kal{margin: auto;width:140px;}
+	.privacy {margin-bottom: 50px;}
+	
+
+	
+	/*my_write  */
+	
+
+/*  admin.jps*/
+.searchtool select{width:100px; float:left; margin:8px 4px;}
+.searchtool input{width:100px; float:left; margin:8px 4px;}
+.searchtool button{float:left;}
+.searchtool .ss .s{width:300px;}
+.searchtool .ss .bt{margin:8px 8px;height:30px;}
+.searchtool .ss .bt{margin:8px 100px; height:30px;}
+.searchtool .ss .btt{margin:8px 40px; height:30px;}
+.page{margin-left: 200px; margin-right:  200px;}
+
+/*  community contents */
+.form-control { background-color: #ffffff;}
+
+/* oneMember.jsp */
+.infotable {margin:8px 110px;}
+.li {margin:8px 180px;}
+.li span{style="font-family:sans-serif"; font-size: 15px;}
+.li .lii{width:40px;}
+/* .ct button{padding:8px} */
+.ct span{font-size: 13px;}
+
+
+/* diarywrite.jsp */
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position: absolute;top: 50px;width:100%;height:500px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+.writingPlace{position: absolute;left: 100%;top:50px;float: right;}
+#oneDiaryTab{position: absolute;display: table-row;right: 100%;}
+
+ul{list-style: none;}
+
+
+
+
+/* 마이페이지_차단목록_차단버튼 */
+.block_button{float:right; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

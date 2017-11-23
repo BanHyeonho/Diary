@@ -1,10 +1,41 @@
+
+// 마커를 담을 배열입니다
 var markers = [];
 var savePlaces =[];
 var saveMark=[];
-
-
-// 지도를 생성합니다    
+//지도를 생성합니다    
 var map = null; 
+
+function setting(mapposition,places){
+	
+	var place = places.split('/');
+	var mappositions = mapposition.split('/');
+	for (var i = 0; i < place.length; i++) {
+		var mapo = mappositions[i].split(',');
+	
+		var object = {
+				"place_name" : place[i],
+				"y":mapo[0],
+				"x":mapo[1]
+		};
+		savePlaces.push(object);
+	}
+	
+	
+	
+	map = new daum.maps.Map(mapContainer, mapOption);
+	for (var i = 0; i < savePlaces.length; i++) {
+		settingMark(savePlaces[i]);
+	}
+}
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 14 // 지도의 확대 레벨
+    };  
+
+
 
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places();  
@@ -12,43 +43,6 @@ var ps = new daum.maps.services.Places();
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new daum.maps.InfoWindow({zIndex:1});
 
-
-function createMap(mapposition,place){
-	var mappositions = mapposition.split('/');
-	var places = place.split('/');
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 14 // 지도의 확대 레벨
-    };
-
-map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
- 
-// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다 
-var points = [];
-
-for (var i = 0; i < mappositions.length; i++) {
-	var position = mappositions[i].split(',');
-	points.push(new daum.maps.LatLng(position[0],position[1]));
-}
-// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-var bounds = new daum.maps.LatLngBounds();    
-
-var i, marker;
-for (i = 0; i < points.length; i++) {
-    // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-    marker = new daum.maps.Marker({ position : points[i] });
-    marker.setMap(map);
-    
-    //위치이름 찍기
-    displayInfowindow(marker, places[i]);
-  
-    
-    // LatLngBounds 객체에 좌표를 추가합니다
-    bounds.extend(points[i]);
-}
-setBounds(bounds);
-}
 
 
 // 키워드 검색을 요청하는 함수입니다
@@ -158,6 +152,7 @@ function displayPlaces(places) {
 
 // 장소를 저장합니다.
 function saveMarker(place){
+	console.log(place);
 	var text = place.place_name + '을(를) 추가하시겠습니까?';
 	for (var i = 0; i < savePlaces.length; i++) {
 		if(place.place_name==savePlaces[i].place_name){
@@ -209,6 +204,27 @@ function saveMarker(place){
 	
 	
 }
+function settingMark(savePlace){
+	
+	var marker = new daum.maps.Marker({
+		map : map,
+		position : new daum.maps.LatLng(savePlace.y, savePlace.x)
+	});
+
+	daum.maps.event.addListener(marker, 'mouseover', function() {
+		displayInfowindow(marker, savePlace.place_name);
+    });
+	daum.maps.event.addListener(marker, 'mouseout', function() {
+		infowindow.close();
+    });
+	daum.maps.event.addListener(marker, 'click', function() {
+		saveMarker(savePlace);
+    });
+	saveMark.push(marker);
+}
+
+
+
 
 //저장된 마크를 생성합니다.
 function makeSaveMark(savePlace){
@@ -337,18 +353,72 @@ function removeAllChildNods(el) {
     }
 }
 
+function createTab(title){
+	$('.oneDiary').css('display', 'none');
+	$('.click').css('background','white');
+	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
+	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="25" cols="100" class="form-control textArea" ></textarea></div>');
+	$('.' + title).css('display', '');
+	
+	$('.click').click(function() {
+		$('.oneDiary').css('display', 'none');
+		var id = $(this).parent().attr('id');
+		$('.' + id).css('display', '');
+		$('.click').css('background','white');
+		$(this).css('background','lightgray');
+	});
+}
+function deleteTab(title){
+	$('#'+title).remove();
+	$('.'+title).remove();
+	$('#place'+title).remove();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function change(){// 탭 이동
-	if($('#map').css('left')=="0px"){
-		$('#map').animate({
+	if($('.map_wrap').css('left')=="0px"){
+		$('.map_wrap').animate({
 			left:"-100%"
 		},100);
 		$('.writingPlace').animate({
 			left:"207px"
 		},100);
 	}else{
-		$('#map').animate({
+		$('.map_wrap').animate({
 			left:"0"
 		},100);
 		$('.writingPlace').animate({
@@ -370,7 +440,7 @@ function hiddenSearch(){
 function updateForm(){
 	if(confirm('수정하시겠습니까?')){	
 		
-		
+		alert('미구현');
 		
 	}
 }
