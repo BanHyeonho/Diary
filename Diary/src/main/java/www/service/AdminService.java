@@ -14,14 +14,8 @@ public interface AdminService {
 
 	public List<MemberVo> blacklist(); // 신고횟수기준 블랙리스트
 
-//	public void deletemember(int idx); // 블랙멤버삭제
-//
 	public List<DiaryVo> reportdlist(); // 신고된여행일지글보기 30개
 	
-//	public void reportOk(MemberVo vo,int idx); // 신고확정으로 인한 글쓴이의 경고 누적과 함께 다이어리글도 삭제됨	글쓴이의 정보와 해당글의 인덱스를 매개변수로
-//
-//	public void reportcancel(int idx); // 신고된글 신고취소
-
 	public void deletediary(int idx); // 신고된 글삭제
 	
 	public List<MemberVo> searchMember(String option,String keyword); // 회원검색(아이디,닉네임)
@@ -38,15 +32,7 @@ public interface AdminService {
 
 	public List<CommunityVo> reportclist(); // 신고된커뮤니티글보기	30개
 	
-//	public void reportCOk(MemberVo vo,int idx); // 신고확정으로 인한 글쓴이의 경고 누적과 함께 커뮤니티글도 삭제됨	글쓴이의 정보와 해당글의 인덱스를 매개변수로
-//	
-//	public void reportCcancel(int idx); // 신고된 커뮤니티글 신고취소
-//
 	public void deletecommunity(int idx); // 신고된 커뮤니티글삭제
-	
-//	public ReportVo reportReason(int idx); //여행일지글 신고사유 보기
-//	
-//	public ReportVo reportCReason(int idx); //커뮤니티글 신고사유 보기
 	
 	public List<CommunityVo> communitySearch(String option,String keyword); // 만남의장 검색(글제목,닉네임)
 
@@ -87,6 +73,10 @@ public interface AdminService {
 	public void Coacquit(int idx);//(커뮤니티댓글)신고사유 무죄버튼
 
 	public void Doacquit(int idx); //(여행일지댓글)신고사유 무죄버튼
+
+	public List<CommentVo> dcosearch(String option, String keyword);
+
+	public List<CommentVo> ccosearch(String nick, String contents);
 
 
 }
