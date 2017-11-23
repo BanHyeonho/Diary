@@ -10,6 +10,7 @@
 		select * from Member
 		<where>id like '%' || #{id} || '%' </where>
 	</select>
+	
 	<select id="searchByNick" resultType="www.dto.MemberVo"
 		parameterType="String">
 		select * from Member
@@ -17,13 +18,13 @@
 	</select>
 
 	<select id="allmember" resultType="www.dto.MemberVo">
-  <![CDATA[select * from (select * from member
+ 		 <![CDATA[select * from (select * from member
 		order by joindate desc) where rownum <= 30
 		 ]]>
 	</select>
 
 	<select id="alldiary" resultType="www.dto.DiaryVo">
-   <![CDATA[select * from (select * from diary
+   		<![CDATA[select * from (select * from diary
 		order by ddate desc) where rownum <= 30
 		 ]]>
 	</select>
@@ -64,6 +65,7 @@
 		 ]]>
 
 	</select>
+	
 	<delete id="deletediary" parameterType="Integer">
 		delete from diary where idx = #{idx}
 	</delete>
@@ -83,6 +85,7 @@
 		select * from community
 		<where> nick like '%' || #{nick} || '%' </where>
 	</select>
+	
 	<select id="searchByCTitle" resultType="www.dto.CommunityVo" parameterType="String">
 		select * from community
 		<where> ctitle like '%' || #{ctitle} || '%' </where>
@@ -179,11 +182,35 @@
 	</update>
 	
 	<update id="Coacquit" parameterType="Integer">
-		update CCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+		update CCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
 	</update>
 	
 	<update id="Doacquit" parameterType="Integer">
-		update DCOMMENT set REPORTCOUNT = 0 where idx = #{idx}
+		update DCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
 	</update>
+	
+	<select id="searchByDcontent" resultType="www.dto.CommentVo"
+		parameterType="String">
+		select * from DCOMMENT
+		<where> CONTENTS like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByDcoNick" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from DCOMMENT
+		<where> nick like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByCcontent" resultType="www.dto.CommentVo"
+		parameterType="String">
+		select * from CCOMMENT
+		<where> CONTENTS like '%' || #{keyword} || '%' </where>
+	</select>
+	
+	<select id="searchByCcoNick" resultType="www.dto.DiaryVo"
+		parameterType="String">
+		select * from CCOMMENT
+		<where> nick like '%' || #{keyword} || '%' </where>
+	</select>
 	
 </mapper>

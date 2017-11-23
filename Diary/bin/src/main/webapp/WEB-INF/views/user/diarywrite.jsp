@@ -20,7 +20,7 @@
 		<input type="hidden" name="place" />
 		<input type="hidden" name="contents" />
 		<input type="hidden" name="mapposition" />
-		<input type="text" class="form-control" name="dtitle" placeholder="글 제목"/><button class="btn-info btn-sm">스크랩 가져오기</button>
+		<input type="text" class="form-control" name="dtitle" placeholder="글 제목"/><button type="button" class="btn-info btn-sm" onclick="scrap_list('${user.id}');">스크랩 가져오기</button>
 		</div>
 		<label><input type="radio" name="dpublic" value="Y" checked >공개</label><label><input type="radio"  name="dpublic" value="N"  >비공개</label>
 		<input type="date" name="sdate" /> ~ <input type="date" name="edate"/> 

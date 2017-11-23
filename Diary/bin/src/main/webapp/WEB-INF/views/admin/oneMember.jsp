@@ -52,8 +52,9 @@
 		<center class="ct">
 			<button type="submit" class="btn-success btn-sm" onclick="confirmm('${userinfo.id}');"><span>확인</span></button>
 			<button type="button" class="btn-danger btn-sm" onclick="deleteAccount('${userinfo.id}')"><span>계정삭제</span></button>
-			<button type="button" class="btn-info btn-sm" onclick=""><span>쪽지보내기</span></button>
+			<button type="button" class="btn-info btn-sm" onclick="mag_form('${userinfo.nick}','${userinfo.id}','관리자','admin');"><span>쪽지보내기</span></button>
 		</center>
 	</form>
+	<script type="text/javascript" src="script/mypage.js"></script>
 </body>
 </html>

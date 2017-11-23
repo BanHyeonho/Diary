@@ -37,7 +37,7 @@ function coacquit(idx,dco){
 			self.close();
 		}
 	}else{
-		console.log('일지무죄');
+		console.log('일지무죄무죄');
 	if(confirm("이글을 무죄로 하시겠습니까?")){
 		opener.location.href='/Doacquit.do?idx='+idx;
 		self.close();
