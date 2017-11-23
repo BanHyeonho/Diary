@@ -12,10 +12,10 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <link href="css/simplex.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 </head>
 
-<body>
+<body style="padding-top: 50px;">
 
 	<%
 		List<ReportVo> list = (List)request.getAttribute("reportReason");	
