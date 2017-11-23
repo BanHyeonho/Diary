@@ -22,7 +22,6 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<%@ include file="../layout/nav.jsp"%>
 		<div class="contents" style="position: relative; overflow-x:hidden; height: auto;">
 
 		<h2 style="display: inline;">${data.Diary.dtitle }</h2>
