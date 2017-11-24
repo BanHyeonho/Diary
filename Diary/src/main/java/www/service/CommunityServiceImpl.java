@@ -36,6 +36,7 @@ public class CommunityServiceImpl implements CommunityService{
 		if (vo.getId()!=null&&!vo.getId().equals("") && dao.hitCountChk(vo) == null) {
 			
 			community.setChitcount(community.getChitcount() + 1);
+		
 			dao.chitcount(community);
 			dao.hitcounted(vo);
 		
