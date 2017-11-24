@@ -75,18 +75,19 @@ public class DiaryController {
 	} // 글 삭제
 
 	@RequestMapping(value = "/writeDComment.do", method = RequestMethod.POST)
-	public @ResponseBody Map<String, CommentVo> writeDComment(CommentVo vo) {
+	public @ResponseBody Map<String, Integer> writeDComment(CommentVo vo) {
 
-		sv.writedcomment(vo);
-
-		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
-
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("idx", sv.writedcomment(vo));
 		return map;
 	} // 댓글 쓰기
 
-	// public @ResponseBody Map<String, String> deleteDComment(int idx) {
-	// return null;
-	// } // 댓글 삭제
+	@RequestMapping(value = "/deleteDComment.do", method = RequestMethod.GET)
+	 public @ResponseBody Map<String, String> deleteDComment(int idx) {
+		sv.deletedcomment(idx);
+		Map<String, String> map = new HashMap<String, String>();
+	 return map;
+	 } // 댓글 삭제
 
 	@RequestMapping(value = "/insertScrap.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> insertScrap(ScrapVo vo) {
@@ -131,4 +132,12 @@ public class DiaryController {
 		Map<String, String> map = new HashMap<String, String>();
 		return map;
 	} // 신고 처리
+	@RequestMapping(value = "/dcoreport.do", method = RequestMethod.POST)
+	public @ResponseBody Map<String, String> dcoreport(ReportVo vo) {
+
+		sv.dcoreport(vo);
+
+		Map<String, String> map = new HashMap<String, String>();
+		return map;
+	} // 일지 댓글신고 처리
 }
