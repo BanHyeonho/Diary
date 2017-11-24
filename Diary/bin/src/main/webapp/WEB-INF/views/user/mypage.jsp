@@ -32,9 +32,9 @@
 	</c:if>
 	<div class="container">
 		<div class="contents ">
-			<div style="height: 50px">
+		
 				<ul class="nav nav-tabs">
-					<li class="nav-item color" id="privacyy"><a class="nav-link" data-toggle="tab"
+					<li class="nav-item color" id="privacyy"><a class="nav-link active" data-toggle="tab"
 						href="#privacy" onclick="privacyy();">개인정보변경</a></li>
 					<li class="nav-item color" id="mywrite"><a class="nav-link " data-toggle="tab"
 						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
@@ -49,10 +49,10 @@
 					<li class="nav-item color" id="block_listt"><a class="nav-link " data-toggle="tab"
 						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>
-			</div>
+			
 			<!-- privacy -->
 			<div id="myTabContent" class="tab-content">
-				<div id="privacy" class="privacy tab-pane fade active show in">
+				<div id="privacy" class="privacy tab-pane fade show">
 
 
 					<form action="/updateInfoAction.do" method="post" name="sform">
@@ -162,7 +162,7 @@
 					</form>
 				</div>
 				<!-- my_write 여행 리스트-->
-				<div id="my_write" class="tab-pane fade show">
+				<div id="my_write" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 					<h1>여행일지</h1> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
 						<thead class="table-primary">
@@ -183,7 +183,7 @@
 					</table>
 				</div>
 				<!-- myCommunity 만남의장 리스트 -->
-				<div id="myCommunity" class="tab-pane fade show">
+				<div id="myCommunity" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 					<h1>만남의장</h1> <button type="button"class="btn btn-primary" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
 						<thead class="table-success">
@@ -203,7 +203,7 @@
 				</div>
 
 				<!-- scrap -->
-				<div id="scrap" class="tab-pane fade show">
+				<div id="scrap" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-danger">
 							<tr>
@@ -226,7 +226,7 @@
 				</div>
 
 				<!--followers -->
-				<div id="followers" class="tab-pane fade show">
+				<div id="followers" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-warning">
 							<tr>
@@ -240,7 +240,7 @@
 
 				</div>
 				<!--follwoing -->
-				<div id="follwoing" class="tab-pane fade show">
+				<div id="follwoing" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-info">
 							<tr>
@@ -254,7 +254,7 @@
 
 				</div>
 				<!-- 쪾지함  -->
-				<div id="msg" class="tab-pane fade show">
+				<div id="msg" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-success" >
 							<tr>
@@ -268,7 +268,7 @@
 
 				</div>
 			<!--block_list  -->	
-				<div id="block_list" class="tab-pane fade show">
+				<div id="block_list" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="thead-dark">
 							<tr>

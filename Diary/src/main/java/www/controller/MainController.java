@@ -92,7 +92,8 @@ public class MainController {
 		 
 		List<CommunityVo> list=sv.community();
 		//logger.info("개수"+list.size());
-		mav.addObject("list", list);
+		mav.addObject("list", list); 
+		mav.addObject("active", "2");
 		mav.setViewName("user/community");
 		return mav;
 	 } // 만남의장으로 이동
@@ -101,13 +102,14 @@ public class MainController {
 	 public ModelAndView diary(ModelAndView mav) {
 		
 		mav.addObject("list", sv.diary());
-		
+		mav.addObject("active", "0");
 		mav.setViewName("user/diary");
 	 return mav;
 	 } // 여행일지로 이동
 	
 	@RequestMapping(value = "/diarywrite.do", method = RequestMethod.GET)
 	 public ModelAndView diarywrite(ModelAndView mav) {
+		mav.addObject("active", "1");
 		mav.setViewName("user/diarywrite");
 	 return mav;
 	 } // 여행일지쓰기로 이동

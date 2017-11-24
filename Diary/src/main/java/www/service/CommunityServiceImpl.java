@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import www.dao.CommunityDao;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
+import www.dto.HitCountVo;
 
 @Service
 public class CommunityServiceImpl implements CommunityService{
@@ -24,16 +25,24 @@ public class CommunityServiceImpl implements CommunityService{
 
 
 	@Override
-	public CommunityVo oneCommunity(int idx) {
+	public CommunityVo oneCommunity(HitCountVo vo) {
 		// TODO Auto-generated method stub
 		//chitcount 테이블에서 아이디랑 글idx로 값이 있는지 확인 값이 있으면 이미 조회한 적 있음 없으면 조회한적 없음
 		//조회한적 없으면 chitcount 테이블에 아이디랑 글의 인덱스를 같이 insert
 		//글의 인덱스로 글정보를 갖고와서 조회수를 1 update 시킨다
 		//결과를 리턴한다.
+		CommunityVo community=dao.oneCommunity(vo.getLinkedidx());
+		
+		if (vo.getId()!=null&&!vo.getId().equals("") && dao.hitCountChk(vo) == null) {
+			
+			community.setChitcount(community.getChitcount() + 1);
+			dao.chitcount(community);
+			dao.hitcounted(vo);
+		
+		}
 		
 		
-		
-		return dao.oneCommunity(idx);
+		return community;
 	}
 	
 	
@@ -80,11 +89,5 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 
-	@Override
-	public void chitcount(CommunityVo vo) {
-		// TODO Auto-generated method stub
-		
-		dao.chitcount(vo);
-	}
-	
+
 }

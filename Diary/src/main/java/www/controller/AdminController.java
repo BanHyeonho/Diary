@@ -53,6 +53,7 @@ public class AdminController {
 		}
 
 		mav.setViewName("admin/admin");
+		mav.addObject("active", "1");//관리자페이지 하얀색 고정
 		return mav;
 	} // 계정관리-회원리스트 보기
 
@@ -61,6 +62,7 @@ public class AdminController {
 		mav.addObject("mlist", sv.searchMember(option, keyword));
 		mav.addObject("idx", "0");
 		mav.setViewName("admin/admin");
+		mav.addObject("active", "1");
 		return mav;
 	} // 계정관리-회원검색(아이디,닉네임)
 
@@ -76,6 +78,7 @@ public class AdminController {
 	public ModelAndView oneMember(ModelAndView mav, MemberVo vo) {
 		mav.addObject("userinfo", sv.oneMember(vo.getId()));
 		mav.setViewName("admin/oneMember");
+		mav.addObject("active", "1");
 		return mav;
 	}// 계정관리-정보보기버튼-회원한명 정보 상세히 보기
 
@@ -85,15 +88,10 @@ public class AdminController {
 		// for (MemberVo memberVo : list) {
 		// logger.info(memberVo.toString());
 		// }
-
 		sv.updatedmember(vo);
 		mav.setViewName("redirect:/admin.do");
 		return mav;
 	} // 계정관리-정보보기후 신고회수 고치고 확인 버튼눌렀을때
-
-	// public @ResponseBody Map<String, String> reportMsg(MsgVo vo) {
-	// return null;
-	// } // 경고쪽지 보내기
 
 	@RequestMapping(value = "/deleteAccount.do", method = RequestMethod.GET)
 	public ModelAndView deleteAccount(ModelAndView mav, MemberVo vo) {
@@ -110,6 +108,7 @@ public class AdminController {
 		// }
 		mav.addObject("dlist", sv.alldiary());
 		mav.addObject("idx", "1");
+		mav.addObject("active", "1");
 		mav.setViewName("admin/admin");
 		return mav;
 	}// 일지게시판-여행일지글 리스트 보기
@@ -122,6 +121,7 @@ public class AdminController {
 
 		mav.addObject("dlist", sv.diarySearch(option, keyword));
 		mav.addObject("idx", "1");
+		mav.addObject("active", "1");
 		mav.setViewName("admin/admin");
 		return mav;
 	} // 일지게시판-여행일지 검색(글제목,닉네임)
@@ -181,6 +181,7 @@ public class AdminController {
 
 		mav.addObject("clist", sv.allcommunity());
 		mav.addObject("idx", "2");
+		mav.addObject("active", "1");
 		mav.setViewName("admin/admin");
 		return mav;
 	}// 커뮤니티 리스트보여주기
@@ -190,6 +191,7 @@ public class AdminController {
 
 		mav.addObject("clist", sv.communitySearch(option, keyword));
 		mav.addObject("idx", "2");
+		mav.addObject("active", "1");
 		mav.setViewName("admin/admin");
 		return mav;
 	} // 커뮤니티 검색(글제목,닉네임)

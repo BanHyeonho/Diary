@@ -15,6 +15,7 @@
 		s.value = '${user.pwq}';
 	}
 </script>
+
 </head>
 <body>
 	<%@ include file="../layout/header.jsp"%>
@@ -25,34 +26,35 @@
 		$(document).ready(function(){
 		$('#msg').attr('class','privacy tab-pane fade active show in');
 		$('#privacy').attr('class','tab-pane fade show');
-		$('#msg_1 a').css('background','#cbe1ba');
-
+		$('.color a').css('color','#626261');
+		$('#msg_1 a').css('color','#d9534f');
+		
 		});
 		</script>	
 	</c:if>
 	<div class="container">
 		<div class="contents ">
-			<div style="height: 50px">
+			
 				<ul class="nav nav-tabs">
-					<li class="nav-item color" id="privacyy"><a class="nav-link" data-toggle="tab"
-						href="#privacy" onclick="privacyy();">개인정보변경</a></li>
+					<li class="nav-item color" id="privacyy"><a class="nav-link ative" data-toggle="tab"
+						href="#" onclick="privacyy();">개인정보변경</a></li>
 					<li class="nav-item color" id="mywrite"><a class="nav-link " data-toggle="tab"
-						href="#my_write" onclick="mywrite('${user.id}')">내가쓴글</a></li>
+						href="#" onclick="mywrite('${user.id}')">내가쓴글</a></li>
 					<li class="nav-item color" id="scrap_list"><a class="nav-link " data-toggle="tab"
-						href="#scrap" onclick="scrap_list('${user.id}')">스크랩</a></li>
+						href="#" onclick="scrap_list('${user.id}')">스크랩</a></li>
 					<li class="nav-item color" id="followerss"><a class="nav-link " data-toggle="tab"
-						href="#followers" onclick="followers('${user.id}')">팔로워</a></li>
+						href="#" onclick="followers('${user.id}')">팔로워</a></li>
 					<li class="nav-item color" id="followingg"><a class="nav-link " data-toggle="tab"
-						href="#follwoing" onclick="following('${user.id}')">팔로윙</a></li>
+						href="#" onclick="following('${user.id}')">팔로윙</a></li>
 					<li class="nav-item color" id="msg_1"><a class="nav-link " data-toggle="tab"
-						href="#msg" onclick="msg_1('${user.id}');">쪽지함</a></li>
+						href="#" onclick="msg_1('${user.id}');">쪽지함</a></li>
 					<li class="nav-item color" id="block_listt"><a class="nav-link " data-toggle="tab"
-						href="#block_list" onclick="block_list('${user.id}')">차단목록</a></li>
+						href="#" onclick="block_list('${user.id}')">차단목록</a></li>
 				</ul>
-			</div>
+			
 			<!-- privacy -->
 			<div id="myTabContent" class="tab-content">
-				<div id="privacy" class="privacy tab-pane fade active show in">
+				<div id="privacy" class="privacy tab-pane fade in active show">
 
 
 					<form action="/updateInfoAction.do" method="post" name="sform">
@@ -164,7 +166,7 @@
 				<!-- my_write 여행 리스트-->
 				<div id="my_write" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>여행일지</h1> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
+					<h1>여행일지</h1><button type="button" class="btn btn-danger">여행일지 내가쓴글</button> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
 						<thead class="table-primary">
 							
 								
@@ -183,9 +185,9 @@
 					</table>
 				</div>
 				<!-- myCommunity 만남의장 리스트 -->
-				<div id="myCommunity" class="tab-pane fade show">
+				<div id="myCommunity" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>만남의장</h1> <button type="button"class="btn btn-primary" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
+					<h1>만남의장</h1><button type="button" class="btn btn-success">만남의장 내가쓴글</button> <button type="button" class="btn btn-danger" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
 						<thead class="table-success">
 							
 							<tr>
@@ -203,7 +205,7 @@
 				</div>
 
 				<!-- scrap -->
-				<div id="scrap" class="tab-pane fade show">
+				<div id="scrap" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-danger">
 							<tr>
@@ -226,7 +228,7 @@
 				</div>
 
 				<!--followers -->
-				<div id="followers" class="tab-pane fade show">
+				<div id="followers" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-warning">
 							<tr>
@@ -240,7 +242,7 @@
 
 				</div>
 				<!--follwoing -->
-				<div id="follwoing" class="tab-pane fade show">
+				<div id="follwoing" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-info">
 							<tr>
@@ -254,7 +256,7 @@
 
 				</div>
 				<!-- 쪾지함  -->
-				<div id="msg" class="tab-pane fade show">
+				<div id="msg" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="table-success" >
 							<tr>
@@ -268,7 +270,7 @@
 
 				</div>
 			<!--block_list  -->	
-				<div id="block_list" class="tab-pane fade show">
+				<div id="block_list" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="thead-dark">
 							<tr>
@@ -286,7 +288,7 @@
 			</div>
 
 		</div>
-		<%@ include file="../layout/footer.jsp"%>
 	</div>
+		<%@ include file="../layout/footer.jsp"%>
 </body>
 </html>

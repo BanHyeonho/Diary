@@ -33,8 +33,7 @@ public class MainServiceImpl implements MainService{
 		MemberVo user = dao.login(vo);
 		if(vo.getId().equals("admin")&&vo.getPassword().equals("1")){
 			
-			
-			
+			session.setAttribute("admin","관리자");
 			mav.setViewName("redirect:/admin.do");
 			return mav;
 			

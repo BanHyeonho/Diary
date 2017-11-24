@@ -56,6 +56,8 @@ function privacyy(){
 }
 // 내가 쓴글 확인
 function mywrite(id) {
+	$('#my_write').attr('class','tab-pane fade in active show');
+	
 	var id = id;
 	$('.color a').css('background','white');
 	$('#mywrite a').css('background','#f4c1bc');

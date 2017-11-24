@@ -14,7 +14,7 @@
 <div class="container">
 <div class="contents">
    <h1>회원가입</h1>
-   <form action="/joinAction.do" method="post" name="sform" >
+   <form action="/joinAction.do" method="post" name="sform" enctype="multipart/form-data">
       <table class="table table-bordered">
          
          <tr>
@@ -89,7 +89,7 @@
          </tr>
          <tr>
             <th class="join">프로필사진</th>
-            <td><input type="text" class="form-control" name="picture"value="사진"/></td>
+            <td><input type="file" name="picture" value="사진"/></td>
          </tr>
       </table>
       <center>
