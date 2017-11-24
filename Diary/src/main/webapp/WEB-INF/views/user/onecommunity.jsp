@@ -94,7 +94,7 @@
 				
 			</tr>
 			<tr class='${data1.idx}'>
-			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('reportForm.do?id=${user.id }&linkedidx=${data.idx }','window_name','width=400,height=500,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
+			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('reportForm.do?id=${user.id }&linkedidx=${data.idx }','신고','width=400,height=500,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
 			</tr>
 			
 			</c:forEach> 
