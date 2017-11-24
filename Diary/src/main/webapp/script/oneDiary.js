@@ -1,7 +1,7 @@
 var map=null;
 
 function createMap(mapposition,place){
-	console.log(mapposition);
+
 	var mappositions = mapposition.split('/');
 	var places = place.split('/');
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

@@ -15,14 +15,11 @@
 </head>
 <body style="padding-top: 50px;">
 <%
-DiaryVo vo =(DiaryVo)request.getAttribute("viewDiary");
-System.out.println(vo.toString());
+		DiaryVo vo =(DiaryVo)request.getAttribute("viewDiary");
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
 %>
 
-	
-		
 		<div class="contents" style="position: relative;margin : auto; overflow-x:hidden; height: auto;">
 
 		<h2 style="display: inline;">${viewDiary.dtitle }</h2>
@@ -52,20 +49,12 @@ System.out.println(vo.toString());
 		</c:forTokens> 
 		</div>
 		
-		
-		
-		<div><!--댓글  -->
-		<hr>
-		<table>
-		
-		</table>
-		</div>
 			</div><!-- contents -->
 
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/oneDiary.js"></script>	
 	<script type="text/javascript">
-	createMap('${data.Diary.mapposition}');
+	createMap('${viewDiary.mapposition}','${viewDiary.place}');
 	</script>
 </body>
 </html>

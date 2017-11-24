@@ -481,8 +481,8 @@ function scrap_list(id){
 		
 				for (var i = 0; i < myScrap.length; i++) {
 						$('#scrap_body').append(
-								'<tr><td><a href="/oneDiary.do?idx='
-								+ myScrap[i].idx + '">' + myScrap[i].dtitle
+								'<tr><td><a href="/oneDiary.do?linkedidx='
+								+ myScrap[i].idx + '&id='+id+'">' + myScrap[i].dtitle
 								+ '</a></td><td>' + myScrap[i].ddate
 								+ '</td><td>' + myScrap[i].dhitcount
 								+ '</td><td>' + myScrap[i].good

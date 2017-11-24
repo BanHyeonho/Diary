@@ -84,6 +84,7 @@ public class DiaryServiceImpl implements DiaryService {
 	public void report(ReportVo vo) {
 		// TODO Auto-generated method stub
 		dao.report(vo);
+		dao.reportUp(vo);
 	}
 
 	@Override
