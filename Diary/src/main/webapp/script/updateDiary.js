@@ -437,10 +437,54 @@ $('.click').click(function() {
 function hiddenSearch(){
 	$('#menu_wrap').toggle(100);
 }
-function updateForm(){
+function update(){
 	if(confirm('수정하시겠습니까?')){	
 		
-		alert('미구현');
+		var place ="";
+		var content="";
+		var mappositions="";
+		for (var i = 0; i < savePlaces.length; i++) {	//여행지 갯수만큼 반복
+			place=place+savePlaces[i].place_name+"/";
+		}
+		
+		document.updateForm.place.value=place.substr(0,place.length-1);
+		//여행지 값 구하기 완료
+		
+		for (var i = 0; i < $('.textArea').length; i++) {	//여행지설명 갯수만큼 반복
+			content=content+$('.textArea')[i].value+"/";
+		}
+		
+		document.updateForm.contents.value=content.substr(0,content.length-1);
+		
+		for (var i = 0; i < savePlaces.length; i++) {
+			mappositions=mappositions+savePlaces[i].y+","+savePlaces[i].x+"/"
+		}
+		
+		document.updateForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
+		var con = document.updateForm.contents.value.replace(/\//g,'');
+		
+		if(document.updateForm.sdate.value==''){
+			alert('여행 시작일을 입력하세요.');
+			document.writingForm.sdate.focus();
+			return false;
+		}else if(document.updateForm.edate.value==''){
+			alert('여행 마지막일을 입력하세요.');
+			document.writingForm.edate.focus();
+			return false;
+		}else if(document.updateForm.place.value==''){
+			alert('여행지를 입력하세요.');
+			document.getElementById('keyword').focus();
+			return false;
+		}else if(con==''){
+			alert('여행지에 대한 설명을 입력하세요.');
+			change();
+			return false;
+		}else{
+			
+			document.updateForm.submit();
+			alert('수정 되었습니다.');
+		}
+		
 		
 	}
 }

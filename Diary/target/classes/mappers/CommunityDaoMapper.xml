@@ -75,5 +75,16 @@
  
   </select>
   
+   <insert id="hitcounted" parameterType="www.dto.HitCountVo">
+  insert into CHITCOUNT values(CHITCOUNT_SEQ.NEXTVAL,#{linkedidx},#{id})
+  </insert>
+  
+   <select id="hitCountChk" resultType="www.dto.HitCountVo" parameterType="www.dto.HitCountVo">
+    select * from CHITCOUNT where ID = #{id} and LINKEDIDX = #{linkedidx}
+  </select>
+  
+   <update id="hitcount" parameterType="www.dto.CommunityVo">
+  	update COMMUNITY set CHITCOUNT = #{chitcount} where IDX=#{idx}
+  </update>
   
 </mapper>

@@ -33,6 +33,7 @@ public class DiaryController {
 
 		Map<String, Object> map = sv.onediary(vo);
 		mav.addObject("data", map);
+		mav.addObject("active", "0");
 		mav.setViewName("user/oneDiary");
 		return mav;
 	} // 글 하나 확대해서 보기
@@ -41,10 +42,29 @@ public class DiaryController {
 	public ModelAndView updateDiary(ModelAndView mav,DiaryVo vo) {
 		
 		mav.addObject("Diary", vo);
+		mav.addObject("active", "0");
 		mav.setViewName("user/updateDiary");
 		return mav;
 	} // 글 수정
 
+	@RequestMapping(value = "/updateDiaryAction.do", method = RequestMethod.POST)
+	public ModelAndView updateDiaryAction(ModelAndView mav,DiaryVo vo) {
+		
+		logger.info(vo.toString());
+		
+		sv.updatediary(vo);
+		
+		HitCountVo hit = new HitCountVo();
+		hit.setId(vo.getId());
+		hit.setLinkedidx(vo.getIdx());
+		Map<String, Object> map = sv.onediary(hit);
+		mav.addObject("data", map);
+		mav.addObject("active", "0");
+		mav.setViewName("user/oneDiary");
+		
+		return mav;
+	} // 글 수정처리
+	
 	@RequestMapping(value = "/deleteDiary.do", method = RequestMethod.GET)
 	public ModelAndView deleteDiary(ModelAndView mav, int idx) {
 
@@ -82,6 +102,7 @@ public class DiaryController {
 	public ModelAndView search(ModelAndView mav, String keyword, String option) {
 
 		mav.addObject("list", sv.search(option, keyword));
+		mav.addObject("active", "0");
 		mav.setViewName("user/diary");
 		return mav;
 	} // 여행일지 글 검색

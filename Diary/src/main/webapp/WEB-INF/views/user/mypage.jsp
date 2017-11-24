@@ -32,8 +32,8 @@
 		});
 		</script>	
 	</c:if>
-	<div class="container">
-		<div class="contents ">
+	<div class="container" style="margin-bottom: 300px;">
+		<div class="contents" style="margin: 0 80px;">
 			
 				<ul class="nav nav-tabs">
 					<li class="nav-item color" id="privacyy"><a class="nav-link ative" data-toggle="tab"
@@ -59,9 +59,9 @@
 
 					<form action="/updateInfoAction.do" method="post" name="sform">
 						<table class="table table-bordered">
-							<thead>
+							<thead class="thead-dark">
 								<tr>
-									<th colspan="2"><h1>회원정보 수정</h1></th>
+								<th colspan="2"><h1 style="color:#fff;">회원정보 수정</h1></th>
 								</tr>
 							</thead>
 							<tr>
@@ -156,23 +156,22 @@
 							</tr>
 						</table>
 						<center>
-							<button type="submit" class="btn-success btn-lg"
+							<button type="submit" class="btn-primary btn-lg"
 								onclick="return confirmm();">회원정보 수정</button>
-							<button type="button" class="btn-danger btn-lg"
-								onclick="deletee('${user.id}');">회원탈퇴</button>
 						</center>
+							<button type="button" class="btn-danger btn"
+								onclick="deletee('${user.id}');" style="float:right;">회원탈퇴</button>
 					</form>
 				</div>
 				<!-- my_write 여행 리스트-->
 				<div id="my_write" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>여행일지</h1><button type="button" class="btn btn-danger">여행일지 내가쓴글</button> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
-						<thead class="table-primary">
-							
-								
-							
+					<button type="button" class="btn btn-danger">여행일지 내가쓴글</button> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
+						
+						<thead class="thead-dark">
 							<tr>
-								<th>글제목</th>
+								
+								<th><span style="color:#d9534f; ">여행일지</span> &nbsp; &nbsp;글제목 </th>
 								<th>날짜</th>
 								<th>조회수</th>
 								<th>추천수</th>
@@ -187,11 +186,11 @@
 				<!-- myCommunity 만남의장 리스트 -->
 				<div id="myCommunity" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-					<h1>만남의장</h1><button type="button" class="btn btn-success">만남의장 내가쓴글</button> <button type="button" class="btn btn-danger" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
-						<thead class="table-success">
+					<button type="button" class="btn btn-success">만남의장 내가쓴글</button> <button type="button" class="btn btn-danger" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
+						<thead class="thead-dark">
 							
 							<tr>
-								<th>글제목</th>
+								<th><span style="color:#4bbf73; ">만남의장</span> &nbsp; &nbsp;글제목</th>
 								<th>날짜</th>
 								<th>조회수</th>
 								
@@ -207,7 +206,7 @@
 				<!-- scrap -->
 				<div id="scrap" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-danger">
+						<thead class="thead-dark">
 							<tr>
 								<th>글제목</th>
 								<th>날짜</th>
@@ -230,9 +229,9 @@
 				<!--followers -->
 				<div id="followers" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-warning">
+						<thead class="thead-dark">
 							<tr>
-								<th>닉네임</th>
+								<th colspan="3">나를 팔로우한 사람들<span id="follow_cnt"></span></th>
 							</tr>
 						</thead>
 						<tbody id= "followers_list">
@@ -244,9 +243,9 @@
 				<!--follwoing -->
 				<div id="follwoing" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-info">
+						<thead class="thead-dark">
 							<tr>
-								<th colspan="2">닉네임</th>
+								<th colspan="3">내가 팔로잉한 사람들<span id="folloing_cnt"></span></th>
 							</tr>
 						</thead>
 						<tbody id="following_list">
@@ -258,7 +257,7 @@
 				<!-- 쪾지함  -->
 				<div id="msg" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-success" >
+						<thead class="thead-dark" >
 							<tr>
 							<th>보낸사람</th><th>내용</th><th>답장하기</th><th>메세지삭제</th>
 							</tr>
@@ -274,7 +273,7 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="thead-dark">
 							<tr>
-								<th colspan="2">차단회원목록</th>
+								<th colspan="3">차단회원목록</th>
 							</tr>
 						</thead>
 						<tbody id="my_black">

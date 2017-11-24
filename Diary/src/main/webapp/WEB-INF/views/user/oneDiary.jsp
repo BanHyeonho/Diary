@@ -111,9 +111,9 @@
 		</div><!-- contents -->
 			
 			
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/oneDiary.js"></script>	

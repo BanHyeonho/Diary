@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 <link href="css/simplex.css" rel="stylesheet" />
 <script type="text/javascript" src="script/oneMember.js"></script>
 </head>
-<body>
+<body style="padding-top: 50px;">
 	<div class="infotable">
 	<form action="/oneMember.do" method="get" name="sform">
 		<table class="table table-bordered">

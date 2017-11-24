@@ -102,5 +102,11 @@ public class DiaryServiceImpl implements DiaryService {
 		
 	}
 
+	@Override
+	public void updatediary(DiaryVo vo) {
+		// TODO Auto-generated method stub
+		dao.updatediary(vo);
+	}
+
 
 }

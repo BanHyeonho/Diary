@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jdk.nashorn.internal.runtime.options.LoggingOption.LoggerInfo;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
@@ -26,7 +27,7 @@ public class CommunityController {
 
 	@RequestMapping(value="/communitywrite.do",method = RequestMethod.GET)
 	public ModelAndView writeCommunity(ModelAndView mav) {
-		
+		mav.addObject("active", "2");
 		mav.setViewName("user/communitywrite");
 	return mav;
 		
@@ -36,7 +37,7 @@ public class CommunityController {
 	public ModelAndView insert(ModelAndView mav, CommunityVo vo){
 		
 		sv.communityinsert(vo);
-		
+		mav.addObject("active", "2");
 		mav.setViewName("redirect:/community.do");
 	return mav;
 	}
@@ -44,14 +45,14 @@ public class CommunityController {
 	@RequestMapping(value="/onecommunity.do",method = RequestMethod.GET)
 	public ModelAndView oneCommunity(ModelAndView mav,HitCountVo vo) {
 		
-//		mav.addObject("data", sv.oneCommunity(vo));
-//		
-//		List<CommentVo> list = sv.ccomment(vo);
-//				
-//		mav.addObject("list",sv.ccomment(vo) );
-//		
-		mav.setViewName("user/onecommunity");
+		mav.addObject("data", sv.oneCommunity(vo));
 		
+		List<CommentVo> list = sv.ccomment(vo.getLinkedidx());
+		
+		mav.addObject("list",sv.ccomment(vo.getLinkedidx()));
+		
+		mav.setViewName("user/onecommunity");
+		mav.addObject("active", "2");
 		return mav;
 	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
 	
@@ -87,7 +88,7 @@ public class CommunityController {
 	
 	@RequestMapping(value="/updatecommu.do",method = RequestMethod.POST)
 	public ModelAndView updatecommu(ModelAndView mav,CommunityVo vo){
-		
+		mav.addObject("active", "2");
 		mav.addObject("update", vo);
 		mav.setViewName("user/updatecommunity");
 		
@@ -111,7 +112,7 @@ public class CommunityController {
 		sv.csearch(vo);
 		mav.addObject("list", sv.csearch(vo));
 		mav.setViewName("user/community");
-		
+		mav.addObject("active", "2");
 		return mav;
 	} // 검색하기
 //

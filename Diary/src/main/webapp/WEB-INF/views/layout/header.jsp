@@ -21,13 +21,13 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
+						<li class="nav-item <c:if test='${active==\'0\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/diary.do'">여행일지</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item <c:if test='${active==\'1\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="goWrite('${user.id}');">여행일지 쓰기</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item <c:if test='${active==\'2\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/community.do'">만남의 장</a>
 						</li>
 						<li class="nav-item">

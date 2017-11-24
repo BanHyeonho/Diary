@@ -13,7 +13,6 @@
 	$(document).ready(function() {
 		change('${idx}');
 	});
-
 </script>
 </head>
 <body>
@@ -26,20 +25,13 @@
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#user" onclick="location.href='/admin.do'" id="a">사용자 계정</a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#diaryboard" onclick="location.href='/alldiary.do'" id="b">여행일지 게시판 </a></li>
+						href="#diaryboard" onclick="location.href='/alldiary.do'" id="b">여행일지
+							게시판 </a></li>
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#communityboard" onclick="location.href='/allcommunity.do'" id="c">커뮤니티 게시판</a></li>
+						href="#communityboard" onclick="location.href='/allcommunity.do'"
+						id="c">커뮤니티 게시판</a></li>
 					 <li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#comment" onclick="commentList();" id="d">신고 댓글</a></li> 
-					<!-- <li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-toggle="dropdown" href="#comment" onclick="commentList();
-						role="button" aria-haspopup="true" aria-expanded="false" >댓글</a>
-						<div class="dropdown-menu" x-placement="bottom-start"
-							style="position: absolute; transform: translate3d(0px, 49px, 0px); top: 0px; left: 0px; will-change: transform;">
-							<a class="dropdown-item" href="#">여행일지</a> <a
-								class="dropdown-item" href="#">만남의장</a>
-						</div>
-					</li> -->
 				</ul>
 			</div>
 
@@ -56,12 +48,12 @@
 								placeholder="Search" name="keyword">
 
 							<button class="btn btn-secondary my-2 my-sm-0" type="submit">검색</button>
-							<button type="button" class="bt btn-success btn-md"
+							<button type="button" class="bt btn-danger btn-md"
 								onclick="blacklist();">블랙리스트</button>
 						</form>
 					</div>
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-success">
+						<thead class="thead-dark">
 							<tr>
 								<th>아이디</th>
 								<th>닉네임</th>
@@ -78,7 +70,8 @@
 									<td>${mdata.reportcount}</td>
 									<td><input type="checkbox" disabled="disabled"
 										<c:if test="${mdata.reportcount>=3}">checked</c:if> /></td>
-									<td><button type="button" class="btt btn-success btn-md"
+									<td><button type="button"
+											class="btt btn-outline-primary btn-md"
 											onclick="javascript:openWin('${mdata.id}');">정보보기</button></td>
 								</tr>
 							</c:forEach>
@@ -119,7 +112,7 @@
 
 					</div>
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-danger">
+						<thead class="thead-dark">
 							<tr id="dTable">
 								<th>글제목</th>
 								<th>닉네임</th>
@@ -132,9 +125,11 @@
 								<tr id="${ddata.idx}">
 									<td>${ddata.dtitle}</td>
 									<td>${ddata.nick}</td>
-									<td><button type="button" class="btn-danger btn-md"
+									<td><button type="button"
+											class="btn-outline-primary btn-md"
 											onclick="javascript:DviewopenWin('${ddata.idx}');">글보기</button></td>
-									<td><button type="button" class="btn-danger btn-md"
+									<td><button type="button"
+											class="btn-outline-primary btn-md"
 											onclick="deletediary('${ddata.idx}');">삭제</button></td>
 								</tr>
 							</c:forEach>
@@ -168,13 +163,13 @@
 							<button class="btn btn-secondary my-2 my-sm-0" type="submit"
 								onclick="communitysearch();">검색</button>
 							<!--onclick="communitysearch();"  -->
-							<button type="button" class="btt btn-info btn-md"
+							<button type="button" class="btt btn-danger btn-md"
 								onclick="reportclist();">신고된 게시물 보기</button>
 						</form>
 
 					</div>
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-info">
+						<thead class="thead-dark">
 							<tr id="cTable">
 								<th>글제목</th>
 								<th>닉네임</th>
@@ -187,9 +182,11 @@
 								<tr id="${cdata.idx}">
 									<td>${cdata.ctitle}</td>
 									<td>${cdata.nick}</td>
-									<td><button type="button" class="btn-info btn-md"
+									<td><button type="button"
+											class="btn-outline-primary btn-md"
 											onclick="javascript:CviewopenWin('${cdata.idx}');">글보기</button></td>
-									<td><button type="button" class="btn-info btn-md"
+									<td><button type="button"
+											class="btn-outline-primary btn-md"
 											onclick="deletecommunity('${cdata.idx}');">삭제</button></td>
 								</tr>
 							</c:forEach>
@@ -215,21 +212,23 @@
 				<div id="comment" class="tab-pane fade show">
 					<div class="searchtool">
 						<h3>여행일지 신고된 댓글</h3>
-						<form class="ss form-inline my-2 my-lg-0" name="dcosearchtool"	method="get">
+						<form class="ss form-inline my-2 my-lg-0" name="dcosearchtool"
+							method="get">
 							<select class="form-control" name="option">
 								<option>댓글내용</option>
 								<option>닉네임</option>
 							</select> <input class="s form-control mr-sm-2" type="text"
 								placeholder="Search" name="keyword">
-							<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="dcosearch();">검색</button>
-							<button type="button" class="btt btn-warning btn-md"
+							<button class="btn btn-secondary my-2 my-sm-0" type="button"
+								onclick="dcosearch();">검색</button>
+							<button type="button" class="btt btn-danger btn-md"
 								data-toggle="tab" href="#Comcomment" onclick="Comcomment();">만남의장
-								댓글보기</button>
+								신고 댓글보기</button>
 						</form>
 
 					</div>
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-warning">
+						<thead class="thead-dark">
 							<tr>
 								<th>댓글내용</th>
 								<th>닉네임</th>
@@ -241,20 +240,22 @@
 						<tbody id="dcommentlist">
 							<c:forEach var="codata" items="${rclist}">
 								<tr>
-									<td><%-- <c:choose>
+									<td>
+										<%-- <c:choose>
 											<c:when test="${codata.content.length>=15}">${codata.content.substring(0,15)}</c:when>
 											<c:otherwise>
 								${codata.content}
 								</c:otherwise>
 
-										</c:choose> --%></td>
+										</c:choose> --%>
+									</td>
 									<td>${codata.nick}</td>
-									<td><button type="button" class="btn-warning btn-md"
-											onclick="">글보기</button></td>
-									<td><button type="button" class="btn-warning btn-md"
-											onclick="">삭제</button></td>
-									<td><button type="button" class="btn-warning btn-md"
-											onclick="">신고사유</button></td>
+									<td><button type="button"
+											class="btn-outline-primary btn-md" onclick="">글보기</button></td>
+									<td><button type="button"
+											class="btn-outline-primary btn-md" onclick="">삭제</button></td>
+									<td><button type="button"
+											class="btn-outline-primary btn-md" onclick="">신고사유</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -276,25 +277,27 @@
 					</div>
 				</div>
 
-			<!--만남의장 comment -->
+				<!--만남의장 comment -->
 				<div id="Comcomment" class="tab-pane fade show">
 					<div class="searchtool">
 						<h3>만남의장 신고된 댓글</h3>
-						<form class="ss form-inline my-2 my-lg-0" name="ccosearchtool" method="get">
+						<form class="ss form-inline my-2 my-lg-0" name="ccosearchtool"
+							method="get">
 							<select class="form-control" name="option">
 								<option>댓글내용</option>
 								<option>닉네임</option>
 							</select> <input class="s form-control mr-sm-2" type="text"
 								placeholder="Search" name="keyword">
-							<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="ccosearch();">검색</button>
-							<button type="button" class="btt btn-warning btn-md"
-								data-toggle="tab" href="#comment" onclick="commentList();">여행일지 신고
-								댓글보기</button>
+							<button class="btn btn-secondary my-2 my-sm-0" type="button"
+								onclick="ccosearch();">검색</button>
+							<button type="button" class="btt btn-danger btn-md"
+								data-toggle="tab" href="#comment" onclick="commentList();">여행일지
+								신고 댓글보기</button>
 						</form>
 
 					</div>
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="table-warning">
+						<thead class="thead-dark">
 							<tr>
 								<th>댓글내용</th>
 								<th>닉네임</th>
@@ -326,8 +329,8 @@
 			</div>
 
 		</div>
-	
+
 	</div>
-		<%@ include file="../layout/footer.jsp"%>
+	<%@ include file="../layout/footer.jsp"%>
 </body>
 </html>
