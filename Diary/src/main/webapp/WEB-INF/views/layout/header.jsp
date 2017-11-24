@@ -24,9 +24,18 @@
 						<li class="nav-item <c:if test='${active==\'0\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/diary.do'">여행일지</a>
 						</li>
+						<c:choose>
+						<c:when test="${admin==null}">
 						<li class="nav-item <c:if test='${active==\'1\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="goWrite('${user.id}');">여행일지 쓰기</a>
 						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="nav-item <c:if test='${active==\'1\' }'>active</c:if>">
+							<a class="nav-link"  href="javascript:void(0);" onclick="location.href='/admin.do'">관리자페이지</a>
+						</li>
+						</c:otherwise>
+						</c:choose>
 						<li class="nav-item <c:if test='${active==\'2\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/community.do'">만남의 장</a>
 						</li>
@@ -37,6 +46,17 @@
 				</div>
 		<!-- 로그인폼  -->
 		<c:choose>
+		<c:when test="${admin!=null }">
+		<div class="login_form">
+		<div class="mypage_btn">
+							<label class="login-after"><strong>${admin}</strong>님 반갑습니다</label>
+							<button type="button" class="btn btn-primary btn-sm" onclick='location.replace("/logout.do");'>LOGOUT</button>
+						</div>
+		</div>
+		
+		
+		
+		</c:when>
 		<c:when test="${user==null }">	
 		<div class="login_form">
 		
@@ -53,7 +73,6 @@
 						</form>
 		</div>
 		</c:when>
-		
 		<c:otherwise><!-- 로그인됐을때 -->
 		
 		<div class="login_form">
