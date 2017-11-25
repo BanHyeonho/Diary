@@ -238,7 +238,7 @@ function commentList(){
 					+reportDcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-warning btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}
@@ -273,7 +273,7 @@ function Comcomment(){
 					+reportCcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				}

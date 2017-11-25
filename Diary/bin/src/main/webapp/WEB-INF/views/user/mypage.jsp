@@ -272,7 +272,7 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="thead-dark">
 							<tr>
-								<th colspan="2">차단회원목록</th>
+								<th colspan="3">차단회원목록</th>
 							</tr>
 						</thead>
 						<tbody id="my_black">

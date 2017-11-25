@@ -83,7 +83,7 @@
     select * from CHITCOUNT where ID = #{id} and LINKEDIDX = #{linkedidx}
   </select>
   
-   <update id="hitcount" parameterType="www.dto.CommunityVo">
+   <update id="chitcount" parameterType="www.dto.CommunityVo">
   	update COMMUNITY set CHITCOUNT = #{chitcount} where IDX=#{idx}
   </update>
   

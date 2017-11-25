@@ -334,6 +334,7 @@ function change(){// 탭 이동
 	
 }
 function createTab(title){
+	var title = title.replace(/ /g,'');
 	$('.oneDiary').css('display', 'none');
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
@@ -442,26 +443,35 @@ function attachScrap(places,contents,mapposition){
 	var place = places.split('/');
 	var mappositions = mapposition.split('/');
 	var content = contents.split('/');
-//	var scrapPlace = [];
+	var scrapPlaces = [];
 	for (var i = 0; i < place.length; i++) {
 		var mapo = mappositions[i].split(',');
 	
 		var object = {
 				"place_name" : place[i],
 				"y":mapo[0],
-				"x":mapo[1]
+				"x":mapo[1],
+				"content":content[i]
 		};
-//		scrapPlace.push(object);
-//		savePlaces.push(object);여기서부터 수정해야함.겹쳐서 나옴
+		scrapPlaces.push(object);
+		savePlaces.push(object);//여기서부터 수정해야함.겹쳐서 나옴
 	}
 	
 	map = new daum.maps.Map(mapContainer, mapOption);
+	var size = savePlaces.length-scrapPlaces.length;
+	var j=0;
 	for (var i = 0; i < savePlaces.length; i++) {
-		scrapMark(savePlaces[i],content[i]);
+		
+		if(i >= size){
+			scrapMark(savePlaces[i],scrapPlaces[j++],size,i);
+		}else{
+			scrapMark(savePlaces[i],'',size,i);
+		}
+		
 	}
 }
 
-function scrapMark(savePlace,content){
+function scrapMark(savePlace,scrapPlace,size,idx){
 	
 	var marker = new daum.maps.Marker({
 		map : map,
@@ -477,10 +487,14 @@ function scrapMark(savePlace,content){
 	daum.maps.event.addListener(marker, 'click', function() {
 		saveMarker(savePlace);
     });
-	
-	scrapTab(savePlace.place_name,content);
+
+	if(idx >= size){
+		scrapTab(scrapPlace.place_name,scrapPlace.content);
+	}
+
 }
 function scrapTab(title,content){
+	var title = title.replace(/ /g,'');
 	$('.oneDiary').css('display', 'none');
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')

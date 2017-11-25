@@ -106,14 +106,14 @@
 	<select id="reportDcomment" resultType="www.dto.CommentVo">
  	
  	 <![CDATA[select * from (select * from dcomment
-		where reportcount>=3 order by nick desc) where rownum <= 30
+		where reportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 	</select>
 	
 	<select id="reportCcomment" resultType="www.dto.CommentVo">
  	
  	 <![CDATA[select * from (select * from ccomment
-		where reportcount>=3 order by nick desc) where rownum <= 30
+		where reportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 	</select>
 	

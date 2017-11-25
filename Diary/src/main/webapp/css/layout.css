@@ -3,6 +3,7 @@
 
 /* header */
 body {padding-top:160px;}
+button:HOVER{cursor: pointer;}
 .navbar {padding:1.5rem 1rem;}
 .login_form {display:block; text-align:right;}
 .login_form:after {content:""; display:block; clear:both;}
@@ -150,7 +151,7 @@ ul{list-style: none;}
 
 /* 마이페이지_차단목록_차단버튼 */
 .block_button{float:right; }
-
+.follow_delete-btn{float:right;}
 
 
 
