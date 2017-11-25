@@ -5,6 +5,7 @@ import java.util.List;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 
 public interface CommunityDao {
 	public void communityinsert(CommunityVo vo);//만남의 장 글쓰기
@@ -19,5 +20,5 @@ public interface CommunityDao {
 //	public void updateccomment(CommentVo vo); //만남의장 댓글수정
 	public HitCountVo hitCountChk(HitCountVo vo);	//조회했는지 아닌지 확인
 	public void hitcounted(HitCountVo vo);			//조회하여 hit테이블에 값이 들어감
-	
+	public void creport(ReportVo vo);
 }

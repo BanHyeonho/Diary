@@ -5,6 +5,7 @@ import java.util.List;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 
 public interface CommunityService {
 	public void communityinsert(CommunityVo vo);//만남의 장 글쓰기
@@ -16,6 +17,6 @@ public interface CommunityService {
 	public List<CommentVo> ccomment(int idx);//만남의장 댓글출력
 	public void deletecommunity(int idx);
 	public void updatecommu(CommunityVo vo);
-	
+	public void creport(ReportVo vo);
 		
 }
