@@ -34,4 +34,5 @@ public interface DiaryDao {
 	public void report(ReportVo vo);				//신고하기
 	public void dcoreport(ReportVo vo);				//일지 댓글신고하기
 	public void reportUp(ReportVo vo);					//일지신고하고 카운트 올리기
+	public void dcoreportUp(ReportVo vo);				//일지댓글신고하고 카운트 올리기
 }

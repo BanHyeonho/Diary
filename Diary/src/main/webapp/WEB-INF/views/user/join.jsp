@@ -89,7 +89,9 @@
          </tr>
          <tr>
             <th class="join">프로필사진</th>
-            <td><input type="file" name="picture" value="사진"/></td>
+            <td><input type="file" name="picture" id="picture" value="사진"/><br/>
+            	<div id="holder"></div>
+            </td>
          </tr>
       </table>
       <center>
@@ -102,5 +104,6 @@
  </div>
       <%@ include file="../layout/footer.jsp"%>
 </div>
+<script type="text/javascript" src="script/preview.js"></script>
 </body>
 </html>
