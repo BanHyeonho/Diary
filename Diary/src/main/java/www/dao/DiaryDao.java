@@ -33,4 +33,5 @@ public interface DiaryDao {
 	public void gooded(GoodVo vo);						//추천을누르면 추천테이블에 내아이디와 글의 인덱스가 저장됨
 	public void report(ReportVo vo);				//신고하기
 	public void dcoreport(ReportVo vo);				//일지 댓글신고하기
+	public void reportUp(ReportVo vo);					//일지신고하고 카운트 올리기
 }

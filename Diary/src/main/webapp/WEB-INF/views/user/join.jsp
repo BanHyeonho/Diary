@@ -14,7 +14,7 @@
 <div class="container">
 <div class="contents">
    <h1>회원가입</h1>
-   <form action="/joinAction.do" method="post" name="sform" enctype="multipart/form-data">
+   <form action="/joinAction.do" method="post" name="sform" >
       <table class="table table-bordered">
          
          <tr>
