@@ -182,11 +182,11 @@
 	</update>
 	
 	<update id="Coacquit" parameterType="Integer">
-		update CCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+		update CCOMMENT set reportcount = 0 where IDX = #{idx}
 	</update>
 	
 	<update id="Doacquit" parameterType="Integer">
-		update DCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+		update DCOMMENT set reportcount = 0 where IDX = #{idx}
 	</update>
 	
 	<select id="searchByDcontent" resultType="www.dto.CommentVo"

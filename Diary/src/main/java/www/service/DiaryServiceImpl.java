@@ -121,6 +121,7 @@ public class DiaryServiceImpl implements DiaryService {
 	public void dcoreport(ReportVo vo) {
 		// TODO Auto-generated method stub
 		dao.dcoreport(vo);
+		dao.dcoreportUp(vo);
 	}
 
 

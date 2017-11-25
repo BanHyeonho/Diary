@@ -67,6 +67,9 @@ button:HOVER{cursor: pointer;}
 }
 
 /* join.jsp  */
+.name td input {width:220px;}
+.password td input {width:220px;}
+.birth td input {width:220px;}
 .phone select {width:100px; float:left;}
 .phone span{float:left; padding:4px}
 .phone input {width:100px; float:left;}

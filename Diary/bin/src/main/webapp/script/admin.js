@@ -240,7 +240,7 @@ function commentList(){
 					+'<button type="button"	class="btn-warning btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
 					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
-				}
+				}    
 				}
 			},error:function(){
 				alert("error");
@@ -408,8 +408,8 @@ function dcosearch(){
 					'<tr id='+dcosearch[i].idx+'><td>'+dcosearch[i].contents+'</td><td>'
 					+dcosearch[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+dcosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="deletecommunity('+dcosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deleteDcomment('+dcosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {
@@ -441,9 +441,9 @@ function ccosearch(){
 					$("#ccommentlist").append(
 					'<tr id='+ccosearch[i].idx+'><td>'+ccosearch[i].contents+'</td><td>'
 					+ccosearch[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="deletecommunity('+ccosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+ccosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:ccoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-warning btn-md" onclick="deleteCcomment('+ccosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-warning btn-md" onclick="javascript:ccoreportReason('+ccosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {
