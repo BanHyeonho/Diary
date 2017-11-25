@@ -318,7 +318,7 @@ function hiddenSearch(){
 function change(){// 탭 이동
 	if($('.map_wrap').css('left')=="0px"){
 		$('.map_wrap').animate({
-			left:"-100%"
+			left:"-150%"
 		},100);
 		$('.writingPlace').animate({
 			left:"207px"
@@ -339,7 +339,7 @@ function createTab(title){
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="20" cols="100" class="form-control textArea" ></textarea></div>');
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="holder"></div></td><td rowspan="2"><textarea rows="20" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" id="picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\');">추가하기</button></center></td></tr></table></div>');
 	$('.' + title).css('display', '');
 	
 	$('.click').click(function() {
@@ -349,6 +349,11 @@ function createTab(title){
 		$('.click').css('background','white');
 		$(this).css('background','lightgray');
 	});
+	addpicture();
+}
+function addtable(title){
+	var a =$('<tr><td><div id="holder"></div></td><td rowspan="2"><textarea rows="20" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" id="picture" class="form-control" /><td></tr>');
+	$('#'+title+'plus').before(a);
 }
 function deleteTab(title){
 	$('#'+title).remove();
