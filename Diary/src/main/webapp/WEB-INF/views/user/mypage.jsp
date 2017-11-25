@@ -32,8 +32,8 @@
 		});
 		</script>	
 	</c:if>
-	<div class="container" style="margin-bottom: 300px;">
-		<div class="contents" style="margin: 0 80px;">
+	<div class="container" style="width:860px; min-height:800px; margin:0 auto;">
+		<div class="contents">
 			
 				<ul class="nav nav-tabs">
 					<li class="nav-item color" id="privacyy"><a class="nav-link ative" data-toggle="tab"
@@ -159,8 +159,10 @@
 							<button type="submit" class="btn-primary btn-lg"
 								onclick="return confirmm();">회원정보 수정</button>
 						</center>
+						<div style="text-align:right;">
 							<button type="button" class="btn-danger btn"
-								onclick="deletee('${user.id}');" style="float:right;">회원탈퇴</button>
+								onclick="deletee('${user.id}');">회원탈퇴</button>
+						</div>
 					</form>
 				</div>
 				<!-- my_write 여행 리스트-->

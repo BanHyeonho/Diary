@@ -89,8 +89,13 @@ function comment(nick,idx){
 			"dataType" : "json",
 			"data" : data,
 			"success" : function(data){
+				var d = new Date();
+				var t = d.getFullYear()+"-"+(d.getMonth() + 1)+"-"+d.getDate()+"&nbsp;"+d.getHours()+":"+d.getMinutes();
+				var idx = data.idx;
 				$('#comment').val('');
-				alert('성공');
+				$('#commentArea').append('<div id="'+idx+'" ><span style="color: black;font-weight: bold;">'+nick+'</span>&nbsp;<a href="javascript:deletecomment(\''+idx+'\');" style="color: tomato; text-decoration: none;">삭제</a><br/><span style="color: black;">'+text+'</span><br/><span style="color: gray;">'+t +'</span><hr></div>');
+				alert('작성완료');
+				
 			},
 			"error" : function(){}
 	};
@@ -237,7 +242,7 @@ function good(id,idx){
 	
 	
 }
-function openForm(id,nick,title,idx){	//글작성자 아이디, 신고자 닉네임, 글제목, 글 인덱스
+function openForm(id,nick,title,idx){	//글작성자 아이디(), 신고자 닉네임, 글제목, 글 인덱스
 	var form = document.createElement("form");      // form 엘리멘트 생성
 	 form.setAttribute("method","post");             // method 속성 설정
 	 form.setAttribute("action","/reportForm.do");       // action 속성 설정
@@ -278,7 +283,7 @@ function report(title,reporter,witerid,linkedidx){
 	var type = $('#type').val();
 	var reason = $('#reason').val();
 	
-	console.log(title,reporter,witerid,linkedidx,type,reason);
+	
 	
 	var data = {
 			"linkedidx":linkedidx,
@@ -324,5 +329,87 @@ function updateForm(idx,dtitle,place,contents,mapposition ,dpicture ,sdate,edate
 	.append("<input type='hidden' name='dpublic' value="+dpublic+" />")
 	.appendTo('body')
 	.submit();
+	
+}
+function deletecomment(idx){
+	
+	if(confirm('댓글을 삭제하시겠습니까?')){
+	
+	var data = {"idx":idx};
+	var setting = {
+			"url" : "/deleteDComment.do",
+			"data" : data,
+			"dataType" : "json",
+			"success" : function(){
+				$('#'+idx).remove();
+			},
+			"error" : function(){}
+	};
+	
+	$.ajax(setting);
+	}
+}
+function openReport(writer,report,idx){	//글작성자 닉네임, 신고자 닉네임, 글제목, 글 인덱스
+	var form = document.createElement("form");      // form 엘리멘트 생성
+	 form.setAttribute("method","post");             // method 속성 설정
+	 form.setAttribute("action","/reportForm.do");       // action 속성 설정
+	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
+	 document.body.appendChild(form);       
+	 
+	 var witerid = document.createElement("input");
+	 witerid.setAttribute("type","hidden");
+	 witerid.setAttribute("name","witerid");
+	 witerid.setAttribute("value",writer);
+		form.appendChild(witerid); 
+	 
+	var reporter = document.createElement("input");
+	reporter.setAttribute("type","hidden");
+	reporter.setAttribute("name","reporter");
+	reporter.setAttribute("value",report);
+	form.appendChild(reporter);
+	
+	var ttitle = document.createElement("input");
+	ttitle.setAttribute("type","hidden");
+	ttitle.setAttribute("name","title");
+	ttitle.setAttribute("value","댓글신고폼");
+	form.appendChild(ttitle);
+	
+	var linkedidx = document.createElement("input");
+	linkedidx.setAttribute("type","hidden");
+	linkedidx.setAttribute("name","linkedidx");
+	linkedidx.setAttribute("value",idx);
+	form.appendChild(linkedidx);
+
+	var Settings = 'width=400,height=650,top=100,left=100';
+	
+	window.open("","popup_window",Settings);
+	form.submit();
+
+}
+function commentReport(reporter,writer,linkedidx){
+	var type = $('#type').val();
+	var reason = $('#reason').val();
+	
+	var data = {
+			"linkedidx":linkedidx,
+			"reporter":reporter,
+			"witerid":writer,
+			"type":type,
+			"reason":reason
+	};
+	var setting = {
+			"url":"/dcoreport.do",
+			"data" : data,
+			"type" : "post",
+			"dataType":"json",
+			"success":function(){
+				alert('신고 되었습니다.');
+				self.close();
+			},
+			"error":function(){}
+	};
+	
+	
+	$.ajax(setting);
 	
 }

@@ -354,6 +354,7 @@ function removeAllChildNods(el) {
 }
 
 function createTab(title){
+	var title = title.replace(/ /g,'');
 	$('.oneDiary').css('display', 'none');
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
@@ -377,7 +378,107 @@ function deleteTab(title){
 
 
 
+function scrap_list(id){
+	
+	var form = document.createElement("form");      // form 엘리멘트 생성
+	 form.setAttribute("method","get");             // method 속성 설정
+	 form.setAttribute("action","/copyScrapList.do");       // action 속성 설정
+	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
+	 
+	 var input =document.createElement("input"); 
+	 input.setAttribute("type","hidden");
+	 input.setAttribute("name","id");
+	 input.value=id;
+	 form.appendChild(input);    
+	 document.body.appendChild(form);    
+	
+	 var Settings = 'width=500,height=600,top=100,left=100';
+		window.open("","popup_window",Settings);
+		form.submit();
+}
 
+function scrap_show(place,contents,mapposition){
+
+if (confirm("현재 글쓰기에 추가 하시겠습니까?")) {
+
+opener.attachScrap(place,contents,mapposition);
+
+alert('추가완료');
+}
+
+}
+function attachScrap(places,contents,mapposition){
+
+var place = places.split('/');
+var mappositions = mapposition.split('/');
+var content = contents.split('/');
+var scrapPlaces = [];
+for (var i = 0; i < place.length; i++) {
+var mapo = mappositions[i].split(',');
+
+var object = {
+		"place_name" : place[i],
+		"y":mapo[0],
+		"x":mapo[1],
+		"content":content[i]
+};
+scrapPlaces.push(object);
+savePlaces.push(object);//여기서부터 수정해야함.겹쳐서 나옴
+}
+
+map = new daum.maps.Map(mapContainer, mapOption);
+var size = savePlaces.length-scrapPlaces.length;
+var j=0;
+for (var i = 0; i < savePlaces.length; i++) {
+
+if(i >= size){
+	scrapMark(savePlaces[i],scrapPlaces[j++],size,i);
+}else{
+	scrapMark(savePlaces[i],'',size,i);
+}
+
+}
+}
+
+function scrapMark(savePlace,scrapPlace,size,idx){
+
+var marker = new daum.maps.Marker({
+map : map,
+position : new daum.maps.LatLng(savePlace.y, savePlace.x)
+});
+
+daum.maps.event.addListener(marker, 'mouseover', function() {
+displayInfowindow(marker, savePlace.place_name);
+});
+daum.maps.event.addListener(marker, 'mouseout', function() {
+infowindow.close();
+});
+daum.maps.event.addListener(marker, 'click', function() {
+saveMarker(savePlace);
+});
+
+if(idx >= size){
+scrapTab(scrapPlace.place_name,scrapPlace.content);
+}
+
+}
+function scrapTab(title,content){
+var title = title.replace(/ /g,'');
+$('.oneDiary').css('display', 'none');
+$('.click').css('background','white');
+$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
+.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
+$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="20" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
+$('.' + title).css('display', '');
+
+$('.click').click(function() {
+$('.oneDiary').css('display', 'none');
+var id = $(this).parent().attr('id');
+$('.' + id).css('display', '');
+$('.click').css('background','white');
+$(this).css('background','lightgray');
+});
+}
 
 
 

@@ -30,8 +30,9 @@
 					<li class="nav-item"><a class="nav-link " data-toggle="tab"
 						href="#communityboard" onclick="location.href='/allcommunity.do'"
 						id="c">커뮤니티 게시판</a></li>
-					 <li class="nav-item"><a class="nav-link " data-toggle="tab"
-						href="#comment" onclick="commentList();" id="d">신고 댓글</a></li> 
+					  <li class="nav-item"><a class="nav-link " data-toggle="tab"
+						href="#comment" onclick="commentList();" id="d">신고 댓글</a></li>
+					 		 
 				</ul>
 			</div>
 
@@ -238,26 +239,7 @@
 							</tr>
 						</thead>
 						<tbody id="dcommentlist">
-							<c:forEach var="codata" items="${rclist}">
-								<tr>
-									<td>
-										<%-- <c:choose>
-											<c:when test="${codata.content.length>=15}">${codata.content.substring(0,15)}</c:when>
-											<c:otherwise>
-								${codata.content}
-								</c:otherwise>
-
-										</c:choose> --%>
-									</td>
-									<td>${codata.nick}</td>
-									<td><button type="button"
-											class="btn-outline-primary btn-md" onclick="">글보기</button></td>
-									<td><button type="button"
-											class="btn-outline-primary btn-md" onclick="">삭제</button></td>
-									<td><button type="button"
-											class="btn-outline-primary btn-md" onclick="">신고사유</button></td>
-								</tr>
-							</c:forEach>
+							
 						</tbody>
 
 					</table>

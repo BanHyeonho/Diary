@@ -32,8 +32,8 @@ public class FileSave {
 			
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			
-			int maxMem = 1*1024*1024;	
-			int maxRequest = 10*1024*1024;
+			int maxMem = 1*1024*1024; //1MB	
+			int maxRequest = 10*1024*1024;//10MB
 			
 			factory.setSizeThreshold(maxMem);
 			
