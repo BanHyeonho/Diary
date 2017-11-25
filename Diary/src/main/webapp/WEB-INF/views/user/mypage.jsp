@@ -226,6 +226,7 @@
 							</tr> -->
 						</tbody>
 					</table>
+					<div><span style="color:red;"> *스크랩 삭제를 원하시면 본문을 클릭하셔서 삭제 하셔야 합니다! *</span></div>
 				</div>
 
 				<!--followers -->

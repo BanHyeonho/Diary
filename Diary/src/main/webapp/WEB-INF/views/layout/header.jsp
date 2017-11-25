@@ -39,9 +39,7 @@
 						<li class="nav-item <c:if test='${active==\'2\' }'>active</c:if>">
 							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/community.do'">만남의 장</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="javascript:void(0)" onclick="wow_following('${user.id}');">팔로잉</a>
-						</li>
+						
 					</ul>	
 				</div>
 		<!-- 로그인폼  -->
@@ -87,7 +85,7 @@
 						document.addEventListener('click',function(){msg_hham('${user.id}');});
 						</script>
 		
-		
+			
 		</div>
 		</c:otherwise>
 

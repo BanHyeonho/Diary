@@ -62,13 +62,7 @@ public class MyPageServiceImpl implements MyPageService {
 		// TODO Auto-generated method stub
 	}
 
-	//
-	// @Override
-	// public List<CommunityVo> mycommunity(String id) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-	//
+	
 	@Override
 	public List<FollowVo> following(String id) {
 		// TODO Auto-generated method stub
@@ -83,11 +77,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.followers(id);
 	}
 
-//	@Override
-//	public void deletemyscrap(ScrapVo vo) {
-//		// TODO Auto-generated method stub
-//		dao.deletemyscrap(vo);
-//	}
+
 
 	@Override
 	public List<MsgVo> msg(String id) {
@@ -107,6 +97,18 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public void sendmsg(MsgVo vo) {
 		// TODO Auto-generated method stub
+		List<BlockVo> list =dao.myblock(vo.getReceiverid());
+		
+		for (BlockVo blockVo : list) {
+			System.out.println("내가 차단한 사람 이름 : " + blockVo.getId() );
+			System.out.println(vo.getSenderid());
+			if(blockVo.getId().equals(vo.getReceiverid())){
+				vo.setChk("0");
+			}
+			
+		}
+		
+		
 		dao.sendmsg(vo);
 	}
 

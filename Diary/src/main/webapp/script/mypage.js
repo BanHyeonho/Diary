@@ -263,7 +263,7 @@ function msg_delete(d){
 	}
 	
 }
-//메세지 보내기 새창
+//메세지 보내기 새창 ,답장
 function mag_form(sender,senderid,receiver,receiverid){
 	
 	var form = document.createElement("form");      // form 엘리멘트 생성
@@ -295,7 +295,7 @@ function mag_form(sender,senderid,receiver,receiverid){
 	console.log(form);
 	
 	
-	var Settings = 'width=500,height=600,top=100,left=100';
+	var Settings = 'width=400,height=350,top=100,left=100';
 	
 	window.open("","popup_window",Settings);
 	form.submit();
