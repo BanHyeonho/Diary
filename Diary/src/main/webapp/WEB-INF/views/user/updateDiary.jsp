@@ -29,7 +29,7 @@
 		<input type="hidden" name="mapposition" />
 		<input type="hidden" name="contents"/>
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
-		<button type="button">스크랩글 가져오기</button>
+		<button type="button" onclick="scrap_list('${user.id}');" >스크랩글 가져오기</button>
 		<label><input type="radio" name="dpublic" value="Y" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" value="N" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
 		
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>

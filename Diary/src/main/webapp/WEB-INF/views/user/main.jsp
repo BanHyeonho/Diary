@@ -26,23 +26,27 @@
 			 <div class="card-list">
 				<div class="row">
 				
-				<c:forEach items="${list }" var="data" begin="0" varStatus="rank">
+				<c:forEach items="${list }" var="data" varStatus="rank">
 				
 				
 				 <div class="col-lg-12">
 						<div class="bs-component">
 							<div class="card">
-								<h3 class="card-header">1등! 나는 왕돈까스</h3>
+								<h3 class="card-header">${rank.count}등! ${data.dtitle }</h3>
 								<div class="card-body">
-									<h5 class="card-title">101번지 남산돈까스</h5>
+									<h5 class="card-title">${data.place }</h5>
 									<h6 class="card-subtitle text-muted">명동 · 서울특별시 중구 남산동2가 49-24</h6>
 								</div>
 								<span class="thumb">
 									<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/56012/51348/56012_51348_76_0_9284_201652465543354.jpg" alt="이미지">
 								</span>
 								<div class="card-body">
-									<p class="card-text">내용란 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽</p>
-									<a href="/oneDiary.do?linkedidx=17&id=aaa" class="card-link">View More</a>
+								<c:forTokens items="${data.contents}" delims="/" var="contents">
+								<p class="card-text">${contents }</p>
+								</c:forTokens>
+									
+									
+									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">

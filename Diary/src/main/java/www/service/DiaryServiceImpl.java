@@ -52,15 +52,17 @@ public class DiaryServiceImpl implements DiaryService {
 			map.put("Good", "Good");
 		}
 		map.put("Diary", diary);
-		map.put("Comment", dao.comment(vo.getLinkedidx()));
+		map.put("comment", dao.comment(vo.getLinkedidx()));
 		return map;
 	}
 
 	@Override
-	public void writedcomment(CommentVo vo) {
+	public Integer writedcomment(CommentVo vo) {
 
+		
 		dao.writedcomment(vo);
 		
+		return vo.getIdx();
 	}
 
 	@Override
@@ -82,6 +84,7 @@ public class DiaryServiceImpl implements DiaryService {
 	public void report(ReportVo vo) {
 		// TODO Auto-generated method stub
 		dao.report(vo);
+		dao.reportUp(vo);
 	}
 
 	@Override
@@ -106,6 +109,18 @@ public class DiaryServiceImpl implements DiaryService {
 	public void updatediary(DiaryVo vo) {
 		// TODO Auto-generated method stub
 		dao.updatediary(vo);
+	}
+
+	@Override
+	public void deletedcomment(int idx) {
+		// TODO Auto-generated method stub
+		dao.deletedcomment(idx);
+	}
+
+	@Override
+	public void dcoreport(ReportVo vo) {
+		// TODO Auto-generated method stub
+		dao.dcoreport(vo);
 	}
 
 

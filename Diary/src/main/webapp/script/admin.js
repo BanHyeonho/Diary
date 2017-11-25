@@ -228,23 +228,29 @@ function commentList(){
 			data : data,
 			dataType : 'json',
 			success : function(data){
+				
 				var reportDcomment = data.reportDcomment;
 				$('.nav-link').attr('class','nav-link');
 				$('#d').attr('class','nav-link active');
 				
 				
 				if($('#comment').attr('class')!='tab-pane fade active show in'){
-					$('.in').empty();	
+					$('#user').empty();
+					$('#diaryboard').empty();
+					$('#communityboard').empty();
+					$('.in').css('display','none');	//만남댓글을 가려준다
+					$('#Comcomment').attr('class','tab-pane fade active');
 					$('#comment').attr('class','tab-pane fade active show in');
+					$('.in').css('display','');
 				}
 				
 				$("#dcommentlist").html('');
-				if ($('#dcommentlist')[0].children[0] == null) {
+			
 				for( i = 0; i<reportDcomment.length; i++ ){
 					
 					var con =reportDcomment[i].contents;
 					
-					if(reportDcomment[i].contents.length>=40){
+					if(con.length>=40){
 						
 						con=con.substring(0,40)+"...";
 						}
@@ -257,7 +263,7 @@ function commentList(){
 					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
 					);
 				}
-				}
+				
 			},error:function(){
 				alert("error");
 			}
@@ -283,22 +289,33 @@ function Comcomment(){
 				var reportCcomment = data.reportCcomment;
 				
 				if($('#Comcomment').attr('class')!='tab-pane fade active show in'){
-					$('.in').empty();	
+					$('#user').empty();
+					$('#diaryboard').empty();
+					$('#communityboard').empty();
+					$('.in').css('display','none');	//일지댓글을 가려준다
+					$('#comment').attr('class','tab-pane fade active');
 					$('#Comcomment').attr('class','tab-pane fade active show in');
+					$('.in').css('display','');
 				}
 								
-				$("#commentlist").html('');
-				if ($('#ccommentlist')[0].children[0] == null) {
+				$("#ccommentlist").html('');
+			
 				for( i = 0; i<reportCcomment.length; i++ ){
+
+					var con = reportCcomment[i].contents;
+					if(con.length>=40){
+						con= con.substring(0,40)+"...";
+					}	
+
 					$("#ccommentlist").append(
-					'<tr id='+reportCcomment[i].idx+'><td>'+reportCcomment[i].contents+'</td><td>'
+					'<tr id='+reportCcomment[i].idx+'><td>'+con+'</td><td>'
 					+reportCcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
 					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
 					);
 				}
-				}
+				
 			},error:function(){
 				alert("error");
 			}
