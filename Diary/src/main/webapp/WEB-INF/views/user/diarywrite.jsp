@@ -13,7 +13,7 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
 		<div class="contents" style="position: relative;">
-		<form action="/writeDiary.do" method="post" name="writingForm">
+		<form action="/writeDiary.do" method="post" name="writingForm" enctype="multipart/form-data">
 		
 		<input type="hidden" name="id" value="${user.id }" />
 		<input type="hidden" name="nick" value="${user.nick }" />
