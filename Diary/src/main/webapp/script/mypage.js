@@ -694,13 +694,12 @@ function mag_gogogo(){
 			data : data,
 			dataType : 'json',
 			success : function(data){
-				alert(data.reslut);
+				alert(data.result);
 				$('#myModal').modal('hide');
 				
 			},
 			error : function() {
-				alert("메세지 보내기 성공");
-				$('#myModal').modal('hide');
+				
 			}
 	};
 	$.ajax(setting);
