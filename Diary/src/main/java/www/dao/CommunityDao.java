@@ -20,5 +20,6 @@ public interface CommunityDao {
 //	public void updateccomment(CommentVo vo); //만남의장 댓글수정
 	public HitCountVo hitCountChk(HitCountVo vo);	//조회했는지 아닌지 확인
 	public void hitcounted(HitCountVo vo);			//조회하여 hit테이블에 값이 들어감
-	public void creport(ReportVo vo);
+	public void creportinsert(ReportVo vo);	//게시글 신고
+	public void creportup(ReportVo vo);	//게시글 신고 카운트
 }
