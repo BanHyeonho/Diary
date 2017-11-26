@@ -21,9 +21,9 @@ upload.onchange = function (e) {
   return false;
 };
 
-function addpicture(){
-	var upload = document.getElementById('picture');
-    holder = document.getElementById('holder');
+function addpicture(picture,hold){
+	var upload = document.getElementById(picture);
+    var holder = document.getElementById(hold);
 
 upload.onchange = function (e) {
   e.preventDefault();
