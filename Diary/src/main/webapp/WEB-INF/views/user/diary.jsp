@@ -66,7 +66,7 @@
 			
 		</div>
 			
-			
+			<%@ include file="../layout/nav.jsp"%>
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	<script type="text/javascript" src="script/diary.js"></script>
