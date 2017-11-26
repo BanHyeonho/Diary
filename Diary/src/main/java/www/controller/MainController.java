@@ -162,6 +162,8 @@ public class MainController {
 			mav.setViewName("redirect:/main.do");
 			return mav;
 			
+//			String realPath = session.getServletContext().getRealPath(\"/\");
+//					String imagePath = realPath+\"resources\\어쩌고저쩌고\";
 	
 	} // 회원가입 처리
 
