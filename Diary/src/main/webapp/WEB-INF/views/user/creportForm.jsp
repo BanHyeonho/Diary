@@ -6,10 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>신고</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="script/onecommunity.js"></script>
 </head>
 <body>
 
-<form action="/creportinsert.do" method="post">
+
 <center>
 	<h1><c:if test="${report.title=='댓글신고폼' }">댓글 </c:if>신고</h1>
 	<table>
@@ -46,9 +48,8 @@
 	</c:choose>
 	>신고하기</button>
 </center>
-</form>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="script/oneDiary.js"></script>
+
+
 </body>
 </html>
