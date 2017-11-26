@@ -87,4 +87,8 @@
   	update COMMUNITY set CHITCOUNT = #{chitcount} where IDX=#{idx}
   </update>
   
+  <insert id="creport" parameterType="www.dto.ReportVo">
+   insert into CREPORT values(CREPORT_SEQ.NEXTVAL,#{LINKEDIDX},#{REPORTER},#{WRITERID},#{TITLE},#{TYPE},#{REASON})
+  </insert>
+  
 </mapper>
