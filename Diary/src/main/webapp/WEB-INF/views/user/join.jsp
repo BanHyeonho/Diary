@@ -12,10 +12,12 @@
 <div class="wrap">
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
+
 <div class="contents" style="margin:30px 90px;">
    <h2>회원가입 <font size="3px"> | Join</font></h2>
    <pre>회원정보입력 (<font color="red">*</font>은 필수 입력사항입니다.) </pre>
    <form action="/joinAction.do" method="post" name="sform" enctype="multipart/form-data">
+
       <table class="table table-bordered">
          <tr>
             <th class="join">아이디<font color="red">*</font></th>

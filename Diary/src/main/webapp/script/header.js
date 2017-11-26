@@ -54,22 +54,8 @@ function msg_move(){
 	
 }
 function toggle(){
-	$('.navi').toggle(function(){
-		if($('.contents').css("width")=="950px"){
-			$('.contents').animate({
-				"width":"730px",
-				"margin-left":"250px"
-			},100);
-			$('.oneDiaryDiv').css("width","48%");
-			$('.oneDiaryContents').css("width","730px");
-		}else{
-			$('.contents').animate({
-				"width":"950px",
-				"margin-left":"30px"
-			},100);
-			$('.oneDiaryDiv').css("width","60%");
-			$('.oneDiaryContents').css("width","950px");
-		}
+	$('.navi').slideToggle(300)(function(){
+		
 	});
 }
 function goWrite(session){
@@ -117,3 +103,4 @@ function wow_following(id){
 function following_write(b){
 	location.href="/search.do?option=작성자&keyword="+b;
 }
+

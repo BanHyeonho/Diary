@@ -17,6 +17,7 @@ import jdk.nashorn.internal.runtime.options.LoggingOption.LoggerInfo;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 import www.service.CommunityService;
 
 @Controller
@@ -115,6 +116,31 @@ public class CommunityController {
 		mav.addObject("active", "2");
 		return mav;
 	} // 검색하기
+	
+	@RequestMapping(value="/creport.do",method=RequestMethod.GET)
+	public ModelAndView creport(ModelAndView mav,ReportVo vo){
+		
+		mav.addObject("report",vo);
+		
+		mav.setViewName("user/creportForm");
+		return mav;
+	}
+	
+	@RequestMapping(value="/creportinsert.do",method=RequestMethod.GET)
+	public ModelAndView creportinsert(ModelAndView mav,ReportVo vo){
+		
+		sv.creport(vo);
+		
+		mav.setViewName("user/creportForm");
+		return mav;
+	}
+		
+		
+		
+		
+
+	
+	
 //
 //
 //	public @ResponseBody Map<String, CommentVo> updateCcomment(CommentVo vo) {

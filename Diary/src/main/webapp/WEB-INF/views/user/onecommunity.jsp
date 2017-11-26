@@ -60,12 +60,14 @@
 		</tbody>
 	</table>
 	
+	
 			<div class="form-group">
       		
       		<textarea class="form-control" name="contents" rows="20" readonly="readonly" style="background-color: #fff;">${data.contents }</textarea>
       		
     		</div>
-    	
+    
+    		<span style="float:right" > <button type="button" onclick="window.open('/creport.do?witerid=${data.id }&linkedidx=${data.idx }&title=${data.ctitle }&reporter=${user.nick }','신고','width=400,height=500,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-lm" style="margin:5px"> 글 신고</button></span>
     		
 				<div>
 			<table>
@@ -74,8 +76,8 @@
 				</tr>
 				<tr>
 					<td>
-					<input type="text" id="contents" size="150" >
-					<button type="button" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button>
+					<input type="text" id="contents" size="155" >
+					<span style="float:right"> <button type="button" style="margin-top:10px" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button></span>
 					</td>
 				</tr>
 				
@@ -95,7 +97,7 @@
 			</tr>
 			<tr class='${data1.idx}'>
 			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('reportForm.do?id=${user.id }&linkedidx=${data.idx }','신고','width=400,height=500,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
-			</tr>
+			</tr> 
 			
 			</c:forEach> 
 		</table>
