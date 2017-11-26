@@ -22,7 +22,7 @@
             <td>
             <div class="btn-group" role="group" aria-label="Basic example">
             <input type="hidden" name="id" />
-            <input type="text" class="form-control" name="userid" /><button type="button" class="btn btn-info" style="margin-left:10px;width: 160px;" id="idchk">>>아이디중복검사</button>
+            <input type="text" class="form-control" name="userid" /><button type="button" class="btn btn-info" style="margin-left:10px;width: 200px;" id="idchk">>>아이디중복검사</button>
             </div>
             <div id="idresult"></div>
             </td>

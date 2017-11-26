@@ -52,23 +52,44 @@ public class FileSave {
 				}
 				if(item.isFormField()){
 					try{
-//					switch(item.getFieldName()){
-//					case "idx" :
-//						vo.setIdx(Integer.parseInt(item.getString("UTF-8")));
-//						break;
-//					case "writer":
-//						vo.setWriter(item.getString("UTF-8"));
-//						break;
-//					case "writerId":
-//						vo.setWriterId(item.getString("UTF-8"));
-//						break;
-//					case "subject":
-//						vo.setSubject(item.getString("UTF-8"));
-//						break;
-//					case "content":
-//						vo.setContent(item.getString("UTF-8"));
-//						break;
-//					}
+					switch(item.getFieldName()){
+					case "id" :
+						vo.setId(item.getString("UTF-8"));
+						break;
+					case "name":
+						vo.setName(item.getString("UTF-8"));
+						break;
+					case "password":
+						vo.setPassword(item.getString("UTF-8"));
+						break;
+					case "nick":
+						vo.setNick(item.getString("UTF-8"));
+						break;
+					case "gender":
+						vo.setGender(item.getString("UTF-8"));
+						break;
+					case "birth":
+						vo.setBirth(item.getString("UTF-8"));
+						break;
+					case "email":
+						vo.setEmail(item.getString("UTF-8"));
+						break;
+					case "phone":
+						vo.setPhone(item.getString("UTF-8"));
+						break;
+					case "addr":
+						vo.setAddr(item.getString("UTF-8"));
+						break;	
+					case "pwq":
+						vo.setPwq(item.getString("UTF-8"));
+						break;
+					case "answer":
+						vo.setAnswer(item.getString("UTF-8"));
+						break;
+					case "picture":
+						vo.setPicture(item.getString("UTF-8"));
+						break;	
+					}
 					}catch(Exception e){
 						e.printStackTrace();
 					}
