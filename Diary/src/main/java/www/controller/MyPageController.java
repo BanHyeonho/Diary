@@ -120,12 +120,12 @@ public class MyPageController {
 	@RequestMapping(value="/sendMsgForm.do",method = RequestMethod.POST)
 	public ModelAndView sendMsgForm(ModelAndView mav,MsgVo vo) {
 		
-		
+		      
 		mav.addObject("data", vo);
 		mav.setViewName("user/msgSend");
 		return mav;
-	} // 쪽지 보내기폼으로 이동 답장하기
-	
+	} // 쪽지 보내기폼으로 이동 답장하기   , lux 다이얼로그로 인해서 필
+
 	@RequestMapping(value="/following.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String,List<FollowVo>> following(String id) {
 		Map<String,List <FollowVo>> map = new HashMap<String,List <FollowVo>>();
