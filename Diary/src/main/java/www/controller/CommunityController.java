@@ -126,12 +126,12 @@ public class CommunityController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/creportinsert.do",method=RequestMethod.GET)
+	@RequestMapping(value="/creportinsert.do",method=RequestMethod.POST)
 	public ModelAndView creportinsert(ModelAndView mav,ReportVo vo){
 		
 		sv.creport(vo);
 		
-		mav.setViewName("user/creportForm");
+		mav.setViewName("redirect:/onecommunity.do?idx="+vo.getIdx());
 		return mav;
 	}
 		
