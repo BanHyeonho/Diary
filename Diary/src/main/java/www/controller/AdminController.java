@@ -152,7 +152,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/dreportReason.do", method = RequestMethod.GET)
 	public ModelAndView dreportReason(ModelAndView mav, ReportVo vo, String d) {
-
+		logger.info("" + sv.dreportReason(vo.getIdx()));
 		mav.addObject("reportReason", sv.dreportReason(vo.getIdx()));
 		mav.addObject("d", d);
 		mav.setViewName("admin/reportReason");

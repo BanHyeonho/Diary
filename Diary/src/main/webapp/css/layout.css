@@ -67,6 +67,9 @@ button:HOVER{cursor: pointer;}
 }
 
 /* join.jsp  */
+.name td input {width:220px;}
+.password td input {width:220px;}
+.birth td input {width:220px;}
 .phone select {width:100px; float:left;}
 .phone span{float:left; padding:4px}
 .phone input {width:100px; float:left;}
@@ -156,7 +159,17 @@ ul{list-style: none;}
 
 
 
+ /*네비메인버튼  */
+	
+	.navi {position: fixed ;top:125px;right:96px; display: none;}
+	.navi .up {width: 100px;height:30px;}
+	.navi .btn {width:100px;height:30px;} 
 
+	/*네비메인버튼  */
+	
+	 .navi > div {width:100px;} 
+	/* 탭   */
+	.tab{position: fixed;top:90px;z-index: 10;right:150px;border-color:#343a40;}
 
 
 
