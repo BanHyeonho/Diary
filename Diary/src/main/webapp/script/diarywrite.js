@@ -341,7 +341,7 @@ function createTab(title){
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
 
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="10" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\');">추가하기</button></center></td></tr></table></div>');
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="10" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\');">추가하기</button></center></td></tr></table></div>');
 
 	$('.' + title).css('display', '');
 	
@@ -357,7 +357,7 @@ function createTab(title){
 
 function addtable(title){
 
-	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="10" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
+	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="10" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
 	$('#'+title+'plus').before(a);
 	
 	addpicture(title+"picture"+ct,title+"holder"+ct);
@@ -387,8 +387,10 @@ function writing(){
 	var k=0;
 	for (var i = 1; i < $('.writingPlace').children().size(); i++) {	//여행지설명 갯수만큼 반복
 		
-		for (var j = 0; j < $('.writingPlace').children()[i].firstChild.firstChild.rows.length-1; j+2) {
+		for (var j = 0; j < $('.writingPlace').children()[i].firstChild.firstChild.rows.length-1; j=j+2) {
+			console.log(k,"j :"+j);
 			content=content+document.getElementsByTagName('textArea')[k].value+"&";
+			console.log(content);
 			k++;
 		}content=content.slice(0,-1)+"/";
 	/*content=content+$('.textArea')[i].value+"/";*/
@@ -424,8 +426,8 @@ function writing(){
 		change();
 		return false;
 	}else{
-		console.log(document.writingForm.contents.value);
-		//document.writingForm.submit();
+		
+		document.writingForm.submit();
 	}
 	
 }
