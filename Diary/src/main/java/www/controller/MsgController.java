@@ -27,7 +27,7 @@ public class MsgController {
 	@RequestMapping(value="/sendmsg.do",method = RequestMethod.POST)
 	public ModelAndView sendmsg(MsgVo vo,ModelAndView mav){
 		
-		logger.info(vo.toString());
+		//logger.info(vo.toString());
 		sv.sendmsg(vo);
 		
 		

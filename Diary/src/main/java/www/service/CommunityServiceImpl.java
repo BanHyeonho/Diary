@@ -9,6 +9,7 @@ import www.dao.CommunityDao;
 import www.dto.CommentVo;
 import www.dto.CommunityVo;
 import www.dto.HitCountVo;
+import www.dto.ReportVo;
 
 @Service
 public class CommunityServiceImpl implements CommunityService{
@@ -87,6 +88,14 @@ public class CommunityServiceImpl implements CommunityService{
 	public List<CommunityVo> csearch(CommunityVo vo) {
 		// TODO Auto-generated method stub
 		return dao.csearch(vo);
+	}
+
+
+	@Override
+	public void creport(ReportVo vo) {
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 

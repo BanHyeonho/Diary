@@ -8,8 +8,8 @@
 <title>MSG</title>
 
 
-<link href="css/lux.css" rel="stylesheet" />
-
+<!-- <link href="css/lux.css" rel="stylesheet" />
+ -->
 </head>
 <body>
 <c:if test="${result!=null }">
@@ -33,7 +33,7 @@ alert('보내기 성공');
 		</tr>
 	</table>
 	<h2>내용</h2>
-	<textarea rows="10" cols="50" class="form-control" name="content"></textarea><br/>
+	<textarea rows="8" cols="20" class="form-control" name="content"></textarea><br/>
 	<center>
 	<button type="submit" class="btn btn-success msgbtn btn-sm">전송</button><button type="reset" class="btn btn-primary msgbtn btn-sm">취소</button>
 	</center>

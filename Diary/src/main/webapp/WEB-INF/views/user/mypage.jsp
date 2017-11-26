@@ -21,37 +21,41 @@
 	<%@ include file="../layout/header.jsp"%>
 	<c:if test="${msg!=null }">
 		<script type="text/javascript">
-		
-		msg_1('${user.id}');
-		$(document).ready(function(){
-		$('#msg').attr('class','privacy tab-pane fade active show in');
-		$('#privacy').attr('class','tab-pane fade show');
-		$('.color a').css('color','#626261');
-		$('#msg_1 a').css('color','#d9534f');
-		
-		});
-		</script>	
+			msg_1('${user.id}');
+			$(document).ready(
+					function() {
+						$('#msg').attr('class',
+								'privacy tab-pane fade active show in');
+						$('#privacy').attr('class', 'tab-pane fade show');
+						$('.color a').css('color', '#626261');
+						$('#msg_1 a').css('color', '#d9534f');
+
+					});
+		</script>
 	</c:if>
-	<div class="container" style="width:860px; min-height:800px; margin:0 auto;">
+	<div class="container"
+		style="width: 860px; min-height: 800px; margin: 0 auto;">
 		<div class="contents">
-			
-				<ul class="nav nav-tabs">
-					<li class="nav-item color" id="privacyy"><a class="nav-link ative" data-toggle="tab"
-						href="#" onclick="privacyy();">개인정보변경</a></li>
-					<li class="nav-item color" id="mywrite"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="mywrite('${user.id}')">내가쓴글</a></li>
-					<li class="nav-item color" id="scrap_list"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="scrap_list('${user.id}')">스크랩</a></li>
-					<li class="nav-item color" id="followerss"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="followers('${user.id}')">팔로워</a></li>
-					<li class="nav-item color" id="followingg"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="following('${user.id}')">팔로윙</a></li>
-					<li class="nav-item color" id="msg_1"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="msg_1('${user.id}');">쪽지함</a></li>
-					<li class="nav-item color" id="block_listt"><a class="nav-link " data-toggle="tab"
-						href="#" onclick="block_list('${user.id}')">차단목록</a></li>
-				</ul>
-			
+
+			<ul class="nav nav-tabs">
+				<li class="nav-item color" id="privacyy"><a
+					class="nav-link ative" data-toggle="tab" href="#"
+					onclick="privacyy();">개인정보변경</a></li>
+				<li class="nav-item color" id="mywrite"><a class="nav-link "
+					data-toggle="tab" href="#" onclick="mywrite('${user.id}')">내가쓴글</a></li>
+				<li class="nav-item color" id="scrap_list"><a class="nav-link "
+					data-toggle="tab" href="#" onclick="scrap_list('${user.id}')">스크랩</a></li>
+				<li class="nav-item color" id="followerss"><a class="nav-link "
+					data-toggle="tab" href="#" onclick="followers('${user.id}')">팔로워</a></li>
+				<li class="nav-item color" id="followingg"><a class="nav-link "
+					data-toggle="tab" href="#" onclick="following('${user.id}')">팔로윙</a></li>
+				<li class="nav-item color" id="msg_1"><a class="nav-link "
+					data-toggle="tab" href="#" onclick="msg_1('${user.id}');">쪽지함</a></li>
+				<li class="nav-item color" id="block_listt"><a
+					class="nav-link " data-toggle="tab" href="#"
+					onclick="block_list('${user.id}')">차단목록</a></li>
+			</ul>
+
 			<!-- privacy -->
 			<div id="myTabContent" class="tab-content">
 				<div id="privacy" class="privacy tab-pane fade in active show">
@@ -61,7 +65,7 @@
 						<table class="table table-bordered">
 							<thead class="thead-dark">
 								<tr>
-								<th colspan="2"><h1 style="color:#fff;">회원정보 수정</h1></th>
+									<th colspan="2"><h1 style="color: #fff;">회원정보 수정</h1></th>
 								</tr>
 							</thead>
 							<tr>
@@ -124,8 +128,9 @@
 								<th class="join">연락처</th>
 								<td><input type="text" class="form-control" name="phone1"
 									value="010" readonly /> <span>-</span> <input type="text"
-									class="form-control" name="phone2" value="${user.phone.split('-')[1] }" /> <span>-</span>
-									<input type="text" class="form-control" name="phone3"
+									class="form-control" name="phone2"
+									value="${user.phone.split('-')[1] }" /> <span>-</span> <input
+									type="text" class="form-control" name="phone3"
 									value="${user.phone.split('-')[2] }" /></td>
 								<input type="hidden" name="phone">
 							</tr>
@@ -159,7 +164,7 @@
 							<button type="submit" class="btn-primary btn-lg"
 								onclick="return confirmm();">회원정보 수정</button>
 						</center>
-						<div style="text-align:right;">
+						<div style="text-align: right;">
 							<button type="button" class="btn-danger btn"
 								onclick="deletee('${user.id}');">회원탈퇴</button>
 						</div>
@@ -168,12 +173,16 @@
 				<!-- my_write 여행 리스트-->
 				<div id="my_write" class="tab-pane fade show">
 					<table class="table table-striped table-hover table-bordered">
-					<button type="button" class="btn btn-danger">여행일지 내가쓴글</button> <button type="button"class="btn btn-success" data-toggle="tab" href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장 내가쓴글</button>
-						
+						<button type="button" class="btn btn-danger">여행일지 내가쓴글</button>
+						<button type="button" class="btn btn-success" data-toggle="tab"
+							href="#myCommunity" onclick="myCommunity('${user.id}')">만남의장
+							내가쓴글</button>
+
 						<thead class="thead-dark">
 							<tr>
-								
-								<th><span style="color:#d9534f; ">여행일지</span> &nbsp; &nbsp;글제목 </th>
+
+								<th><span style="color: #d9534f;">여행일지</span> &nbsp;
+									&nbsp;글제목</th>
 								<th>날짜</th>
 								<th>조회수</th>
 								<th>추천수</th>
@@ -188,14 +197,17 @@
 				<!-- myCommunity 만남의장 리스트 -->
 				<div id="myCommunity" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-					<button type="button" class="btn btn-success">만남의장 내가쓴글</button> <button type="button" class="btn btn-danger" data-toggle="tab" href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
+						<button type="button" class="btn btn-success">만남의장 내가쓴글</button>
+						<button type="button" class="btn btn-danger" data-toggle="tab"
+							href="#my_write" onclick="write_write()">여행일지 내가쓴글</button>
 						<thead class="thead-dark">
-							
+
 							<tr>
-								<th><span style="color:#4bbf73; ">만남의장</span> &nbsp; &nbsp;글제목</th>
+								<th><span style="color: #4bbf73;">만남의장</span> &nbsp;
+									&nbsp;글제목</th>
 								<th>날짜</th>
 								<th>조회수</th>
-								
+
 							</tr>
 						</thead>
 						<tbody id="my_commu">
@@ -226,7 +238,10 @@
 							</tr> -->
 						</tbody>
 					</table>
-					<div><span style="color:red;"> *스크랩 삭제를 원하시면 본문을 클릭하셔서 삭제 하셔야 합니다! *</span></div>
+					<div>
+						<span style="color: red;"> *스크랩 삭제를 원하시면 본문을 클릭하셔서 삭제 하셔야
+							합니다! *</span>
+					</div>
 				</div>
 
 				<!--followers -->
@@ -237,8 +252,8 @@
 								<th colspan="3">나를 팔로우한 사람들<span id="follow_cnt"></span></th>
 							</tr>
 						</thead>
-						<tbody id= "followers_list">
-							
+						<tbody id="followers_list">
+
 						</tbody>
 					</table>
 
@@ -252,7 +267,7 @@
 							</tr>
 						</thead>
 						<tbody id="following_list">
-						
+
 						</tbody>
 					</table>
 
@@ -260,18 +275,49 @@
 				<!-- 쪾지함  -->
 				<div id="msg" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
-						<thead class="thead-dark" >
+						<thead class="thead-dark">
 							<tr>
-							<th>보낸사람</th><th>내용</th><th>답장하기</th><th>메세지삭제</th>
+								<th>보낸사람</th>
+								<th>내용</th>
+								<th>답장하기</th>
+								<th>메세지삭제</th>
 							</tr>
 						</thead>
 						<tbody id="msg_ham">
-							
+
 						</tbody>
 					</table>
-
+					<div class="modal" id="myModal">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<form action="/sendmsg.do" method="post" name='f'>
+									<div class="modal-header">
+										<h5 class="modal-title">받는이 :</h5>
+										<h4 id="receiverr"></h4>
+										<input type="hidden" name="receiver"  id="receiver" />
+										<input type="hidden" name="receiverid"id="receiverid"  /> 
+										<input type="hidden"name="sender" id="sender" /> 
+										<input type="hidden" name="senderid" id="senderid" />
+										<input type="hidden" name="chk" value="1" />
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+									<textarea rows="8" cols="20" class="form-control" name="content"></textarea>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success msgbtn btn-sm">전송</button>
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
-			<!--block_list  -->	
+				<!--block_list  -->
 				<div id="block_list" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
 						<thead class="thead-dark">
@@ -280,9 +326,9 @@
 							</tr>
 						</thead>
 						<tbody id="my_black">
-							
-								<!-- <td><button class="btn btn-outline-danger">차단 취소</button></td> -->
-							
+
+							<!-- <td><button class="btn btn-outline-danger">차단 취소</button></td> -->
+
 						</tbody>
 					</table>
 				</div>
@@ -291,6 +337,6 @@
 
 		</div>
 	</div>
-		<%@ include file="../layout/footer.jsp"%>
+	<%@ include file="../layout/footer.jsp"%>
 </body>
 </html>
