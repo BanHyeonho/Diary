@@ -679,5 +679,33 @@ function follow_delete(fb){
 		$.ajax(setting);
 		}
 }
-
+function mag_gogogo(){
+	
+	var receiver = $("#receiver").val();
+	var receiverid =$("#receiverid").val();
+    var sender = $("#sender").val();
+    var senderid =$("#senderid").val();
+    var content =$("#content").val();
+    var chk = $("#chk").val();
+    
+    var data = {'receiver':receiver,'receiverid':receiverid,'sender':sender,'senderid':senderid,'content':content,'chk':chk}
+    
+    var setting = {
+			url : '/sendmsg.do',
+			type : 'post',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				alert(data.reslut);
+				$('#myModal').modal('hide');
+				
+			},
+			error : function() {
+				alert("메세지 보내기 성공");
+				$('#myModal').modal('hide');
+			}
+	};
+	$.ajax(setting);
+	
+}
 
