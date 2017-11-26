@@ -106,14 +106,14 @@
 	<select id="reportDcomment" resultType="www.dto.CommentVo">
  	
  	 <![CDATA[select * from (select * from dcomment
-		where reportcount>=3 order by nick desc) where rownum <= 30
+		where reportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 	</select>
 	
 	<select id="reportCcomment" resultType="www.dto.CommentVo">
  	
  	 <![CDATA[select * from (select * from ccomment
-		where reportcount>=3 order by nick desc) where rownum <= 30
+		where reportcount>=1 order by nick desc) where rownum <= 30
 		 ]]>
 	</select>
 	
@@ -182,11 +182,11 @@
 	</update>
 	
 	<update id="Coacquit" parameterType="Integer">
-		update CCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+		update CCOMMENT set reportcount = 0 where IDX = #{idx}
 	</update>
 	
 	<update id="Doacquit" parameterType="Integer">
-		update DCOMMENT set REPORTCOUNT = 0 where LINKEDIDX = #{idx}
+		update DCOMMENT set reportcount = 0 where IDX = #{idx}
 	</update>
 	
 	<select id="searchByDcontent" resultType="www.dto.CommentVo"

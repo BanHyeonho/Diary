@@ -44,15 +44,18 @@ function change(idx){
 		$('#c').attr('class','nav-link active');
 		$('#d').attr('class','nav-link');
 	}else if(idx=='3'){
+		commentList();
 		$('#comment').attr('class','tab-pane fade active show in');
 		$('#user').attr('class','tab-pane fade show');
-		$('#communityboard').attr('class','tab-pane fade show');$('#diaryboard').attr('class','tab-pane fade show');
+		$('#communityboard').attr('class','tab-pane fade show');
+		$('#diaryboard').attr('class','tab-pane fade show');
 		$('#a').attr('class','nav-link');
 		$('#b').attr('class','nav-link');
 		$('#c').attr('class','nav-link');
 		$('#d').attr('class','nav-link active');
-
+		
 	}else if(idx=='4'){
+		Comcomment();
 		$('#Comcomment').attr('class','tab-pane fade active show in');
 		$('#comment').attr('class','tab-pane fade show');
 		$('#user').attr('class','tab-pane fade show');
@@ -259,8 +262,8 @@ function commentList(){
 					'<tr id='+reportDcomment[i].idx+'><td>'+con+'</td><td>'
 					+reportDcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md"onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				
@@ -312,7 +315,7 @@ function Comcomment(){
 					+reportCcomment[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				
@@ -447,8 +450,8 @@ function dcosearch(){
 					'<tr id='+dcosearch[i].idx+'><td>'+dcosearch[i].contents+'</td><td>'
 					+dcosearch[i].nick+'</td><td>'
 					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:dcoview('+dcosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deletecommunity('+dcosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteDcomment('+dcosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {
@@ -480,9 +483,9 @@ function ccosearch(){
 					$("#ccommentlist").append(
 					'<tr id='+ccosearch[i].idx+'><td>'+ccosearch[i].contents+'</td><td>'
 					+ccosearch[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="javascript:dcoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-warning btn-md" onclick="deletecommunity('+ccosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-warning btn-md" onclick="javascript:dcoreportReason('+ccosearch[i].linkedidx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:ccoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteCcomment('+ccosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+ccosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {

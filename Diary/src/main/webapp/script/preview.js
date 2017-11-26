@@ -10,8 +10,8 @@ upload.onchange = function (e) {
     var img = new Image();
     img.src = event.target.result;
    
-    if (img.width > 560) { // holder width
-      img.width = 560;
+    if (img.width > 300) { // holder width
+      img.width = 300;
     }
     holder.innerHTML = '';
     holder.appendChild(img);
