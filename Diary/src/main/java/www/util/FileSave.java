@@ -16,6 +16,8 @@ import www.dto.MemberVo;
 
 public class FileSave {
 	
+	String filePath = "C:\\Users\\Ban\\Desktop\\upload";
+	
 	//회원가입시 사용
 	public MemberVo join(HttpServletRequest request){
 		
@@ -101,11 +103,12 @@ public class FileSave {
 					String filename = item.getName();
 					
 					//실제 업로드
-					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
+				//	System.out.println(request.getSession().getServletContext().getRealPath("upload"));
+					File up = new File(filePath,filename);
 					//파일이 존재할경우
 					if(up.exists()){
 						filename+="_"+System.currentTimeMillis();
-						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
+						up = new File(filePath,filename);
 					}
 					
 					vo.setPicture(filename);
@@ -186,7 +189,7 @@ public class FileSave {
 						vo.setEdate(item.getString("UTF-8"));
 						break;
 					case "dpublic":
-						vo.setDpicture(item.getString("UTF-8"));
+						vo.setDpublic(item.getString("UTF-8"));
 						break;
 					}
 					}catch(Exception e){
@@ -196,14 +199,19 @@ public class FileSave {
 					String filename = item.getName();
 					
 					
-					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
+					File up = new File(filePath,filename);
 					
 					if(up.exists()){
 						filename+="_"+System.currentTimeMillis();
-						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
+						up = new File(filePath,filename);
 					}
 					
-					vo.setDpicture(vo.getDpicture()+"/"+filename);
+					if(vo.getDpicture()==null){
+						vo.setDpicture(filename);	
+					}else{
+						vo.setDpicture(vo.getDpicture()+"/"+filename);
+					}
+					
 					
 					
 					try {
@@ -218,6 +226,9 @@ public class FileSave {
 			}// while end
 			
 		}
+		
+		
+		
 		
 		return vo;
 	}
