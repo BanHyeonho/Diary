@@ -8,7 +8,7 @@
 <title>MSG</title>
 
 
-<link href="css/simplex.css" rel="stylesheet" />
+<link href="css/lux.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -20,7 +20,7 @@ alert('보내기 성공');
 </c:if>
 <div>
 
-	<h1>쪽지 보내기</h1>
+	
 	<form action="/sendmsg.do" method="post" name='f'>
 	<table>
 		<tr>
@@ -33,9 +33,9 @@ alert('보내기 성공');
 		</tr>
 	</table>
 	<h2>내용</h2>
-	<textarea rows="20" cols="50" class="form-control" name="content"></textarea><br/>
+	<textarea rows="10" cols="50" class="form-control" name="content"></textarea><br/>
 	<center>
-	<button type="submit" class="btn btn-success msgbtn btn-lg">전송</button><button type="reset" class="btn btn-warning msgbtn btn-lg">취소</button>
+	<button type="submit" class="btn btn-success msgbtn btn-sm">전송</button><button type="reset" class="btn btn-primary msgbtn btn-sm">취소</button>
 	</center>
 	</form>
 </div>

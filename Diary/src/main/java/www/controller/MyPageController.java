@@ -120,6 +120,7 @@ public class MyPageController {
 	@RequestMapping(value="/sendMsgForm.do",method = RequestMethod.POST)
 	public ModelAndView sendMsgForm(ModelAndView mav,MsgVo vo) {
 		
+		
 		mav.addObject("data", vo);
 		mav.setViewName("user/msgSend");
 		return mav;

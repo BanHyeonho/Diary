@@ -11,20 +11,13 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 public class FileSave {
-
-	private FileSave(){}
 	
-	private static class Inner{
-		private static final FileSave util = new FileSave();
-	}
-	public static FileSave getInstance(){
-		return FileSave.Inner.util;
-	}
-	
-	public MemberVo upload(HttpServletRequest request){
+	//회원가입시 사용
+	public MemberVo join(HttpServletRequest request){
 		
 		MemberVo vo = new MemberVo();
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -44,7 +37,6 @@ public class FileSave {
 			
 			List<FileItem> items = null;
 			try {
-				
 				items = upload.parseRequest(request);
 			} catch (FileUploadException e) {
 				// TODO Auto-generated catch block
@@ -109,6 +101,5 @@ public class FileSave {
 		
 		return vo;
 	}
-	
-	
+
 }

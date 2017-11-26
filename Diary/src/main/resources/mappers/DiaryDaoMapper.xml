@@ -68,9 +68,17 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   		select dreportcount from diary where idx = #{linkedidx}
   	</selectKey>
   </update>
+  
   <insert id="dcoreport" parameterType="www.dto.ReportVo">
   	insert into DCOREPORT values(DCOREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
   </insert>
+  
+  <update id="dcoreportUp" parameterType="www.dto.ReportVo" keyProperty="idx">
+  	update dcomment set REPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  	<selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select REPORTCOUNT from dcomment where idx = #{linkedidx}
+  	</selectKey>
+  	</update>
   <select id="searchByWriter" resultType="www.dto.DiaryVo" parameterType="String">
   	select * from DIARY where nick like '%' || #{nick} || '%' and DPUBLIC ='Y'
   </select>
