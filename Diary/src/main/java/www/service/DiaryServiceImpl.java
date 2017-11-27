@@ -25,6 +25,7 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public void diarywrite(DiaryVo vo) {
 		// TODO Auto-generated method stub
+		System.out.println(vo.toString());
 		dao.diarywrite(vo);
 	}
 

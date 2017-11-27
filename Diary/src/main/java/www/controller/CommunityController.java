@@ -145,12 +145,19 @@ public class CommunityController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/ccreportinsert.do",method=RequestMethod.POST)
+	public @ResponseBody Map<String, String> ccreportinsert(ModelAndView mav,ReportVo vo){
 		
-		
-		
-		
-
+		sv.ccreportinsert(vo);
 	
+		Map<String, String> map = new HashMap<String, String>();
+		
+		return map;
+	}
+		
+		
+		
+		
 	
 //
 //

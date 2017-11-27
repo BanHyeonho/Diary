@@ -93,3 +93,34 @@ function creportinsert(title,reporter,witerid,linkedidx){
 	
 	
 }
+
+function ccreportinsert(reporter,witerid,linkedidx){
+	var type = $('#type').val();
+	var reason = $('#reason').val();
+	
+	
+	
+	var data = {
+			"linkedidx":linkedidx,
+			"reporter":reporter,
+			"witerid":witerid,
+			"type":type,
+			"reason":reason
+	};
+	var setting = {
+			"url":"/ccreportinsert.do",
+			"data" : data,
+			"type" : "post",
+			"dataType":"json",
+			"success":function(){
+				alert('신고 되었습니다.');
+				self.close();
+			},
+			"error":function(){}
+	};
+	
+	
+	$.ajax(setting);
+	
+	
+}

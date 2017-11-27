@@ -79,6 +79,7 @@
 			</a></li>
 			<li><a href="javascript:mag_form('${ data.Diary.nick }','${ data.Diary.id }','${user.nick }','${user.id }');">쪽지보내기</a></li>
 		</ul>
+		<%@ include file="./msgSend.jsp"%>
 		</c:if>
     <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
 

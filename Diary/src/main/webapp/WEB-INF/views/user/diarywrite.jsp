@@ -12,8 +12,8 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<div class="contents" style="position: relative; overflow:hidden; height: 700px;">
-		<form action="/writeDiary.do" method="post" name="writingForm">
+		<div class="contents" style="position: relative;">
+		<form action="/writeDiary.do" method="post" name="writingForm" enctype="multipart/form-data">
 		
 		<input type="hidden" name="id" value="${user.id }" />
 		<input type="hidden" name="nick" value="${user.nick }" />
@@ -49,7 +49,7 @@
 		</ul>
 			
 		</div>
-		<div style="margin-top: 6%;">
+		<div style="margin-top: 100px;">
 		<center>
 		<button type="button" onclick='writing();' class="btn-success btn-lg">글쓰기</button>
 		</center>
@@ -65,6 +65,7 @@
 		</div>
 			<%@ include file="../layout/footer.jsp"%>
 	</div>
-	<script type="text/javascript" src="script/diarywrite.js"></script>	
+	<script type="text/javascript" src="script/diarywrite.js"></script>
+	<script type="text/javascript" src="script/preview.js"></script>	
 </body>
 </html>

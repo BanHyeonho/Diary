@@ -18,6 +18,6 @@ public interface CommunityService {
 	public void deletecommunity(int idx);
 	public void updatecommu(CommunityVo vo);//만남의장 수정하기
 	public void creportinsert(ReportVo vo);//만남의장 신고
-
+	public void ccreportinsert(ReportVo vo);//만남의장 게시글 신고
 		
 }

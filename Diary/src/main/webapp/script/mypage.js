@@ -266,7 +266,16 @@ function msg_delete(d){
 //메세지 보내기 새창 ,답장
 function mag_form(sender,senderid,receiver,receiverid){
 	
-	var form = document.createElement("form");      // form 엘리멘트 생성
+	$("#receiverr").html(sender);
+	
+    $("#receiver").val(sender);
+    $("#receiverid").val(senderid);
+    $("#sender").val(receiver);
+    $("#senderid").val(receiverid);
+
+	 $("#myModal").modal('show');
+	
+	/*var form = document.createElement("form");      // form 엘리멘트 생성
 	 form.setAttribute("method","post");             // method 속성 설정
 	 form.setAttribute("action","/sendMsgForm.do");       // action 속성 설정
 	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
@@ -295,10 +304,10 @@ function mag_form(sender,senderid,receiver,receiverid){
 	console.log(form);
 	
 	
-	var Settings = 'width=400,height=350,top=100,left=100';
+	var Settings = 'width=400,height=350,top=100,left=100,scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no,location=no';
 	
 	window.open("","popup_window",Settings);
-	form.submit();
+	form.submit();*/
 
 
 	
@@ -668,5 +677,32 @@ function follow_delete(fb){
 		$.ajax(setting);
 		}
 }
-
+function mag_gogogo(){
+	
+	var receiver = $("#receiver").val();
+	var receiverid =$("#receiverid").val();
+    var sender = $("#sender").val();
+    var senderid =$("#senderid").val();
+    var content =$("#content").val();
+    var chk = $("#chk").val();
+    
+    var data = {'receiver':receiver,'receiverid':receiverid,'sender':sender,'senderid':senderid,'content':content,'chk':chk}
+    
+    var setting = {
+			url : '/sendmsg.do',
+			type : 'post',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				alert(data.result);
+				$('#myModal').modal('hide');
+				
+			},
+			error : function() {
+				
+			}
+	};
+	$.ajax(setting);
+	
+}
 
