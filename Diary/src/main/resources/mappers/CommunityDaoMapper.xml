@@ -98,5 +98,17 @@
   </selectKey>
   </update>
   
+   <insert id="ccreportinsert" parameterType="www.dto.ReportVo">
+   insert into CCREPORT values(CCREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
+  </insert>
+  
+  
+   <update id="ccreportup" parameterType="www.dto.ReportVo" keyProperty="idx">
+  update COMMUNITY set CCREPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  <selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select CREPORTCOUNT from COMMUNITY where idx = #{linkedidx}
+  </selectKey>
+  </update>
+  
   
 </mapper>
