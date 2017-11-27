@@ -100,5 +100,14 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 
+	@Override
+	public void ccoreportinsert(ReportVo vo) {
+		// TODO Auto-generated method stub
+		System.out.println(vo.toString());
+		dao.ccoreportinsert(vo);
+		dao.ccoreportup(vo);
+	}
+
+
 
 }
