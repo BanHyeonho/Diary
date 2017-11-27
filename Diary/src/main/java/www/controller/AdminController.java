@@ -226,7 +226,7 @@ public class AdminController {
 	public ModelAndView cGuilt(ModelAndView mav, int idx) {
 		logger.info("" + idx);
 		sv.cGuilt(idx);
-		mav.setViewName("redirect:/alldiary.do");
+		mav.setViewName("redirect:/allcommunity.do");
 		return mav;
 	} // 커뮤니티 신고확정 글쓴이에게 경고카운트 누적,-유죄
 
@@ -234,7 +234,7 @@ public class AdminController {
 	public ModelAndView Cacquit(ModelAndView mav, int idx) {
 
 		sv.Cacquit(idx);
-		mav.setViewName("redirect:/alldiary.do");
+		mav.setViewName("redirect:/allcommunity.do");
 		return mav;
 	} // 커뮤니티 신고취소-무죄
 

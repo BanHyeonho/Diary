@@ -24,7 +24,7 @@
 	<div class="container">
 	<div class="contents" >
 
-	<h1>신고사유</h1>
+	<h1 style="margin-left:390px;">신고사유</h1>
 
 		<table class="table table-striped table-hover table-bordered">
   		<thead class="thead-dark">

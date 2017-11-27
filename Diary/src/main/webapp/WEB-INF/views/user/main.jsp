@@ -13,9 +13,10 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="main-visual">
 			<div class="jumbotron container">
-				<h1 class="display-3">Travel Diary</h1>
-				<p>나만의 여행 코스를 공유하세요.</p>
-				<p><a class="btn btn-primary btn-lg" href="#">Learn more</a></p>
+			<br/>
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<p style="font-size:17px;">나만의 여행 코스를 공유하세요</p>
+				<p><a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></p>
 			</div>
 		</div>
 		

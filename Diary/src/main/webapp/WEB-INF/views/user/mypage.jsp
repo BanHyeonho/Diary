@@ -158,7 +158,7 @@
 								<th class="join">프로필사진</th>
 								<td><input type="file" name="picture" id="picture" /><br/>
 								
-								<img src='/upload/${user.picture }' alt="프로필사진" id="oldpic" /> 
+								<img src='/upload/${user.picture}' alt="프로필사진" id="oldpic" /> 
             						<div id="holder"></div></td>
 							</tr>
 						</table>
