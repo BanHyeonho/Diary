@@ -49,7 +49,7 @@
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
-										<img src="C:\Users\seohyeon\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\Diary\upload\ayo.png" alt="프로필사진" />
+										<img src="upload/다운로드.png" alt="프로필사진" />
 									</span>
 									<span class="name">보노보노보노</span>
 								</div>

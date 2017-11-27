@@ -16,7 +16,7 @@ import www.dto.MemberVo;
 
 public class FileSave {
 	
-	String filePath = "C:\\Users\\Ban\\Desktop\\upload";
+	String filePath = "C:\\Users\\Ban\\git\\Diary\\Diary\\src\\main\\webapp\\upload";
 	
 	//회원가입시 사용
 	public MemberVo join(HttpServletRequest request){
