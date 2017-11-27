@@ -18,6 +18,7 @@
 
 </head>
 <body>
+
 	<%@ include file="../layout/header.jsp"%>
 	<c:if test="${msg!=null }">
 		<script type="text/javascript">

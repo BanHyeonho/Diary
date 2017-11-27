@@ -20,6 +20,7 @@
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
 %>
+
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">

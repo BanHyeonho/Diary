@@ -165,7 +165,7 @@ ul{list-style: none;}
 
  /*네비메인버튼  */
 	
-	.navi {position: fixed ;top:125px;right:96px; display: none;}
+	.navi {position: fixed ;top:125px;right:0px; display: none;}
 	.navi .up {width: 100px;height:30px;}
 	.navi .btn {width:100px;height:30px;} 
 
@@ -173,7 +173,7 @@ ul{list-style: none;}
 	
 	 .navi > div {width:100px;} 
 	/* 탭   */
-	.tab{position: fixed;top:90px;z-index: 10;right:150px;border-color:#343a40;}
+	.tab{position: fixed;top:90px;z-index: 10;right:0px;border-color:#343a40;}
 
 
 
@@ -181,5 +181,44 @@ ul{list-style: none;}
 
 
 
+
+
+
+
+
+*{margin:0; padding:0;}
+	ul,ol,dl{list-style:none;}
+	img , video{max-width:100%; border:0;}
+	a{text-decoration:none; color:#333; display:inline-block;}
+	table{border-collapse:collapse; border-spacing:0;}
+	input , select {vertical-align:middle;}
+	html{height:100%;}
+	label{cursor:pointer;}
+	i , em , address{font-style:normal; font-weight:normal;}
+	
+/*슬라이드 몸통 */
+
+.slide{top:-87px;  background : gray; text-align:center; position:relative; margin: 0 auto; display: block; height:600px;}
+
+.slide_ul{display: block;}
+.slide_ul>li{position:absolute; top:0; left:0; list-style:none;z-index:10; display: block;}
+.slide_ul>li img{}
+li{list-style: none;}
+
+.show{display:block;}
+
+
+/* 하단 동그라미 버튼 CSS*/
+.slide_btn>li{float: left; margin:0 5px 5px 0;}
+.slide_btn>li>a{display:block; width: 14px; height:14px; background: url(/upload/spr.png) -24px -125px; text-indent: -999em; }
+.slide_btn>li>a.active{background-position: 0 -126px;}
+
+.slide_btn{z-index:100; position:absolute;  bottom:0; left:45%; }
+
+.slide_btn:after{content:''; display:block; clear:both;}
+.slide_btn{*zoom:1;}
+
+
+#roof{position: absolute;top: 0px;}
 
 

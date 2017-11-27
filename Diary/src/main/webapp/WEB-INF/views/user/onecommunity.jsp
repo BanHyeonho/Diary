@@ -17,6 +17,7 @@
 
 <script type="text/javascript" src="script/onecommunity.js"></script>
 <body>
+
 	<div class="wrap">
 	<%@ include file="../layout/header.jsp"%>
 	<div class="container">
