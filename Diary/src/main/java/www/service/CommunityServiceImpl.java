@@ -101,10 +101,11 @@ public class CommunityServiceImpl implements CommunityService{
 
 
 	@Override
-	public void ccreportinsert(ReportVo vo) {
+	public void ccoreportinsert(ReportVo vo) {
 		// TODO Auto-generated method stub
-		dao.ccreportinsert(vo);
-		dao.ccreportup(vo);
+		System.out.println(vo.toString());
+		dao.ccoreportinsert(vo);
+		dao.ccoreportup(vo);
 	}
 
 

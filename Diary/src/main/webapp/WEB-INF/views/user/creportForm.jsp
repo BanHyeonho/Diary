@@ -43,7 +43,7 @@
 	onclick="creportinsert('${report.title }','${report.reporter }','${report.witerid }','${report.linkedidx }');"
 	</c:when>
 	<c:otherwise>
-	onclick="ccreportinsert('${report.reporter }','${report.witerid }','${report.linkedidx }');"
+	onclick="ccoreportinsert('${report.reporter }','${report.witerid }','${report.linkedidx }');"
 	</c:otherwise>
 	</c:choose>
 	>신고하기</button>

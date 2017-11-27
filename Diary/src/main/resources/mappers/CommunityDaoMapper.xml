@@ -98,17 +98,15 @@
   </selectKey>
   </update>
   
-   <insert id="ccreportinsert" parameterType="www.dto.ReportVo">
-   insert into CCREPORT values(CCREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
+   <insert id="ccoreportinsert" parameterType="www.dto.ReportVo">
+   insert into CCOREPORT values(CCOREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
   </insert>
   
-  
-   <update id="ccreportup" parameterType="www.dto.ReportVo" keyProperty="idx">
-  update COMMUNITY set CCREPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+    <update id="ccoreportup" parameterType="www.dto.ReportVo" keyProperty="idx">
+  update CCOMMENT set REPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
   <selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
-  		select CREPORTCOUNT from COMMUNITY where idx = #{linkedidx}
+  		select REPORTCOUNT from CCOMMENT where idx = #{linkedidx}
   </selectKey>
   </update>
-  
   
 </mapper>

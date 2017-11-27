@@ -94,7 +94,7 @@ function creportinsert(title,reporter,witerid,linkedidx){
 	
 }
 
-function ccreportinsert(reporter,witerid,linkedidx){
+function ccoreportinsert(reporter,witerid,linkedidx){
 	var type = $('#type').val();
 	var reason = $('#reason').val();
 	
@@ -108,7 +108,7 @@ function ccreportinsert(reporter,witerid,linkedidx){
 			"reason":reason
 	};
 	var setting = {
-			"url":"/ccreportinsert.do",
+			"url":"/ccoreportinsert.do",
 			"data" : data,
 			"type" : "post",
 			"dataType":"json",

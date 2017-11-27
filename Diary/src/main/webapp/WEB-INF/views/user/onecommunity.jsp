@@ -96,7 +96,7 @@
 				
 			</tr>
 			<tr class='${data1.idx}'>
-			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('/ccreport.do?witerid=${data.id }&linkedidx=${data.idx }&title=${data.ctitle }&reporter=${user.nick }','신고','width=600,height=800,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
+			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('/ccoreport.do?witerid=${data1.nick}&linkedidx=${data1.idx }&reporter=${user.nick }','신고','width=600,height=800,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
 			</tr> 
 			
 			</c:forEach> 
