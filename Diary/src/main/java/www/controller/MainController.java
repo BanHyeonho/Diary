@@ -1,11 +1,18 @@
 package www.controller;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +26,7 @@ import www.dto.CommunityVo;
 import www.dto.MemberVo;
 import www.dto.TopVo;
 import www.service.MainService;
+import www.util.FileSave;
 
 @Controller
 public class MainController {
@@ -49,12 +57,19 @@ public class MainController {
 	} // 회원가입 폼으로 이동
 
 	@RequestMapping(value = "/joinAction.do", method = RequestMethod.POST)
-	public ModelAndView joinAction(ModelAndView mav, MemberVo vo, HttpSession session) {
-		
-		sv.memberjoin(vo);
-		session.setAttribute("user", vo);
-		mav.setViewName("redirect:/main.do");
-		return mav;
+	public ModelAndView joinAction(ModelAndView mav, HttpSession session,HttpServletRequest request) {
+			
+			
+			FileSave fs = new FileSave();
+			MemberVo vo = fs.join(request);
+			sv.memberjoin(vo);
+			session.setAttribute("user", vo);
+			mav.setViewName("redirect:/main.do");
+			return mav;
+			
+//			String realPath = session.getServletContext().getRealPath(\"/\");
+//					String imagePath = realPath+\"resources\\어쩌고저쩌고\";
+	
 	} // 회원가입 처리
 
 	@RequestMapping(value = "/idchk.do", method = RequestMethod.GET)

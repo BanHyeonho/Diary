@@ -67,9 +67,13 @@ button:HOVER{cursor: pointer;}
 }
 
 /* join.jsp  */
-.name td input {width:220px;}
-.password td input {width:220px;}
-.birth td input {width:220px;}
+.name td input {width:250px;}
+.password td input {width:250px;}
+.birth td input {width:250px;}
+.email td input {width:400px;}
+.addr td input {width:700px;}
+.pwq td select{width:400px;}
+.answer td input {width:400px;}
 .phone select {width:100px; float:left;}
 .phone span{float:left; padding:4px}
 .phone input {width:100px; float:left;}
@@ -170,9 +174,6 @@ ul{list-style: none;}
 	 .navi > div {width:100px;} 
 	/* 탭   */
 	.tab{position: fixed;top:90px;z-index: 10;right:150px;border-color:#343a40;}
-
-
-
 
 
 

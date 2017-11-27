@@ -45,12 +45,11 @@
 								<p class="card-text">${contents }</p>
 								</c:forTokens>
 									
-									
 									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
-										<img src="http://img1.ak.crunchyroll.com/i/spire2/98784242d8fff0814c722b2c40950fbb1457186596_large.png" alt="프로필사진" />
+										<img src="upload/다운로드.png" alt="프로필사진" />
 									</span>
 									<span class="name">보노보노보노</span>
 								</div>
