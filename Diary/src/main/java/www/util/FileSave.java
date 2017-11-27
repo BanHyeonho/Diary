@@ -107,7 +107,7 @@ public class FileSave {
 					File up = new File(filePath,filename);
 					//파일이 존재할경우
 					if(up.exists()){
-						filename+="_"+System.currentTimeMillis();
+						filename=System.currentTimeMillis()+"_"+filename;
 						up = new File(filePath,filename);
 					}
 					
@@ -164,6 +164,9 @@ public class FileSave {
 				if(item.isFormField()){
 					try{
 					switch(item.getFieldName()){
+					case "idx" :
+						vo.setIdx(Integer.parseInt(item.getString("UTF-8")));
+						break;
 					case "id" :
 						vo.setId(item.getString("UTF-8"));
 						break;
@@ -202,7 +205,7 @@ public class FileSave {
 					File up = new File(filePath,filename);
 					
 					if(up.exists()){
-						filename+="_"+System.currentTimeMillis();
+						filename=System.currentTimeMillis()+"_"+filename;
 						up = new File(filePath,filename);
 					}
 					

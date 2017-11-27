@@ -15,13 +15,15 @@
 		
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
+		String[] picture = vo.getDpicture().split("/");
+		System.out.println("잘오나 : "+vo.toString());
 %>
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
 		<div class="contents" style="position: relative; overflow-x:hidden; height: 700px;">
 
-		<form action="/updateDiaryAction.do" method="post" name="updateForm">
+		<form action="/updateDiaryAction.do" method="post" name="updateForm" enctype="multipart/form-data">
 		<h2 style="display: inline;">${Diary.dtitle }</h2>
 		<input type="hidden" name="idx" value="${Diary.idx }" />
 		<input type="hidden" name="id" value="${user.id }" />
@@ -63,9 +65,32 @@
 		</c:forTokens>
 		</ul>
 		<%int i=0; %>
-		<div class="<%=place[0]%> oneDiary"><img alt="사진"><textarea rows="20" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
+		<%int k=0; %>
+		<div class="<%=place[0]%> oneDiary">
+		<table>
+		<%for(int j = 0;j<content[k].split("&").length;j++){%>
+		<tr>
+		<td><img src="upload/<%=picture[i++] %>" alt="사진"></td>
+		<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled" ><%=content[k].split("&")[j] %></textarea></td>
+		</tr>
+		<%} %>
+		</table>
+		</div>
+		 <%k++; %>
+		 
+		 
 		 <c:forTokens items="${Diary.place}" delims="/" var="place" begin="1">
-			<div class="${place} oneDiary" style="display: none;"><img alt="사진"><textarea rows="20" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
+			<div class="${place} oneDiary" style="display: none;">
+			<table>
+			<%for(int j = 0;j<content[k].split("&").length;j++){ %>
+			<tr>
+				<td><img src="upload/<%=picture[i++] %>" alt="사진"></td>
+				<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled"  ><%=content[k].split("&")[j] %></textarea></td>
+			</tr>
+			<%}
+			k++; %>
+			</table>
+			</div>
 		</c:forTokens> 
 		</div>
 		
