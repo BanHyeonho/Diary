@@ -15,7 +15,7 @@ import www.dto.DiaryVo;
 import www.dto.MemberVo;
 
 public class FileSave {
-	
+
 	//회원가입시 사용
 	public MemberVo join(HttpServletRequest request){
 		
@@ -26,7 +26,7 @@ public class FileSave {
 		
 		//파일이 전송되었을때
 		if(isMultipart){
-			//디스크기반 파일 아이템 팩토리
+			//디스크기반 파일 아이템 팩토리`
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			
 			int maxMem = 1*1024*1024; //1MB	
@@ -101,6 +101,7 @@ public class FileSave {
 					String filename = item.getName();
 					
 					//실제 업로드
+
 					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					//파일이 존재할경우
 					if(up.exists()){

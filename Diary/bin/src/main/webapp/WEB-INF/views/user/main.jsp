@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +13,14 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 <div id="roof"></div>
+=======
+
+>>>>>>> refs/remotes/origin/seo
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
+<<<<<<< HEAD
 		
 		<div class="slide">
 		<ul class="slide_ul">
@@ -25,6 +31,15 @@
 		
 		
 		</ul>
+=======
+		<div class="main-visual">
+			<div class="jumbotron container">
+			<br/>
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<p style="font-size:17px;">나만의 여행 코스를 공유하세요</p>
+				<p><a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></p>
+			</div>
+>>>>>>> refs/remotes/origin/seo
 		</div>
 		
 	
@@ -138,7 +153,13 @@
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
+<<<<<<< HEAD
 										<img src="upload/${data.picture }" alt="프로필사진" />
+=======
+
+										<img src="upload/${data.picture}" alt="프로필사진"/>
+
+>>>>>>> refs/remotes/origin/seo
 									</span>
 									<span class="name">보노보노보노</span>
 								</div>

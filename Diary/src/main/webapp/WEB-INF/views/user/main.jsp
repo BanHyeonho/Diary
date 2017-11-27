@@ -1,35 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Travel Diary</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/layout.css" rel="stylesheet" />
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-
 </head>
 <body>
+
 <div id="roof"></div>
+
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
-		
 		<div class="slide">
 		<ul class="slide_ul">
 		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
 		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="http://i.huffpost.com/gen/5089222/images/o-UNIVERSE-facebook.jpg" alt="dane"></a></li>
 		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg" alt="dane"></a></li>
-	
-		
-		
 		</ul>
-		</div>
-		
-	
-		
-		
+	</div>
 		<div class="container">
 		
 		
@@ -138,7 +130,13 @@
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
+<<<<<<< HEAD
 										<img src="upload/${data.picture }" alt="프로필사진" />
+=======
+
+										<img src="upload/${data.picture}" alt="프로필사진"/>
+
+>>>>>>> refs/remotes/origin/seo
 									</span>
 									<span class="name">보노보노보노</span>
 								</div>
