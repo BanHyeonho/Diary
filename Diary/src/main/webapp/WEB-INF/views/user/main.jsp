@@ -49,7 +49,7 @@
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
-										<img src="upload/다운로드.png" alt="프로필사진" />
+										<img src="upload/${data.picture }" alt="프로필사진" />
 									</span>
 									<span class="name">보노보노보노</span>
 								</div>
