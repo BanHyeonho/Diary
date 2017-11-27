@@ -43,13 +43,13 @@
     </div>
 </div>
 		
-		<div class="writingPlace">
+		<div class="writingPlace" style="top:4%;">
 		<ul id="oneDiaryTab" class="nav nav-tabs" >
 			
 		</ul>
 			
 		</div>
-		<div style="margin-top: 100px;">
+		<div id="write" style="margin-top: 100px;">
 		<center>
 		<button type="button" onclick='writing();' class="btn-success btn-lg">글쓰기</button>
 		</center>

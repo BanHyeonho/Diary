@@ -328,7 +328,7 @@ function updateForm(idx,dtitle,place,contents,mapposition ,dpicture ,sdate,edate
 	.append("<input type='hidden' name='edate' value="+edate+" />")
 	.append("<input type='hidden' name='dpublic' value="+dpublic+" />")
 	.appendTo('body')
-	//.submit();
+	.submit();
 	
 }
 function deletecomment(idx){

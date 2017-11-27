@@ -26,6 +26,7 @@ function addpicture(picture,hold){
     var holder = document.getElementById(hold);
 
 upload.onchange = function (e) {
+	$('.'+hold).remove();
   e.preventDefault();
 
   var file = upload.files[0],

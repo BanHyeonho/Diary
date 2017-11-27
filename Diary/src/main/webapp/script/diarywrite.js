@@ -362,10 +362,14 @@ function addtable(title){
 	
 	addpicture(title+"picture"+ct,title+"holder"+ct);
 	ct++;
+	$('.contents').css('min-height','+=20%');
+	$('#write').css('margin-top','+=20%');
 }
 function removetable(id){
 
 	$('.'+id).remove();
+	$('#write').css('margin-top','-=20%');
+	$('.contents').css('min-height','-=20%');
 }
 function deleteTab(title){
 	$('#'+title).remove();

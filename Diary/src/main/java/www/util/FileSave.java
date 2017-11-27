@@ -16,8 +16,6 @@ import www.dto.MemberVo;
 
 public class FileSave {
 	
-	String filePath = "C:\\Users\\Ban\\git\\Diary\\Diary\\src\\main\\webapp\\upload";
-	
 	//회원가입시 사용
 	public MemberVo join(HttpServletRequest request){
 		
@@ -103,12 +101,11 @@ public class FileSave {
 					String filename = item.getName();
 					
 					//실제 업로드
-				//	System.out.println(request.getSession().getServletContext().getRealPath("upload"));
-					File up = new File(filePath,filename);
+					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					//파일이 존재할경우
 					if(up.exists()){
 						filename=System.currentTimeMillis()+"_"+filename;
-						up = new File(filePath,filename);
+						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					}
 					
 					vo.setPicture(filename);
@@ -202,11 +199,11 @@ public class FileSave {
 					String filename = item.getName();
 					
 					
-					File up = new File(filePath,filename);
+					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					
 					if(up.exists()){
 						filename=System.currentTimeMillis()+"_"+filename;
-						up = new File(filePath,filename);
+						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					}
 					
 					if(vo.getDpicture()==null){

@@ -8,6 +8,7 @@
 <title>Diary</title>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=543b81c594d5dd2c622b96e281dc3022&libraries=services"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="script/preview.js"></script>
 </head>
 <body>
 <%
@@ -57,23 +58,37 @@
 </div>
  
 		
-		<div class="writingPlace">
+		<div class="writingPlace" style="top:4%;">
 		<ul id="oneDiaryTab" class="nav nav-tabs" style="position: absolute;display: table-row;right: 100%;">
 		<li id="<%=place[0]%>"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" ><%=place[0]%></a></li>
 		<c:forTokens items="${Diary.place}" delims="/" var="place" begin="1">
 			<li id="${place}"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;" >${place}</a></li>
 		</c:forTokens>
 		</ul>
-		<%int i=0; %>
-		<%int k=0; %>
+		<%int i=0;
+		int k=0;
+		int ct=0;%>
 		<div class="<%=place[0]%> oneDiary">
 		<table>
 		<%for(int j = 0;j<content[k].split("&").length;j++){%>
-		<tr>
-		<td><img src="upload/<%=picture[i++] %>" alt="사진"></td>
-		<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled" ><%=content[k].split("&")[j] %></textarea></td>
-		</tr>
+		<tr class="${place}tr<%=ct%>">
+		<td><img class="${place}holder<%=ct%>" src="/upload/<%=picture[i++] %>" alt="사진"><div id="${place}holder<%=ct%>"></div></td>
+		<td rowspan="2"><textarea rows="10" cols="60" class="form-control textArea" ><%=content[k].split("&")[j] %></textarea></td>
+		<%if(j!=0){ %>
+		<td><button type="button" onclick="removetable('${place}tr<%=ct%>');">X</button></td>
 		<%} %>
+		</tr>
+		<tr class="${place}tr<%=ct%>">
+			<td><input type="file" name="${place}picture<%=ct%>" id="${place}picture<%=ct%>" class="form-control" /></td>
+		</tr>
+		<%if(j==content[k].split("&").length-1){ %>
+		<tr id="${place}plus"><td colspan="2"><center><button type="button" onclick="addtable('${place}',<%=ct%>);">추가하기</button></center></td></tr>
+		<%}%>
+	<script type="text/javascript">
+	addpicture('${place}picture<%=ct%>','${place}holder<%=ct%>');
+	</script>
+		
+	<%	ct++;} %>
 		</table>
 		</div>
 		 <%k++; %>
@@ -83,11 +98,24 @@
 			<div class="${place} oneDiary" style="display: none;">
 			<table>
 			<%for(int j = 0;j<content[k].split("&").length;j++){ %>
-			<tr>
-				<td><img src="upload/<%=picture[i++] %>" alt="사진"></td>
-				<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled"  ><%=content[k].split("&")[j] %></textarea></td>
+			<tr class="${place}tr<%=ct%>">
+				<td><img class="${place}holder<%=ct%>" src="/upload/<%=picture[i++] %>" alt="사진"><div id="${place}holder<%=ct%>"></div></td>
+				<td rowspan="2"><textarea rows="10" cols="60" class="form-control textArea" ><%=content[k].split("&")[j] %></textarea></td>
+				<%if(j!=0){ %>
+				<td><button type="button" onclick="removetable('${place}tr<%=ct%>');">X</button></td>
+				<%} %>
 			</tr>
-			<%}
+			<tr class="${place}tr<%=ct%>">
+			<td><input type="file" name="${place}picture<%=ct%>" id="${place}picture<%=ct%>" class="form-control" /></td>
+			</tr>
+			<%if(j==content[k].split("&").length-1){ %>
+			<tr id="${place}plus"><td colspan="2"><center><button type="button" onclick="addtable('${place}',<%=ct%>);">추가하기</button></center></td></tr>
+			<%}%>
+			<script type="text/javascript">
+			addpicture('${place}picture<%=ct%>','${place}holder<%=ct%>');
+			</script>
+			
+			<%ct++;}
 			k++; %>
 			</table>
 			</div>
@@ -103,6 +131,7 @@
 			<%@ include file="../layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
+	
 	<script type="text/javascript" src="script/updateDiary.js"></script>	
 	<script type="text/javascript">
 	setting('${Diary.mapposition}','${Diary.place}');
