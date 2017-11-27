@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="www.dto.DiaryVo" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +23,6 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<%@ include file="../layout/nav.jsp"%>
 		<div class="contents" style="position: relative; overflow-x:hidden; height: auto;">
 
 		<h2 style="display: inline;">${data.Diary.dtitle }</h2>
@@ -79,6 +79,7 @@
 			</a></li>
 			<li><a href="javascript:mag_form('${ data.Diary.nick }','${ data.Diary.id }','${user.nick }','${user.id }');">쪽지보내기</a></li>
 		</ul>
+		<%@ include file="./msgSend.jsp"%>
 		</c:if>
     <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
 
@@ -103,18 +104,26 @@
 		<div><!--댓글  -->
 		<hr>
 		<c:if test="${user!=null }">
-		${user.nick } : <input type="text" id="comment" /><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
+		<span style="color: black; font-weight: bold;">${user.nick }</span> : <input type="text" id="comment" /><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
 		<hr>
 		</c:if>
-		<table>
-		
-		</table>
+		<div id="commentArea">
+		<c:forEach items="${data.comment }" var="data">
+		<div id='${data.idx}'>
+		<span style="color: black;font-weight: bold;">${data.nick }</span>&nbsp;<c:if test="${data.nick==user.nick }"><a href="javascript:deletecomment('${data.idx}');" style="color: tomato; text-decoration: none;">삭제</a></c:if>
+		<br/>		
+		<span style="color: black;">${data.contents }</span><br/>
+		<span style="color: gray;"><fmt:formatDate value="${data.cdate }" pattern="yyyy-MM-dd HH:MM"/></span><c:if test="${data.nick!=user.nick }">&nbsp;<a href="javascript:openReport('${data.nick }','${user.nick }','${data.idx}');" style="color: tomato; text-decoration: none;">신고</a></c:if>
+		<hr>		
+		</div>
+		</c:forEach>		
+		</div>
 		</div><!-- contents -->
 			
 			
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/oneDiary.js"></script>	

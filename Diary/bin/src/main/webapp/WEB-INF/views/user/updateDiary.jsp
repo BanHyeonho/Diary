@@ -19,14 +19,17 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<%@ include file="../layout/nav.jsp"%>
 		<div class="contents" style="position: relative; overflow-x:hidden; height: 700px;">
 
 		<form action="/updateDiaryAction.do" method="post" name="updateForm">
 		<h2 style="display: inline;">${Diary.dtitle }</h2>
 		<input type="hidden" name="idx" value="${Diary.idx }" />
+		<input type="hidden" name="id" value="${user.id }" />
+		<input type="hidden" name="place" />
+		<input type="hidden" name="mapposition" />
+		<input type="hidden" name="contents"/>
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
-		<button type="button">스크랩글 가져오기</button>
+		<button type="button" onclick="scrap_list('${user.id}');" >스크랩글 가져오기</button>
 		<label><input type="radio" name="dpublic" value="Y" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" value="N" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
 		
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
@@ -36,7 +39,7 @@
     
 <div class="map_wrap" >
 		<button type="button" class="btn-outline-info" style="position: absolute; z-index: 10;" onclick="hiddenSearch();">&nbsp;</button>
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <div id="map"></div>
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
@@ -52,7 +55,7 @@
 </div>
  
 		
-		<div class="writingPlace" style="position: absolute;left: 100%;top:50px;float: right;">
+		<div class="writingPlace">
 		<ul id="oneDiaryTab" class="nav nav-tabs" style="position: absolute;display: table-row;right: 100%;">
 		<li id="<%=place[0]%>"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" ><%=place[0]%></a></li>
 		<c:forTokens items="${Diary.place}" delims="/" var="place" begin="1">
@@ -60,18 +63,19 @@
 		</c:forTokens>
 		</ul>
 		<%int i=0; %>
-		<div class="<%=place[0]%> oneDiary"><img alt="사진"><textarea rows="25" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
+		<div class="<%=place[0]%> oneDiary"><img alt="사진"><textarea rows="20" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
 		 <c:forTokens items="${Diary.place}" delims="/" var="place" begin="1">
-			<div class="${place} oneDiary" style="display: none;"><img alt="사진"><textarea rows="25" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
+			<div class="${place} oneDiary" style="display: none;"><img alt="사진"><textarea rows="20" cols="100" class="form-control textArea" ><%=content[i++] %></textarea></div>
 		</c:forTokens> 
 		</div>
 		
-		
-		<center><button type="button" onclick="update();"style="margin-top:530px">수정하기</button></center>
+		<div style="margin-top: 50%;">
+		<center><button class="btn-success btn-lg" type="button" onclick="update();">수정하기</button></center>
+		</div>
 		</form>
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/updateDiary.js"></script>	

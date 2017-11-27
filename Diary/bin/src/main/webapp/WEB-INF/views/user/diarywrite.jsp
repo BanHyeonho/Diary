@@ -12,23 +12,23 @@
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<div class="contents" style="position: relative; overflow:hidden; height: 700px;">
-		<form action="/writeDiary.do" method="post" name="writingForm">
-		<div class="btn-group" role="group" aria-label="Basic example">
+		<div class="contents" style="position: relative;">
+		<form action="/writeDiary.do" method="post" name="writingForm" enctype="multipart/form-data">
+		
 		<input type="hidden" name="id" value="${user.id }" />
 		<input type="hidden" name="nick" value="${user.nick }" />
 		<input type="hidden" name="place" />
 		<input type="hidden" name="contents" />
 		<input type="hidden" name="mapposition" />
-		<input type="text" class="form-control" name="dtitle" placeholder="글 제목"/><button type="button" class="btn-info btn-sm" onclick="scrap_list('${user.id}');">스크랩 가져오기</button>
-		</div>
+		<input type="text"  name="dtitle" placeholder="글 제목"/><button type="button" onclick="scrap_list('${user.id}');">스크랩 가져오기</button>
+		
 		<label><input type="radio" name="dpublic" value="Y" checked >공개</label><label><input type="radio"  name="dpublic" value="N"  >비공개</label>
 		<input type="date" name="sdate" /> ~ <input type="date" name="edate"/> 
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
 		
-		<div class="map_wrap" >
+		<div class="map_wrap" style="position: relative;">
 		<button type="button" class="btn-outline-info" style="position: absolute; z-index: 10;" onclick="hiddenSearch();">&nbsp;</button>
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <div id="map"></div>
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
@@ -49,8 +49,11 @@
 		</ul>
 			
 		</div>
-		
-		<center><button type="button" onclick='writing();' class="btn-success btn-lg" style="margin-top:530px">글쓰기</button></center>
+		<div style="margin-top: 100px;">
+		<center>
+		<button type="button" onclick='writing();' class="btn-success btn-lg">글쓰기</button>
+		</center>
+		</div>
 		
 		</form>
 		
@@ -59,10 +62,10 @@
 		
 		</div><!-- contents -->
 			
-			<%@ include file="../layout/nav.jsp"%>
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
-	<script type="text/javascript" src="script/diarywrite.js"></script>	
+	<script type="text/javascript" src="script/diarywrite.js"></script>
+	<script type="text/javascript" src="script/preview.js"></script>	
 </body>
 </html>

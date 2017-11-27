@@ -31,14 +31,14 @@ function msg_hham(id){
 	        	// console.log($('#msg_chk').css('background-color'));
 	        	 setInterval(function(){
 	        		 if($('#msg_chk').css('background-color')=="rgb(255, 0, 0)"){
-	        			 $('#msg_chk').css('background-color','white');
+	        			 $('#msg_chk').css('background-color','#1f9bcf');
 	        		 }else{
 	        			 $('#msg_chk').css('background-color','red');
 	        		 }
 	        		 
 	        	 },1000);
 	         }else{
-	        	 $('#msg_chk').css('background-color','white');
+	        	 $('#msg_chk').css('background-color','#1f9bcf');
 	         }
 	    },
 		error : function() {
@@ -50,11 +50,57 @@ function msg_hham(id){
 
 function msg_move(){
 	
-	
-	
-	
 	location.href=('/mypage.do?msg=msg');
 	
-	
+}
+function toggle(){
+	$('.navi').slideToggle(300)(function(){
+		
+	});
+}
+function goWrite(session){
+	if(session==''){
+		alert('로그인하세요.');
+		document.loginform.id.focus();
+	}else{
+		location.href='/diarywrite.do';
+	}
+}
+
+function wow_following(id){
+		$("#aa").toggle();
+		
+		var id = id;
+		var data = {
+			'id' : id
+		};
+		var setting = {
+			url : '/following.do',
+			type : 'post',
+			data : data,
+			dataType : 'json',
+			success : function(data) {
+				var following_go = data.following_go;
+				//consolo.log(following_go);
+				$("#aa").empty();
+				if ($('#aa')[0].children[0] == null) {
+					for (var i = 0; i < following_go.length; i++) {
+						//alert(following_go[i].following);
+						$('#aa').append('<a href="#" onclick=following_write("'+following_go[i].following+'");>'+ following_go[i].following +'</a><br/>');
+						
+					}
+				}
+				
+			},
+			error : function() {
+				alert('error');
+			}
+
+		};
+		$.ajax(setting);
+}
+
+function following_write(b){
+	location.href="/search.do?option=작성자&keyword="+b;
 }
 

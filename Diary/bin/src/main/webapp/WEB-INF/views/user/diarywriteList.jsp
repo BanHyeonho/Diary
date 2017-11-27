@@ -22,7 +22,7 @@
 			<tbody id="scarp_listwow">
 		 	<c:forEach items="${scrap_listwow}" var="scarp" >
 				<tr>
-					<td><a  onclick="scrap_show('${scarp.place}','${scarp.contents}','${scarp.mapposition}')">${scarp.dtitle }<a></a></td> <td>${scarp.nick}</td>
+					<td>${scarp.dtitle }(${scarp.place}) &nbsp;<button type="button"   onclick="scrap_show('${scarp.place}','${scarp.contents}','${scarp.mapposition}');">가져오기</button></td> <td>${scarp.nick}</td>
 				</tr>
 			</c:forEach> 
 			</tbody>

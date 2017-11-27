@@ -87,8 +87,16 @@
   	update COMMUNITY set CHITCOUNT = #{chitcount} where IDX=#{idx}
   </update>
   
-  <insert id="creport" parameterType="www.dto.ReportVo">
-   insert into CREPORT values(CREPORT_SEQ.NEXTVAL,#{LINKEDIDX},#{REPORTER},#{WRITERID},#{TITLE},#{TYPE},#{REASON})
+  <insert id="creportinsert" parameterType="www.dto.ReportVo">
+   insert into CREPORT values(CREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{title},#{type},#{reason},#{linkedidx})
   </insert>
+  
+  <update id="creportup" parameterType="www.dto.ReportVo" keyProperty="idx">
+  update COMMUNITY set CREPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  <selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select CREPORTCOUNT from COMMUNITY where idx = #{linkedidx}
+  </selectKey>
+  </update>
+  
   
 </mapper>

@@ -22,7 +22,5 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="www" />
-	<resources mapping="/upload/**" location="/upload/" />
-	
 	
 </beans:beans>

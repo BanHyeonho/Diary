@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<link rel="stylesheet" href="css/diary.css">
-<link href="css/simplex.css" rel="stylesheet" />
+	<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/layout.css">
+<link href="css/lux.css" rel="stylesheet" />
 <script type="text/javascript" src="script/oneMember.js"></script>
+<script type="text/javascript" src="script/mypage.js"></script>
 </head>
-<body>
+<body style="padding-top: 50px;">
 	<div class="infotable">
 	<form action="/oneMember.do" method="get" name="sform">
 		<table class="table table-bordered">
@@ -24,7 +27,7 @@
 			<tr>
 				<th class="join">아이디</th>
 				<td>
-					<div class="btn-group" role="group" aria-label="Basic example">
+				
 						<input type="text" class="form-control" value="${userinfo.id}"
 							name="id" readonly="readonly" />
 				</td>
@@ -47,14 +50,14 @@
 			
 				<span>신고횟수</span><input class="lii" type="number" name="reportcount" onchange="rcount(this);"  value="${userinfo.reportcount}">
 			</div>
-			
+			<%@ include file="../user/msgSend.jsp"%>
 		
 		<center class="ct">
-			<button type="submit" class="btn-success btn-sm" onclick="confirmm('${userinfo.id}');"><span>확인</span></button>
+			<button type="submit" class="btn-success btn-sm" onclick="updateConfirm('${userinfo.id}');"><span>확인</span></button>
 			<button type="button" class="btn-danger btn-sm" onclick="deleteAccount('${userinfo.id}')"><span>계정삭제</span></button>
 			<button type="button" class="btn-info btn-sm" onclick="mag_form('${userinfo.nick}','${userinfo.id}','관리자','admin');"><span>쪽지보내기</span></button>
 		</center>
 	</form>
-	<script type="text/javascript" src="script/mypage.js"></script>
+	
 </body>
 </html>

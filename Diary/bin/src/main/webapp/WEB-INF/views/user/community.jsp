@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
+
+
 </head>
 
 <body>
@@ -89,11 +91,11 @@
   		</thead>
   		<tbody>
   		<c:forEach items="${list }" var="data" varStatus="d">
-    		<tr>
+    		<tr border>
       			<td>${d.count}</td>
       			<td>${data.nick}</td>
       			<td>
-      			<a href="/onecommunity.do?idx=${data.idx }">${data.ctitle}</a>
+      			<a href="/onecommunity.do?id=${user.id }&linkedidx=${data.idx }">${data.ctitle}</a>
       			</td>
       			<td>${data.cplace}</td>
       			<td>${data.attendee}</td>
@@ -138,9 +140,9 @@
 	
 	</div>	
 
-			<%@ include file="../layout/nav.jsp"%>
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
+		<%@ include file="../layout/nav.jsp"%>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 
 </body>

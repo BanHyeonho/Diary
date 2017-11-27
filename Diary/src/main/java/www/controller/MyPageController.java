@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ import www.dto.MemberVo;
 import www.dto.MsgVo;
 import www.dto.ScrapVo;
 import www.service.MyPageService;
+import www.util.FileSave;
 
 @Controller
 public class MyPageController {
@@ -33,8 +35,10 @@ public class MyPageController {
 	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
 	@RequestMapping(value="/updateInfoAction.do",method = RequestMethod.POST)
-	public ModelAndView updateInfoAction(ModelAndView mav,MemberVo vo,HttpSession session) {
+	public ModelAndView updateInfoAction(ModelAndView mav,MemberVo vo,HttpSession session,HttpServletRequest request) {
 		
+		FileSave fs = new FileSave();
+		vo = fs.join(request);
 		sv.updateinfo(vo);
 		session.setAttribute("user", vo);
 		mav.setViewName("redirect:/main.do");
@@ -117,15 +121,15 @@ public class MyPageController {
 		return map;
 	} // 쪽지 삭제
 
-	@RequestMapping(value="/sendMsgForm.do",method = RequestMethod.POST)
+	/*@RequestMapping(value="/sendMsgForm.do",method = RequestMethod.POST)
 	public ModelAndView sendMsgForm(ModelAndView mav,MsgVo vo) {
 		
-		
+		      
 		mav.addObject("data", vo);
 		mav.setViewName("user/msgSend");
 		return mav;
-	} // 쪽지 보내기폼으로 이동 답장하기
-	
+	} // 쪽지 보내기폼으로 이동 답장하기   , lux 다이얼로그로 인해서 필요없음
+*/
 	@RequestMapping(value="/following.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String,List<FollowVo>> following(String id) {
 		Map<String,List <FollowVo>> map = new HashMap<String,List <FollowVo>>();
