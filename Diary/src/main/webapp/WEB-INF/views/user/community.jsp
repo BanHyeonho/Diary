@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<div id="roof"></div>
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 	<div class="container">

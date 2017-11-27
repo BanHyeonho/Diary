@@ -20,7 +20,7 @@
 									<textarea rows="8" cols="20" class="form-control" name="content" id="content"></textarea>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-success msgbtn btn-sm" onclick="mag_gogogo()">전송</button>
+										<button type="button" class="btn btn-primary" onclick="mag_gogogo()">전송</button>
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
 									</div>

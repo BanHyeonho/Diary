@@ -18,6 +18,7 @@
 
 </head>
 <body>
+
 	<%@ include file="../layout/header.jsp"%>
 	<c:if test="${msg!=null }">
 		<script type="text/javascript">
@@ -287,7 +288,8 @@
 
 						</tbody>
 					</table>
-					<%@ include file="./msgSend.jsp"%>
+					
+				</div>
 				<!--block_list  -->
 				<div id="block_list" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
@@ -308,6 +310,7 @@
 
 		</div>
 	</div>
+	<%@ include file="./msgSend.jsp"%>
 	<%@ include file="../layout/footer.jsp"%>
 </body>
 </html>

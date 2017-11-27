@@ -104,7 +104,9 @@ public class FileSave {
 					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					//파일이 존재할경우
 					if(up.exists()){
+
 						filename=System.currentTimeMillis()+"_"+filename;
+
 						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					}
 					
@@ -202,7 +204,9 @@ public class FileSave {
 					File up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					
 					if(up.exists()){
+
 						filename=System.currentTimeMillis()+"_"+filename;
+
 						up = new File(request.getSession().getServletContext().getRealPath("upload"),filename);
 					}
 					

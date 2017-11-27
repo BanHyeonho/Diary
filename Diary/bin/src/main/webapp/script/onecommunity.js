@@ -59,3 +59,68 @@ function deleteccomment(idx){
 	$.ajax(setting);
 	
 }
+
+
+
+function creportinsert(title,reporter,witerid,linkedidx){
+	var type = $('#type').val();
+	var reason = $('#reason').val();
+	
+	
+	
+	var data = {
+			"linkedidx":linkedidx,
+			"reporter":reporter,
+			"title":title,
+			"witerid":witerid,
+			"type":type,
+			"reason":reason
+	};
+	var setting = {
+			"url":"/creportinsert.do",
+			"data" : data,
+			"type" : "post",
+			"dataType":"json",
+			"success":function(){
+				alert('신고 되었습니다.');
+				self.close();
+			},
+			"error":function(){}
+	};
+	
+	
+	$.ajax(setting);
+	
+	
+}
+
+function ccoreportinsert(reporter,witerid,linkedidx){
+	var type = $('#type').val();
+	var reason = $('#reason').val();
+	
+	
+	
+	var data = {
+			"linkedidx":linkedidx,
+			"reporter":reporter,
+			"witerid":witerid,
+			"type":type,
+			"reason":reason
+	};
+	var setting = {
+			"url":"/ccoreportinsert.do",
+			"data" : data,
+			"type" : "post",
+			"dataType":"json",
+			"success":function(){
+				alert('신고 되었습니다.');
+				self.close();
+			},
+			"error":function(){}
+	};
+	
+	
+	$.ajax(setting);
+	
+	
+}

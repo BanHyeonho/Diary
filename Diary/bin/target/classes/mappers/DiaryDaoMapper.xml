@@ -3,17 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.dao.DiaryDao">
-<!--   <select id="selectBlog" resultType="Blog">
-    select * from Blog where id = #{id}
-  </select> -->
+
   <insert id="diarywrite" parameterType="www.dto.DiaryVo">
   insert into DIARY(IDX,ID,NICK,DTITLE,PLACE,CONTENTS,MAPPOSITION,DPICTURE,SDATE,EDATE,DDATE,DHITCOUNT,GOOD,DREPORTCOUNT,DPUBLIC )
-values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},'쓰레기값',#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
+values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},#{dpicture},#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
   </insert>
   
-  <insert id="writedcomment" parameterType="www.dto.CommentVo">
+  <insert id="writedcomment" parameterType="www.dto.CommentVo" keyProperty="idx" >
   insert into DCOMMENT values(DCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx},0)
+  
+  <selectKey keyProperty="idx" resultType="Integer" order="AFTER">
+  select DCOMMENT_SEQ.currval FROM dual
+  </selectKey>
   </insert>
+  
+  <delete id="deletedcomment" parameterType="Integer">
+  	delete from dcomment where idx = #{idx}
+  </delete>
+  
   
   <insert id="insertscrap" parameterType="www.dto.ScrapVo">
   insert into SCRAP values(SCRAP_SEQ.NEXTVAL,#{id},#{linkedidx})
@@ -37,7 +44,7 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   	update DIARY set DHITCOUNT = #{dhitcount} where IDX=#{idx}
   </update>
   <select id="comment" parameterType="Integer" resultType="www.dto.CommentVo">
-  	select * from DCOMMENT where LINKEDIDX = #{idx}
+  	select * from DCOMMENT where LINKEDIDX = #{idx} order by cdate
   </select>
   <select id="followChk" parameterType="www.dto.HitCountVo" resultType="www.dto.FollowVo">
   	select idx from DIARY where id in (select FOLLOWINGID from FOLLOW where FOLLOWERSID = #{id}) and idx = #{linkedidx}
@@ -55,20 +62,39 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   <insert id="report" parameterType="www.dto.ReportVo">
   	insert into DREPORT values(DREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{title},#{type},#{reason},#{linkedidx})
   </insert>
+  <update id="reportUp" parameterType="www.dto.ReportVo" keyProperty="idx">
+  	update Diary set DREPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  	<selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select dreportcount from diary where idx = #{linkedidx}
+  	</selectKey>
+  </update>
   
+  <insert id="dcoreport" parameterType="www.dto.ReportVo">
+  	insert into DCOREPORT values(DCOREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
+  </insert>
+  
+  <update id="dcoreportUp" parameterType="www.dto.ReportVo" keyProperty="idx">
+  	update dcomment set REPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  	<selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select REPORTCOUNT from dcomment where idx = #{linkedidx}
+  	</selectKey>
+  	</update>
   <select id="searchByWriter" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where nick like '%' || #{nick} || '%' 
+  	select * from DIARY where nick like '%' || #{nick} || '%' and DPUBLIC ='Y'
   </select>
   <select id="searchByTitle" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where DTITLE like '%' || #{dtitle} || '%'
+  	select * from DIARY where DTITLE like '%' || #{dtitle} || '%' and DPUBLIC ='Y'
   </select>
   <select id="searchByPlace" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where CONTENTS like '%' || #{place} || '%'
+  	select * from DIARY where CONTENTS like '%' || #{place} || '%' and DPUBLIC ='Y'
   </select>
   
   <delete id="deletediary" parameterType="Integer">
   	delete from DIARY where idx = #{idx}
   </delete>
   
+  <update id="updatediary" parameterType="www.dto.DiaryVo">
+  	update DIARY set place=#{place},contents=#{contents},mapposition=#{mapposition},sdate=#{sdate},edate=#{edate},dpublic=#{dpublic} where idx=#{idx}
+  </update>
   
 </mapper>

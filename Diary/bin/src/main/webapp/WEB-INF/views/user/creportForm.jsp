@@ -6,8 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>신고</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="script/onecommunity.js"></script>
 </head>
 <body>
+
+
 <center>
 	<h1><c:if test="${report.title=='댓글신고폼' }">댓글 </c:if>신고</h1>
 	<table>
@@ -36,16 +40,16 @@
 	<button type="button" 
 	<c:choose>
 	<c:when test="${report.title!='댓글신고폼' }">
-	onclick="report('${report.title }','${report.reporter }','${report.witerid }','${report.linkedidx }');"
+	onclick="creportinsert('${report.title }','${report.reporter }','${report.witerid }','${report.linkedidx }');"
 	</c:when>
 	<c:otherwise>
-	onclick="commentReport('${report.reporter }','${report.witerid }','${report.linkedidx }');"
+	onclick="ccoreportinsert('${report.reporter }','${report.witerid }','${report.linkedidx }');"
 	</c:otherwise>
 	</c:choose>
 	>신고하기</button>
-	
 </center>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="script/oneDiary.js"></script>
+
+
+
 </body>
 </html>
