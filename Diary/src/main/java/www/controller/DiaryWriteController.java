@@ -1,8 +1,5 @@
 package www.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -11,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import www.dto.DiaryVo;
 import www.service.DiaryService;
 import www.service.MyPageService;
+import www.util.FileSave;
 
 @Controller
 public class DiaryWriteController {
@@ -43,10 +40,12 @@ public class DiaryWriteController {
 	
 	
 	@RequestMapping(value="/writeDiary.do",method=RequestMethod.POST)
-	public ModelAndView writeDiary(DiaryVo vo,ModelAndView mav) {
+	public ModelAndView writeDiary(ModelAndView mav,HttpServletRequest request) {
 		
 		//logger.info(vo.toString());
-		sv.diarywrite(vo);
+		FileSave fs = new FileSave();
+		
+		sv.diarywrite(fs.diaryWrite(request));
 		mav.setViewName("redirect:/diary.do");
 		return mav;
 	} // 글저장 기능

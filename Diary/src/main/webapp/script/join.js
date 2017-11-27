@@ -14,10 +14,12 @@ $(document).ready(function(){
 					data: data,
 					dataType:'json',
 					success:function(data){
-						$('#idresult').html("<font color='red'>"+data.result+"</font>");
+						//$('#idresult').html("<font color='red'>"+data.result+"</font>");
 						if(data.result=="아이디가 이미 존재합니다."){
+							$('#idresult').html("<font color='red'>"+data.result+"</font>");
 							document.value.userid.value.focus();
 						}else{
+							$('#idresult').html("<font color='blue'>"+data.result+"</font>");
 							document.sform.id.value=userid;
 						}
 					},
@@ -44,10 +46,12 @@ $(document).ready(function(){
 					data: data,
 					dataType:'json',
 					success:function(data){
-						$('#nresult').html("<font color='red'>"+data.result+"</font>");
+						//$('#nresult').html("<font color='red'>"+data.result+"</font>");
 						if(data.result=="닉네임이 이미 존재합니다."){
+							$('#nresult').html("<font color='red'>"+data.result+"</font>");
 							document.value.nickname.value.focus();
 						}else{
+							$('#nresult').html("<font color='blue'>"+data.result+"</font>");
 							document.sform.nick.value=nickname;
 						}
 					},

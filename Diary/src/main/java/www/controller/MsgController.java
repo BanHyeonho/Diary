@@ -25,15 +25,13 @@ public class MsgController {
 	private static final Logger logger = LoggerFactory.getLogger(MsgController.class);
 	
 	@RequestMapping(value="/sendmsg.do",method = RequestMethod.POST)
-	public ModelAndView sendmsg(MsgVo vo,ModelAndView mav){
+	public @ResponseBody Map<String,String> sendmsg(MsgVo vo){
 		
 		logger.info(vo.toString());
 		sv.sendmsg(vo);
-		
-		
-		mav.addObject("result", "메세지 보내기에 성공하였습니다");
-		mav.setViewName("user/msgSend");
-		return mav;
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "메세지 보내기에 성공하였습니다");
+		return map;
 	}//쪽지보내기
 
 	@RequestMapping(value="/msg_chk.do", method = RequestMethod.GET)
