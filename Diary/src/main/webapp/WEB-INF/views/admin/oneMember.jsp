@@ -53,9 +53,9 @@
 			<%@ include file="../user/msgSend.jsp"%>
 		
 		<center class="ct">
-			<button type="submit" class="btn-success btn-sm" onclick="updateConfirm('${userinfo.id}');"><span>확인</span></button>
-			<button type="button" class="btn-danger btn-sm" onclick="deleteAccount('${userinfo.id}')"><span>계정삭제</span></button>
-			<button type="button" class="btn-info btn-sm" onclick="mag_form('${userinfo.nick}','${userinfo.id}','관리자','admin');"><span>쪽지보내기</span></button>
+			<button type="submit" class="btn-success btn-sm" onclick="updateConfirm('${userinfo.id}');" style="width:80px; ">확인</button>
+			<button type="button" class="btn-primary btn-sm" onclick="deleteAccount('${userinfo.id}')" style="width:80px;">계정삭제</button>
+			<button type="button" class="btn-info btn-sm" onclick="mag_form('${userinfo.nick}','${userinfo.id}','관리자','admin');">쪽지보내기</button>
 		</center>
 	</form>
 	

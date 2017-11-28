@@ -31,8 +31,16 @@
 		<div class="slide">
 		<ul class="slide_ul">
 		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="http://i.huffpost.com/gen/5089222/images/o-UNIVERSE-facebook.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg" alt="dane"></a></li>
+		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="http://i.huffpost.com/gen/5089222/images/o-UNIVERSE-facebook.jpg" alt="dane"></a></li> 
+		<li><a href="#" style="display:block; position:relative; text-decoration:none;"></a>
+		<div style="position:absolute; top:200px; left:650px;">
+			<br/>
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
+				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
+			</div>
+			<img style="height: 600px;width: 100%;" src="https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg" alt="dane">
+		</li>
 		</ul>
 	</div>
 		<div class="container">

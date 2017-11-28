@@ -38,7 +38,7 @@
 						</c:otherwise>
 						</c:choose>
 						<li class="nav-item <c:if test='${active==\'2\' }'>active</c:if>">
-							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/community.do'">만남의 장</a>
+							<a class="nav-link" href="javascript:void(0)" onclick="location.href='/community.do'">커뮤니티</a>
 						</li>
 						
 					</ul>	
