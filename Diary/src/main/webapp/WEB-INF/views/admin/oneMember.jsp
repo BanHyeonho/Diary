@@ -11,7 +11,7 @@
 	<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/layout.css">
-<link href="css/lux.css" rel="stylesheet" />
+<link href="css/simplex.css" rel="stylesheet" />
 <script type="text/javascript" src="script/oneMember.js"></script>
 <script type="text/javascript" src="script/mypage.js"></script>
 </head>

@@ -91,7 +91,7 @@
          </tr>
          <tr>
             <th class="join">프로필사진</th>
-            <td><input type="file" name="picture" id="picture" value="사진"/><br/>
+            <td><input type="file" name="picture" id="picture" value="사진" accept="image/gif, image/jpg, image/jpeg, image/png"/><br/>
             	<div id="holder"></div>
             </td>
          </tr>

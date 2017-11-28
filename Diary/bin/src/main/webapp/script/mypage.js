@@ -51,17 +51,29 @@ function deletee(id) {
 }
 
 function privacyy(){
-	$('.color a').css('background','white');
-	$('#block_listt a').css('color','');
+	
+	$('.color a').css('color','#626261');
+	$('#privacyy a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#privacyy a').css('background','#f2f2f2');
+	
+	
+	
+	$('#privacy').attr('class','privacy tab-pane fade in active show');
+	$('#privacy').siblings().attr('class','tab-pane fade');
 }
 // 내가 쓴글 확인
 function mywrite(id) {
-	$('#my_write').attr('class','tab-pane fade in active show');
+	$('.color a').css('color','#626261');
+	$('#mywrite a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#mywrite a').css('background','#f2f2f2');
 	
+	$('#my_write').attr('class','privacy tab-pane fade in active show');
+	$('#my_write').siblings().attr('class','tab-pane fade');
 	var id = id;
-	$('.color a').css('background','white');
-	$('#mywrite a').css('background','#f4c1bc');
-	$('#block_listt a').css('color','');
+	
+	
 	var data = {
 		'id' : id
 	};
@@ -105,8 +117,12 @@ function mywrite(id) {
 
 //내가쓴 만남의장 글보기
 function myCommunity(id){
-	$('#mywrite a').css('background','#cbe1ba');
-	$('#block_listt a').css('color','');
+	
+	
+	
+	$('#myCommunity').attr('class','privacy tab-pane fade in active show');
+	$('#myCommunity').siblings().attr('class','tab-pane fade');
+	
 	var id = id;
 	var data = {
 		'id' : id
@@ -147,15 +163,20 @@ function myCommunity(id){
 	$.ajax(setting);
 }
 function write_write(){ //내가쓴글 탭 색깔 변경
-	$('#mywrite a').css('background','#f4c1bc');
+	
+	$('#my_write').attr('class','privacy tab-pane fade in active show');
+	$('#my_write').siblings().attr('class','tab-pane fade');
 }
 //쪽지함 가기
 function msg_1(id){
-	$('.color a').css('background','white');
-	$('#msg_1 a').css('background','#cbe1ba');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#msg_1 a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#msg_1 a').css('background','#f2f2f2');
+	$('#msg').attr('class','privacy tab-pane fade in active show');
+	$('#msg').siblings().attr('class','tab-pane fade');
 	
-	setInterval(function(){$('#msg_chk').css('background-color','white');});
+	setInterval(function(){$('#msg_chk').css('background-color','#1f9bcf');});
 	
 	var id = id;
 	var data = {
@@ -184,18 +205,21 @@ function msg_1(id){
 					
 					$('#msg_ham').append(
 							'<tr id='+mymsg[i].idx+'><td><a href="/oneDiary.do?idx='
-									+ mymsg[i].idx + '">' + mymsg[i].sender
-									+ '</a>&nbsp;&nbsp;<button type="button" class="block_button btn btn-outline-danger" onclick="block(\''+mymsg[i].sender+'\',\''+mymsg[i].receiverid+'\');">차단 </button></td><td>' + mymsg[i].content +'</td>'
-									+'<td><button type="button" class="btn btn-outline-danger"  onclick="mag_form(\''+mymsg[i].sender+'\',\''+mymsg[i].senderid+'\',\''+mymsg[i].receiver+'\',\''+mymsg[i].receiverid+'\');">답장</button></td>'
-									+'<td><button type="button" class="btn btn-outline-danger" onclick="msg_delete('+mymsg[i].idx+');">삭제</button></td>'
+							+ mymsg[i].idx + '">'
+									  + mymsg[i].sender
+									+ '</a>&nbsp;&nbsp;<button type="button" class="block_button btn btn-primary btn-sm" onclick="block(\''+mymsg[i].sender+'\',\''+mymsg[i].receiverid+'\');">차단 </button></td><td>' + mymsg[i].content +'</td>'
+									+'<td><button type="button" class="btn btn-success btn-sm"  onclick="mag_form(\''+mymsg[i].sender+'\',\''+mymsg[i].senderid+'\',\''+mymsg[i].receiver+'\',\''+mymsg[i].receiverid+'\');">답장</button></td>'
+									+'<td><button type="button" class="btn btn-danger btn-sm" onclick="msg_delete('+mymsg[i].idx+');">삭제</button></td>'
 									+ '</tr>');
 
 				}
 				
 				for (var i = 0; i < myblock.length; i++){
+					
 					for (var j = 0; j < mymsg.length; j++){
 						if(myblock[i].blockNick == $('#msg_ham')[0].children[j].children[0].children[0].text){
 							arr.push($('#msg_ham')[0].children[j].id);
+							
 						}
 					}
 						
@@ -239,10 +263,19 @@ function msg_delete(d){
 	}
 	
 }
-//메세지 보내기 새창
+//메세지 보내기 새창 ,답장
 function mag_form(sender,senderid,receiver,receiverid){
 	
-	var form = document.createElement("form");      // form 엘리멘트 생성
+	$("#receiverr").html(sender);
+	
+    $("#receiver").val(sender);
+    $("#receiverid").val(senderid);
+    $("#sender").val(receiver);
+    $("#senderid").val(receiverid);
+
+	 $("#myModal").modal('show');
+	
+	/*var form = document.createElement("form");      // form 엘리멘트 생성
 	 form.setAttribute("method","post");             // method 속성 설정
 	 form.setAttribute("action","/sendMsgForm.do");       // action 속성 설정
 	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
@@ -271,10 +304,10 @@ function mag_form(sender,senderid,receiver,receiverid){
 	console.log(form);
 	
 	
-	var Settings = 'width=500,height=600,top=100,left=100';
+	var Settings = 'width=400,height=350,top=100,left=100,scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no,location=no';
 	
 	window.open("","popup_window",Settings);
-	form.submit();
+	form.submit();*/
 
 
 	
@@ -328,10 +361,14 @@ function block(blockNick,id){
 
 //회원 차단 목록
 function block_list(id){
-	$('.color a').css('background','white');
-	$('#block_listt a').css('background','#212529');
+	$('.color a').css('color','#626261');
+	$('#block_listt a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#block_listt a').css('background','#f2f2f2');
+	$('#block_list').attr('class','privacy tab-pane fade in active show');
+	$('#block_list').siblings().attr('class','tab-pane fade');
 	
-	$('#block_listt a').css('color','white');
+	
 	$("#my_black").empty();
 	var data = {
 			'id' : id
@@ -347,12 +384,47 @@ function block_list(id){
 				if ($('#my_black')[0].children[0] == null) {
 					for (var i = 0; i < myblock.length; i++) {
 				
+						if(i+3 <= myblock.length){
+							$('#my_black').append(
+									'<tr><td id='+myblock[i].idx+'>'
+											 + myblock[i].blockNick+ ''
+											+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i].idx+');">차단 해제</button></td>' 
+											
+											+'<td id='+myblock[i+1].idx+'>'
+											 + myblock[i+1].blockNick+ ''
+											+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i+1].idx+');">차단 해제</button></td>'
+											
+											+'<td id='+myblock[i+2].idx+'>'
+											 + myblock[i+2].blockNick+ ''
+											+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i+2].idx+');">차단 해제</button></td>'
+											
+											+ '</tr>');
+							
+						}else if(i+2 <=myblock.length ){
+							
+							$('#my_black').append(
+									'<tr><td id='+myblock[i].idx+'>'
+											 + myblock[i].blockNick+ ''
+											+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i].idx+');">차단 해제</button></td>' 
+											
+											+'<td id='+myblock[i+1].idx+'>'
+											 + myblock[i+1].blockNick+ ''
+											+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i+1].idx+');">차단 해제</button></td>' 
+											
+											+ '</tr>');
+							
+						}else{
+							
+						
+						
 						$('#my_black').append(
-								'<tr id='+myblock[i].idx+' ><td>'
-										 + myblock[i].blockNick+ '</td><td>'
-										+ '<button type="button" class="block_button btn btn-outline-danger" onclick="unBlock('+myblock[i].idx+');">차단 해제</button>' 
+								'<tr><td id='+myblock[i].idx+'>'
+										 + myblock[i].blockNick+ ''
+										+ '<button type="button" class="block_button btn btn-primary btn-sm" onclick="unBlock('+myblock[i].idx+');">차단 해제</button>' 
 										
 										+ '</td></tr>');
+						}
+						i+=2;
 
 					}
 				}
@@ -391,9 +463,13 @@ function unBlock(ub){
 // 내가 스크랩한 회원 리스트
 function scrap_list(id){
 
-	$('.color a').css('background','white');
-	$('#scrap_list a').css('background','#f4dcc0');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#scrap_list a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#scrap_list a').css('background','#f2f2f2');
+	
+	$('#scrap').attr('class','privacy tab-pane fade in active show');
+	$('#scrap').siblings().attr('class','tab-pane fade');
 	
 	var id = id;
 	var data = {
@@ -414,8 +490,8 @@ function scrap_list(id){
 		
 				for (var i = 0; i < myScrap.length; i++) {
 						$('#scrap_body').append(
-								'<tr><td><a href="/oneDiary.do?idx='
-								+ myScrap[i].idx + '">' + myScrap[i].dtitle
+								'<tr><td><a href="/oneDiary.do?linkedidx='
+								+ myScrap[i].idx + '&id='+id+'">' + myScrap[i].dtitle
 								+ '</a></td><td>' + myScrap[i].ddate
 								+ '</td><td>' + myScrap[i].dhitcount
 								+ '</td><td>' + myScrap[i].good
@@ -439,9 +515,13 @@ function scrap_list(id){
 // 팔로워 리스트 보기
 function followers(id){
 	var id = id;
-	$('.color a').css('background','white');
-	$('#followerss a').css('background','#e3cbe4');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#followerss a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#followerss a').css('background','#f2f2f2');
+	
+	$('#followers').attr('class','privacy tab-pane fade in active show');
+	$('#followers').siblings().attr('class','tab-pane fade');
 	var data = {
 		'id' : id
 	};
@@ -452,18 +532,43 @@ function followers(id){
 		dataType : 'json',
 		success : function(data) {
 			var followers_go = data.followers_go;
-		
-			$("#followers_list").empty();
-			if ($('#followers_list')[0].children[0] == null) {
-				for (var i = 0; i < followers_go.length; i++) {
 			
+			$("#followers_list").empty();
+			
+			var cnt = 0 ;  //팔로우 수 체크
+			if ($('#followers_list')[0].children[0] == null) {
+				for ( var i = 0 ; i < followers_go.length; i++) {
+				
+				
+					if(i+3 <= followers_go.length){
 					$('#followers_list').append(
-							'<tr><td>'
-									 + followers_go[i].followers
-									
-									+ '</td></tr>');
-
+							'<tr><td>' + followers_go[i].followers+ '</td>'
+						
+							+'<td>' + followers_go[i+1].followers+ '</td>'
+							
+							+'<td>' + followers_go[i+2].followers+ '</td>'
+							
+							+'</tr>')
+					cnt+=3;
+					}else if(i+2 <= followers_go.length){
+						
+					$('#followers_list').append(
+							'<tr><td>' + followers_go[i].followers+ '</td>'
+						
+							+'<td>' + followers_go[i+1].followers+ '</td>'
+							+'</tr>')
+					cnt+=2;
+					}else{
+					$('#followers_list').append(
+								'<tr><td>' + followers_go[i].followers+ '</td></tr>')
+					cnt+=1;
+					}
+					
+					
+					i+=2;
 				}
+				$("#follow_cnt").empty();
+				$('#follow_cnt').append('(' +cnt+'명)')
 			}
 			
 		},
@@ -477,9 +582,13 @@ function followers(id){
 // 내가 팔로잉한 회원 리스트
 function following(id){
 	var id = id;
-	$('.color a').css('background','white');
-	$('#followingg a').css('background','#b8e3f2');
-	$('#block_listt a').css('color','');
+	$('.color a').css('color','#626261');
+	$('#followingg a').css('color','#d9534f');
+	$('.color a').css('background','#ffffff');
+	$('#followingg a').css('background','#f2f2f2');
+	
+	$('#follwoing').attr('class','privacy tab-pane fade in active show');
+	$('#follwoing').siblings().attr('class','tab-pane fade');
 	var data = {
 		'id' : id
 	};
@@ -492,16 +601,50 @@ function following(id){
 			var following_go = data.following_go;
 			//consolo.log(following_go);
 			$("#following_list").empty();
+			var cnt = 0 ;  //팔로잉한 사람수 체크
 			if ($('#following_list')[0].children[0] == null) {
 				for (var i = 0; i < following_go.length; i++) {
-
+					
+				if(i+3 <= following_go.length){
 					$('#following_list').append(
-							'<tr id="'+following_go[i].idx+'"><td>'
+							'<tr >	<td id="'+following_go[i].idx+'">'
 									 + following_go[i].following +
-									 '<td><button class="btn btn-outline-danger" onclick=follow_delete('+following_go[i].idx+')>팔로우 취소</button></td>'
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i].idx+')>팔로우 취소</button></td>'
+									 
+									 
+									 +'<td id="'+following_go[i+1].idx+'">'
+									 + following_go[i+1].following +
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i+1].idx+')>팔로우 취소</button></td>'
+									 
+									 +'<td id="'+following_go[i+2].idx+'">'
+									 + following_go[i+2].following +
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i+2].idx+')>팔로우 취소</button></td>'
+									+ '</tr>');
+					cnt+=3;
+				}else if(i+2 <= following_go.length){
+					$('#following_list').append(
+							'<tr >	<td id="'+following_go[i].idx+'">'
+									 + following_go[i].following +
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i].idx+')>팔로우 취소</button></td>'
+									 
+									 
+									 +'<td id="'+following_go[i+1].idx+'">'
+									 + following_go[i+1].following +
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i+1].idx+')>팔로우 취소</button></td>'
+									+ '</tr>');	
+					cnt+=2;
+				}else{
+					$('#following_list').append(
+							'<tr ><td id="'+following_go[i].idx+'">'
+									 + following_go[i].following +
+									 '<button class="follow_delete-btn btn btn-danger btn-sm" onclick=follow_delete('+following_go[i].idx+')>팔로우 취소</button>'
 									+ '</td></tr>');
-
+					cnt+=1;
 				}
+					i+=2;
+				}
+				$("#folloing_cnt").empty();
+				$('#folloing_cnt').append('(' +cnt+'명)')
 			}
 			
 		},
@@ -534,5 +677,32 @@ function follow_delete(fb){
 		$.ajax(setting);
 		}
 }
-
+function mag_gogogo(){
+	
+	var receiver = $("#receiver").val();
+	var receiverid =$("#receiverid").val();
+    var sender = $("#sender").val();
+    var senderid =$("#senderid").val();
+    var content =$("#content").val();
+    var chk = $("#chk").val();
+    
+    var data = {'receiver':receiver,'receiverid':receiverid,'sender':sender,'senderid':senderid,'content':content,'chk':chk}
+    
+    var setting = {
+			url : '/sendmsg.do',
+			type : 'post',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				alert(data.result);
+				$('#myModal').modal('hide');
+				
+			},
+			error : function() {
+				
+			}
+	};
+	$.ajax(setting);
+	
+}
 

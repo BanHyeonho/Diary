@@ -323,7 +323,7 @@ function updateForm(idx,dtitle,place,contents,mapposition ,dpicture ,sdate,edate
 	.append("<input type='hidden' name='place' value="+place+" />")
 	.append("<textarea name='contents'>"+contents+"</textarea>")
 	.append("<input type='hidden' name='mapposition' value="+mapposition+" />")
-	.append("<input type='hidden' name='dpicture' value="+dpicture+" />")
+	.append("<textarea name='dpicture'>"+dpicture+"</textarea>")
 	.append("<input type='hidden' name='sdate' value="+sdate+" />")
 	.append("<input type='hidden' name='edate' value="+edate+" />")
 	.append("<input type='hidden' name='dpublic' value="+dpublic+" />")

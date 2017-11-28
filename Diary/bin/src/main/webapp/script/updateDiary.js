@@ -354,12 +354,15 @@ function removeAllChildNods(el) {
 }
 
 function createTab(title){
+	var title = title.replace(/ /g,'');
 	$('.oneDiary').css('display', 'none');
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="25" cols="100" class="form-control textArea" ></textarea></div>');
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="10" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+ct+');">추가하기</button></center></td></tr></table></div>');
 	$('.' + title).css('display', '');
+	
+	addpicture(title+"picture",title+"holder");
 	
 	$('.click').click(function() {
 		$('.oneDiary').css('display', 'none');
@@ -377,7 +380,107 @@ function deleteTab(title){
 
 
 
+function scrap_list(id){
+	
+	var form = document.createElement("form");      // form 엘리멘트 생성
+	 form.setAttribute("method","get");             // method 속성 설정
+	 form.setAttribute("action","/copyScrapList.do");       // action 속성 설정
+	 form.setAttribute("target","popup_window");	//window 새창 오픈 할떄 이름 타겟
+	 
+	 var input =document.createElement("input"); 
+	 input.setAttribute("type","hidden");
+	 input.setAttribute("name","id");
+	 input.value=id;
+	 form.appendChild(input);    
+	 document.body.appendChild(form);    
+	
+	 var Settings = 'width=500,height=600,top=100,left=100';
+		window.open("","popup_window",Settings);
+		form.submit();
+}
 
+function scrap_show(place,contents,mapposition){
+
+if (confirm("현재 글쓰기에 추가 하시겠습니까?")) {
+
+opener.attachScrap(place,contents,mapposition);
+
+alert('추가완료');
+}
+
+}
+function attachScrap(places,contents,mapposition){
+
+var place = places.split('/');
+var mappositions = mapposition.split('/');
+var content = contents.split('/');
+var scrapPlaces = [];
+for (var i = 0; i < place.length; i++) {
+var mapo = mappositions[i].split(',');
+
+var object = {
+		"place_name" : place[i],
+		"y":mapo[0],
+		"x":mapo[1],
+		"content":content[i]
+};
+scrapPlaces.push(object);
+savePlaces.push(object);//여기서부터 수정해야함.겹쳐서 나옴
+}
+
+map = new daum.maps.Map(mapContainer, mapOption);
+var size = savePlaces.length-scrapPlaces.length;
+var j=0;
+for (var i = 0; i < savePlaces.length; i++) {
+
+if(i >= size){
+	scrapMark(savePlaces[i],scrapPlaces[j++],size,i);
+}else{
+	scrapMark(savePlaces[i],'',size,i);
+}
+
+}
+}
+
+function scrapMark(savePlace,scrapPlace,size,idx){
+
+var marker = new daum.maps.Marker({
+map : map,
+position : new daum.maps.LatLng(savePlace.y, savePlace.x)
+});
+
+daum.maps.event.addListener(marker, 'mouseover', function() {
+displayInfowindow(marker, savePlace.place_name);
+});
+daum.maps.event.addListener(marker, 'mouseout', function() {
+infowindow.close();
+});
+daum.maps.event.addListener(marker, 'click', function() {
+saveMarker(savePlace);
+});
+
+if(idx >= size){
+scrapTab(scrapPlace.place_name,scrapPlace.content);
+}
+
+}
+function scrapTab(title,content){
+var title = title.replace(/ /g,'');
+$('.oneDiary').css('display', 'none');
+$('.click').css('background','white');
+$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
+.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
+$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="20" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
+$('.' + title).css('display', '');
+
+$('.click').click(function() {
+$('.oneDiary').css('display', 'none');
+var id = $(this).parent().attr('id');
+$('.' + id).css('display', '');
+$('.click').css('background','white');
+$(this).css('background','lightgray');
+});
+}
 
 
 
@@ -437,10 +540,75 @@ $('.click').click(function() {
 function hiddenSearch(){
 	$('#menu_wrap').toggle(100);
 }
-function updateForm(){
+function update(){
 	if(confirm('수정하시겠습니까?')){	
 		
-		alert('미구현');
+		var place ="";
+		var content="";
+		var mappositions="";
+		for (var i = 0; i < savePlaces.length; i++) {	//여행지 갯수만큼 반복
+			place=place+savePlaces[i].place_name+"/";
+		}
+		
+		document.updateForm.place.value=place.substr(0,place.length-1);
+		//여행지 값 구하기 완료
+		
+		for (var i = 0; i < $('.textArea').length; i++) {	//여행지설명 갯수만큼 반복
+			content=content+$('.textArea')[i].value+"/";
+		}
+		
+		document.updateForm.contents.value=content.substr(0,content.length-1);
+		
+		for (var i = 0; i < savePlaces.length; i++) {
+			mappositions=mappositions+savePlaces[i].y+","+savePlaces[i].x+"/"
+		}
+		
+		document.updateForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
+		var con = document.updateForm.contents.value.replace(/\//g,'');
+		
+		if(document.updateForm.sdate.value==''){
+			alert('여행 시작일을 입력하세요.');
+			document.writingForm.sdate.focus();
+			return false;
+		}else if(document.updateForm.edate.value==''){
+			alert('여행 마지막일을 입력하세요.');
+			document.writingForm.edate.focus();
+			return false;
+		}else if(document.updateForm.place.value==''){
+			alert('여행지를 입력하세요.');
+			document.getElementById('keyword').focus();
+			return false;
+		}else if(con==''){
+			alert('여행지에 대한 설명을 입력하세요.');
+			change();
+			return false;
+		}else{
+			
+			document.updateForm.submit();
+			alert('수정 되었습니다.');
+		}
+		
 		
 	}
+}
+function removetable(id){
+
+	$('.'+id).remove();
+	$('#write').css('margin-top','-=20%');
+	$('.contents').css('min-height','-=20%');
+
+}
+var ct = 1;
+function addtable(title,val){
+	if(ct==1){
+		ct+=val;
+	}
+	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="10" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
+	$('#'+title+'plus').before(a);
+	
+	addpicture(title+"picture"+ct,title+"holder"+ct);
+	ct++;
+	$('.contents').css('min-height','+=20%');
+	$('#write').css('margin-top','+=20%');
+
 }

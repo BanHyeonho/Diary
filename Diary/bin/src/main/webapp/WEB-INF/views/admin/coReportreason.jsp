@@ -12,9 +12,9 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <link href="css/simplex.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 </head>
-<body>
+<body style="padding-top: 50px;">
 
 	<%
 		List<ReportVo> list = (List)request.getAttribute("coreportReason");	
@@ -24,7 +24,7 @@
 	<div class="container">
 	<div class="contents" >
 
-	<h1>신고사유</h1>
+	<h1 style="margin-left:390px;">신고사유</h1>
 
 		<table class="table table-striped table-hover table-bordered">
   		<thead class="thead-dark">

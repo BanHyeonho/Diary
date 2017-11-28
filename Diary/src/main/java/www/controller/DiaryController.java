@@ -3,6 +3,8 @@ package www.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import www.dto.HitCountVo;
 import www.dto.ReportVo;
 import www.dto.ScrapVo;
 import www.service.DiaryService;
+import www.util.FileSave;
 
 @Controller
 public class DiaryController {
@@ -40,7 +43,7 @@ public class DiaryController {
 
 	@RequestMapping(value = "/updateDiary.do", method = RequestMethod.POST)
 	public ModelAndView updateDiary(ModelAndView mav,DiaryVo vo) {
-		
+		logger.info("/updateDiary.do :"+vo.toString());
 		mav.addObject("Diary", vo);
 		mav.addObject("active", "0");
 		mav.setViewName("user/updateDiary");
@@ -48,10 +51,12 @@ public class DiaryController {
 	} // 글 수정
 
 	@RequestMapping(value = "/updateDiaryAction.do", method = RequestMethod.POST)
-	public ModelAndView updateDiaryAction(ModelAndView mav,DiaryVo vo) {
+	public ModelAndView updateDiaryAction(ModelAndView mav,HttpServletRequest request) {
 		
+		
+		FileSave fs = new FileSave();
+		DiaryVo vo = fs.diaryWrite(request);
 		logger.info(vo.toString());
-		
 		sv.updatediary(vo);
 		
 		HitCountVo hit = new HitCountVo();

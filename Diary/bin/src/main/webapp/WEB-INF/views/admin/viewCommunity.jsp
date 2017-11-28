@@ -9,15 +9,14 @@
 <title>Diary&Community</title>
 
 <link href="css/simplex.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/diary.css">
+<link rel="stylesheet" href="css/layout.css">
 </head>
 <script type="text/javascript" src="script/onecommunity.js"></script>
-<body>
+<body style="padding-top: 50px;">
 	<div class="wrap">
-	
 	<div class="container">
 	<div class="contents" >
-	<h1>만남의 장</h1>
+	<h1 style="margin-left:390px;">커뮤니티</h1>
 
 	<table class="table table-striped table-hover table-bordered">
 		<tbody>
@@ -67,13 +66,6 @@
 				<tr>
 					<td>${user.nick }</td>
 				</tr>
-				<tr>
-					<td>
-					<input type="text" id="contents" size="90" >
-					<button type="button" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button>
-					</td>
-				</tr>
-				
 			</table>
 		</div>
 			
@@ -101,7 +93,5 @@
 	</div>
 	
 	
-
-
 </body>
 </html>

@@ -6,7 +6,7 @@
 
   <insert id="diarywrite" parameterType="www.dto.DiaryVo">
   insert into DIARY(IDX,ID,NICK,DTITLE,PLACE,CONTENTS,MAPPOSITION,DPICTURE,SDATE,EDATE,DDATE,DHITCOUNT,GOOD,DREPORTCOUNT,DPUBLIC )
-values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},'쓰레기값',#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
+values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposition},#{dpicture},#{sdate},#{edate},SYSDATE,0,0,0,#{dpublic})
   </insert>
   
   <insert id="writedcomment" parameterType="www.dto.CommentVo" keyProperty="idx" >

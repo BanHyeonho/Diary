@@ -136,21 +136,30 @@ public class CommunityController {
 		return map;
 	}
 	
-	@RequestMapping(value="/ccreport.do",method=RequestMethod.GET)
+	@RequestMapping(value="/ccoreport.do",method=RequestMethod.GET)
 	public ModelAndView ccreport(ModelAndView mav,ReportVo vo){
 		
+		vo.setTitle("댓글신고폼");
 		mav.addObject("report",vo);
 		
 		mav.setViewName("user/creportForm");
 		return mav;
 	}
 	
+	@RequestMapping(value="/ccoreportinsert.do",method=RequestMethod.POST)
+	public @ResponseBody Map<String, String> ccoreportinsert(ModelAndView mav,ReportVo vo){
+		
+		System.out.println(sv.toString());
+		sv.ccoreportinsert(vo);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		return map;
+	}
 		
 		
 		
 		
-
-	
 	
 //
 //
