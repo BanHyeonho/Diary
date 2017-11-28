@@ -359,7 +359,7 @@ function createTab(title){
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="10" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+ct+');">추가하기</button></center></td></tr></table></div>');
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="12" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+ct+');">추가하기</button></center></td></tr></table></div>');
 	$('.' + title).css('display', '');
 	
 	addpicture(title+"picture",title+"holder");
@@ -470,7 +470,7 @@ $('.oneDiary').css('display', 'none');
 $('.click').css('background','white');
 $('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 .append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="20" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
+$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="12" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
 $('.' + title).css('display', '');
 
 $('.click').click(function() {
@@ -603,7 +603,7 @@ function addtable(title,val){
 	if(ct==1){
 		ct+=val;
 	}
-	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="10" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
+	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="12" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
 	$('#'+title+'plus').before(a);
 	
 	addpicture(title+"picture"+ct,title+"holder"+ct);

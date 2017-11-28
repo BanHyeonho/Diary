@@ -17,6 +17,7 @@
 
 <script type="text/javascript" src="script/onecommunity.js"></script>
 <body>
+
 	<div class="wrap">
 	<%@ include file="../layout/header.jsp"%>
 	<div class="container">
@@ -76,7 +77,7 @@
 				</tr>
 				<tr>
 					<td>
-					<input type="text" id="contents" size="155" >
+					<input type="text" id="contents" size="150" >
 					<span style="float:right"> <button type="button" style="margin-top:10px" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button></span>
 					</td>
 				</tr>
@@ -96,7 +97,7 @@
 				
 			</tr>
 			<tr class='${data1.idx}'>
-			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('/ccreport.do?witerid=${data.id }&linkedidx=${data.idx }&title=${data.ctitle }&reporter=${user.nick }','신고','width=400,height=500,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
+			<td>${data1.contents }<span style="float:right"> <button type="button" onclick="window.open('/ccoreport.do?witerid=${data1.nick}&linkedidx=${data1.idx }&reporter=${user.nick }','신고','width=600,height=800,location=no,status=no,scrollbars=yes');"class="btn btn-primary btn-sm"> 신고</button></span></td>
 			</tr> 
 			
 			</c:forEach> 

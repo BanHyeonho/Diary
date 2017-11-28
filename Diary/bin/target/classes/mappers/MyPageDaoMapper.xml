@@ -6,7 +6,11 @@
 
 <!-- 회원정보수정  -->
 <update id="updateinfo" parameterType="www.dto.MemberVo">
-	update member set PASSWORD=#{password},NAME=#{name},GENDER=#{gender},BIRTH=#{birth},EMAIL=#{email},PHONE=#{phone},ADDR=#{addr},PWQ=#{pwq},ANSWER=#{answer},PICTURE=#{picture} Where ID=#{id}
+	update member set PASSWORD=#{password},NAME=#{name},GENDER=#{gender},BIRTH=#{birth},EMAIL=#{email},PHONE=#{phone},ADDR=#{addr},PWQ=#{pwq},ANSWER=#{answer}
+	<if test="picture neq ''">
+	,PICTURE=#{picture}
+	</if>
+	 Where ID=#{id}
 </update>
 <!-- 회원탈퇴 -->
 <delete id="deleteinfo" parameterType="String">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Diary&Community</title>
 </head>
 <body>
+<div id="roof"></div>
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
@@ -39,7 +41,7 @@
 							</c:forTokens>
 								</div>
 								<span class="thumb">
-									<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/56012/51348/56012_51348_76_0_9284_201652465543354.jpg" alt="이미지">
+									<img src="/upload/${fn:split(data.dpicture,'/')[0]}" alt="이미지">
 								</span>
 								<div class="card-body">
 									<p class="card-text">내용란 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽</p>

@@ -22,4 +22,7 @@ public interface CommunityDao {
 	public void hitcounted(HitCountVo vo);			//조회하여 hit테이블에 값이 들어감
 	public void creportinsert(ReportVo vo);	//게시글 신고
 	public void creportup(ReportVo vo);	//게시글 신고 카운트
+	public void ccoreportinsert(ReportVo vo);	//만남의장 댓글 신고
+	public void ccoreportup(ReportVo vo);	//댓글 신고 카운트
+
 }

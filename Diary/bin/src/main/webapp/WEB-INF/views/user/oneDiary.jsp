@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="www.dto.DiaryVo" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,11 +19,12 @@
 		DiaryVo vo = (DiaryVo)map.get("Diary");
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
+		String[] picture = vo.getDpicture().split("/");
 %>
+
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
 		<div class="container">
-		<%@ include file="../layout/nav.jsp"%>
 		<div class="contents" style="position: relative; overflow-x:hidden; height: auto;">
 
 		<h2 style="display: inline;">${data.Diary.dtitle }</h2>
@@ -79,6 +81,7 @@
 			</a></li>
 			<li><a href="javascript:mag_form('${ data.Diary.nick }','${ data.Diary.id }','${user.nick }','${user.id }');">쪽지보내기</a></li>
 		</ul>
+		<%@ include file="./msgSend.jsp"%>
 		</c:if>
     <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
 
@@ -92,9 +95,30 @@
 		</c:forTokens>
 		</ul>
 		<%int i=0; %>
-		<div class="<%=place[0]%> oneDiary"><img alt="사진"><textarea rows="25" cols="100" class="form-control textArea" disabled="disabled" ><%=content[i++] %></textarea></div>
+		<%int k=0; %>
+		<div class="<%=place[0]%> oneDiary">
+		<table>
+		<%for(int j = 0;j<content[k].split("&").length;j++){%>
+		<tr>
+		<td><img src="/upload/<%=picture[i++] %>" alt="사진"></td>
+		<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled" ><%=content[k].split("&")[j] %></textarea></td>
+		</tr>
+		<%} %>
+		</table>
+		</div>
+		 <%k++; %>
 		 <c:forTokens items="${data.Diary.place}" delims="/" var="place" begin="1">
-			<div class="${place} oneDiary" style="display: none;"><img alt="사진"><textarea rows="25" cols="100" class="form-control textArea" disabled="disabled"  ><%=content[i++] %></textarea></div>
+			<div class="${place} oneDiary" style="display: none;">
+			<table>
+			<%for(int j = 0;j<content[k].split("&").length;j++){ %>
+			<tr>
+				<td><img src="/upload/<%=picture[i++] %>" alt="사진"></td>
+				<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled"  ><%=content[k].split("&")[j] %></textarea></td>
+			</tr>
+			<%}
+			k++; %>
+			</table>
+			</div>
 		</c:forTokens> 
 		</div>
 		
@@ -103,18 +127,26 @@
 		<div><!--댓글  -->
 		<hr>
 		<c:if test="${user!=null }">
-		${user.nick } : <input type="text" id="comment" /><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
+		<span style="color: black; font-weight: bold;">${user.nick }</span> : <input type="text" id="comment" /><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
 		<hr>
 		</c:if>
-		<table>
-		
-		</table>
+		<div id="commentArea">
+		<c:forEach items="${data.comment }" var="data">
+		<div id='${data.idx}'>
+		<span style="color: black;font-weight: bold;">${data.nick }</span>&nbsp;<c:if test="${data.nick==user.nick }"><a href="javascript:deletecomment('${data.idx}');" style="color: tomato; text-decoration: none;">삭제</a></c:if>
+		<br/>		
+		<span style="color: black;">${data.contents }</span><br/>
+		<span style="color: gray;"><fmt:formatDate value="${data.cdate }" pattern="yyyy-MM-dd HH:MM"/></span><c:if test="${data.nick!=user.nick }">&nbsp;<a href="javascript:openReport('${data.nick }','${user.nick }','${data.idx}');" style="color: tomato; text-decoration: none;">신고</a></c:if>
+		<hr>		
+		</div>
+		</c:forEach>		
+		</div>
 		</div><!-- contents -->
 			
 			
-			<%@ include file="../layout/footer.jsp"%>
 		</div>
 	</div>
+			<%@ include file="../layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript" src="script/mypage.js"></script>
 	<script type="text/javascript" src="script/oneDiary.js"></script>	

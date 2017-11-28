@@ -18,6 +18,7 @@
 
 </head>
 <body>
+
 	<%@ include file="../layout/header.jsp"%>
 	<c:if test="${msg!=null }">
 		<script type="text/javascript">
@@ -61,7 +62,7 @@
 				<div id="privacy" class="privacy tab-pane fade in active show">
 
 
-					<form action="/updateInfoAction.do" method="post" name="sform">
+					<form action="/updateInfoAction.do" method="post" name="sform" enctype="multipart/form-data">
 						<table class="table table-bordered">
 							<thead class="thead-dark">
 								<tr>
@@ -156,8 +157,10 @@
 							</tr>
 							<tr>
 								<th class="join">프로필사진</th>
-								<td><input type="text" class="form-control" name="picture"
-									value="${user.picture }" /></td>
+								<td><input type="file" name="picture" id="picture" /><br/>
+								
+								<img src='/upload/${user.picture}' alt="프로필사진" id="oldpic" /> 
+            						<div id="holder"></div></td>
 							</tr>
 						</table>
 						<center>
@@ -287,7 +290,8 @@
 
 						</tbody>
 					</table>
-					<%@ include file="./msgSend.jsp"%>
+					
+				</div>
 				<!--block_list  -->
 				<div id="block_list" class="tab-pane fade">
 					<table class="table table-striped table-hover table-bordered">
@@ -308,6 +312,8 @@
 
 		</div>
 	</div>
+	<%@ include file="./msgSend.jsp"%>
 	<%@ include file="../layout/footer.jsp"%>
+	<script type="text/javascript" src="script/preview.js"></script>
 </body>
 </html>

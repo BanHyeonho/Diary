@@ -75,5 +75,38 @@
  
   </select>
   
+   <insert id="hitcounted" parameterType="www.dto.HitCountVo">
+  insert into CHITCOUNT values(CHITCOUNT_SEQ.NEXTVAL,#{linkedidx},#{id})
+  </insert>
+  
+   <select id="hitCountChk" resultType="www.dto.HitCountVo" parameterType="www.dto.HitCountVo">
+    select * from CHITCOUNT where ID = #{id} and LINKEDIDX = #{linkedidx}
+  </select>
+  
+   <update id="chitcount" parameterType="www.dto.CommunityVo">
+  	update COMMUNITY set CHITCOUNT = #{chitcount} where IDX=#{idx}
+  </update>
+  
+  <insert id="creportinsert" parameterType="www.dto.ReportVo">
+   insert into CREPORT values(CREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{title},#{type},#{reason},#{linkedidx})
+  </insert>
+  
+  <update id="creportup" parameterType="www.dto.ReportVo" keyProperty="idx">
+  update COMMUNITY set CREPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  <selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select CREPORTCOUNT from COMMUNITY where idx = #{linkedidx}
+  </selectKey>
+  </update>
+  
+   <insert id="ccoreportinsert" parameterType="www.dto.ReportVo">
+   insert into CCOREPORT values(CCOREPORT_SEQ.NEXTVAL,#{reporter},#{witerid},#{type},#{reason},#{linkedidx})
+  </insert>
+  
+    <update id="ccoreportup" parameterType="www.dto.ReportVo" keyProperty="idx">
+  update CCOMMENT set REPORTCOUNT=(#{idx}+1) where idx=#{linkedidx}
+  <selectKey keyProperty="idx" order="BEFORE" resultType="Integer"  >
+  		select REPORTCOUNT from CCOMMENT where idx = #{linkedidx}
+  </selectKey>
+  </update>
   
 </mapper>

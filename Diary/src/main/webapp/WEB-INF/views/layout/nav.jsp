@@ -6,7 +6,7 @@
 <button type="button"class="tab btn-outline-primary btn-sm"onclick="toggle();">탭</button>
 <div class="navi btn-group-vertical" data-toggle="buttons">
 	<div>
-		<button type="button" class="up btn-outline-danger btn-sm" onclick="location.href='#head'" >맨위로</button>
+		<button type="button" class="up btn-outline-danger btn-sm" onclick="location.href='#roof'" >맨위로</button>
 		
 		
 		<button type="button" class="btn btn-outline-info btn-sm" onclick="wow_following('${user.id}')">팔로잉</button>

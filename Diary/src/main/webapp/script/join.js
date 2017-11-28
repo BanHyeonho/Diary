@@ -14,7 +14,7 @@ $(document).ready(function(){
 					data: data,
 					dataType:'json',
 					success:function(data){
-						//$('#idresult').html("<font color='red'>"+data.result+"</font>");
+						
 						if(data.result=="아이디가 이미 존재합니다."){
 							$('#idresult').html("<font color='red'>"+data.result+"</font>");
 							document.value.userid.value.focus();
