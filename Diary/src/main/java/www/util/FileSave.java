@@ -54,6 +54,7 @@ public class FileSave {
 				FileItem item = (FileItem)iter.next();
 				//사이즈가 0인 빈파일이 업로드 되면 처리하지 않음
 				if(item.getSize()<=0){
+					
 					continue;
 				}
 				//텍스트 폼 데이터 처리
@@ -131,6 +132,7 @@ public class FileSave {
 	
 	public DiaryVo diaryWrite(HttpServletRequest request){
 		DiaryVo vo = new DiaryVo();
+		String oldpic =null;
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if(isMultipart){
 			
@@ -154,13 +156,20 @@ public class FileSave {
 				e.printStackTrace();
 			}
 			Iterator iter = items.iterator();
-			
+			int i=0;
 			while(iter.hasNext()){
 				FileItem item = (FileItem)iter.next();
 				
 				if(item.getSize()<=0){
+					System.out.println(oldpic);
+					if(vo.getDpicture()==null){
+						vo.setDpicture(oldpic.split("/")[i++]);
+					}else{
+						vo.setDpicture(vo.getDpicture()+"/"+oldpic.split("/")[i++]);
+					}
 					continue;
 				}
+				
 				if(item.isFormField()){
 					try{
 					switch(item.getFieldName()){
@@ -193,6 +202,9 @@ public class FileSave {
 						break;
 					case "dpublic":
 						vo.setDpublic(item.getString("UTF-8"));
+						break;
+					case "pictureData":
+						oldpic=item.getString("UTF-8");
 						break;
 					}
 					}catch(Exception e){
@@ -231,8 +243,7 @@ public class FileSave {
 			}// while end
 			
 		}
-		
-		
+
 		
 		
 		return vo;

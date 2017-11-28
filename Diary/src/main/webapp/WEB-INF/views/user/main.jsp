@@ -59,7 +59,7 @@
 									<h5><%=list.get(idx.get(i)).getNick() %></h5>
 								</div>
 								<span class="thumb">
-									<img style="width:680px;height: 500px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
+									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:680px;height: 500px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
 							</div>
 							<!-- 2,3등 div -->
@@ -74,7 +74,7 @@
 										<h5><%=list.get(idx.get(i)).getNick() %></h5>
 									</div>
 									<span class="thumb">
-										<img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
+										<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 									</span>
 								</div >
 								<!-- 3등 div -->
@@ -103,7 +103,7 @@
 										<h5><%=list.get(idx.get(i)).getNick() %></h5>
 								</div>
 								<span class="thumb">
-									<img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
+									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
 							</div>
 							<!--5등 div  -->
@@ -116,7 +116,7 @@
 										<h5><%=list.get(idx.get(i)).getNick() %></h5>
 								</div>
 								<span class="thumb">
-									<img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
+									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
 							</div>
 						</div>

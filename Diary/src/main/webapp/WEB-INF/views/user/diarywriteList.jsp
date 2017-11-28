@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>팔로워 목록</title>
 <link href="css/simplex.css" rel="stylesheet" />
+<script type="text/javascript" src="script/preview.js"></script>
 <script type="text/javascript" src="script/diarywrite.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
@@ -22,7 +23,7 @@
 			<tbody id="scarp_listwow">
 		 	<c:forEach items="${scrap_listwow}" var="scarp" >
 				<tr>
-					<td>${scarp.dtitle }(${scarp.place}) &nbsp;<button type="button"   onclick="scrap_show('${scarp.place}','${scarp.contents}','${scarp.mapposition}');">가져오기</button></td> <td>${scarp.nick}</td>
+					<td>${scarp.dtitle }(${scarp.place}) &nbsp;<button type="button"   onclick="scrap_show('${scarp.place}','${scarp.contents}','${scarp.mapposition}','${scarp.dpicture}');">가져오기</button></td> <td>${scarp.nick}</td>
 				</tr>
 			</c:forEach> 
 			</tbody>
