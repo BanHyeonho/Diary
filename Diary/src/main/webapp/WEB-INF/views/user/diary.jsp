@@ -44,7 +44,7 @@
 									<img src="/upload/${fn:split(data.dpicture,'/')[0]}" alt="이미지">
 								</span>
 								<div class="card-body">
-									<p class="card-text">내용란 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽</p>
+									<p class="card-text"></p>
 									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
 								</div>
 								<div class="card-footer text-muted">

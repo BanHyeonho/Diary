@@ -149,8 +149,9 @@ public class CommunityController {
 	@RequestMapping(value="/ccoreportinsert.do",method=RequestMethod.POST)
 	public @ResponseBody Map<String, String> ccoreportinsert(ModelAndView mav,ReportVo vo){
 		
+		System.out.println(sv.toString());
 		sv.ccoreportinsert(vo);
-	
+		
 		Map<String, String> map = new HashMap<String, String>();
 		
 		return map;

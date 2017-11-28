@@ -52,12 +52,10 @@
 							<!-- 1등 div -->
 							<div style="width:680px; height:500px; background-color: red; position: relative; ">
 								<div style="position: absolute;top:400px;left:30px;">
-									<h5><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-									<h3><%=list.get(idx.get(i)).getPlace() %></h3>
+									<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+									<h5><%=list.get(idx.get(i)).getPlace() %></h5>
 								</div>
-								<div style="position: absolute;top:450px; left:550px;">
-									<h5><%=list.get(idx.get(i)).getNick() %></h5>
-								</div>
+								
 								<span class="thumb">
 									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:680px;height: 500px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
@@ -67,12 +65,10 @@
 								<!-- 2등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float: left; position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
-										<h5><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h3><%=list.get(idx.get(i)).getPlace() %></h3>
+										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
 									</div>
-									<div style="position: absolute;top:200px; left:210px;">
-										<h5><%=list.get(idx.get(i)).getNick() %></h5>
-									</div>
+									
 									<span class="thumb">
 										<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 									</span>
@@ -80,12 +76,10 @@
 								<!-- 3등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float : left; margin-left:30px;position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
-										<h5><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h3><%=list.get(idx.get(i)).getPlace() %></h3>
+										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
 									</div>
-									<div style="position: absolute;top:200px; left:210px;">
-										<h5><%=list.get(idx.get(i)).getNick() %></h5>
-									</div>
+									
 									<span class="thumb">
 										<img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
 									</span>
@@ -96,12 +90,10 @@
 							<!--4등 div  -->
 							<div style="width:370px;height:375px; background-color:green; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
-										<h5><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h3><%=list.get(idx.get(i)).getPlace() %></h3>
+										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
 								</div>
-								<div style="position: absolute;top:330px; left:180px;">
-										<h5><%=list.get(idx.get(i)).getNick() %></h5>
-								</div>
+								
 								<span class="thumb">
 									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
@@ -109,12 +101,10 @@
 							<!--5등 div  -->
 							<div style="width:370px;height:375px; background-color:green; margin-top: 30px; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
-										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h3 ><%=list.get(idx.get(i)).getPlace() %></h3>
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 ><%=list.get(idx.get(i)).getPlace() %></h5>
 								</div>
-								<div style="position: absolute;top:330px; left:180px;">
-										<h5><%=list.get(idx.get(i)).getNick() %></h5>
-								</div>
+								
 								<span class="thumb">
 									<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:370px;height: 375px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 								</span>
