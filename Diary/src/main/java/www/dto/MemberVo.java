@@ -1,7 +1,5 @@
 package www.dto;
 
-import java.util.Date;
-
 public class MemberVo {
 	private String id; // 아이디
 	private String password; // 비밀번호

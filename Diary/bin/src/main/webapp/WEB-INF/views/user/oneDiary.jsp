@@ -100,7 +100,7 @@
 		<table>
 		<%for(int j = 0;j<content[k].split("&").length;j++){%>
 		<tr>
-		<td><img src="/upload/<%=picture[i++] %>" alt="사진"></td>
+		<td><img src="/upload/<%=picture[i++] %>" alt="사진" style="width: 300px;height:300px;"></td>
 		<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled" ><%=content[k].split("&")[j] %></textarea></td>
 		</tr>
 		<%} %>
@@ -112,7 +112,7 @@
 			<table>
 			<%for(int j = 0;j<content[k].split("&").length;j++){ %>
 			<tr>
-				<td><img src="/upload/<%=picture[i++] %>" alt="사진"></td>
+				<td><img src="/upload/<%=picture[i++] %>" alt="사진" style="width: 300px;height:300px;" ></td>
 				<td><textarea rows="10" cols="60" class="form-control textArea" disabled="disabled"  ><%=content[k].split("&")[j] %></textarea></td>
 			</tr>
 			<%}

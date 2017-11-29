@@ -9,6 +9,7 @@ import www.dto.GoodVo;
 import www.dto.HitCountVo;
 import www.dto.ReportVo;
 import www.dto.ScrapVo;
+import www.dto.TopVo;
 
 public interface DiaryDao {
 
@@ -23,9 +24,9 @@ public interface DiaryDao {
 	public HitCountVo hitCountChk(HitCountVo vo);	//조회했는지 아닌지 확인
 	public GoodVo goodchk(HitCountVo vo);	//추천누른 아이디랑 글의 인덱스가 들어있는 Vo
 	public void good(GoodVo vo);		//추천!
-	public List<DiaryVo> searchByWriter(String nick);		//글쓴이(닉네임) 으로 검색
-	public List<DiaryVo> searchByTitle(String title);		//제목 으로 검색
-	public List<DiaryVo> searchByPlace(String place);		//여행지로 검색
+	public List<TopVo> searchByWriter(String nick);		//글쓴이(닉네임) 으로 검색
+	public List<TopVo> searchByTitle(String title);		//제목 으로 검색
+	public List<TopVo> searchByPlace(String place);		//여행지로 검색
 	public List<CommentVo> comment(int idx);   // 댓글 리스트 가져오기  인덱스는 해당글의 idx
 	public void hitcounted(HitCountVo vo);			//조회하여 hit테이블에 값이 들어감
 	public ScrapVo scrapChk(HitCountVo vo);					//스크랩 했는지 체크

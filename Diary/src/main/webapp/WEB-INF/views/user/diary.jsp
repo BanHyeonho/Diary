@@ -8,6 +8,15 @@
 <title>Diary&Community</title>
 </head>
 <body>
+
+<%
+int size=0;
+int pagee=0;
+	if(request.getAttribute("page")!=null){
+	size = (int)request.getAttribute("size");
+	pagee = Integer.parseInt((String)request.getAttribute("page"));
+	}
+%>
 <div id="roof"></div>
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
@@ -36,20 +45,23 @@
 							<div class="card">
 								<h3 class="card-header">${data.dtitle }</h3>
 								<div class="card-body">
-								<c:forTokens items="${data.place }" delims="/" var="place">
+								<%-- <c:forTokens items="${data.place }" delims="/" var="place">
 								<h5 class="card-title">${place }</h5>
-							</c:forTokens>
+							</c:forTokens> --%>
+							
+								<h5 class="card-title">${fn:replace(data.place,'/','#')}</h5>
+							
 								</div>
 								<span class="thumb">
 									<img src="/upload/${fn:split(data.dpicture,'/')[0]}" alt="이미지">
 								</span>
 								<div class="card-body">
-									<p class="card-text">내용란 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽</p>
+									<p class="card-text"></p>
 									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
-										<img src="http://img1.ak.crunchyroll.com/i/spire2/98784242d8fff0814c722b2c40950fbb1457186596_large.png" alt="프로필사진" />
+										<img src="/upload/${data.picture }" alt="프로필사진" />
 									</span>
 									<span class="name">${data.nick }</span>
 								</div>
@@ -62,7 +74,24 @@
 					
 					
 				</div>
-				<button type="button" class="btn btn-outline-primary btn-lg more-btn">MORE</button>
+				<div>
+	<%if(pagee!=0){ %>			
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=1">&lt;&lt;</a>
+    </li>
+    <%for(int i=1;i<=size;i++){ %>
+    <li class="page-item <%if(i==pagee){%>active<%}%>">
+      <a class="page-link" href="/diary.do?page=<%=i %>"><%=i %></a>
+    </li>
+    <%} %>
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=<%=size %>">&gt;&gt;</a>
+    </li>
+  </ul>
+ <%} %>
+</div>
+			
 			</div>
 			
 			
@@ -71,6 +100,6 @@
 			<%@ include file="../layout/nav.jsp"%>
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
-	<script type="text/javascript" src="script/diary.js"></script>
+<script type="text/javascript" src="script/diary.js"></script>
 </body>
 </html>

@@ -16,8 +16,9 @@ public interface MainDao {
 	public String nickchk(String nick);      //닉네임중복확인
 	public MemberVo login(MemberVo vo);	//로그인
 	public List<CommunityVo> community();	//커뮤니티이동
-	public List<DiaryVo> diary();		//여행일지로이동
+	public List<TopVo> diary(int page);		//여행일지로이동
 	public String pwchk(MemberVo vo);	//비밀번호 리턴
+	public Integer diarySize();
 	
 	
 	

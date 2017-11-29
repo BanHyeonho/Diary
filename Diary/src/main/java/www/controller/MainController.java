@@ -112,9 +112,24 @@ public class MainController {
 	 } // 만남의장으로 이동
 	
 	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
-	 public ModelAndView diary(ModelAndView mav) {
+	 public ModelAndView diary(ModelAndView mav,String page) {
 		
-		mav.addObject("list", sv.diary());
+		if(page==null){
+			page="1";
+		}
+		
+		Map<String,Object> map = sv.diary(Integer.parseInt(page));
+		
+
+		int size = ((int) map.get("size"))/9;
+		
+		if(((int) map.get("size"))%9!=0){
+			size++;
+		}
+		
+		mav.addObject("list", map.get("list"));
+		mav.addObject("size", size);
+		mav.addObject("page",page);
 		mav.addObject("active", "0");
 		mav.setViewName("user/diary");
 	 return mav;

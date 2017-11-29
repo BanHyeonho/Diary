@@ -307,10 +307,6 @@ function removeAllChildNods(el) {
 }
 
 
-
-
-
-
 function hiddenSearch(){
 	$('#menu_wrap').toggle(100);
 }
@@ -341,7 +337,7 @@ function createTab(title){
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
 
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="10" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\');">추가하기</button></center></td></tr></table></div>');
+	$('.writingPlace').append('<div class="'+title+' oneDiary"><table><tr><td><div id="'+title+'holder"></div></td><td rowspan="2"><textarea id="'+title+'Text" rows="12" cols="100" class="form-control textArea" ></textarea></td></tr><tr><td><input type="file" name="'+title+'picture" id="'+title+'picture" class="form-control" /><td></tr><tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\');">추가하기</button></center></td></tr></table></div>');
 
 	$('.' + title).css('display', '');
 	
@@ -357,7 +353,7 @@ function createTab(title){
 
 function addtable(title){
 
-	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="10" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
+	var a =$('<tr class="'+title+'tr'+ct+'"><td><div id="'+title+'holder'+ct+'"></div></td><td rowspan="2"><textarea id="'+title+'Text'+ct+'" rows="12" cols="100" class="form-control textArea" ></textarea></td><td><button type="button" onclick="removetable(\''+title+'tr'+ct+'\');">X</button></td></tr><tr class="'+title+'tr'+ct+'"><td><input type="file" name="'+title+'picture'+ct+'" id="'+title+'picture'+ct+'" class="form-control" /><td></tr>');
 	$('#'+title+'plus').before(a);
 	
 	addpicture(title+"picture"+ct,title+"holder"+ct);
@@ -392,12 +388,9 @@ function writing(){
 	for (var i = 1; i < $('.writingPlace').children().size(); i++) {	//여행지설명 갯수만큼 반복
 		
 		for (var j = 0; j < $('.writingPlace').children()[i].firstChild.firstChild.rows.length-1; j=j+2) {
-			console.log(k,"j :"+j);
 			content=content+document.getElementsByTagName('textArea')[k].value+"&";
-			console.log(content);
 			k++;
 		}content=content.slice(0,-1)+"/";
-	/*content=content+$('.textArea')[i].value+"/";*/
 	}
 	
 	document.writingForm.contents.value=content.substr(0,content.length-1);
@@ -408,6 +401,14 @@ function writing(){
 	
 	document.writingForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
 	var con = document.writingForm.contents.value.replace(/\//g,'');
+	
+	
+	//스크랩 이미지이름 담기
+	for (var i = 0; i < $('.oldpic').length; i++) {
+		document.writingForm.pictureData.value += $('.oldpic')[0].src.substr($('.oldpic')[0].src.lastIndexOf('/')+1)+"/";
+	}
+	
+	document.writingForm.pictureData.value=document.writingForm.pictureData.value.slice(0,-1);
 	
 	if(document.writingForm.dtitle.value==''){
 		alert('글제목을 입력하세요.');
@@ -430,7 +431,6 @@ function writing(){
 		change();
 		return false;
 	}else{
-		
 		document.writingForm.submit();
 	}
 	
@@ -458,21 +458,37 @@ function scrap_list(id){
 				form.submit();
 }
 
-function scrap_show(place,contents,mapposition){
+function scrap_show(place,contents,mapposition,picture){
 	
 if (confirm("현재 글쓰기에 추가 하시겠습니까?")) {
 		
-		opener.attachScrap(place,contents,mapposition);
+		opener.attachScrap(place,contents,mapposition,picture);
 		
 		alert('추가완료');
 	}
 	
 }
-function attachScrap(places,contents,mapposition){
+function attachScrap(places,contents,mapposition,pictures){
 	
 	var place = places.split('/');
 	var mappositions = mapposition.split('/');
 	var content = contents.split('/');
+	var picture = pictures.split('/');
+	var npic ="";
+	var z=0;
+	for (var i = 0; i < content.length; i++) {
+		
+		for (var j = 0; j < content[i].split('&').length; j++) {
+			
+			npic =npic+ picture[z++]+"&";
+			
+		}
+		
+		npic=npic.slice(0,-1)+"/";
+		
+	}
+	npic=npic.slice(0,-1);
+	var pic = npic.split('/');
 	var scrapPlaces = [];
 	for (var i = 0; i < place.length; i++) {
 		var mapo = mappositions[i].split(',');
@@ -481,10 +497,11 @@ function attachScrap(places,contents,mapposition){
 				"place_name" : place[i],
 				"y":mapo[0],
 				"x":mapo[1],
-				"content":content[i]
+				"content":content[i],
+				"picture":pic[i]
 		};
 		scrapPlaces.push(object);
-		savePlaces.push(object);//여기서부터 수정해야함.겹쳐서 나옴
+		savePlaces.push(object);
 	}
 	
 	map = new daum.maps.Map(mapContainer, mapOption);
@@ -519,17 +536,38 @@ function scrapMark(savePlace,scrapPlace,size,idx){
     });
 
 	if(idx >= size){
-		scrapTab(scrapPlace.place_name,scrapPlace.content);
+		scrapTab(scrapPlace.place_name,scrapPlace.content,scrapPlace.picture);
 	}
 
 }
-function scrapTab(title,content){
+
+var sc=0;
+function scrapTab(title,content,picture){
 	var title = title.replace(/ /g,'');
 	$('.oneDiary').css('display', 'none');
 	$('.click').css('background','white');
 	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
 	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-	$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="20" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
+	
+	
+	var div = '<div class="'+title+' oneDiary"><table>';
+	var co="";
+	for (var i = 0; i < content.split('&').length; i++) {
+		co+='<tr class="'+title+'tr'+sc+'"><td><img class="'+title+'holder'+sc+' oldpic" src="/upload/'+picture.split('&')[i]+'" alt="사진" style="width: 300px;height:300px;"></td><td><textarea rows="10" cols="60" class="form-control textArea" >'+content.split('&')[i]+'</textarea></td>';
+		if(i!=0){
+			co+='<td><button type="button" onclick="removetable(\''+title+'tr'+sc+'\');">X</button></td>';
+		}
+		co+='</tr>';
+		if(i==content.split("&").length-1){
+		co+='<tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+sc+');">추가하기</button></center></td></tr>';
+		}
+		sc++;
+	}
+	co+='</table>';
+	div+=co;
+	
+	
+	$('.writingPlace').append(div);
 	$('.' + title).css('display', '');
 	
 	$('.click').click(function() {

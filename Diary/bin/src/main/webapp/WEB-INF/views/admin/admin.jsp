@@ -72,7 +72,7 @@
 									<td><input type="checkbox" disabled="disabled"
 										<c:if test="${mdata.reportcount>=3}">checked</c:if> /></td>
 									<td><button type="button"
-											class="btt btn-outline-primary btn-md"
+											class="btt btn-primary btn-md"
 											onclick="javascript:openWin('${mdata.id}');">정보보기</button></td>
 								</tr>
 							</c:forEach>
@@ -127,10 +127,10 @@
 									<td>${ddata.dtitle}</td>
 									<td>${ddata.nick}</td>
 									<td><button type="button"
-											class="btn-outline-primary btn-md"
+											class="btn-primary btn-md"
 											onclick="javascript:DviewopenWin('${ddata.idx}');">글보기</button></td>
 									<td><button type="button"
-											class="btn-outline-primary btn-md"
+											class="btn-danger btn-md"
 											onclick="deletediary('${ddata.idx}');">삭제</button></td>
 								</tr>
 							</c:forEach>
@@ -184,10 +184,10 @@
 									<td>${cdata.ctitle}</td>
 									<td>${cdata.nick}</td>
 									<td><button type="button"
-											class="btn-outline-primary btn-md"
+											class="btn-primary btn-md"
 											onclick="javascript:CviewopenWin('${cdata.idx}');">글보기</button></td>
 									<td><button type="button"
-											class="btn-outline-primary btn-md"
+											class="btn-danger btn-md"
 											onclick="deletecommunity('${cdata.idx}');">삭제</button></td>
 								</tr>
 							</c:forEach>
@@ -223,7 +223,7 @@
 							<button class="btn btn-secondary my-2 my-sm-0" type="button"
 								onclick="dcosearch();">검색</button>
 							<button type="button" class="btt btn-danger btn-md"
-								data-toggle="tab" href="#Comcomment" onclick="Comcomment();">만남의장
+								data-toggle="tab" href="#Comcomment" onclick="Comcomment();">커뮤니티
 								신고 댓글보기</button>
 						</form>
 
@@ -262,7 +262,7 @@
 				<!--만남의장 comment -->
 				<div id="Comcomment" class="tab-pane fade show">
 					<div class="searchtool">
-						<h3>만남의장 신고된 댓글</h3>
+						<h3>커뮤니티 신고된 댓글</h3>
 						<form class="ss form-inline my-2 my-lg-0" name="ccosearchtool"
 							method="get">
 							<select class="form-control" name="option">

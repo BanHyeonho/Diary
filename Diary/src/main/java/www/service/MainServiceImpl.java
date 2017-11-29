@@ -1,7 +1,9 @@
 package www.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import www.dao.MainDao;
 import www.dto.CommunityVo;
-import www.dto.DiaryVo;
 import www.dto.MemberVo;
 import www.dto.TopVo;
 
@@ -127,9 +128,21 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<DiaryVo> diary() {
+	public Map<String,Object> diary(int page) {
 		// TODO Auto-generated method stub
-		return dao.diary();
+		
+		List<TopVo> top = dao.diary(page);
+		int size =dao.diarySize();
+		List<TopVo> list = new ArrayList<TopVo>();
+		for (TopVo topVo : top) {
+			System.out.println(topVo.toString());
+			topVo.setPicture(dao.picture(topVo.getId()));
+			list.add(topVo);
+		}
+		Map<String,Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("size", size);
+		return map;
 	}
 
 	

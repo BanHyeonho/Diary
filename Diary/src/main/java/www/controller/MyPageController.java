@@ -77,8 +77,8 @@ public class MyPageController {
 
 
 	@RequestMapping(value="/myScrap.do", method =RequestMethod.POST)
-	public @ResponseBody Map<String,List<ScrapVo>> myScrap(String id) {
-		Map<String, List<ScrapVo>> map = new HashMap<String,List<ScrapVo>>();
+	public @ResponseBody Map<String,List<DiaryVo>> myScrap(String id) {
+		Map<String, List<DiaryVo>> map = new HashMap<String,List<DiaryVo>>();
 		
 		map.put("myScrap",sv.myScrap(id));
 		
