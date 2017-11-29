@@ -8,6 +8,15 @@
 <title>Diary&Community</title>
 </head>
 <body>
+
+<%
+int size=0;
+int pagee=0;
+	if(request.getAttribute("page")!=null){
+	size = (int)request.getAttribute("size");
+	pagee = Integer.parseInt((String)request.getAttribute("page"));
+	}
+%>
 <div id="roof"></div>
 	<div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
@@ -63,37 +72,21 @@
 					
 				</div>
 				<div>
-				
+	<%if(pagee!=0){ %>			
   <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#">&lt;&lt;</a>
-    </li>
-    <li class="page-item disabled">
-      <a class="page-link" href="#">&lt;</a>
-    </li>
-    <li class="page-item active">
-      <a class="page-link" href="/diary.do?page=1">1</a>
-    </li>
     <li class="page-item">
-      <a class="page-link" href="/diary.do?page=2">2</a>
+      <a class="page-link" href="/diary.do?page=1">&lt;&lt;</a>
     </li>
-    <li class="page-item">
-      <a class="page-link" href="/diary.do?page=3">3</a>
+    <%for(int i=1;i<=size;i++){ %>
+    <li class="page-item <%if(i==pagee){%>active<%}%>">
+      <a class="page-link" href="/diary.do?page=<%=i %>"><%=i %></a>
     </li>
+    <%} %>
     <li class="page-item">
-      <a class="page-link" href="/diary.do?page=4">4</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="/diary.do?page=5">5</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">&gt;</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">&gt;&gt;</a>
+      <a class="page-link" href="/diary.do?page=<%=size %>">&gt;&gt;</a>
     </li>
   </ul>
- 
+ <%} %>
 </div>
 			
 			</div>
@@ -104,6 +97,6 @@
 			<%@ include file="../layout/nav.jsp"%>
 			<%@ include file="../layout/footer.jsp"%>
 		</div>
-	<script type="text/javascript" src="script/diary.js"></script>
+<script type="text/javascript" src="script/diary.js"></script>
 </body>
 </html>

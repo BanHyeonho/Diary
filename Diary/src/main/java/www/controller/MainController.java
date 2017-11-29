@@ -117,7 +117,18 @@ public class MainController {
 		if(page==null){
 			page="1";
 		}
-		mav.addObject("list", sv.diary(Integer.parseInt(page)));
+		
+		Map<String,Object> map = sv.diary(Integer.parseInt(page));
+		
+
+		int size = ((int) map.get("size"))/9;
+		
+		if(((int) map.get("size"))%9!=0){
+			size++;
+		}
+		
+		mav.addObject("list", map.get("list"));
+		mav.addObject("size", size);
 		mav.addObject("page",page);
 		mav.addObject("active", "0");
 		mav.setViewName("user/diary");

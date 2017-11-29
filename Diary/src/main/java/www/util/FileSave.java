@@ -162,6 +162,9 @@ public class FileSave {
 				
 				if(item.getSize()<=0){
 					//System.out.println(oldpic);
+					if(oldpic==null){
+						continue;
+					}
 					if(vo.getDpicture()==null){
 						vo.setDpicture(oldpic.split("/")[i++]);
 					}else{

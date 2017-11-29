@@ -1,5 +1,6 @@
 package www.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,19 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.dao.DiaryDao;
+import www.dao.MainDao;
 import www.dto.CommentVo;
 import www.dto.DiaryVo;
 import www.dto.GoodVo;
 import www.dto.HitCountVo;
 import www.dto.ReportVo;
 import www.dto.ScrapVo;
+import www.dto.TopVo;
 
 @Service
 public class DiaryServiceImpl implements DiaryService {
 
 	@Autowired
 	DiaryDao dao;
-
+	
+	@Autowired
+	MainDao md;
 	
 	@Override
 	public void diarywrite(DiaryVo vo) {
@@ -89,15 +94,42 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public List<DiaryVo> search(String option, String keyword) {
+	public List<TopVo> search(String option, String keyword) {
 		// TODO Auto-generated method stub
 		
 		if(option.equals("글제목")){
-			return dao.searchByTitle(keyword);
+			
+			List<TopVo> top = dao.searchByTitle(keyword);
+			List<TopVo> list = new ArrayList<TopVo>();
+			for (TopVo topVo : top) {
+				System.out.println(topVo.toString());
+				topVo.setPicture(md.picture(topVo.getId()));
+				list.add(topVo);
+			}
+			return list;
+		
 		}else if(option.equals("여행지")){
-			return dao.searchByPlace(keyword);
-		}		
-		return dao.searchByWriter(keyword);
+			List<TopVo> top = dao.searchByPlace(keyword);
+			List<TopVo> list = new ArrayList<TopVo>();
+			for (TopVo topVo : top) {
+				System.out.println(topVo.toString());
+				topVo.setPicture(md.picture(topVo.getId()));
+				list.add(topVo);
+			}
+			return list;
+		
+		}
+		
+		List<TopVo> top = dao.searchByWriter(keyword);
+		List<TopVo> list = new ArrayList<TopVo>();
+		for (TopVo topVo : top) {
+			System.out.println(topVo.toString());
+			topVo.setPicture(md.picture(topVo.getId()));
+			list.add(topVo);
+		}
+		return list;
+		
+		
 	}
 
 	@Override

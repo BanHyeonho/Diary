@@ -1,6 +1,7 @@
 package www.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +21,7 @@ public interface MainService {
 	public String nickchk(String nick); // 닉네임중복확인
 	public ModelAndView login(MemberVo vo, HttpSession session); // 로그인
 	public List<CommunityVo> community(); //커뮤니티이동 30개
-	public List<TopVo> diary(int page); //여행일지로이동 30개
+	public Map<String,Object> diary(int page); //여행일지로이동 30개
 	public String pwchk(MemberVo vo); // 비밀번호 리턴
 
 }

@@ -38,7 +38,9 @@
 	<![CDATA[SELECT * FROM (SELECT A.*,ROWNUM AS RNUM,COUNT(*) OVER() AS TOTCNT FROM (SELECT * FROM Diary where DPUBLIC = 'Y' ORDER BY DDATE desc) A ) WHERE RNUM >= ((#{page}*9)-8) AND RNUM <= (#{page}*9)]]>
 		
 	</select>
-
+	<select id="diarySize" resultType="Integer">
+		select count(*) from Diary
+	</select>
 
 	<select id="Top" resultType="www.dto.TopVo">
 		<![CDATA[select * from (select * from DIARY where DPUBLIC = 'Y'

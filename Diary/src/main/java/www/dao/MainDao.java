@@ -18,6 +18,7 @@ public interface MainDao {
 	public List<CommunityVo> community();	//커뮤니티이동
 	public List<TopVo> diary(int page);		//여행일지로이동
 	public String pwchk(MemberVo vo);	//비밀번호 리턴
+	public Integer diarySize();
 	
 	
 	
