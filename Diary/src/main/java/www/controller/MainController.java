@@ -104,6 +104,7 @@ public class MainController {
 	 public ModelAndView community(ModelAndView mav) {
 		 
 		List<CommunityVo> list=sv.community();
+		
 		//logger.info("개수"+list.size());
 		mav.addObject("list", list); 
 		mav.addObject("active", "2");
