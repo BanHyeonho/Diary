@@ -90,7 +90,7 @@ function blacklist(){
 							+blacklist[i].nick+'</td><td>'
 							+blacklist[i].reportcount +'</td><td>'
 							+'<input type="checkbox" checked disabled="disabled" >'+'</td><td>'
-							+'<button type="button"	class="btt btn-outline-primary btn-md" onclick="javascript:openWin('+blacklist[i].id+');">정보보기</button></td></tr>'
+							+'<button type="button"	class="btt btn-primary btn-md" onclick="javascript:openWin('+blacklist[i].id+');">정보보기</button></td></tr>'
 						);
 				}
 			},
@@ -126,9 +126,9 @@ function reportdlist(){
 				$("#dlist").append(
 				'<tr><td>'+reportdlist[i].dtitle+'</td><td>'
 				+reportdlist[i].nick+'</td><td>'
-				+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:DviewopenWin('+reportdlist[i].idx+');"> 글보기 </button></td><td>'
-				+'<button type="button"	class="btn-outline-primary btn-md" onclick="deletediary('+reportdlist[i].idx+');"> 삭제 </button></td><td>'
-				+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dreportReason('+reportdlist[i].idx+');"> 신고사유 </button></td></tr>'
+				+'<button type="button"	class="btn-primary btn-md" onclick="javascript:DviewopenWin('+reportdlist[i].idx+');"> 글보기 </button></td><td>'
+				+'<button type="button"	class="btn-danger btn-md" onclick="deletediary('+reportdlist[i].idx+');"> 삭제 </button></td><td>'
+				+'<button type="button" class="btn-primary btn-md" onclick="javascript:dreportReason('+reportdlist[i].idx+');"> 신고사유 </button></td></tr>'
 				);
 			}
 			
@@ -185,9 +185,9 @@ function reportclist(){
 				$("#clist").append(
 				'<tr><td>'+reportclist[i].ctitle+'</td><td>'
 				+reportclist[i].nick+'</td><td>'
-				+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:CviewopenWin('+reportclist[i].idx+');"> 글보기 </button></td><td>'
-				+'<button type="button"	class="btn-outline-primary btn-md" onclick="deletecommunity('+reportclist[i].idx+');"> 삭제 </button></td><td>'
-				+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:creportReason('+reportclist[i].idx+');"> 신고사유 </button></td></tr>'
+				+'<button type="button"	class="btn-primary btn-md" onclick="javascript:CviewopenWin('+reportclist[i].idx+');"> 글보기 </button></td><td>'
+				+'<button type="button"	class="btn-danger btn-md" onclick="deletecommunity('+reportclist[i].idx+');"> 삭제 </button></td><td>'
+				+'<button type="button" class="btn-primary btn-md" onclick="javascript:creportReason('+reportclist[i].idx+');"> 신고사유 </button></td></tr>'
 				);
 			}
 			
@@ -261,9 +261,9 @@ function commentList(){
 					$("#dcommentlist").append(
 					'<tr id='+reportDcomment[i].idx+'><td>'+con+'</td><td>'
 					+reportDcomment[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-primary btn-md" onclick="javascript:dcoview('+reportDcomment[i].linkedidx+');"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-danger btn-md" onclick="deleteDcomment('+reportDcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-primary btn-md" onclick="javascript:dcoreportReason('+reportDcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				
@@ -313,9 +313,9 @@ function Comcomment(){
 					$("#ccommentlist").append(
 					'<tr id='+reportCcomment[i].idx+'><td>'+con+'</td><td>'
 					+reportCcomment[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-primary btn-md" onclick="javascript:ccoview('+reportCcomment[i].linkedidx+');"> 글보기 </button></td><td>'
+					+'<button type="button"	class="btn-danger btn-md" onclick="deleteCcomment('+reportCcomment[i].idx+')";> 삭제 </button></td><td>'
+					+'<button type="button" class="btn-primary btn-md" onclick="javascript:ccoreportReason('+reportCcomment[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 				
@@ -449,9 +449,9 @@ function dcosearch(){
 					$("#dcommentlist").append(
 					'<tr id='+dcosearch[i].idx+'><td>'+dcosearch[i].contents+'</td><td>'
 					+dcosearch[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:dcoview('+dcosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteDcomment('+dcosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-primary btn-md" onclick="javascript:dcoview('+dcosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-danger btn-md" onclick="deleteDcomment('+dcosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-primary btn-md" onclick="javascript:dcoreportReason('+dcosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {
@@ -483,9 +483,9 @@ function ccosearch(){
 					$("#ccommentlist").append(
 					'<tr id='+ccosearch[i].idx+'><td>'+ccosearch[i].contents+'</td><td>'
 					+ccosearch[i].nick+'</td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="javascript:ccoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
-					+'<button type="button"	class="btn-outline-primary btn-md" onclick="deleteCcomment('+ccosearch[i].idx+');">삭제</button></td><td>'
-					+'<button type="button" class="btn-outline-primary btn-md" onclick="javascript:ccoreportReason('+ccosearch[i].idx+');"> 신고사유 </button></td></tr>'
+					+'<button type="button"	class="btn-primary btn-md" onclick="javascript:ccoview('+ccosearch[i].linkedidx+');">글보기</button></td><td>'
+					+'<button type="button"	class="btn-danger btn-md" onclick="deleteCcomment('+ccosearch[i].idx+');">삭제</button></td><td>'
+					+'<button type="button" class="btn-primary btn-md" onclick="javascript:ccoreportReason('+ccosearch[i].idx+');"> 신고사유 </button></td></tr>'
 					);
 				}
 			},error : function() {

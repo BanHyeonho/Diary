@@ -26,11 +26,12 @@
 
 		<form action="/updateDiaryAction.do" method="post" name="updateForm" enctype="multipart/form-data">
 		<h2 style="display: inline;">${Diary.dtitle }</h2>
+		<input type="hidden" name="pictureData" />
 		<input type="hidden" name="idx" value="${Diary.idx }" />
 		<input type="hidden" name="id" value="${user.id }" />
 		<input type="hidden" name="place" />
 		<input type="hidden" name="mapposition" />
-		<input type="hidden" name="contents"/>
+		<input type="hidden" name="contents" />
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
 		<button type="button" onclick="scrap_list('${user.id}');" >스크랩글 가져오기</button>
 		<label><input type="radio" name="dpublic" value="Y" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" value="N" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
@@ -72,7 +73,7 @@
 		<table>
 		<%for(int j = 0;j<content[k].split("&").length;j++){%>
 		<tr class="${place}tr<%=ct%>">
-		<td><img class="${place}holder<%=ct%>" src="/upload/<%=picture[i++] %>" alt="사진"><div id="${place}holder<%=ct%>"></div></td>
+		<td><img class="${place}holder<%=ct%> oldpic" src="/upload/<%=picture[i++] %>" alt="사진" style="width: 300px;height:300px;"><div id="${place}holder<%=ct%>"></div></td>
 		<td rowspan="2"><textarea rows="10" cols="60" class="form-control textArea" ><%=content[k].split("&")[j] %></textarea></td>
 		<%if(j!=0){ %>
 		<td><button type="button" onclick="removetable('${place}tr<%=ct%>');">X</button></td>
@@ -99,7 +100,7 @@
 			<table>
 			<%for(int j = 0;j<content[k].split("&").length;j++){ %>
 			<tr class="${place}tr<%=ct%>">
-				<td><img class="${place}holder<%=ct%>" src="/upload/<%=picture[i++] %>" alt="사진"><div id="${place}holder<%=ct%>"></div></td>
+				<td><img class="${place}holder<%=ct%> oldpic" src="/upload/<%=picture[i++] %>" alt="사진" style="width: 300px;height:300px;"><div id="${place}holder<%=ct%>"></div></td>
 				<td rowspan="2"><textarea rows="10" cols="60" class="form-control textArea" ><%=content[k].split("&")[j] %></textarea></td>
 				<%if(j!=0){ %>
 				<td><button type="button" onclick="removetable('${place}tr<%=ct%>');">X</button></td>

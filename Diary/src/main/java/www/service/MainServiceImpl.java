@@ -127,9 +127,20 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<DiaryVo> diary() {
+	public List<TopVo> diary(int page) {
 		// TODO Auto-generated method stub
-		return dao.diary();
+		
+		List<TopVo> top = dao.diary(page);
+		
+		List<TopVo> list = new ArrayList<TopVo>();
+		for (TopVo topVo : top) {
+			System.out.println(topVo.toString());
+			topVo.setPicture(dao.picture(topVo.getId()));
+			list.add(topVo);
+		}
+		
+		
+		return list;
 	}
 
 	
