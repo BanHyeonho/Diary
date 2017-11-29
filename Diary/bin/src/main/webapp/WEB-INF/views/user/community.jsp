@@ -102,7 +102,8 @@
       			<td>${data.attendee}</td>
       			<td>${data.sdate} ~ ${data.edate}</td>
       			<td>
-      			<input type="checkbox" name="chk_info" disabled=true value="car">
+      			<input type="checkbox" name="chk_info" disabled=true <c:if test="${data.car=='Y'}">checked</c:if> value="car">
+      			
       			</td>
       			<td>${data.chitcount}</td>
       			
@@ -112,23 +113,13 @@
  	</table>
  		
  		
- 	
- 	<div>
-  		<ul class="pagination justify-content-center">
-  		
-    	<li class="page-item disabled">
-      		<a class="page-link" href="#">&laquo;</a>
-    	</li>
-    	
- 	 	</ul>
-		</div>
 	
 	</div>	
 
 		</div>
 		<%@ include file="../layout/nav.jsp"%>
-		<%@ include file="../layout/footer.jsp"%>
 	</div>
+		<%@ include file="../layout/footer.jsp"%>
 
 </body>
 </html>
