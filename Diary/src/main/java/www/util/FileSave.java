@@ -126,7 +126,7 @@ public class FileSave {
 			}// while end
 			
 		}
-		
+		System.out.println("변경될 값 : " + vo.toString());
 		return vo;
 	}
 	
@@ -161,7 +161,7 @@ public class FileSave {
 				FileItem item = (FileItem)iter.next();
 				
 				if(item.getSize()<=0){
-					System.out.println(oldpic);
+					//System.out.println(oldpic);
 					if(vo.getDpicture()==null){
 						vo.setDpicture(oldpic.split("/")[i++]);
 					}else{
