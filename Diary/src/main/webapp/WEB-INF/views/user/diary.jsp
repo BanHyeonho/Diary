@@ -44,12 +44,12 @@
 									<img src="/upload/${fn:split(data.dpicture,'/')[0]}" alt="이미지">
 								</span>
 								<div class="card-body">
-									<p class="card-text">내용란 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽 돈까츄 주세엽</p>
+									<p class="card-text"></p>
 									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
 								</div>
 								<div class="card-footer text-muted">
 									<span class="profile-thumb">
-										<img src="http://img1.ak.crunchyroll.com/i/spire2/98784242d8fff0814c722b2c40950fbb1457186596_large.png" alt="프로필사진" />
+										<img src="/upload/${data.picture }" alt="프로필사진" />
 									</span>
 									<span class="name">${data.nick }</span>
 								</div>
@@ -62,7 +62,40 @@
 					
 					
 				</div>
-				<button type="button" class="btn btn-outline-primary btn-lg more-btn">MORE</button>
+				<div>
+				
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&lt;&lt;</a>
+    </li>
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&lt;</a>
+    </li>
+    <li class="page-item active">
+      <a class="page-link" href="/diary.do?page=1">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=2">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=3">3</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=4">4</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/diary.do?page=5">5</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">&gt;</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">&gt;&gt;</a>
+    </li>
+  </ul>
+ 
+</div>
+			
 			</div>
 			
 			

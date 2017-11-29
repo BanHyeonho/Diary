@@ -79,20 +79,7 @@
 						</tbody>
 
 					</table>
-					<div class="page">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 
 				<!--diaryboard-->
@@ -136,20 +123,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="page">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 				<!-- communityboard -->
 				<div id="communityboard" class="tab-pane fade show">
@@ -193,20 +167,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="page">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 
 				<!--여행일지 comment -->
@@ -243,20 +204,7 @@
 						</tbody>
 
 					</table>
-					<div class="page">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 
 				<!--만남의장 comment -->
@@ -292,20 +240,7 @@
 						</tbody>
 
 					</table>
-					<div class="page">
-						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 
 			</div>

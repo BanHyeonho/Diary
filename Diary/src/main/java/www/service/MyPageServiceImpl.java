@@ -133,7 +133,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<ScrapVo> myScrap(String id) {
+	public List<DiaryVo> myScrap(String id) {
 		// TODO Auto-generated method stub
 		return dao.myScrap(id);
 	}

@@ -11,9 +11,9 @@ upload.onchange = function (e) {
     var img = new Image();
     img.src = event.target.result;
    
-    if (img.width > 300) { // holder width
-      img.width = 300;
-    }
+    
+    img.width=400;
+    img.htight=300;
     holder.innerHTML = '';
     holder.appendChild(img);
   };
@@ -36,9 +36,8 @@ upload.onchange = function (e) {
     var img = new Image();
     img.src = event.target.result;
    
-    if (img.width > 300) { // holder width
-      img.width = 300;
-    }
+    img.width=400;
+    img.htight=300;
     holder.innerHTML = '';
     holder.appendChild(img);
   };

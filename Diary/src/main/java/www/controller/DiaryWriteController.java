@@ -42,9 +42,9 @@ public class DiaryWriteController {
 	@RequestMapping(value="/writeDiary.do",method=RequestMethod.POST)
 	public ModelAndView writeDiary(ModelAndView mav,HttpServletRequest request) {
 		
-		//logger.info(vo.toString());
+	
 		FileSave fs = new FileSave();
-		
+	
 		sv.diarywrite(fs.diaryWrite(request));
 		mav.setViewName("redirect:/diary.do");
 		return mav;

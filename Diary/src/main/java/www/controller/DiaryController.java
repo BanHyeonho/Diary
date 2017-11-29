@@ -56,7 +56,7 @@ public class DiaryController {
 		
 		FileSave fs = new FileSave();
 		DiaryVo vo = fs.diaryWrite(request);
-		logger.info(vo.toString());
+		logger.info("업데이트 될 값 들 : "+vo.toString());
 		sv.updatediary(vo);
 		
 		HitCountVo hit = new HitCountVo();

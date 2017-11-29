@@ -553,8 +553,13 @@ function update(){
 		document.updateForm.place.value=place.substr(0,place.length-1);
 		//여행지 값 구하기 완료
 		
-		for (var i = 0; i < $('.textArea').length; i++) {	//여행지설명 갯수만큼 반복
-			content=content+$('.textArea')[i].value+"/";
+		var k=0;
+		for (var i = 1; i < $('.writingPlace').children().size(); i++) {	//여행지설명 갯수만큼 반복
+			
+			for (var j = 0; j < $('.writingPlace').children()[i].firstElementChild.firstElementChild.rows.length-1; j=j+2) {
+				content=content+document.getElementsByTagName('textArea')[k].value+"&";
+				k++;
+			}content=content.slice(0,-1)+"/";
 		}
 		
 		document.updateForm.contents.value=content.substr(0,content.length-1);
@@ -565,6 +570,17 @@ function update(){
 		
 		document.updateForm.mapposition.value=mappositions.substr(0,mappositions.length-1);
 		var con = document.updateForm.contents.value.replace(/\//g,'');
+		
+		var picd="";
+		for (var i = 0; i < $('.oldpic').length; i++) {
+			if(picd==""){
+				picd=$('.oldpic')[i].src.substr($('.oldpic')[i].src.lastIndexOf('/')+1);
+			}else{
+				picd+=$('.oldpic')[i].src.substr($('.oldpic')[i].src.lastIndexOf('/'));
+			}
+		}
+		document.updateForm.pictureData.value = picd;
+		
 		
 		if(document.updateForm.sdate.value==''){
 			alert('여행 시작일을 입력하세요.');
@@ -583,7 +599,7 @@ function update(){
 			change();
 			return false;
 		}else{
-			
+			console.log(document.updateForm.pictureData.value);
 			document.updateForm.submit();
 			alert('수정 되었습니다.');
 		}
