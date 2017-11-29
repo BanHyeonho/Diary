@@ -61,8 +61,10 @@
 							<!-- 1등 div -->
 							<div style="width:680px; height:500px; background-color: red; position: relative; ">
 								<div style="position: absolute;top:400px;left:30px;">
-									<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-									<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+
+									<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+									<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+
 								</div>
 								
 								<span class="thumb">
@@ -74,8 +76,9 @@
 								<!-- 2등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float: left; position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
-										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+
 									</div>
 									
 									<span class="thumb">
@@ -85,8 +88,9 @@
 								<!-- 3등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float : left; margin-left:30px;position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
-										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+
 									</div>
 									
 									<span class="thumb">
@@ -99,8 +103,9 @@
 							<!--4등 div  -->
 							<div style="width:370px;height:375px; background-color:green; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
-										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+
 								</div>
 								
 								<span class="thumb">
@@ -111,7 +116,7 @@
 							<div style="width:370px;height:375px; background-color:green; margin-top: 30px; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
 										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5 ><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
 								</div>
 								
 								<span class="thumb">

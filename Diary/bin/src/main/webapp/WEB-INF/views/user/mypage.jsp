@@ -135,11 +135,7 @@
 									value="${user.phone.split('-')[2] }" /></td>
 								<input type="hidden" name="phone">
 							</tr>
-							<tr>
-								<th class="join">주소</th>
-								<td><input type="text" class="form-control" name="addr"
-									value="${user.addr }" /></td>
-							</tr>
+							
 							<tr>
 								<th class="join">비밀번호 질문<font color="red">*</font></th>
 								<td><select class="form-control" name="pwq">
@@ -159,7 +155,7 @@
 								<th class="join">프로필사진</th>
 								<td><input type="file" name="picture" id="picture" /><br/>
 								
-								<img src='/upload/${user.picture}' alt="프로필사진" id="oldpic" /> 
+								<img src='/upload/${user.picture}' alt="프로필사진" id="oldpic" style="width: 300px;height: 300px;"/> 
             						<div id="holder"></div></td>
 							</tr>
 						</table>

@@ -405,7 +405,7 @@ function writing(){
 	
 	//스크랩 이미지이름 담기
 	for (var i = 0; i < $('.oldpic').length; i++) {
-		document.writingForm.pictureData.value += $('.oldpic')[0].src.substr($('.oldpic')[0].src.lastIndexOf('/')+1)+"/";
+		document.writingForm.pictureData.value += $('.oldpic')[i].src.substr($('.oldpic')[i].src.lastIndexOf('/')+1)+"/";
 	}
 	
 	document.writingForm.pictureData.value=document.writingForm.pictureData.value.slice(0,-1);
@@ -431,6 +431,9 @@ function writing(){
 		change();
 		return false;
 	}else{
+		console.log("contents",document.writingForm.contents.value);
+		
+		
 		document.writingForm.submit();
 	}
 	
@@ -553,11 +556,11 @@ function scrapTab(title,content,picture){
 	var div = '<div class="'+title+' oneDiary"><table>';
 	var co="";
 	for (var i = 0; i < content.split('&').length; i++) {
-		co+='<tr class="'+title+'tr'+sc+'"><td><img class="'+title+'holder'+sc+' oldpic" src="/upload/'+picture.split('&')[i]+'" alt="사진" style="width: 300px;height:300px;"></td><td><textarea rows="10" cols="60" class="form-control textArea" >'+content.split('&')[i]+'</textarea></td>';
+		co+='<tr class="'+title+'tr'+sc+'"><td><img class="'+title+'holder'+sc+' oldpic" src="/upload/'+picture.split('&')[i]+'" alt="사진" style="width: 300px;height:300px;"><input type="file" name="'+title+'file'+sc+'" style="display:none;" /></td><td><textarea rows="10" cols="60" class="form-control textArea" >'+content.split('&')[i]+'</textarea></td>';
 		if(i!=0){
 			co+='<td><button type="button" onclick="removetable(\''+title+'tr'+sc+'\');">X</button></td>';
 		}
-		co+='</tr>';
+		co+='</tr><tr></tr>';
 		if(i==content.split("&").length-1){
 		co+='<tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+sc+');">추가하기</button></center></td></tr>';
 		}

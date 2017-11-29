@@ -113,8 +113,6 @@
  	</table>
  		
  		
-	
-	</div>	
 
 		</div>
 		<%@ include file="../layout/nav.jsp"%>

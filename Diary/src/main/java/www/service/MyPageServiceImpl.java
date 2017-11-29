@@ -100,9 +100,9 @@ public class MyPageServiceImpl implements MyPageService {
 		List<BlockVo> list =dao.myblock(vo.getReceiverid());
 		
 		for (BlockVo blockVo : list) {
-			System.out.println("내가 차단한 사람 이름 : " + blockVo.getId() );
-			System.out.println(vo.getSenderid());
-			if(blockVo.getId().equals(vo.getReceiverid())){
+			System.out.println("내가 차단한 사람 이름 : " + blockVo.getBlockNick() );
+			System.out.println(vo.getSender());
+			if(blockVo.getBlockNick().equals(vo.getSender())){
 				vo.setChk("0");
 			}
 			

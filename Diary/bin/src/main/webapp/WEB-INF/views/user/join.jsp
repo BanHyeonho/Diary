@@ -71,10 +71,6 @@
             <input type="text" class="form-control" name="phone3" /> </td>
             <input type="hidden" name="phone">
          </tr>
-         <tr class="addr">
-            <th class="join">주소</th>
-            <td><input type="text" class="form-control" name="addr" /></td>
-         </tr>
          <tr class="pwq">
             <th class="join">비밀번호 질문<font color="red">*</font></th>
             <td><select class="form-control" name="pwq">

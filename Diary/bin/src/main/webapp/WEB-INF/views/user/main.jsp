@@ -31,7 +31,8 @@
 		<div class="slide">
 		<ul class="slide_ul">
 		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="http://i.huffpost.com/gen/5089222/images/o-UNIVERSE-facebook.jpg" alt="dane"></a></li> 
+		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="/upload/back.png" alt="dane"></a></li>
+		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="/upload/19700102_082806.jpg" alt="dane"></a></li> 
 		<li><a href="#" style="display:block; position:relative; text-decoration:none;"></a>
 		<div style="position:absolute; top:200px; left:650px;">
 			<br/>
@@ -60,8 +61,13 @@
 							<!-- 1등 div -->
 							<div style="width:680px; height:500px; background-color: red; position: relative; ">
 								<div style="position: absolute;top:400px;left:30px;">
+<<<<<<< HEAD
 									<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-									<h5><%=list.get(idx.get(i)).getPlace() %></h5>
+									<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+=======
+									<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+									<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace() %></h5>
+>>>>>>> refs/remotes/origin/lee
 								</div>
 								
 								<span class="thumb">
@@ -73,8 +79,13 @@
 								<!-- 2등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float: left; position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
+<<<<<<< HEAD
 										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
+										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+=======
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace() %></h5>
+>>>>>>> refs/remotes/origin/lee
 									</div>
 									
 									<span class="thumb">
@@ -84,12 +95,17 @@
 								<!-- 3등 div -->
 								<div style="width:325px;height:250px; background-color:blue; float : left; margin-left:30px;position: relative;">
 									<div style="position: absolute;top:150px;left:15px;">
+<<<<<<< HEAD
 										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
+										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+=======
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace() %></h5>
+>>>>>>> refs/remotes/origin/lee
 									</div>
 									
 									<span class="thumb">
-										<img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지">
+										<a href="/oneDiary.do?linkedidx=<%=list.get(idx.get(i)).getIdx() %>&id=${user.id}"><img style="width:325px;height: 250px; " src="/upload/<%=list.get(idx.get(i++)).getDpicture().split("/")[0] %>" alt="이미지"></a>
 									</span>
 								</div>
 							</div>
@@ -98,8 +114,13 @@
 							<!--4등 div  -->
 							<div style="width:370px;height:375px; background-color:green; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
+<<<<<<< HEAD
 										<h3><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5><%=list.get(idx.get(i)).getPlace() %></h5>
+										<h5><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+=======
+										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace() %></h5>
+>>>>>>> refs/remotes/origin/lee
 								</div>
 								
 								<span class="thumb">
@@ -110,7 +131,11 @@
 							<div style="width:370px;height:375px; background-color:green; margin-top: 30px; position: relative;">
 								<div style="position: absolute;top:280px;left:15px;">
 										<h3 style="color: #ffffff"><%=list.get(idx.get(i)).getDtitle() %></h3><br>
-										<h5 ><%=list.get(idx.get(i)).getPlace() %></h5>
+<<<<<<< HEAD
+										<h5 ><%=list.get(idx.get(i)).getPlace().replaceAll("/", "#") %></h5>
+=======
+										<h5 style="color: #ffffff"><%=list.get(idx.get(i)).getPlace() %></h5>
+>>>>>>> refs/remotes/origin/lee
 								</div>
 								
 								<span class="thumb">

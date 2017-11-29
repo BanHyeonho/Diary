@@ -399,47 +399,64 @@ function scrap_list(id){
 		form.submit();
 }
 
-function scrap_show(place,contents,mapposition){
+function scrap_show(place,contents,mapposition,picture){
 
 if (confirm("현재 글쓰기에 추가 하시겠습니까?")) {
 
-opener.attachScrap(place,contents,mapposition);
+opener.attachScrap(place,contents,mapposition,picture);
 
 alert('추가완료');
 }
 
 }
-function attachScrap(places,contents,mapposition){
-
-var place = places.split('/');
-var mappositions = mapposition.split('/');
-var content = contents.split('/');
-var scrapPlaces = [];
-for (var i = 0; i < place.length; i++) {
-var mapo = mappositions[i].split(',');
-
-var object = {
-		"place_name" : place[i],
-		"y":mapo[0],
-		"x":mapo[1],
-		"content":content[i]
-};
-scrapPlaces.push(object);
-savePlaces.push(object);//여기서부터 수정해야함.겹쳐서 나옴
-}
-
-map = new daum.maps.Map(mapContainer, mapOption);
-var size = savePlaces.length-scrapPlaces.length;
-var j=0;
-for (var i = 0; i < savePlaces.length; i++) {
-
-if(i >= size){
-	scrapMark(savePlaces[i],scrapPlaces[j++],size,i);
-}else{
-	scrapMark(savePlaces[i],'',size,i);
-}
-
-}
+function attachScrap(places,contents,mapposition,pictures){
+	
+	var place = places.split('/');
+	var mappositions = mapposition.split('/');
+	var content = contents.split('/');
+	var picture = pictures.split('/');
+	var npic ="";
+	var z=0;
+	for (var i = 0; i < content.length; i++) {
+		
+		for (var j = 0; j < content[i].split('&').length; j++) {
+			
+			npic =npic+ picture[z++]+"&";
+			
+		}
+		
+		npic=npic.slice(0,-1)+"/";
+		
+	}
+	npic=npic.slice(0,-1);
+	var pic = npic.split('/');
+	var scrapPlaces = [];
+	for (var i = 0; i < place.length; i++) {
+		var mapo = mappositions[i].split(',');
+	
+		var object = {
+				"place_name" : place[i],
+				"y":mapo[0],
+				"x":mapo[1],
+				"content":content[i],
+				"picture":pic[i]
+		};
+		scrapPlaces.push(object);
+		savePlaces.push(object);
+	}
+	
+	map = new daum.maps.Map(mapContainer, mapOption);
+	var size = savePlaces.length-scrapPlaces.length;
+	var j=0;
+	for (var i = 0; i < savePlaces.length; i++) {
+		
+		if(i >= size){
+			scrapMark(savePlaces[i],scrapPlaces[j++],size,i);
+		}else{
+			scrapMark(savePlaces[i],'',size,i);
+		}
+		
+	}
 }
 
 function scrapMark(savePlace,scrapPlace,size,idx){
@@ -460,26 +477,46 @@ saveMarker(savePlace);
 });
 
 if(idx >= size){
-scrapTab(scrapPlace.place_name,scrapPlace.content);
+scrapTab(scrapPlace.place_name,scrapPlace.content,scrapPlace.picture);
 }
 
 }
-function scrapTab(title,content){
-var title = title.replace(/ /g,'');
-$('.oneDiary').css('display', 'none');
-$('.click').css('background','white');
-$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
-.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
-$('.writingPlace').append('<div class="'+title+' oneDiary"><input type="file" class="form-control" /><textarea rows="12" cols="100" class="form-control textArea" >'+content+'</textarea></div>');
-$('.' + title).css('display', '');
-
-$('.click').click(function() {
-$('.oneDiary').css('display', 'none');
-var id = $(this).parent().attr('id');
-$('.' + id).css('display', '');
-$('.click').css('background','white');
-$(this).css('background','lightgray');
-});
+var sc=0;
+function scrapTab(title,content,picture){
+	var title = title.replace(/ /g,'');
+	$('.oneDiary').css('display', 'none');
+	$('.click').css('background','white');
+	$('#oneDiaryTab').append('<li id="'+title+'"class="nav-item" ><a class="nav-link click" data-toggle="tab" href="#" style="width:150px;background:lightgray;" >'+title+'</a></li>')
+	.append('<input type="hidden" class="places" id="place'+title+'" value="'+title+'"/>' );
+	
+	
+	var div = '<div class="'+title+' oneDiary"><table>';
+	var co="";
+	for (var i = 0; i < content.split('&').length; i++) {
+		co+='<tr class="'+title+'tr'+sc+'"><td><img class="'+title+'holder'+sc+' oldpic" src="/upload/'+picture.split('&')[i]+'" alt="사진" style="width: 300px;height:300px;"><input type="file" name="'+title+'file'+sc+'" style="display:none;" /></td><td><textarea rows="10" cols="60" class="form-control textArea" >'+content.split('&')[i]+'</textarea></td>';
+		if(i!=0){
+			co+='<td><button type="button" onclick="removetable(\''+title+'tr'+sc+'\');">X</button></td>';
+		}
+		co+='</tr><tr></tr>';
+		if(i==content.split("&").length-1){
+		co+='<tr id="'+title+'plus"><td colspan="2"><center><button type="button" onclick="addtable(\''+title+'\','+sc+');">추가하기</button></center></td></tr>';
+		}
+		sc++;
+	}
+	co+='</table>';
+	div+=co;
+	
+	
+	$('.writingPlace').append(div);
+	$('.' + title).css('display', '');
+	
+	$('.click').click(function() {
+		$('.oneDiary').css('display', 'none');
+		var id = $(this).parent().attr('id');
+		$('.' + id).css('display', '');
+		$('.click').css('background','white');
+		$(this).css('background','lightgray');
+	});
 }
 
 

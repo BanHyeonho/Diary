@@ -79,14 +79,14 @@ values(DIARY_SEQ.NEXTVAL,#{id},#{nick},#{dtitle},#{place},#{contents},#{mapposit
   		select REPORTCOUNT from dcomment where idx = #{linkedidx}
   	</selectKey>
   	</update>
-  <select id="searchByWriter" resultType="www.dto.DiaryVo" parameterType="String">
+  <select id="searchByWriter" resultType="www.dto.TopVo" parameterType="String">
   	select * from DIARY where nick like '%' || #{nick} || '%' and DPUBLIC ='Y'
   </select>
-  <select id="searchByTitle" resultType="www.dto.DiaryVo" parameterType="String">
+  <select id="searchByTitle" resultType="www.dto.TopVo" parameterType="String">
   	select * from DIARY where DTITLE like '%' || #{dtitle} || '%' and DPUBLIC ='Y'
   </select>
-  <select id="searchByPlace" resultType="www.dto.DiaryVo" parameterType="String">
-  	select * from DIARY where CONTENTS like '%' || #{place} || '%' and DPUBLIC ='Y'
+  <select id="searchByPlace" resultType="www.dto.TopVo" parameterType="String">
+  	select * from DIARY where PLACE like '%' || #{place} || '%' and DPUBLIC ='Y'
   </select>
   
   <delete id="deletediary" parameterType="Integer">
