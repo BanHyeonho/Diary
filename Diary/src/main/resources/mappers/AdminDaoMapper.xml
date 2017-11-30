@@ -18,27 +18,21 @@
 	</select>
 
 	<select id="allmember" resultType="www.dto.MemberVo">
- 		 <![CDATA[select * from (select * from member
-		order by joindate desc) where rownum <= 30
-		 ]]>
+ 		select * from (select * from member where id != 'admin'
+		order by joindate desc) 
+		 
 	</select>
 
 	<select id="alldiary" resultType="www.dto.DiaryVo">
-   		<![CDATA[select * from (select * from diary
-		order by ddate desc) where rownum <= 30
-		 ]]>
+   		select * from diary order by ddate desc
+		
 	</select>
 
 	<select id="allcommunity" resultType="www.dto.CommunityVo">
-   <![CDATA[select * from (select * from community
-		order by cdate desc) where rownum <= 30
-		 ]]>
+   select * from community order by cdate desc
+	
 	</select>
-
-	<!-- <select id="reportcomment" resultType="www.dto.CommentVo" parameterType="Integer"> 
-		<![CDATA[select * from (select * from comment order by date desc) where rownum 
-		<= 30 ]]> </select> -->
-
+	
 	<select id="searchByDNick" resultType="www.dto.DiaryVo"
 		parameterType="String">
 		select * from Diary
@@ -51,18 +45,14 @@
 	</select>
 
 	<select id="blacklist" resultType="www.dto.MemberVo">
- 	
- 	 <![CDATA[select * from (select * from member
-		where reportcount>=3 order by reportcount desc) where rownum <= 30
-		 ]]>
+ 		select * from (select * from member
+		where reportcount>=3 order by reportcount desc)
 
 	</select>
 
 	<select id="reportdlist" resultType="www.dto.DiaryVo">
- 	
- 	 <![CDATA[select * from (select * from diary
-		where dreportcount>=1 order by nick desc) where rownum <= 30
-		 ]]>
+ 	select * from (select * from diary
+		where dreportcount>=1 order by nick desc)
 
 	</select>
 	
@@ -71,10 +61,8 @@
 	</delete>
 
 	<select id="reportclist" resultType="www.dto.CommunityVo">
- 	
- 	 <![CDATA[select * from (select * from community
-		where creportcount>=1 order by nick desc) where rownum <= 30
-		 ]]>
+ 	select * from (select * from community
+		where creportcount>=1 order by nick desc)
 	</select>
 
 	<delete id="deletecommunity" parameterType="Integer">
@@ -105,16 +93,14 @@
 	
 	<select id="reportDcomment" resultType="www.dto.CommentVo">
  	
- 	 <![CDATA[select * from (select * from dcomment
-		where reportcount>=1 order by nick desc) where rownum <= 30
-		 ]]>
+ 	 select * from (select * from dcomment
+		where reportcount>=1 order by nick desc)
 	</select>
 	
 	<select id="reportCcomment" resultType="www.dto.CommentVo">
  	
- 	 <![CDATA[select * from (select * from ccomment
-		where reportcount>=1 order by nick desc) where rownum <= 30
-		 ]]>
+ 	 select * from (select * from ccomment
+		where reportcount>=1 order by nick desc)
 	</select>
 	
 	<delete id="deleteDcomment" parameterType="Integer">

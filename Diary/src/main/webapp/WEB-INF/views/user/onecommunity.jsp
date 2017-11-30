@@ -7,15 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Diary&Community</title>
-<style>
-
-
-</style>
 </head>
-
-
-
-<script type="text/javascript" src="script/onecommunity.js"></script>
 <body>
 
 	<div class="wrap">
@@ -46,7 +38,7 @@
        		<td>성별</td>
          	<td> ${data.gender}</td>
       		<td>차량유무</td>
-      		<td>${data.car }</body></td>
+      		<td>${data.car }</td>
     	</tr>
     	<tr>
        		<td>여행날짜</td>
@@ -77,7 +69,7 @@
 				</tr>
 				<tr>
 					<td>
-					<input type="text" id="contents" size="150" >
+					<input type="text" id="contents" size="140" >
 					<span style="float:right"> <button type="button" style="margin-top:10px" onclick="ccomment('${user.nick}','${data.idx}');">댓글쓰기</button></span>
 					</td>
 				</tr>
@@ -133,7 +125,8 @@
 		<%@ include file="../layout/footer.jsp"%>
 	</div>
 	
-	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="script/onecommunity.js"></script>
 
 
 </body>

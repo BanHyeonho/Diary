@@ -58,11 +58,11 @@ public class CommunityController {
 	} // 글보기(게시글중 한개를 확대해서 봄) 글의 인덱스,사용자 아이디
 	
 	@RequestMapping(value="/ccommentinsert.do",method = RequestMethod.POST)
-	public @ResponseBody Map<String, CommentVo> Ccommentinsert(CommentVo vo) {
+	public @ResponseBody Map<String, String> Ccommentinsert(CommentVo vo) {
 		
 		sv.ccommentinsert(vo);
 		
-		Map<String, CommentVo> map = new HashMap<String, CommentVo>();
+		Map<String, String> map = new HashMap<String, String>();
 		
 		return map;
 	}// 댓글쓰기

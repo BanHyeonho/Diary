@@ -3,15 +3,15 @@ function ccomment(nick,idx){
 	var contents=$('#contents').val();
 
 	var setting ={
-			url:"/ccommentinsert.do",
-			type:"post",
-			dataType:"json",
-			data:{
+			"url":"/ccommentinsert.do",
+			"type":"post",
+			"dataType":"json",
+			"data":{
 				"nick":nick,
 				"linkedidx":idx,
 				"contents":contents
 			},
-				success:function(data){
+				"success":function(data){
 					
 //					$("#ccomment")[0].children[0].append("<tr><td>"+nick+"</td></tr><tr><td>"+contents+"</td></tr>");
 					
@@ -27,7 +27,7 @@ function ccomment(nick,idx){
 					 
 					
 				},
-				error:function(e){}
+				"error":function(e){}
 		};
 	
 	$.ajax(setting);

@@ -93,7 +93,7 @@
 </select>
 
 <select id="msgchk" parameterType="String" resultType="www.dto.MsgVo">
-	select chk from msg where receiverid = #{id} and chk=1
+	select chk from msg where receiverid = #{id} and chk='1'
 </select>
 <update id="msgchkupdate" parameterType="String">
 	update msg set chk = '0' where receiverid = #{id}

@@ -37,8 +37,7 @@ public class MsgController {
 	@RequestMapping(value="/msg_chk.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String,List<MsgVo>> msg_chk(String id){
 		Map <String,List<MsgVo>> map = new HashMap<String, List<MsgVo>>();
-		sv.msgchk(id);
-		
+	
 		map.put("chk", sv.msgchk(id));
 		
 		return map;

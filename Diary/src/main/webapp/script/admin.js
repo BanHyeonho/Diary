@@ -1,20 +1,3 @@
-/*$(document).ready(function(){
-	$('#sch').click(function(){
-		var keyword = document.getElementById("keyword").value;
-		console.log(keyword);
-		if(document.getElementById("option").value=="userid"){
-			document.userSearch.action = "/memberSearch.do?id="+keyword ;
-			console.log("userid",keyword);
-			console.log("userid",document.userSearch.action);
-		}else {
-			document.userSearch.action = "/memberSearch.do?nick="+keyword ;
-			console.log("nick",keyword);
-			console.log("nick",document.userSearch.action);
-		}
-		document.userSearch.submit();
-	});
-
-});*/
 function change(idx){
 	if(idx=='0'){
 		$('#user').attr('class','tab-pane fade active show in');
@@ -370,59 +353,59 @@ function deleteCcomment(ix){
 
 //계정관리-정보보기버튼 눌렀을 때
 function openWin(id) {
-	window.open("http://localhost:8080/oneMember.do?id=" + id,
+	window.open("/oneMember.do?id=" + id,
 					"한명의 멤버보기",
 					"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 }
 //여행일지-글보기버튼 눌렀을때
 function DviewopenWin(idx) {
-	window.open("http://localhost:8080/viewDiary.do?idx=" + idx,
+	window.open("/viewDiary.do?idx=" + idx,
 					"여행일지 글보기",
 					"width=1000, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 }
 //만남의장 -글보기 버튼 눌렀을때
 function CviewopenWin(idx) {
-	window.open("http://localhost:8080/viewCommunity.do?idx=" + idx,
+	window.open("/viewCommunity.do?idx=" + idx,
 					"만남의장 글보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 //여행일지 -신고사유 버튼눌렀을때
 function dreportReason(idx) {
-	window.open("http://localhost:8080/dreportReason.do?d=d&idx=" + idx,
+	window.open("/dreportReason.do?d=d&idx=" + idx,
 					"여행일지 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 //만남의장 -신고사유 버튼 눌렀을때
 function creportReason(idx) {
-	window.open("http://localhost:8080/creportReason.do?idx=" + idx,
+	window.open("/creportReason.do?idx=" + idx,
 					"여행일지 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
 //(여행일지)댓글-글보기 버튼 눌렀을때
 function dcoview(idx) {
-	window.open("http://localhost:8080/viewDiary.do?idx=" + idx,
+	window.open("/viewDiary.do?idx=" + idx,
 					"여행일지 신고된 댓글의 글보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
 //(만남의장)댓글-글보기 버튼 눌렀을때
 function ccoview(idx) {
-	window.open("http://localhost:8080/viewCommunity.do?idx=" + idx,
+	window.open("/viewCommunity.do?idx=" + idx,
 					"만남의장 신고된댓글의 글보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
 //여행일지댓글 -신고사유 버튼 눌렀을때
 function dcoreportReason(idx) {
-	window.open("http://localhost:8080/dcoreportReason.do?dco=dco&idx=" + idx,
+	window.open("/dcoreportReason.do?dco=dco&idx=" + idx,
 					"여행일지댓글 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }
 
 //만남의장 -신고사유 버튼 눌렀을때
 function ccoreportReason(idx) {
-	window.open("http://localhost:8080/ccoreportReason.do?idx=" + idx,
+	window.open("/ccoreportReason.do?idx=" + idx,
 					"여행일지댓글 신고사유보기",
 					"width=1000, height=800, toolbar=yes, menubar=no, scrollbars=no, resizable=yes");
 }

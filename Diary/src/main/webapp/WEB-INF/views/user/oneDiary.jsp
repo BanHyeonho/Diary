@@ -124,10 +124,12 @@
 		
 		
 		
-		<div><!--댓글  -->
+		
+		</div><!-- contents -->
+			<div><!--댓글  -->
 		<hr>
 		<c:if test="${user!=null }">
-		<span style="color: black; font-weight: bold;">${user.nick }</span> : <input type="text" id="comment" /><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
+		<span style="color: black; font-weight: bold;">${user.nick }</span> : <input type="text" id="comment" size="140"/><button type="button" onclick="comment('${user.nick }','${data.Diary.idx}');">댓글쓰기</button>
 		<hr>
 		</c:if>
 		<div id="commentArea">
@@ -136,13 +138,11 @@
 		<span style="color: black;font-weight: bold;">${data.nick }</span>&nbsp;<c:if test="${data.nick==user.nick }"><a href="javascript:deletecomment('${data.idx}');" style="color: tomato; text-decoration: none;">삭제</a></c:if>
 		<br/>		
 		<span style="color: black;">${data.contents }</span><br/>
-		<span style="color: gray;"><fmt:formatDate value="${data.cdate }" pattern="yyyy-MM-dd HH:MM"/></span><c:if test="${data.nick!=user.nick }">&nbsp;<a href="javascript:openReport('${data.nick }','${user.nick }','${data.idx}');" style="color: tomato; text-decoration: none;">신고</a></c:if>
+		<span style="color: gray;"><fmt:formatDate value="${data.cdate }" pattern="yyyy-MM-dd HH:MM"/></span><c:if test="${user.nick!=null && data.nick!=user.nick }">&nbsp;<a href="javascript:openReport('${data.nick }','${user.nick }','${data.idx}');" style="color: tomato; text-decoration: none;">신고</a></c:if>
 		<hr>		
 		</div>
 		</c:forEach>		
 		</div>
-		</div><!-- contents -->
-			
 			
 		</div>
 	</div>

@@ -17,7 +17,6 @@
 		String[] place = vo.getPlace().split("/");
 		String[] content = vo.getContents().split("/");
 		String[] picture = vo.getDpicture().split("/");
-		System.out.println("잘오나 : "+vo.toString());
 %>
 <div class="wrap">
 		<%@ include file="../layout/header.jsp"%>
@@ -35,7 +34,7 @@
 		<input type="date" name="sdate" value="${Diary.sdate }"/> ~ <input type="date" name="edate" value="${Diary.edate }"/>
 		<button type="button" onclick="scrap_list('${user.id}');" >스크랩글 가져오기</button>
 		<label><input type="radio" name="dpublic" value="Y" <c:if test="${Diary.dpublic=='Y' }">checked</c:if> />공개</label><label><input type="radio" name="dpublic" value="N" <c:if test="${Diary.dpublic=='N' }">checked</c:if> />비공개</label>
-		
+		<button class="btn-success btn-sm" type="button" onclick="update();">수정하기</button>
 		<button type="button" class="btn-outline-warning" style="float: right;" onclick="change();">★</button>
 		<span style="float: right;">글쓴이 : ${user.nick }</span>
 		
@@ -123,9 +122,7 @@
 		</c:forTokens> 
 		</div>
 		
-		<div style="margin-top: 50%;">
-		<center><button class="btn-success btn-lg" type="button" onclick="update();">수정하기</button></center>
-		</div>
+		
 		</form>
 		</div>
 	</div>

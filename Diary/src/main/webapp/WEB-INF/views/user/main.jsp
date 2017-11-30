@@ -30,18 +30,18 @@
 		<%@ include file="../layout/header.jsp"%>
 		<div class="slide">
 		<ul class="slide_ul">
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="/upload/back.png" alt="dane"></a></li>
-		<li><a href="#" style="display:block;"><img style="height: 600px;width: 100%;" src="/upload/19700102_082806.jpg" alt="dane"></a></li> 
 		<li><a href="#" style="display:block; position:relative; text-decoration:none;"></a>
-		<div style="position:absolute; top:200px; left:650px;">
+		<div style="position:absolute; top:200px; left:53%;">
 			<br/>
 				<h1 class="display-3" style="color:white">Travel Diary</h1>
 				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
 				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
 			</div>
-			<img style="height: 600px;width: 100%;" src="https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg" alt="dane">
+			<img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/6/abda9a8e-6832-42ca-a18e-56fb134d3235.jpg" alt="dane">
 		</li>
+		<li><a href="http://www.jeju.go.kr/index.htm" target="_blank" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
+		<li><a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/11/8f242807-2f14-4c6d-baab-4f4985b64984.jpg" alt="dane"></a></li>
+		<li><a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://file.intereuro.co.kr/Puzzle/PuzzleBanner/PuzzleBanner_201783116239_76_61_1.jpg" alt="dane"></a></li> 
 		</ul>
 	</div>
 		<div class="container">
@@ -127,61 +127,6 @@
 					</div>
 				</div>
 				
-				<%--  <div class="col-lg-12">
-						<div class="bs-component">
-							<div class="card">
-								<h3 class="card-header">${rank.count}등! ${data.dtitle }</h3>
-								<div class="card-body">
-									<h5 class="card-title">${data.place }</h5>
-									<h6 class="card-subtitle text-muted">명동 · 서울특별시 중구 남산동2가 49-24</h6>
-								</div>
-								<span class="thumb">
-									<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/56012/51348/56012_51348_76_0_9284_201652465543354.jpg" alt="이미지">
-								</span>
-								<div class="card-body">
-								<c:forTokens items="${data.contents}" delims="/" var="contents">
-								<p class="card-text">${contents }</p>
-								</c:forTokens>
-									
-									<a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}" class="card-link">View More</a>
-								</div>
-								<div class="card-footer text-muted">
-									<span class="profile-thumb">
-<<<<<<< HEAD
-										<img src="upload/${data.picture }" alt="프로필사진" />
-=======
-
-										<img src="upload/${data.picture}" alt="프로필사진"/>
-
->>>>>>> refs/remotes/origin/seo
-									</span>
-									<span class="name">보노보노보노</span>
-								</div>
-							</div>
-						</div>
-					</div>  --%>
-				
-			 	<%-- <div class="contents jumbotron" >
-			 	<div style="z-index:10;  position: absolute;width: 50%;background:url('https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/56012/51348/56012_51348_76_0_9284_201652465543354.jpg') no-repeat ;  "></div>
-				<h2 class="title">${rank.count} 등!${data.dtitle}</h2>
-				<br>
-				<p class="content">
-					<!-- 여행사진 -->
-					<img src="" ; width="200px" height="100px"
-						align="left" alt="${data.dpicture}">
-					<!-- 프로필 사진 -->
-					<img src="${data.picture}" width="50px" height="50px" alt="프로필 사진"
-						vspace="10" hspace="10" align="left"> <a href="/oneDiary.do?linkedidx=${data.idx }&id=${user.id}">
-						<c:forTokens items="${data.contents}" delims="/" var="contents">
-						<p>${contents }</p>
-						</c:forTokens>
-						</a>
-				</p>
-			</div> --%>
-				
-				
-				
-				<%-- </c:forEach> --%>
 				</div>
 			</div>
 		</div>

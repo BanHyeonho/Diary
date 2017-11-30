@@ -541,7 +541,7 @@ function scrapMark(savePlace,scrapPlace,size,idx){
 	if(idx >= size){
 		scrapTab(scrapPlace.place_name,scrapPlace.content,scrapPlace.picture);
 	}
-
+	saveMark.push(marker);
 }
 
 var sc=0;

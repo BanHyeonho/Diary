@@ -479,7 +479,7 @@ saveMarker(savePlace);
 if(idx >= size){
 scrapTab(scrapPlace.place_name,scrapPlace.content,scrapPlace.picture);
 }
-
+saveMark.push(marker);
 }
 var sc=0;
 function scrapTab(title,content,picture){
@@ -518,34 +518,6 @@ function scrapTab(title,content,picture){
 		$(this).css('background','lightgray');
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

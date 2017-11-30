@@ -11,13 +11,14 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<!-- <logger name="com.dac.www">
+	
+	
+	<!-- <logger name="www">
 		<level value="info" />
 	</logger> -->
-	<logger name="www">
-		<level value="info" />
-	</logger>
+	
 	<!-- 3rdparty Loggers -->
+	
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
@@ -33,7 +34,7 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
+ 
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />

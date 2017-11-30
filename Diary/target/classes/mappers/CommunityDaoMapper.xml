@@ -27,8 +27,8 @@
   
   
   <insert id="ccommentinsert" parameterType="www.dto.CommentVo">
-  insert into CCOMMENT(IDX,NICK,CONTENTS,CDATE,LINKEDIDX)
-  values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx})
+  insert into CCOMMENT(IDX,NICK,CONTENTS,CDATE,LINKEDIDX,REPORTCOUNT)
+  values(CCOMMENT_SEQ.NEXTVAL,#{nick},#{contents},sysdate,#{linkedidx},0)
   
   </insert>
   <delete id="deleteccomment" parameterType="Integer">

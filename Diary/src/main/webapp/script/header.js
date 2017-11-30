@@ -11,8 +11,8 @@ function login(){
 	return true;
 }
 function msg_hham(id){
-	//console.log(' 얍얍얍');
-	var id = id;
+	console.log(id);
+
 	var data = {
 		'id' : id
 	};

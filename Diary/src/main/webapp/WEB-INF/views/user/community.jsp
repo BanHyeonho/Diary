@@ -117,7 +117,7 @@
 		</div>
 		<%@ include file="../layout/nav.jsp"%>
 	</div>
+</div>
 		<%@ include file="../layout/footer.jsp"%>
-
 </body>
 </html>
