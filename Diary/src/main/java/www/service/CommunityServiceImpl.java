@@ -86,7 +86,7 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public List<CommunityVo> csearch(CommunityVo vo) {
-		// TODO Auto-generated method stub
+		System.out.println(vo.toString());
 		return dao.csearch(vo);
 	}
 

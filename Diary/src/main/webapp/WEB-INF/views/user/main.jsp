@@ -32,16 +32,41 @@
 		<ul class="slide_ul">
 		<li><a href="#" style="display:block; position:relative; text-decoration:none;"></a>
 		<div style="position:absolute; top:200px; left:53%;">
-			<br/>
+			
 				<h1 class="display-3" style="color:white">Travel Diary</h1>
 				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
 				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
 			</div>
 			<img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/6/abda9a8e-6832-42ca-a18e-56fb134d3235.jpg" alt="dane">
 		</li>
-		<li><a href="http://www.jeju.go.kr/index.htm" target="_blank" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/11/8f242807-2f14-4c6d-baab-4f4985b64984.jpg" alt="dane"></a></li>
-		<li><a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://file.intereuro.co.kr/Puzzle/PuzzleBanner/PuzzleBanner_201783116239_76_61_1.jpg" alt="dane"></a></li> 
+		<li>
+		<div style="position:absolute; top:200px; left:53%;">
+			
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
+				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
+			</div>
+			<img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane">
+	<!-- 	<a href="http://www.jeju.go.kr/index.htm" target="_blank" style="display:block;"><img style="height: 600px;width: 100%;" src="https://i.ytimg.com/vi/beNKzyf4Cyk/maxresdefault.jpg" alt="dane"></a></li> -->
+		<li>
+		<div style="position:absolute; top:200px; left:53%;">
+			
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
+				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
+			</div>
+			<img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/11/8f242807-2f14-4c6d-baab-4f4985b64984.jpg" alt="dane">
+	<!-- 	<a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://image.tourbaksa.com/New/Main/MainThema/2017/11/8f242807-2f14-4c6d-baab-4f4985b64984.jpg" alt="dane"></a></li> -->
+		<li>
+		<div style="position:absolute; top:200px; left:53%;">
+			
+				<h1 class="display-3" style="color:white">Travel Diary</h1>
+				<div style="float:right; top:10px;"><p style="font-size:17px; color:white;">나만의 여행 코스를 공유하세요</p>
+				<a class="btn btn-primary btn-md" href="http://www.earthtory.com/ko" target="_blank">GO</a></div>
+			</div>
+			<img style="height: 600px;width: 100%;" src="http://file.intereuro.co.kr/Puzzle/PuzzleBanner/PuzzleBanner_201783116239_76_61_1.jpg" alt="dane">
+		
+		<!-- <a href="#" style="display:block;" target="_blank"><img style="height: 600px;width: 100%;" src="http://file.intereuro.co.kr/Puzzle/PuzzleBanner/PuzzleBanner_201783116239_76_61_1.jpg" alt="dane"></a></li> --> 
 		</ul>
 	</div>
 		<div class="container">

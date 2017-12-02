@@ -110,8 +110,12 @@ public class CommunityController {
 	@RequestMapping(value="/csearch.do",method=RequestMethod.POST)
 	public ModelAndView SearchCommunity(ModelAndView mav,CommunityVo vo) {
 		
-		sv.csearch(vo);
-		mav.addObject("list", sv.csearch(vo));
+	
+		
+		
+		List<CommunityVo> list =sv.csearch(vo);
+		System.out.println("검색수 : "+list.size());
+		mav.addObject("list", list);
 		mav.setViewName("user/community");
 		mav.addObject("active", "2");
 		return mav;
